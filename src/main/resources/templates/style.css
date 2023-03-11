@@ -1,0 +1,12 @@
+body {
+    background-color: #5c2472;
+}
+
+#test {
+    background-color: #853a9e;
+    color: white;
+}
+
+::placeholder {
+    color: white;
+}
