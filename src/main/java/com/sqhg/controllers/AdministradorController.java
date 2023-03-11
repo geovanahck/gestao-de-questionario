@@ -1,7 +1,9 @@
 package com.sqhg.controllers;
 
 import java.util.List;
-import com.sqhg.repositories.UserRepository;
+
+import com.sqhg.entities.Administrador;
+import com.sqhg.repositories.AdministradorRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,18 +11,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sqhg.entities.User;
+import com.sqhg.entities.Administrador;
 
 @RestController
 @RequestMapping(value = "/users")
-public class UserController {
+public class AdministradorController {
     
     @Autowired
-    private UserRepository repository;
+    private AdministradorRepository repository;
 
     @GetMapping
-    public List<User> findAll() {
-        List<User> result = repository.findAll();
+    public List<Administrador> findAll() {
+        List<Administrador> result = repository.findAll();
         return result;
     }
 
@@ -29,8 +31,8 @@ public class UserController {
      * @return
      */
     @GetMapping(value = "/{id}")
-    public User findById(@PathVariable Long id) {
-        User result = repository.findById(id).get();
-        return (User) result;
+    public Administrador findById(@PathVariable Long id) {
+        Administrador result = repository.findById(id).get();
+        return (Administrador) result;
     }
 }

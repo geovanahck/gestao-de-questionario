@@ -2,30 +2,27 @@ package com.sqhg.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
-@Table(name = "resposta")
+@Table(name = "questao")
 public class Questao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_questao;
+    private int id;
     private String descricao;
     private int tipo;
 
     @ManyToOne
-    @JoinColumn(name = "modelo_questionario")
-    private ModeloQuestionario modelo_questionario;
+    @JoinColumn(name = "modeloQuestionario")
+    private ModeloQuestionario modeloQuestionario;
 
-    @OneToMany
-    @JoinColumn(name = "opcao")
-    private Opcao opcao;
+    @OneToMany(mappedBy = "opcao")
+    private List<Opcao> opcao;
 
-    public int getId_questao() {
-        return id_questao;
-    }
-
-    public void setId_questao(int id_questao) {
-        this.id_questao = id_questao;
+    public int getId() {
+        return id;
     }
 
     public String getDescricao() {
@@ -42,5 +39,21 @@ public class Questao {
 
     public void setTipo(int tipo) {
         this.tipo = tipo;
+    }
+
+    public ModeloQuestionario getModeloQuestionario() {
+        return modeloQuestionario;
+    }
+
+    public void setModeloQuestionario(ModeloQuestionario modeloQuestionario) {
+        this.modeloQuestionario = modeloQuestionario;
+    }
+
+    public List<Opcao> getOpcao() {
+        return opcao;
+    }
+
+    public void setOpcao(List<Opcao> opcao) {
+        this.opcao = opcao;
     }
 }

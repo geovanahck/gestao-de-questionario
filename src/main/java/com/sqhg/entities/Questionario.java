@@ -19,7 +19,7 @@ public class Questionario {
         
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_questionario; 
+    private int id;
     private String nome;
     private String descricao;
 
@@ -29,22 +29,18 @@ public class Questionario {
     private Administrador administrador;
 
     @ManyToOne
-    @JoinColumn(name = "modelo_questionario_id")
+    @JoinColumn(name = "modeloQuestionario")
     private ModeloQuestionario modeloQuestionario;
 
-    @ManyToMany( mappedBy = "superior_imediato")
-    private List<SuperiorImediato> superior_imediato;
+    @ManyToMany( mappedBy = "superiorImediato")
+    private List<SuperiorImediato> superiorImediato;
 
     @ManyToOne
     @JoinColumn(name = "resposta")
     private Resposta resposta;
 
-    public int getId_questionario() {
-        return id_questionario;
-    }
-
-    public void setId_questionario(int id_questionario) {
-        this.id_questionario = id_questionario;
+    public int getId() {
+        return id;
     }
 
     public String getNome() {
@@ -61,5 +57,37 @@ public class Questionario {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public Administrador getAdministrador() {
+        return administrador;
+    }
+
+    public void setAdministrador(Administrador administrador) {
+        this.administrador = administrador;
+    }
+
+    public ModeloQuestionario getModeloQuestionario() {
+        return modeloQuestionario;
+    }
+
+    public void setModeloQuestionario(ModeloQuestionario modeloQuestionario) {
+        this.modeloQuestionario = modeloQuestionario;
+    }
+
+    public List<SuperiorImediato> getSuperiorImediato() {
+        return superiorImediato;
+    }
+
+    public void setSuperiorImediato(List<SuperiorImediato> superiorImediato) {
+        this.superiorImediato = superiorImediato;
+    }
+
+    public Resposta getResposta() {
+        return resposta;
+    }
+
+    public void setResposta(Resposta resposta) {
+        this.resposta = resposta;
     }
 }

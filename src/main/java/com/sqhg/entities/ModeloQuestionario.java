@@ -11,33 +11,29 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "modelo_questionario")
+@Table(name = "modeloQuestionario")
 public class ModeloQuestionario {
 
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_modelo; 
-    private String nomeQuestionario;
+    private int id;
+    private String nome;
     private String descricao;
 
 
-    @OneToMany(mappedBy = "modelo_questionario")
+    @OneToMany(mappedBy = "questionario")
     private List<Questionario> questionario;
 
-    public int getId_modelo() {
-        return id_modelo;
+    public int getId() {
+        return id;
     }
 
-    public void setId_modelo(int id_modelo) {
-        this.id_modelo = id_modelo;
+    public String getNome() {
+        return nome;
     }
 
-    public String getNomeQuestionario() {
-        return nomeQuestionario;
-    }
-
-    public void setNomeQuestionario(String nomeQuestionario) {
-        this.nomeQuestionario = nomeQuestionario;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getDescricao() {
@@ -46,5 +42,13 @@ public class ModeloQuestionario {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public List<Questionario> getQuestionario() {
+        return questionario;
+    }
+
+    public void setQuestionario(List<Questionario> questionario) {
+        this.questionario = questionario;
     }
 }

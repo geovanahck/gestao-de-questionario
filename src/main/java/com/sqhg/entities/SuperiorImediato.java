@@ -5,12 +5,12 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "superior_imediato")
+@Table(name = "superiorImediato")
 public class SuperiorImediato {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_superior;
+    private int id;
     private String nome;
     private String cargo;
 
@@ -21,12 +21,8 @@ public class SuperiorImediato {
     @ManyToMany (mappedBy = "questionario")
     private List<Questionario> questionario;
 
-    public int getId_superior() {
-        return id_superior;
-    }
-
-    public void setId_superior(int id_superior) {
-        this.id_superior = id_superior;
+    public int getId() {
+        return id;
     }
 
     public String getNome() {
@@ -43,5 +39,21 @@ public class SuperiorImediato {
 
     public void setCargo(String cargo) {
         this.cargo = cargo;
+    }
+
+    public Area getArea() {
+        return area;
+    }
+
+    public void setArea(Area area) {
+        this.area = area;
+    }
+
+    public List<Questionario> getQuestionario() {
+        return questionario;
+    }
+
+    public void setQuestionario(List<Questionario> questionario) {
+        this.questionario = questionario;
     }
 }

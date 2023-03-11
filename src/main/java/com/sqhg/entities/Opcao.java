@@ -8,19 +8,15 @@ public class Opcao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_opcao;
+    private int id;
     private String descricao;
 
     @ManyToOne
     @JoinColumn(name = "opcao")
     private Opcao opcao;
 
-    public int getId_opcao() {
-        return id_opcao;
-    }
-
-    public void setId_opcao(int id_opcao) {
-        this.id_opcao = id_opcao;
+    public int getId() {
+        return id;
     }
 
     public String getDescricao() {
@@ -29,5 +25,13 @@ public class Opcao {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public Opcao getOpcao() {
+        return opcao;
+    }
+
+    public void setOpcao(Opcao opcao) {
+        this.opcao = opcao;
     }
 }
