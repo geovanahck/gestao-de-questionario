@@ -25,8 +25,4 @@ jobs:
       run: mvn test
 
     - name: Checkstyle
-      uses: dawidd6/action-checkstyle@v1.0.0
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        checkstyle_version: '8.44'
-        config_file: 'checkstyle.xml'
+      run: mvn checkstyle:checkstyle
