@@ -12,8 +12,8 @@ public class Opcao {
     private String descricao;
 
     @ManyToOne
-    @JoinColumn(name = "opcao")
-    private Opcao opcao;
+    @JoinColumn(name = "id_questao")
+    private Questao questao;
 
     public int getId() {
         return id;
@@ -27,11 +27,11 @@ public class Opcao {
         this.descricao = descricao;
     }
 
-    public Opcao getOpcao() {
-        return opcao;
+    public Questao getQuestao() {
+        return questao;
     }
 
-    public void setOpcao(Opcao opcao) {
-        this.opcao = opcao;
+    public void setQuestao(Questao questao) {
+        this.questao = questao;
     }
 }

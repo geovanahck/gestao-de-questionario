@@ -15,10 +15,10 @@ public class Questao {
     private int tipo;
 
     @ManyToOne
-    @JoinColumn(name = "modeloQuestionario")
+    @JoinColumn(name = "id_modeloQuestionario")
     private ModeloQuestionario modeloQuestionario;
 
-    @OneToMany(mappedBy = "opcao")
+    @OneToMany(mappedBy = "questao")
     private List<Opcao> opcao;
 
     public int getId() {

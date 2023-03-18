@@ -2,13 +2,7 @@ package com.sqhg.entities;
 
 import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "modeloQuestionario")
@@ -20,9 +14,11 @@ public class ModeloQuestionario {
     private String nome;
     private String descricao;
 
-
-    @OneToMany(mappedBy = "questionario")
+    @OneToMany(mappedBy = "modeloQuestionario")
     private List<Questionario> questionario;
+
+    @OneToMany(mappedBy = "modeloQuestionario")
+    private List<Questao> questao;
 
     public int getId() {
         return id;

@@ -13,11 +13,11 @@ public class Resposta {
     private int id;
     private String resposta;
 
-    @OneToMany(mappedBy = "questionario")
+    @OneToMany(mappedBy = "resposta")
     private List<Questionario> questionario;
 
     @ManyToOne
-    @JoinColumn(name = "questao")
+    @JoinColumn(name = "id_questao")
     private Questao questao;
 
     public int getId() {

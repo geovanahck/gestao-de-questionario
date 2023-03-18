@@ -23,20 +23,19 @@ public class Questionario {
     private String nome;
     private String descricao;
 
-        
     @ManyToOne
-    @JoinColumn(name = "administrador")
+    @JoinColumn(name = "id_administrador")
     private Administrador administrador;
 
     @ManyToOne
-    @JoinColumn(name = "modeloQuestionario")
+    @JoinColumn(name = "id_modeloQuestionario")
     private ModeloQuestionario modeloQuestionario;
 
-    @ManyToMany( mappedBy = "superiorImediato")
+    @ManyToMany( mappedBy = "questionario")
     private List<SuperiorImediato> superiorImediato;
 
     @ManyToOne
-    @JoinColumn(name = "resposta")
+    @JoinColumn(name = "id_resposta")
     private Resposta resposta;
 
     public int getId() {

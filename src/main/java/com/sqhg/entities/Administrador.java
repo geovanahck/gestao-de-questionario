@@ -25,7 +25,7 @@ public class Administrador {
     private String telefone;
     private String senha;
 
-    @OneToMany(mappedBy = "questionario")
+    @OneToMany(mappedBy = "administrador")
     private List<Questionario> questionario;
 
     public int getIdAdministrador() {

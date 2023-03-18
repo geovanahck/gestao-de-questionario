@@ -3,6 +3,7 @@ package com.sqhg.entities;
 import jakarta.persistence.*;
 
 import java.sql.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "area")
@@ -10,24 +11,22 @@ public class Area {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private int id_area;
+    private int id;
     private String nome;
     private Date dataCadastro;
     private Date dataInativacao;
     private int status;
     private int tipo;
 
-    @ManyToOne
-    @JoinColumn(name = "superior_imediato")
-    private SuperiorImediato superior_imediato;
+    @OneToMany(mappedBy = "area")
+    private List<SuperiorImediato> superiorImediato;
 
-    public int getId_area() {
-        return id_area;
+    public int getId() {
+        return id;
     }
 
-    public void setId_area(int id_area) {
-        this.id_area = id_area;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {

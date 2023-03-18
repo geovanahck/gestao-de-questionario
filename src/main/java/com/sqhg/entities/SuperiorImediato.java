@@ -15,10 +15,10 @@ public class SuperiorImediato {
     private String cargo;
 
     @ManyToOne
-    @JoinColumn(name = "area")
+    @JoinColumn(name = "id_area")
     private Area area;
 
-    @ManyToMany (mappedBy = "questionario")
+    @ManyToMany
     private List<Questionario> questionario;
 
     public int getId() {
