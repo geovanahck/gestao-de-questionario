@@ -1,4 +1,4 @@
-HELP.md
+nHELP.md
 .mvn
 target/
 !.mvn/wrapper/maven-wrapper.jar
@@ -24,3 +24,4 @@ target/
 ### VS Code ###
 .vscode/
 
+node_modules

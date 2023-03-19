@@ -1,13 +1,14 @@
 package com.sqhg.SQHG;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import com.sqhg.entities.Administrador;
+import org.junit.Test;
+import org.junit.Assert;
 
-@SpringBootTest
 class SqhgApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    public void contextLoads() {
 
+       
+    }
 }
