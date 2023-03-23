@@ -23,9 +23,10 @@ public class LoginController {
 
     @PostMapping(value = "/logar")
     public String logar(Model model, Administrador admParam) {
-        Administrador adm = this.repository.Login.findByEmail(admParam.getEmail(), admParam.getSenha());
+        Administrador adm = this.repository.Login(admParam.getEmail(),
+                admParam.getSenha());
         if (adm != null) {
-            return "redirect:/sucessoteste";
+            return "sucessoteste";
         }
         model.addAttribute("erro", "Usuário ou senha inválidos");
         return "login";
