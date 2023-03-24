@@ -10,7 +10,7 @@ public class Questao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String descricao;
     private int tipo;
 
@@ -21,7 +21,7 @@ public class Questao {
     @OneToMany(mappedBy = "questao")
     private List<Opcao> opcao;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 

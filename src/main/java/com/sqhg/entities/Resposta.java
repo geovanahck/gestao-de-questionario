@@ -10,7 +10,7 @@ public class Resposta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String resposta;
 
     @OneToMany(mappedBy = "resposta")
@@ -20,7 +20,7 @@ public class Resposta {
     @JoinColumn(name = "id_questao")
     private Questao questao;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 

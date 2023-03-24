@@ -7,7 +7,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 import java.util.List;
@@ -19,7 +18,7 @@ public class Questionario {
         
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String nome;
     private String descricao;
 
@@ -38,7 +37,7 @@ public class Questionario {
     @JoinColumn(name = "id_resposta")
     private Resposta resposta;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 

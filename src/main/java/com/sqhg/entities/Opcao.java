@@ -8,14 +8,14 @@ public class Opcao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String descricao;
 
     @ManyToOne
     @JoinColumn(name = "id_questao")
     private Questao questao;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 

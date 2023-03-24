@@ -1,8 +1,8 @@
 package com.sqhg.entities;
 
-import java.util.List;
-
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "modeloQuestionario")
@@ -10,7 +10,7 @@ public class ModeloQuestionario {
 
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String nome;
     private String descricao;
 
@@ -20,7 +20,7 @@ public class ModeloQuestionario {
     @OneToMany(mappedBy = "modeloQuestionario")
     private List<Questao> questao;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
