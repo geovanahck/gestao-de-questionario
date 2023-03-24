@@ -11,7 +11,7 @@ public class Area {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String nome;
     private Date dataCadastro;
     private Date dataInativacao;
@@ -21,11 +21,11 @@ public class Area {
     @OneToMany(mappedBy = "area")
     private List<SuperiorImediato> superiorImediato;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

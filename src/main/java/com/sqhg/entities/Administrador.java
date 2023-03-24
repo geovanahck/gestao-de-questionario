@@ -1,15 +1,9 @@
 package com.sqhg.entities;
 
+import jakarta.persistence.*;
+
 import java.sql.Date;
 import java.util.List;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "administrador")
@@ -17,7 +11,7 @@ public class Administrador {
     
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String cracha;
     private String nome;
     private Date nascimento;
@@ -28,11 +22,11 @@ public class Administrador {
     @OneToMany(mappedBy = "administrador")
     private List<Questionario> questionario;
 
-    public int getIdAdministrador() {
+    public Long getIdAdministrador() {
         return id;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
