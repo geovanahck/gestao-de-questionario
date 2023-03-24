@@ -31,5 +31,4 @@ public class LoginController {
         model.addAttribute("erro", "Usuário ou senha inválidos");
         return "login";
     }
-
 }

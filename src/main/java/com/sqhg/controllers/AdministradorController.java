@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sqhg.entities.Administrador;
-
 @RestController
 @RequestMapping(value = "/users")
 public class AdministradorController {
