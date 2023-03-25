@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: #5c2472;
+}
+
+#color {
+    background-color: #853a9e;
+    color: white;
+}
+
+#container{
+    display: flex;
+    justify-content: center; /* centraliza as divs horizontalmente */
+}
