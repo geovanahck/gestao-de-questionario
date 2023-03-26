@@ -3,15 +3,39 @@
 @tailwind utilities;
 
 body {
-    background-color: #5c2472;
+    background-color: #D9D9D9;
+}
+
+header {
+    background-color: #F3F3F3;
+}
+
+#fundo {
+    background-color: #5C2472;
+    color: #D9D9D9;
+
 }
 
 #color {
-    background-color: #853a9e;
+    background-color: #F3F3F3 !important;
     color: white;
 }
 
-#container{
-    display: flex;
-    justify-content: center; /* centraliza as divs horizontalmente */
+#tipoquestao {
+    background-color: #D9D9D9;
+    color: black;
 }
+#container {
+    display: flex;
+    justify-content: center;
+    /* centraliza as divs horizontalmente */
+}
+
+#div.menu-bar ul ul {
+    display: none;
+}
+
+#div.menu-bar li:hover>ul {
+    display: block;
+}
+

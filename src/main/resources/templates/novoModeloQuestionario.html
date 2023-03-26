@@ -1,42 +1,126 @@
 <!DOCTYPE html>
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Novo Modelo de Questionário</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/styles/style.css}" />
+    <link rel="stylesheet" type="text/css" href="/src/main/resources/static/styles/novoModeloQuestionario.css" />
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body>
-    <div>
-        <div>
-            <div class="bg-red-100">
-                <label>Nome do Questionário</label>
-            </div>
+    <section class="h-screen flex flex-col tela-inteira">
+        <div class="h-fit xl:h-1/2 xl:w-1/5 flex justify-center tela-inteira">
+            <nav>
+                dfsdsdsfsdfsd
+            </nav>
             <div>
-                <input name="chave" id="color" type="text"
-                class="w-3/4 sm:w-full lg:w-3/4 xl:w-3/5 rounded" placeholder=" Avalição dos Diretores">
+
+                <div>
+
+                </div>
+
+                <header>
+                    <div class="flex justify-center">
+                        Novo Modelo de Questionário
+                    </div>
+
+                </header>
+
+                <div>
+
+                </div>
+
+                <div>
+                    <div>
+                        <div class="justify-items-start justify-start w-full h-full gap-x-2">
+                            <label id="fundo" class="w-fit h-fit py-1 px-2 rounded">Nome do Questionário
+                            </label>
+                            <input id="color" type="text"
+                                class="w-fit h-fit py-1 px-2 w-3/4 sm:w-full lg:w-1/2 xl:w-3/5 rounded"
+                                placeholder=" Avaliação dos Diretores">
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="justify-items-start justify-start w-full h-full gap-x-2">
+                        <label id="fundo" class="w-fit h-fit py-10 px-2 rounded">Descrição </label>
+                        <input id="color" type="text"
+                            class="w-fit h-fit py-10 px-2 w-3/4 sm:w-full lg:w-1/2 xl:w-3/5 rounded"
+                            placeholder=" Avaliação dos diretores fase 2">
+                    </div>
+                </div>
+
+                <div>
+                    <div class="justify-items-start justify-start w-full h-full h-0 flex-col">
+                        <div>
+                            <label id="fundo" class="w-fit h-fit py-1 px-2 rounded">Questão 1 </label>
+                            <input id="color" type="text"
+                                class="w-fit h-fit py-1 px-2 w-3/4 sm:w-full lg:w-1/2 xl:w-3/5 rounded">
+                            <div id="tipo_questao" class="flex space-x-4 bg-[#F3F3F3]">
+                                <label id="fundo" class="w-fit h-fit py-1 px-8 rounded gap-x-2"> Tipo </label>
+                                <input type="checkbox" id="color" name="vehicle1" value="0 a 10">
+                                <label for="vehicle1"> 0 a 10 </label>
+                                <input type="checkbox" id="color" name="vehicle2" value="Alternativas">
+                                <label for="vehicle2"> Alternativas </label>
+                                <input type="checkbox" id="color" name="vehicle3" value="Múltipla escolha">
+                                <label for="vehicle3"> Múltipla escolha </label>
+                                <input type="checkbox" id="color" name="vehicle3" value="Aberta">
+                                <label for="vehicle3"> Aberta </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="justify-items-start justify-start w-full h-full h-0 flex-col">
+                        <div>
+                            <label id="fundo" class="w-fit h-fit py-1 px-2 rounded">Questão 2 </label>
+                            <input id="color" type="text"
+                                class="w-fit h-fit py-1 px-2 w-3/4 sm:w-full lg:w-1/2 xl:w-3/5 rounded">
+                            <div id="tipo_questao" class="flex space-x-4 bg-[#F3F3F3]">
+                                <label id="fundo" class="w-fit h-fit py-1 px-8 rounded gap-x-2"> Tipo </label>
+                                <input type="checkbox" id="color" name="vehicle1" value="0 a 10">
+                                <label for="vehicle1"> 0 a 10 </label>
+                                <input type="checkbox" id="color" name="vehicle2" value="Alternativas">
+                                <label for="vehicle2"> Alternativas </label>
+                                <input type="checkbox" id="color" name="vehicle3" value="Múltipla escolha">
+                                <label for="vehicle3"> Múltipla escolha </label>
+                                <input type="checkbox" id="color" name="vehicle3" value="Aberta">
+                                <label for="vehicle3"> Aberta </label>
+                            </div>
+                            <label id="fundo" class="w-fit h-fit py-1 px-4 rounded"> Opção 1 </label>
+                            <input id="color" type="text"
+                                class="w-fit h-fit py-1 px-2 w-3/4 sm:w-full lg:w-1/2 xl:w-3/5 rounded">
+                        </div>
+                        <label id="fundo" class="w-fit h-fit py-1 px-4 rounded"> Opção 2 </label>
+                        <input id="color" type="text"
+                            class="w-fit h-fit py-1 px-2 w-3/4 sm:w-full lg:w-1/2 xl:w-3/5 rounded">
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-center w-full h-2/3">
+                    <button id="fundo" formaction="login" method="get"
+                        class="w-fit h-fit py-1 px-4 bg-white rounded">Adicionar
+                        questão
+                    </button>
+                </div>
+
+                <div class="grid items-stretch justify-items-end w-full h-2/3 gap-x-2">
+                    <form>
+                        <button id="fundo" formaction="cancelar" method="get"
+                            class="w-fit h-fit py-1 px-4 bg-white rounded">Cancelar</button>
+
+                        <button id="fundo" formaction="login" method="get"
+                            class="w-fit h-fit py-1 px-6 bg-white rounded">Gravar</button>
+                    </form>
+                </div>
             </div>
         </div>
-        <div>
-            
-        </div>
-        <div>
-            
-        </div>
-        <div>
-            
-        </div>
-        <div>
-            
-        </div>
-        <div>
-            
-        </div>
-        <div>
-            
-        </div>
-    </div>
+    </section>
 </body>
+
 </html>
