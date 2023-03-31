@@ -1,13 +1,25 @@
 package com.sqhg.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import java.sql.Date;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "administrador")
-public class Administrador {
+public class Administrador implements UserDetails {
     
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,72 +30,43 @@ public class Administrador {
     private String email;
     private String telefone;
     private String senha;
-
     @OneToMany(mappedBy = "administrador")
     private List<Questionario> questionario;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
-    public Long getIdAdministrador() {
-        return id;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getCracha() {
-        return cracha;
-    }
-
-    public void setCracha(String cracha) {
-        this.cracha = cracha;
-    }
-     
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public Date getNascimento() {
-        return nascimento;
-    }
-
-    public void setNascimento(Date nascimento) {
-        this.nascimento = nascimento;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getSenha() {
+    @Override
+    public String getPassword() {
         return senha;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    @Override
+    public String getUsername() {
+        return cracha;
     }
 
-    public List<Questionario> getQuestionario() {
-        return questionario;
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
     }
 
-    public void setQuestionario(List<Questionario> questionario) {
-        this.questionario = questionario;
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }

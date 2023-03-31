@@ -1,10 +1,18 @@
 package com.sqhg.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "superiorImediato")
 public class SuperiorImediato {
 
@@ -20,40 +28,4 @@ public class SuperiorImediato {
 
     @ManyToMany
     private List<Questionario> questionario;
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCargo() {
-        return cargo;
-    }
-
-    public void setCargo(String cargo) {
-        this.cargo = cargo;
-    }
-
-    public Area getArea() {
-        return area;
-    }
-
-    public void setArea(Area area) {
-        this.area = area;
-    }
-
-    public List<Questionario> getQuestionario() {
-        return questionario;
-    }
-
-    public void setQuestionario(List<Questionario> questionario) {
-        this.questionario = questionario;
-    }
 }

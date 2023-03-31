@@ -1,8 +1,16 @@
 package com.sqhg.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "resposta")
 public class Opcao {
 
@@ -14,24 +22,4 @@ public class Opcao {
     @ManyToOne
     @JoinColumn(name = "id_questao")
     private Questao questao;
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public Questao getQuestao() {
-        return questao;
-    }
-
-    public void setQuestao(Questao questao) {
-        this.questao = questao;
-    }
 }

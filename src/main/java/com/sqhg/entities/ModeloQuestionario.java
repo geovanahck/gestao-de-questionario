@@ -1,10 +1,18 @@
 package com.sqhg.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "modeloQuestionario")
 public class ModeloQuestionario {
 
@@ -19,32 +27,4 @@ public class ModeloQuestionario {
 
     @OneToMany(mappedBy = "modeloQuestionario")
     private List<Questao> questao;
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public List<Questionario> getQuestionario() {
-        return questionario;
-    }
-
-    public void setQuestionario(List<Questionario> questionario) {
-        this.questionario = questionario;
-    }
 }

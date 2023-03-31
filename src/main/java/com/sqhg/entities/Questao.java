@@ -1,10 +1,18 @@
 package com.sqhg.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "questao")
 public class Questao {
 
@@ -20,40 +28,4 @@ public class Questao {
 
     @OneToMany(mappedBy = "questao")
     private List<Opcao> opcao;
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public int getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(int tipo) {
-        this.tipo = tipo;
-    }
-
-    public ModeloQuestionario getModeloQuestionario() {
-        return modeloQuestionario;
-    }
-
-    public void setModeloQuestionario(ModeloQuestionario modeloQuestionario) {
-        this.modeloQuestionario = modeloQuestionario;
-    }
-
-    public List<Opcao> getOpcao() {
-        return opcao;
-    }
-
-    public void setOpcao(List<Opcao> opcao) {
-        this.opcao = opcao;
-    }
 }

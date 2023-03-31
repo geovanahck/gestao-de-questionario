@@ -1,10 +1,18 @@
 package com.sqhg.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "resposta")
 public class Resposta {
 
@@ -19,32 +27,4 @@ public class Resposta {
     @ManyToOne
     @JoinColumn(name = "id_questao")
     private Questao questao;
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getResposta() {
-        return resposta;
-    }
-
-    public void setResposta(String resposta) {
-        this.resposta = resposta;
-    }
-
-    public List<Questionario> getQuestionario() {
-        return questionario;
-    }
-
-    public void setQuestionario(List<Questionario> questionario) {
-        this.questionario = questionario;
-    }
-
-    public Questao getQuestao() {
-        return questao;
-    }
-
-    public void setQuestao(Questao questao) {
-        this.questao = questao;
-    }
 }
