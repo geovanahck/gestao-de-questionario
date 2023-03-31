@@ -26,8 +26,7 @@ public class LoginController {
         Administrador adm = this.repository.Login(admParam.getCracha(),
                 admParam.getSenha());
         if (adm != null) {
-            System.out.println("Login efetuado");
-            // return -rota-
+            return "";
         }
         model.addAttribute("erro", "Usuário ou senha inválidos");
         return "login";
