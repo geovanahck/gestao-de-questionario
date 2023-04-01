@@ -6,11 +6,6 @@ body {
     background-color: #D9D9D9;
 }
 
-#fundo {
-    background-color: #5C2472;
-    color: #D9D9D9;
-
-}
 
 #color {
     background-color: #F3F3F3 !important;
@@ -40,6 +35,7 @@ body {
 #fundo {
     background-color: #5c2472;
     border-right: 5px;
+    color: white;
 
 }
 
@@ -48,7 +44,6 @@ body {
     color: white;
     text-align: center;
     border-radius: 10px;
-
 }
 
 
@@ -61,13 +56,13 @@ body {
 table {
     border-collapse: separate;
     width: 100%;
-    max-width: 900px;
+    max-width: 100%;
     margin: 0 auto;
     border-radius: 8px;
     border-style: hidden;
     box-shadow: 0 0 0 2px #5c2472;
     background-color: white;
-    padding: 5px;
+    padding: 1px;
 
 }
 
