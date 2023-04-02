@@ -21,7 +21,7 @@ public class LoginController {
         return "login";
     }
 
-    @PostMapping(value = "/login")
+    @PostMapping(value = "/logar")
     public String logar(Model model, Administrador admParam) {
         Administrador adm = this.repository.Login(admParam.getCracha(),
                 admParam.getSenha());
