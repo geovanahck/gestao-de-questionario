@@ -6,8 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Novo Modelo de Questionário</title>
-    <link rel="stylesheet" type="text/css" href="../static/styles/novoModeloQuestionario.css" />
+    <link rel="stylesheet" type="text/css" href="/src/main/resources/static/styles/novoModeloQuestionario.css" />
+    <script rel="javascript" type="text/javascript" src="/src/main/resources/static/scripts/novoModeloQuestionario.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- <style>
+        
+    </style>
+    <script type="text/javascript">
+     
+    </script> -->
 </head>
 
 <body>
@@ -21,16 +29,18 @@
             </header>
             <div class="bg-[#F3F3F3] w-full p-5">
                 <div class="mb-5">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th class="w-60 rounded-tl-md">Nome do Questionário</th>
-                                <td class="px-1">
-                                    <input class="w-full rounded-none px-2" type="text">
-                                </td>
-                            </tr>
-                        </thead>
-                    </table>
+                    <form action="">
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="w-60 rounded-tl-md">Nome do Questionário</th>
+                                    <td class="px-1">
+                                        <input class="w-full rounded-none px-2" type="text">
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
                 </div>
                 <div class="mb-5">
                     <table>
@@ -119,24 +129,31 @@
                         class="w-fit px-11 h-0,5 bg-white rounded">Adicionar
                         questão
                     </button>
+                    </form>
                 </div>
                 <div class="justify-items items-center inline-block flex flex-row-reverse pr-0 gap-x-2">
                     <div class="py-4">
                         <form>
-                            <button id="fundo" formaction="cancelar" method="get"
+                            <button id="fundo" formaction="modelosQuestionario" method="post"
                                 class="w-fit h-fit py-1 px-6 bg-white rounded">Gravar</button>
                         </form>
                     </div>
                     <div class=" w-fit">
-                        <form>
-                            <button id="fundo" formaction="login" method="get"
-                                class="w-fit h-fit py-1 px-6 bg-white rounded">Cancelar</button>
-                        </form>
+                        <button onclick="openPopup();" id="fundo"
+                            class="w-fit h-fit py-1 px-6 bg-white rounded">Cancelar</button>
                     </div>
                 </div>
             </div>
         </div>
+       
+
     </section>
+    <!--<button onclick="openPopup()" id="myPopup">Clique</button>-->
+    <div id="popup" class="popup">
+        <h1>Isso é um pop-up!</h1>
+        <p>Clique em "Fechar" para fechar esta janela.</p>
+        <button onclick="closePopup()">Fechar</button>
+    </div>
 </body>
 
 </html>

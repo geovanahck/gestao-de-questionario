@@ -2,9 +2,10 @@ package com.sqhg.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import com.sqhg.entities.ModeloQuestionario;
 import com.sqhg.repositories.NovoModeloQuestionarioRepository;
@@ -13,23 +14,18 @@ import com.sqhg.repositories.NovoModeloQuestionarioRepository;
 public class NovoModeloQuestionarioController {
     
     @Autowired
-    private NovoModeloQuestionarioRepository repositoyNovoModeloQuestionario;
+    private NovoModeloQuestionarioRepository novoModeloQuestionarioRepository;
 
     @Autowired
-    public void inserirNovoModeloQuestionario() {
-        ModeloQuestionario novoModeloQuestionario = new ModeloQuestionario();
-        novoModeloQuestionario.setNome("Maria");
-        novoModeloQuestionario.setDescricao("xxx");
-       // pessoaRepository.save(pessoa);
-
     @GetMapping(value = "/novoModeloQuestionario")
     public String novoModeloQuestionario() {
         return "novoModeloQuestionario";
     }
-    
-    @PostMapping
-    public void createNovoModeloQuestionario(@RequestBody ModeloQuestionario novoModeloQuestionario) {
-        
-    }
+
+    @PostMapping("/novoModeloQuestionario")
+    public String inserirNovoModeloQuestionario(@ModelAttribute("modeloQuestionario")ModeloQuestionario novoModeloQuestionario, Model model) {
+        novoModeloQuestionarioRepository.save(novoModeloQuestionario);
+        model.addAttribute("Questionário gravado com sucesso!");
+        return "novoModeloQuestionario"; 
 }
 }
