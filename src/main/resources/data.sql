@@ -11,38 +11,38 @@ INSERT INTO administrador( cracha, email, nome, senha, telefone)
 INSERT INTO administrador( cracha, email, nome, senha, telefone) 
                   VALUES ( '123654','teste2@gmail.com', 'teste2', '1234', '8888 9999');
 INSERT INTO administrador( cracha, email, nome, senha, telefone) 
-                  VALUES ( '123','testestestetestetesteststeste1@gmail.com', 'teste1', '123', '99999 9999');
+                  VALUES ( '123123','testestestetestetesteststeste1@gmail.com', 'teste1', '123', '99999 9999');
 INSERT INTO administrador( cracha, email, nome, senha, telefone) 
                   VALUES ( '123654','teste2@gmail.com', 'teste2', '1234', '8888 9999');
 INSERT INTO administrador( cracha, email, nome, senha, telefone) 
-                  VALUES ( '123','teste1@gmail.com', 'teste1', '123', '99999 9999');
+                  VALUES ( '1234123','teste1@gmail.com', 'teste1', '1234', '99999 9999');
 INSERT INTO administrador( cracha, email, nome, senha, telefone) 
                   VALUES ( '123654','teste2@gmail.com', 'teste2', '1234', '8888 9999');
 INSERT INTO administrador( cracha, email, nome, senha, telefone) 
-                  VALUES ( '123','teste1@gmail.com', 'teste1', '123', '99999 9999');
+                  VALUES ( '123654','teste1@gmail.com', 'teste1', '123654', '99999 9999');
 INSERT INTO administrador( cracha, email, nome, senha, telefone) 
                   VALUES ( '123654','teste2@gmail.com', 'teste2', '1234', '8888 9999');
 INSERT INTO administrador( cracha, email, nome, senha, telefone) 
-                  VALUES ( '123','teste1@gmail.com', 'teste1', '123', '99999 9999');
+                  VALUES ( '123654','teste1@gmail.com', 'teste1', '123654', '99999 9999');
 INSERT INTO administrador( cracha, email, nome, senha, telefone) 
                   VALUES ( '123654','teste2@gmail.com', 'teste2', '1234', '8888 9999');
 INSERT INTO administrador( cracha, email, nome, senha, telefone) 
-                  VALUES ( '123','teste1@gmail.com', 'teste1', '123', '99999 9999');
+                  VALUES ( '123654','teste1@gmail.com', 'teste1', '123654', '99999 9999');
 INSERT INTO administrador( cracha, email, nome, senha, telefone) 
                   VALUES ( '123654','teste2@gmail.com', 'teste2', '1234', '8888 9999');
 INSERT INTO administrador( cracha, email, nome, senha, telefone) 
-                  VALUES ( '123','teste1@gmail.com', 'teste1', '123', '99999 9999');
+                  VALUES ( '123654','teste1@gmail.com', 'teste1', '123654', '99999 9999');
 INSERT INTO administrador( cracha, email, nome, senha, telefone) 
                   VALUES ( '123654','teste2@gmail.com', 'teste2', '1234', '8888 9999');
 INSERT INTO administrador( cracha, email, nome, senha, telefone) 
-                  VALUES ( '123','teste1@gmail.com', 'teste1', '123', '99999 9999');
+                  VALUES ( '123654','teste1@gmail.com', 'teste1', '123654', '99999 9999');
 INSERT INTO administrador( cracha, email, nome, senha, telefone) 
                   VALUES ( '123654','teste2@gmail.com', 'teste2', '1234', '8888 9999');
 INSERT INTO administrador( cracha, email, nome, senha, telefone) 
-                  VALUES ( '123','teste1@gmail.com', 'teste1', '123', '99999 9999');
+                  VALUES ( '123654','teste1@gmail.com', 'teste1', '123654', '99999 9999');
 INSERT INTO administrador( cracha, email, nome, senha, telefone) 
                   VALUES ( '123654','testeteste2@gmail.com', 'teste2', '1234', '8888 9999');
 INSERT INTO administrador( cracha, email, nome, senha, telefone) 
-                  VALUES ( '123','teste1@gmail.com', 'teste1', '123', '99999 9999');
+                  VALUES ( '123654','teste1@gmail.com', 'teste1', '123654', '99999 9999');
 INSERT INTO administrador( cracha, email, nome, senha, telefone) 
                   VALUES ( '123654','teste2@gmail.com', 'teste2', '1234', '8888 9999');
