@@ -28,6 +28,7 @@ public class LoginController {
         if (adm != null) {
             System.out.println("Login efetuado");
            return "listaAdm";
+            return "listaAdm";
         }
         model.addAttribute("erro", "Usuário ou senha inválidos");
         return "login";

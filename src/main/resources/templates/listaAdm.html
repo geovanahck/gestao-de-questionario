@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/styles/listaAdm.css}" />
 </head>
 
-<!-- <style>
+<style>
     #fundo {
         background-color: #5c2472;
         border-top-right-radius: 7px;
@@ -74,7 +74,7 @@
     tr:active {
         background-color: #d1d5db;
     }
-</style> -->
+</style>
 
 <body class="overflow-scroll">
     <h1 class="flex justify-center items-center py-10 text-3xl">
@@ -84,51 +84,41 @@
     <div class="background h-full pt-10 flex flex-col ">
         <div class="pt-10 pb-16 w-full flex justify-center items-center flex flex-col">
             <div id="pesquisa" class="p-1 relative w-4/5">
-                <input type="text" class="p-1 block w-full focus:outline-none" placeholder="Localizar">
-                <div id="fundo" class="absolute inset-y-0 right-0 flex items-center ">
-                    <svg class="h-3.5 w-10 text-white" xmlns="http://www.w3.org/2000/svg" width="5" height="5"
-                        fill="currentColor" viewBox="0 0 16 16">
-                        <path
-                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 
+                <form name="Param">
+                    <input name="Param" type="text" class="p-1 block w-full focus:outline-none" placeholder="Localizar">
+                    <button id="fundo" class="absolute inset-y-0 right-0 flex items-center focus:outline-none"
+                        type="submit">
+                        <svg class="h-3.5 w-10 text-white" xmlns="http://www.w3.org/2000/svg" width="5" height="5"
+                            fill="currentColor" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 
                             1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                    </svg>
-                </div>
+                        </svg>
+                    </button>
+                </form>
             </div>
         </div>
         <table>
             <thead>
                 <tr class="h-12">
-                    <th th:href="@{'/page/' + ${currentPage} + '?sortField=cracha&sortDir' + ${reverseSortDir}}">Nº
-                        Crachá</th>
-                    <th th:href="@{'/page/' + ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">Nome
-                    </th>
-                    <th th:href="@{'/page/' + ${currentPage} + '?sortField=telefone&sortDir=' + ${reverseSortDir}}">
-                        Telefone</th>
-                    <th th:href="@{'/page/' + ${currentPage} + '?sortField=emaile&sortDir=' + ${reverseSortDir}}">Email
-                    </th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="administradores : ${aList}">
-                    <td th:text="${administrador.cracha}"></td>
-                    <td th:text="${administrador.nome}"></td>
-                    <td th:text="${administrador.telefone}"> </td>
-                    <td th:text="${administrador.email}"></td>
+                <tr class="hover:bg-gray-400 active:bg-gray-400 focus:bg-gray-400" th:each="adm : ${administradores}">
+                    <td th:text="${adm.cracha}"></td>
+                    <td th:text="${adm.nome}"></td>
+                    <td th:text="${adm.telefone}"> </td>
+                    <td th:text="${adm.email}"></td>
                 </tr>
             </tbody>
         </table>
-        <!-- <div class="pagination">
-            <ul>
-                <li class="page-item"><a class="page-link" href="?page=1">Primeira</a></li>
-                <li class="page-item"><a class="page-link" href="?page={{pageAdmin - 1}}">Anterior</a></li>
-                {{#pageList}}
-                <li class="page-item {{#isCurrent}}active{{/isCurrent}}"><a class="page-link"
-                        href="?page={{pageAdmin}}">{{pageAdmin}}</a></li>
-                {{/pageList}}
-                <li class="page-item"><a class="page-link" href="?page={{pageAdmin + 1}}">Próxima</a></li>
-                <li class="page-item"><a class="page-link" href="?page={{}}">Última</a></li>
-            </ul>
-        </div> -->
+        <form method="get">
+            <select id="size" name="size" onchange="this.form.submit()">
+                <option th:value="${DEFAULT_PAGE_SIZE}" th:selected="${size == 10}">10</option>
+                <option th:value="15" th:selected="${size == 15}">15</option>
+                <option th:value="20" th:selected="${size == 20}">20</option>
+            </select>
+        </form>
 
         <div style="text-align: right;" class="pt-24 sm:p-12">
             <div class="inline-flex items-center top-0 right-0 h-16 padding-4 py-2 mx-4">
@@ -145,7 +135,7 @@
             </div>
         </div>
     </div>
-    <script>
+    <!-- <script>
         $(document).ready(function () {
             $('tr').click(function () {
                 var selected = $(this).hasClass('table-active');
@@ -155,6 +145,6 @@
                 }
             });
         });
-    </script>
+    </script> -->
 
 </body>
