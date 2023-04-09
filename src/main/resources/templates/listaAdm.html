@@ -13,6 +13,11 @@
 </head>
 
 <style>
+    #quantpag {
+        width: 60px;
+        border-radius: 8px;
+    }
+
     #fundo {
         background-color: #5c2472;
         border-top-right-radius: 7px;
@@ -31,6 +36,7 @@
     .background {
         background-color: #D8D8D9;
         border-radius: 0.375rem;
+
     }
 
     table {
@@ -73,78 +79,119 @@
 
     tr:active {
         background-color: #d1d5db;
+        border-collapse: separate;
+        border-radius: 8px;
+       
     }
 </style>
 
-<body class="overflow-scroll">
+<body class="overflow-scroll px-10">
     <h1 class="flex justify-center items-center py-10 text-3xl">
         Lista de Administradores
     </h1>
 
-    <div class="background h-full pt-10 flex flex-col ">
-        <div class="pt-10 pb-16 w-full flex justify-center items-center flex flex-col">
-            <div id="pesquisa" class="p-1 relative w-4/5">
-                <form name="Param">
-                    <input name="Param" type="text" class="p-1 block w-full focus:outline-none" placeholder="Localizar">
-                    <button id="fundo" class="absolute inset-y-0 right-0 flex items-center focus:outline-none"
-                        type="submit">
-                        <svg class="h-3.5 w-10 text-white" xmlns="http://www.w3.org/2000/svg" width="5" height="5"
-                            fill="currentColor" viewBox="0 0 16 16">
-                            <path
-                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 
-                            1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                        </svg>
-                    </button>
-                </form>
-            </div>
-        </div>
-        <table>
-            <thead>
-                <tr class="h-12">
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="hover:bg-gray-400 active:bg-gray-400 focus:bg-gray-400" th:each="adm : ${administradores}">
-                    <td th:text="${adm.cracha}"></td>
-                    <td th:text="${adm.nome}"></td>
-                    <td th:text="${adm.telefone}"> </td>
-                    <td th:text="${adm.email}"></td>
-                </tr>
-            </tbody>
-        </table>
-        <form method="get">
-            <select id="size" name="size" onchange="this.form.submit()">
-                <option th:value="${DEFAULT_PAGE_SIZE}" th:selected="${size == 10}">10</option>
-                <option th:value="15" th:selected="${size == 15}">15</option>
-                <option th:value="20" th:selected="${size == 20}">20</option>
-            </select>
-        </form>
+    <div class="background justify-center items-center pt-10 flex flex-col ">
+        <div class="w-3/5 justify-center ">
 
-        <div style="text-align: right;" class="pt-24 sm:p-12">
-            <div class="inline-flex items-center top-0 right-0 h-16 padding-4 py-2 mx-4">
-                <div class="botao">
-                    <button class=" w-32 p-2 focus:outline-none">
-                        Excluir
-                    </button>
+            <div class="pt-10 pb-16 w-full flex justify-center items-center flex flex-col">
+                <div id="pesquisa" class="p-1 relative w-4/5">
+                    <form action="/administradores" name="Param">
+                        <input name="Param" type="text" class="p-1 block w-full focus:outline-none"
+                            placeholder="Localizar">
+                        <button id="fundo" class="absolute inset-y-0 right-0 flex items-center focus:outline-none"
+                            type="submit">
+                            <svg class="h-3.5 w-10 text-white" xmlns="http://www.w3.org/2000/svg" width="5" height="5"
+                                fill="currentColor" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 
+                            1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg>
+                        </button>
+                    </form>
                 </div>
-                <div class="botao mx-2">
-                    <button class="w-32 p-2 focus:outline-none">
-                        Editar
-                    </button>
+            </div>
+            <div>
+                <table>
+                    <thead>
+                        <tr class="h-12">
+                            <th
+                                th:href="@{'/page/' + ${currentPage} + '?sortField=cracha&sortDir' + ${reverseSortDir}}">
+                                Nº
+                                Crachá</th>
+                            <th th:href="@{'/page/' + ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">
+                                Nome
+                            </th>
+                            <th
+                                th:href="@{'/page/' + ${currentPage} + '?sortField=telefone&sortDir=' + ${reverseSortDir}}">
+                                Telefone</th>
+                            <th
+                                th:href="@{'/page/' + ${currentPage} + '?sortField=emaile&sortDir=' + ${reverseSortDir}}">
+                                Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="hover:bg-gray-400 active:bg-gray-400 focus:bg-gray-400"
+                            th:each="adm : ${administradores}">
+                            <td th:text="${adm.cracha}"></td>
+                            <td th:text="${adm.nome}"></td>
+                            <td th:text="${adm.telefone}"> </td>
+                            <td th:text="${adm.email}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="w-100 flex flex-row justify-between" style="align-items: right">
+                    <form class="flex items-center pt-4 pl-4" action="/administradores" method="get">
+                        <select th:text="${size}"id="quantpag" name="size" onchange="this.form.submit()">
+                            <option th:value="${DEFAULT_PAGE_SIZE}" th:selected="${size == 10}">10</option>
+                            <option th:value="20" th:select="${size}">20</option>
+                            <option th:value="30" th:select="${size}">30</option>
+                            <option th:value="40" th:select="${size}">40</option>                            
+                        </select>
+                    </form>
+                    <nav class="pt-4 pr-4" aria-label="Page navigation">
+                        <ul class="pagination">
+                          <li class="page-item">
+                            <a class="page-link" action="/administradores" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                              <span class="sr-only">Previous</span>
+                            </a>
+                          </li>
+                          <li class="page-item"><a class="page-link" action="/administradores">1</a></li>
+                          <li class="page-item">
+                            <a class="page-link" action="/administradores" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                              <span class="sr-only">Next</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </nav>
+                </div>
+            </div>
+
+            <div style="text-align: right">
+                <div class="inline-flex items-center h-16  py-2">
+                    <div class="botao">
+                        <button class=" w-32 p-2 focus:outline-none">
+                            Excluir
+                        </button>
+                    </div>
+                    <div class="botao mx-2">
+                        <button class="w-32 p-2 focus:outline-none">
+                            Editar
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- <script>
+    <script>
         $(document).ready(function () {
             $('tr').click(function () {
                 var selected = $(this).hasClass('table-active');
                 $('tr').removeClass('table-active');
-                if (!selected) {
-                    $(this).addClass('table-active');
-                }
+               
             });
         });
-    </script> -->
+    </script>
 
 </body>

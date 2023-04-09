@@ -1,5 +1,7 @@
 package com.sqhg.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -12,6 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sqhg.entities.Administrador;
 import com.sqhg.repositories.AdministradorRepository;
+
+import ch.qos.logback.core.model.Model;
 
 @RestController
 @RequestMapping(value = "/administradores")
@@ -31,23 +35,26 @@ public class AdministradorController {
         return modelAndView;
     }
 
-    @RequestMapping
-    public ModelAndView findAdministradorbyName(@RequestParam(required = false) String Param,
+    @GetMapping
+    public ModelAndView findAdministrador(@RequestParam(required = false) String Param,
             @RequestParam(name = "size", defaultValue = "10") int size,
             @RequestParam(name = "page", defaultValue = "0") int page) {
 
-        ModelAndView mv = new ModelAndView("listaAdm");
         Pageable pageable = PageRequest.of(page, size);
-        if (Param != null) {
-            Page<Administrador> filtered_administradores = this.administradorRepository.findByNomeContaining(Param,
-                    pageable);
-            mv.addObject("administradores", filtered_administradores);
-        } else {
+        
+
+        if (Param == null) {
             Page<Administrador> administradores = this.administradorRepository.findAll(pageable);
-            mv.addObject("administradores", administradores);
+        ModelAndView mv_pagina = new ModelAndView("listaAdm");
+        mv_pagina.addObject("administradores", administradores);
+            return mv_pagina;
+        } else {
+            ModelAndView mv_filtered = new ModelAndView("listaAdm");
+            Page<Administrador> administradores2 = this.administradorRepository.findByNome(Param,
+                    pageable);
+            mv_filtered.addObject("administradores", administradores2);
+            return mv_filtered;
         }
-
-        return mv;
+        
     }
-
 }
