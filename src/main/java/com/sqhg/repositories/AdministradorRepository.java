@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import com.sqhg.entities.Administrador;
 
 public interface AdministradorRepository extends JpaRepository<Administrador, Long> {
-    Page<Administrador> findByNome(String Param, Pageable pageable);
+    Page<Administrador> findByNomeContaining(String Param, Pageable pageable);
     
     @Query(value = "select * from administrador where cracha = :cracha and senha = :senha", nativeQuery = true)
     public Administrador Login(String cracha, String senha);

@@ -41,20 +41,23 @@ public class AdministradorController {
             @RequestParam(name = "page", defaultValue = "0") int page) {
 
         Pageable pageable = PageRequest.of(page, size);
-        
 
         if (Param == null) {
             Page<Administrador> administradores = this.administradorRepository.findAll(pageable);
-        ModelAndView mv_pagina = new ModelAndView("listaAdm");
-        mv_pagina.addObject("administradores", administradores);
+            ModelAndView mv_pagina = new ModelAndView("listaAdm");
+            mv_pagina.addObject("administradores", administradores);
+            mv_pagina.addObject("page", page);
+            mv_pagina.addObject("pageSize", size);
             return mv_pagina;
         } else {
             ModelAndView mv_filtered = new ModelAndView("listaAdm");
-            Page<Administrador> administradores2 = this.administradorRepository.findByNome(Param,
+            Page<Administrador> administradores2 = this.administradorRepository.findByNomeContaining(Param,
                     pageable);
             mv_filtered.addObject("administradores", administradores2);
+            mv_filtered.addObject("page", page);
+            mv_filtered.addObject("pageSize", size);
             return mv_filtered;
         }
-        
+
     }
 }

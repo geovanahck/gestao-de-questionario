@@ -81,7 +81,7 @@
         background-color: #d1d5db;
         border-collapse: separate;
         border-radius: 8px;
-       
+
     }
 </style>
 
@@ -141,30 +141,28 @@
                 </table>
                 <div class="w-100 flex flex-row justify-between" style="align-items: right">
                     <form class="flex items-center pt-4 pl-4" action="/administradores" method="get">
-                        <select th:text="${size}"id="quantpag" name="size" onchange="this.form.submit()">
-                            <option th:value="${DEFAULT_PAGE_SIZE}" th:selected="${size == 10}">10</option>
-                            <option th:value="20" th:select="${size}">20</option>
-                            <option th:value="30" th:select="${size}">30</option>
-                            <option th:value="40" th:select="${size}">40</option>                            
+                        <select id="quantpag" name="size" onchange="this.form.submit()">
+                            <option value="10" th:selected="${size}">10</option>
+                            <option value="20" th:selected="${size}">20</option>
+                            <option value="30" th:selected="${size}">30</option>
+                            <option value="40" th:selected="${size}">40</option>
                         </select>
                     </form>
                     <nav class="pt-4 pr-4" aria-label="Page navigation">
                         <ul class="pagination">
-                          <li class="page-item">
-                            <a class="page-link" action="/administradores" aria-label="Previous">
-                              <span aria-hidden="true">&laquo;</span>
-                              <span class="sr-only">Previous</span>
-                            </a>
-                          </li>
-                          <li class="page-item"><a class="page-link" action="/administradores">1</a></li>
-                          <li class="page-item">
-                            <a class="page-link" action="/administradores" aria-label="Next">
-                              <span aria-hidden="true">&raquo;</span>
-                              <span class="sr-only">Next</span>
-                            </a>
-                          </li>
+                            <li class="page-item">
+                                <a class="page-link" action="/administradores" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li class="page-item"><a class="page-link" action="/administradores">1</a></li>
+                            <li class="page-item">
+                                <a class="page-link" action="/administradores" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
                         </ul>
-                      </nav>
+                    </nav>
                 </div>
             </div>
 
@@ -185,11 +183,19 @@
         </div>
     </div>
     <script>
+
+        document.addEventListener("DOMContentLoaded", function (event) {
+            var pageSizeSelect = document.getElementById("quantpag");
+            console.log("entrou")
+            if (pageSizeSelect) {
+                pageSizeSelect.value = "{{pageSize}}";
+            }
+        });
+
         $(document).ready(function () {
             $('tr').click(function () {
                 var selected = $(this).hasClass('table-active');
                 $('tr').removeClass('table-active');
-               
             });
         });
     </script>
