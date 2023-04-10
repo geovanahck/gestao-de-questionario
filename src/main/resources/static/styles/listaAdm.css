@@ -2,64 +2,60 @@
 @tailwind components;
 @tailwind utilities;
 
-    #fundo {
-        background-color: #5c2472;
-        border-top-right-radius: 7px;
-        border-bottom-right-radius: 7px;
-    }
+#fundo {
+    background-color: #5c2472;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
 
-    .botao {
-        background-color: #5c2472;
-        color: white;
-        text-align: center;
-        border-radius: 10px;
+.botao {
+    background-color: #5c2472;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
 
-    }
+}
 
 
-    .background {
-        background-color: #D8D8D9;
-        border-radius: 0.375rem;
-    }
+.background {
+    background-color: #D8D8D9;
+    border-radius: 0.375rem;
+}
 
-    table {
-        border-collapse: separate;
-        width: 100%;
-        max-width: 900px;
-        margin: 0 auto;
-        border-radius: 8px;
-        border-style: hidden;
-        box-shadow: 0 0 0 3px #5c2472;
-        background-color: white;
-        padding: 5px;
+table {
+    border-collapse: separate;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 8px;
+    border-style: hidden;
+    box-shadow: 0 0 0 3px #5c2472;
+    background-color: white;
+    padding: 5px;
 
-    }
+}
 
-    input {
-        border-radius: 8px;
-    }
+input {
+    border-radius: 8px;
+}
 
-    #pesquisa {
-        border-collapse: separate;
-        width: 100%;
-        max-width: 900px;
-        margin: 0 auto;
-        border-radius: 8px;
-        border-style: hidden;
-        box-shadow: 0 0 0 3px #5c2472;
-        background-color: white;
-    }
+#pesquisa {
+    border-collapse: separate;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: 8px;
+    border-style: hidden;
+    box-shadow: 0 0 0 3px #5c2472;
+    background-color: white;
+}
 
-    th,
-    td {
-        flex: auto;
-        padding-top: 2px;
-        padding-bottom: 2px;
-        text-align: center;
-        border: solid #5c2472 3px;
-        height: 35px;
-    }
-
-    /* tr:active {
-        background-color: #d1d5db;
-    } */
+th,
+td {
+    flex: auto;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    text-align: center;
+    border: solid #5c2472 3px;
+    height: 35px;
+}

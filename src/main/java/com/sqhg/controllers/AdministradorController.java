@@ -15,8 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.sqhg.entities.Administrador;
 import com.sqhg.repositories.AdministradorRepository;
 
-import ch.qos.logback.core.model.Model;
-
 @RestController
 @RequestMapping(value = "/administradores")
 public class AdministradorController {
@@ -42,22 +40,25 @@ public class AdministradorController {
 
         Pageable pageable = PageRequest.of(page, size);
 
+        Page<Administrador> administradores = this.administradorRepository.findAll(pageable);
+        ModelAndView mv = new ModelAndView("listaAdm");
+
         if (Param == null) {
-            Page<Administrador> administradores = this.administradorRepository.findAll(pageable);
-            ModelAndView mv_pagina = new ModelAndView("listaAdm");
-            mv_pagina.addObject("administradores", administradores);
-            mv_pagina.addObject("page", page);
-            mv_pagina.addObject("pageSize", size);
-            return mv_pagina;
+            administradores = this.administradorRepository.findAll(pageable);
         } else {
-            ModelAndView mv_filtered = new ModelAndView("listaAdm");
-            Page<Administrador> administradores2 = this.administradorRepository.findByNomeContaining(Param,
-                    pageable);
-            mv_filtered.addObject("administradores", administradores2);
-            mv_filtered.addObject("page", page);
-            mv_filtered.addObject("pageSize", size);
-            return mv_filtered;
+            administradores = this.administradorRepository.buscarAdministradoresPorFiltro(Param, pageable);
         }
+
+        int quantidadeExibida = administradores.getNumberOfElements();
+        long quantidadeTotal = administradores.getTotalElements();
+
+        mv.addObject("administradores", administradores);
+        mv.addObject("page", page);
+        mv.addObject("pageSize", size);
+        mv.addObject("quantidadeExibida", quantidadeExibida);
+        mv.addObject("quantidadeTotal", quantidadeTotal);
+
+        return mv;
 
     }
 }
