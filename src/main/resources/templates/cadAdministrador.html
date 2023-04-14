@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cadAdministrador</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/cadAdministrador.css}" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    <div>
+        <div class="w-full h-40 l-bege flex items-center justify-center">
+            <h1 class=" dark:text-black text-center titulo">Cadastro de Administrador</h1>
+        </div>
+
+        <div class="space-y-4 justify-center">
+
+            <div class="flex flex-row justify-center w-full">
+                <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                    <h2>Crachá</h2>
+                </div>
+                <div class="input-container rounded-lg w-3/6">
+                    <input
+                        class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege "
+                        type="number" placeholder="">
+                </div>
+            </div>
+
+            <div class="flex flex-row justify-center w-full">
+                <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                    <h2>Nome</h2>
+                </div>
+                <div class="input-container rounded-lg w-3/6">
+                    <input
+                        class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege "
+                        type="text" placeholder="">
+                </div>
+            </div>
+
+            <div class="flex flex-row justify-center w-full">
+                <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                    <h2>Data de Nascimento</h2>
+                </div>
+                <div class="input-container rounded-lg w-3/6">
+                    <input
+                        class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege "
+                        type="date" placeholder="">
+                </div>
+            </div>
+
+            <div class="flex flex-row justify-center w-full">
+                <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                    <h2>E-mail</h2>
+                </div>
+                <div class="input-container rounded-lg w-3/6">
+                    <input
+                        class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege "
+                        type="email" placeholder="">
+                </div>
+            </div>
+
+            <div class="flex flex-row justify-center w-full">
+                <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                    <h2>Telefone</h2>
+                </div>
+                <div class="input-container rounded-lg w-3/6">
+                    <input
+                        class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege "
+                        type="tel" placeholder="">
+                </div>
+            </div>
+
+            <div class="flex flex-row justify-center w-full">
+                <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                    <h2>Senha</h2>
+                </div>
+                <div class="input-container rounded-lg w-3/6">
+                    <input
+                        class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege "
+                        type="password" placeholder="">
+                </div>
+            </div>
+
+            <div class="flex flex-row justify-center w-full">
+                <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                    <h2>Confirmação de Senha</h2>
+                </div>
+                <div class="input-container rounded-lg w-3/6">
+                    <input
+                        class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege "
+                        type="password" placeholder="">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="flex flex-row absolute right-5 bottom-5 ">
+            <div>
+                <button class="h-14 w-48 text-center text-white purple-color rounded-lg">Cancelar</button>
+            </div>
+            <div>
+                <button class="h-14 w-48 text-center text-white purple-color rounded-lg ml-2">Gravar</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -8,4 +8,5 @@ public interface AdministradorRepository extends JpaRepository<Administrador, Lo
     @Query(value = "select * from administrador where email = :email and senha = :senha", nativeQuery = true)
     public Administrador Login(String email, String senha);
 
+
 }

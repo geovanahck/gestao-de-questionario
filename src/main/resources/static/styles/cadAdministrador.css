@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: #D9D9D9;
+}
+
+.titulo{
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+
+}
+
+.l-bege {
+    background-color: #F3F3F3;
+}
+
+.div-form {
+    background-color: #D9D9D9;
+    position: absolute;
+    top: 133px;
+}
+
+.purple-color{
+
+    background-color: #5C2472;
+
+}
+
+.l-roxo{
+    border: solid #5C2472;
+}
