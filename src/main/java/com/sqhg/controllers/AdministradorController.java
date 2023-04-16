@@ -1,7 +1,6 @@
 package com.sqhg.controllers;
 
-import java.util.List;
-
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -16,24 +15,25 @@ import com.sqhg.entities.Administrador;
 import com.sqhg.repositories.AdministradorRepository;
 
 @RestController
-@RequestMapping(value = "/administradores")
+@RequestMapping(value = "/adm")
 public class AdministradorController {
 
     @Autowired
     private AdministradorRepository administradorRepository;
 
-    @GetMapping(value = "/pagina")
+
+    @GetMapping(value = "Ativos")
     public ModelAndView listAll(@RequestParam(name = "size", defaultValue = "10") int size,
             @RequestParam(name = "page", defaultValue = "0") int page) {
 
         Pageable pageable = PageRequest.of(page, size);
-        Page<Administrador> administradores = this.administradorRepository.findAll(pageable);
+        Page<Administrador> administradores = this.administradorRepository.findAllActives(pageable);
         ModelAndView modelAndView = new ModelAndView("listaAdm");
         modelAndView.addObject("administradores", administradores);
         return modelAndView;
     }
 
-    @GetMapping
+    @PostMapping(value = "administradores")
     public ModelAndView findAdministrador(@RequestParam(required = false) String Param,
             @RequestParam(name = "size", defaultValue = "10") int size,
             @RequestParam(name = "page", defaultValue = "0") int page) {

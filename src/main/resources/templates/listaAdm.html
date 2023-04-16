@@ -87,7 +87,7 @@
     </h1>
     <div class="background justify-center items-center pt-10 flex flex-col ">
         <div class=" w-2/4 justify-center tems-center">
-            <form action="/administradores" name="Param">
+            <form action="/adm/administradores" name="Param" method="POST">
                 <div class="pt-10 pb-16 w-full flex justify-center items-center flex flex-col">
                     <div id="pesquisa" class="p-1 relative w-4/5">
                         <div>
@@ -106,6 +106,7 @@
                         </div>
                     </div>
                 </div>
+
                 <table>
                     <thead>
                         <tr class="h-12">
@@ -127,7 +128,8 @@
                     </thead>
                     <tbody>
                         <tr name="admin" th:each="adm : ${administradores}">
-                            <td class="w-10"><input type="radio" name="admin" th:value="${adm.id}"> </td>
+                            <td class="w-10"><input type="radio" name="adminselected" id="adminselected"
+                                    th:value="${adm.id}"> </td>
                             <td th:text="${adm.cracha}"></td>
                             <td th:text="${adm.nome}"></td>
                             <td th:text="${adm.telefone}"> </td>
@@ -135,68 +137,58 @@
                         </tr>
                     </tbody>
                 </table>
-                <div class="w-100 flex flex-row justify-between">
-                    <div class="flex">
-                        <div class="flex items-center pt-4 " method="get">
-                            <select id="quantpag" name="size" onchange="this.form.submit()">
-                                <option th:value="10" th:select="${pageSize}" th:selected="${pageSize == 10}">10
-                                </option>
-                                <option th:value="20" th:select="${pageSize}" th:selected="${pageSize == 20}">20
-                                </option>
-                                <option th:value="30" th:select="${pageSize}" th:selected="${pageSize == 30}">30
-                                </option>
-                                <option th:value="40" th:select="${pageSize}" th:selected="${pageSize == 40}">40
-                                </option>
-                            </select>
-                        </div>
-                        <div class="quantidade-administradores flex items-center pt-4 pl-4">
-                            <p>Mostrando <span th:text="${quantidadeExibida}"></span> de <span
-                                    th:text="${quantidadeTotal}"></span> administradores</p>
-                        </div>
-                    </div>
-                </div>
-                <div style="text-align: right">
-                    <div class="inline-flex items-center lg:h-16  py-2">
-                        <div class="botao">
-                            <button class=" lg:w-32 md:w-26 p-2 focus:outline-none">
-                                Excluir
-                            </button>
-                        </div>
-                        <div class="botao mx-2">
-                            <button class="lg:w-32 md:w-26 p-2 focus:outline-none">
-                                Editar
-                            </button>
+                <form action="/adm/administradores" method="POST">
+                    <div class="w-100 flex flex-row justify-between">
+                        <div class="flex">
+                            <div class="flex items-center pt-4 " method="get">
+                                <select id="quantpag" name="size" onchange="this.form.submit()">
+                                    <option th:value="10" th:select="${pageSize}" th:selected="${pageSize == 10}">10
+                                    </option>
+                                    <option th:value="20" th:select="${pageSize}" th:selected="${pageSize == 20}">20
+                                    </option>
+                                    <option th:value="30" th:select="${pageSize}" th:selected="${pageSize == 30}">30
+                                    </option>
+                                    <option th:value="40" th:select="${pageSize}" th:selected="${pageSize == 40}">40
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="quantidade-administradores flex items-center pt-4 pl-4">
+                                <p>Mostrando <span th:text="${quantidadeExibida}"></span> de <span
+                                        th:text="${quantidadeTotal}"></span> administradores</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </form>
+            <div style="text-align: right">
+                <div class="inline-flex items-center lg:h-16  py-2">
+                    <div class="botao">
+                        <button class=" lg:w-32 md:w-26 p-2 focus:outline-none">
+                            Excluir
+                        </button>
+                    </div>
+                    <div class="botao mx-2">
+                        <button onclick="enviar()" class="lg:w-32 md:w-26 p-2 focus:outline-none">
+                            Editar
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script>
-        var select = document.getElementById("quantpag");
-        var span = document.getElementById("quantpag-text");
+        function enviar() {
+            const radios = document.getElementsByName('adminselected');
+            let selecionado;
 
-        // Atualiza o texto do span com o valor selecionado atualmente
-        span.textContent = select.value;
+            for (let i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                    selecionado = radios[i].value;
+                    break;
+                }
+            }
 
-        // Atualiza o texto do span sempre que o valor do select for alterado
-        select.addEventListener("change", function () {
-            span.textContent = this.value;
-        });
-    </script>
-    <script>
-        $('tbody tr').click(function () {
-            // desmarca o radio button selecionado anteriormente
-            $('input[name="admin"]').prop('checked', false);
-
-            // seleciona o radio button da linha clicada
-            $(this).find('input[name="admin"]').prop('checked', true);
-
-            // altera a cor de fundo da linha clicada
-            $('tbody tr').removeClass('bg-blue-200');
-            $(this).addClass('bg-blue-200');
-            $('tbody tr').removeClass('bg-white');
-            $(this).siblings().addClass('bg-white');
-        });
+            console.log(selecionado); // enviar selecionado para o backend
+        }
     </script>
 </body>

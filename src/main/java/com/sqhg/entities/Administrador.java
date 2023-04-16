@@ -13,8 +13,8 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "administrador")
 public class Administrador {
-    
-    @Id 
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String cracha;
@@ -23,6 +23,7 @@ public class Administrador {
     private String email;
     private String telefone;
     private String senha;
+    private boolean ativo;
 
     @OneToMany(mappedBy = "administrador")
     private List<Questionario> questionario;
@@ -42,7 +43,6 @@ public class Administrador {
     public void setCracha(String cracha) {
         this.cracha = cracha;
     }
-     
 
     public String getNome() {
         return nome;
@@ -90,5 +90,13 @@ public class Administrador {
 
     public void setQuestionario(List<Questionario> questionario) {
         this.questionario = questionario;
+    }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
     }
 }
