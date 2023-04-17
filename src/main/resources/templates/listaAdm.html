@@ -93,14 +93,16 @@
                         <div>
                             <input name="Param" type="text" class="p-1 block w-full focus:outline-none"
                                 placeholder="Localizar">
-                            <button id="fundo" class="absolute inset-y-0 right-0 flex items-center focus:outline-none"
-                                type="submit">
+                            <button id="fundo" name="pesquisar"
+                                class="absolute inset-y-0 right-0 flex items-center focus:outline-none" type="submit">
+
                                 <svg class="h-3.5 w-10 text-white" xmlns="http://www.w3.org/2000/svg" width="5"
                                     height="5" fill="currentColor" viewBox="0 0 16 16">
                                     <path
                                         d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 
-                            1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                                </svg>
+                                            1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                </svg><span></span>
+
                             </button>
 
                         </div>
@@ -128,8 +130,9 @@
                     </thead>
                     <tbody>
                         <tr name="admin" th:each="adm : ${administradores}">
-                            <td class="w-10"><input type="radio" name="adminselected" id="adminselected"
-                                    th:value="${adm.id}"> </td>
+                            <td class="w-10">
+                                <input type="radio" name="adminselected" th:value="${adm.id}">
+                            </td>
                             <td th:text="${adm.cracha}"></td>
                             <td th:text="${adm.nome}"></td>
                             <td th:text="${adm.telefone}"> </td>
@@ -142,13 +145,17 @@
                         <div class="flex">
                             <div class="flex items-center pt-4 " method="get">
                                 <select id="quantpag" name="size" onchange="this.form.submit()">
-                                    <option th:value="10" th:select="${pageSize}" th:selected="${pageSize == 10}">10
+                                    <option name="size10" th:value="10" th:select="${pageSize}"
+                                        th:selected="${pageSize == 10}"><label> 10 </label>
                                     </option>
-                                    <option th:value="20" th:select="${pageSize}" th:selected="${pageSize == 20}">20
+                                    <option name="size20" th:value="20" th:select="${pageSize}"
+                                        th:selected="${pageSize == 20}"><label> 20 </label>
                                     </option>
-                                    <option th:value="30" th:select="${pageSize}" th:selected="${pageSize == 30}">30
+                                    <option name="size30" th:value="30" th:select="${pageSize}"
+                                        th:selected="${pageSize == 30}"><label> 30 </label>
                                     </option>
-                                    <option th:value="40" th:select="${pageSize}" th:selected="${pageSize == 40}">40
+                                    <option name="size40" th:value="40" th:select="${pageSize}"
+                                        th:selected="${pageSize == 40}"><label> 40 </label>
                                     </option>
                                 </select>
                             </div>
@@ -163,12 +170,14 @@
             <div style="text-align: right">
                 <div class="inline-flex items-center lg:h-16  py-2">
                     <div class="botao">
-                        <button class=" lg:w-32 md:w-26 p-2 focus:outline-none">
+                        <button name="excluir" class=" lg:w-32 md:w-26 p-2 focus:outline-none" data-action="excluir"
+                            onclick="excluir()">
                             Excluir
                         </button>
                     </div>
                     <div class="botao mx-2">
-                        <button onclick="enviar()" class="lg:w-32 md:w-26 p-2 focus:outline-none">
+                        <button name="editar" class="lg:w-32 md:w-26 p-2 focus:outline-none" value="editar"
+                            onclick="editar()">
                             Editar
                         </button>
                     </div>
@@ -177,18 +186,42 @@
         </div>
     </div>
     <script>
-        function enviar() {
+        function editar() {
             const radios = document.getElementsByName('adminselected');
-            let selecionado;
-
+            let adminselecionado;
             for (let i = 0; i < radios.length; i++) {
                 if (radios[i].checked) {
-                    selecionado = radios[i].value;
+                    adminselecionado = radios[i].value;
                     break;
                 }
             }
+            console.log(adminselecionado);
 
-            console.log(selecionado); // enviar selecionado para o backend
+            const options = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(adminselecionado)
+            };
+
+
+            fetch('/adm/editar', options)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro ao enviar dados para o servidor');
+                    }
+                    console.log('Dados enviados com sucesso!');
+                })
+        }
+        function excluir() {
+            const radios = document.getElementsByName('adminselected');
+            let adminselecionado;
+            for (let i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                    adminselecionado = radios[i].value;
+                    break;
+                }
+            }
+            console.log(adminselecionado);
         }
     </script>
 </body>
