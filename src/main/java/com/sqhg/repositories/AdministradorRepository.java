@@ -18,4 +18,6 @@ public interface AdministradorRepository extends JpaRepository<Administrador, Lo
 
     @Query("SELECT a FROM Administrador a WHERE a.ativo = true")
     Page<Administrador> findAllActives(Pageable pageable);
+
+    Administrador findById(long id);
 }

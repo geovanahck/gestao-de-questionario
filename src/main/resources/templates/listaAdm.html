@@ -87,7 +87,7 @@
     </h1>
     <div class="background justify-center items-center pt-10 flex flex-col ">
         <div class=" w-2/4 justify-center tems-center">
-            <form action="/adm/administradores" name="Param" method="POST">
+            <form action="/adm/administradores" name="Param" method="get">
                 <div class="pt-10 pb-16 w-full flex justify-center items-center flex flex-col">
                     <div id="pesquisa" class="p-1 relative w-4/5">
                         <div>
@@ -140,7 +140,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <form action="/adm/administradores" method="POST">
+                <form action="/adm/administradores" method="GET">
                     <div class="w-100 flex flex-row justify-between">
                         <div class="flex">
                             <div class="flex items-center pt-4 " method="get">
@@ -188,19 +188,19 @@
     <script>
         function editar() {
             const radios = document.getElementsByName('adminselected');
-            let adminselecionado;
+            let id;
             for (let i = 0; i < radios.length; i++) {
                 if (radios[i].checked) {
-                    adminselecionado = radios[i].value;
+                    id = radios[i].value;
                     break;
                 }
             }
-            console.log(adminselecionado);
+            console.log(id);
 
             const options = {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(adminselecionado)
+                body: JSON.stringify(id)
             };
 
 
