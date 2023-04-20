@@ -14,15 +14,13 @@ import jakarta.persistence.EntityNotFoundException;
 public class AdministradorService {
 
     @Autowired
-    private AdministradorRepository administradorRepository;
+    private static AdministradorRepository administradorRepository;
     
-    public Administrador buscarPorId(Long id) {
-        Optional<Administrador> administradorOpt = administradorRepository.findById(id);
+    public static Administrador buscarPorId(Long Id) {
+        Optional<Administrador> administradorOpt = administradorRepository.findById(Id);
         if (administradorOpt.isPresent()) {
             Administrador administrador = administradorOpt.get();
-            administrador.setNome("Novo nome do usuário");
-            administradorRepository.save(administrador);
-            return administrador;
+           return administrador;
         } else {
             throw new EntityNotFoundException("Usuário não encontrado");
         }
