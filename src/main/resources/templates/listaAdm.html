@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -15,6 +15,7 @@
         crossorigin="anonymous" />
 </head>
 
+
 <style>
     #quantpag {
         width: 60px;
@@ -23,8 +24,8 @@
 
     #fundo {
         background-color: #5c2472;
-        border-top-right-radius: 7px;
-        border-bottom-right-radius: 7px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
     }
 
     .botao {
@@ -32,9 +33,14 @@
         color: white;
         text-align: center;
         border-radius: 10px;
-
     }
 
+    #href {
+        background-color: #5c2472;
+        color: white;
+        text-align: center;
+        border-radius: 10px;
+    }
 
     .background {
         background-color: #D8D8D9;
@@ -87,141 +93,144 @@
     </h1>
     <div class="background justify-center items-center pt-10 flex flex-col ">
         <div class=" w-2/4 justify-center tems-center">
-            <form action="/adm/administradores" name="Param" method="get">
+            <form th:href="@{/adm/lista}" method="GET">
                 <div class="pt-10 pb-16 w-full flex justify-center items-center flex flex-col">
                     <div id="pesquisa" class="p-1 relative w-4/5">
-                        <div>
-                            <input name="Param" type="text" class="p-1 block w-full focus:outline-none"
-                                placeholder="Localizar">
-                            <button id="fundo" name="pesquisar"
-                                class="absolute inset-y-0 right-0 flex items-center focus:outline-none" type="submit">
-
-                                <svg class="h-3.5 w-10 text-white" xmlns="http://www.w3.org/2000/svg" width="5"
-                                    height="5" fill="currentColor" viewBox="0 0 16 16">
-                                    <path
-                                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 
+                        <input name="Search" type="text" class="p-1 block w-full focus:outline-none"
+                            placeholder="Encontrar">
+                        <button id="fundo" name="pesquisar"
+                            class="absolute inset-y-0 right-0 flex items-center focus:outline-none" type="submit">
+                            <svg class="h-3.5 w-10 text-white" xmlns="http://www.w3.org/2000/svg" width="5" height="5"
+                                fill="currentColor" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 
                                             1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                                </svg><span></span>
-
-                            </button>
-
-                        </div>
+                            </svg>
+                        </button>
                     </div>
                 </div>
-
                 <table>
                     <thead>
                         <tr class="h-12">
-                            <th class="w-10"></th>
                             <th
                                 th:href="@{'/page/' + ${currentPage} + '?sortField=cracha&sortDir' + ${reverseSortDir}}">
-                                Nº
-                                Crachá</th>
+                                Nº Crachá</th>
                             <th th:href="@{'/page/' + ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">
-                                Nome
-                            </th>
+                                Nome</th>
                             <th
                                 th:href="@{'/page/' + ${currentPage} + '?sortField=telefone&sortDir=' + ${reverseSortDir}}">
                                 Telefone</th>
                             <th
                                 th:href="@{'/page/' + ${currentPage} + '?sortField=emaile&sortDir=' + ${reverseSortDir}}">
                                 Email</th>
+                            <th class="w-10"> Ação</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr name="admin" th:each="adm : ${administradores}">
-                            <td class="w-10">
-                                <input type="radio" name="adminselected" th:value="${adm.id}">
-                            </td>
                             <td th:text="${adm.cracha}"></td>
                             <td th:text="${adm.nome}"></td>
                             <td th:text="${adm.telefone}"> </td>
                             <td th:text="${adm.email}"></td>
+                            <td class="w-24">
+                                <div class="flex justify-center w-24">
+                                    <div class="w-10">
+                                        <a id="href" type="button" class="lg:w-flex p-2 focus:outline-none" method="get"
+                                            th:value="${adm.id}" th:href="@{/adm/editar/{id}(id=${adm.id})}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                                                <path
+                                                    d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <div class="w-10">
+                                        <a id="href" type="button" class="lg:w-flex p-2 focus:outline-none"
+                                            th:value="${adm.id}" th:href="@{/adm/editar/{id}(id=${adm.id})}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                                                <path
+                                                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
-                <form action="/adm/administradores" method="GET">
-                    <div class="w-100 flex flex-row justify-between">
-                        <div class="flex">
-                            <div class="flex items-center pt-4 " method="get">
-                                <select id="quantpag" name="size" onchange="this.form.submit()">
-                                    <option name="size10" th:value="10" th:select="${pageSize}"
-                                        th:selected="${pageSize == 10}"><label> 10 </label>
-                                    </option>
-                                    <option name="size20" th:value="20" th:select="${pageSize}"
-                                        th:selected="${pageSize == 20}"><label> 20 </label>
-                                    </option>
-                                    <option name="size30" th:value="30" th:select="${pageSize}"
-                                        th:selected="${pageSize == 30}"><label> 30 </label>
-                                    </option>
-                                    <option name="size40" th:value="40" th:select="${pageSize}"
-                                        th:selected="${pageSize == 40}"><label> 40 </label>
-                                    </option>
-                                </select>
-                            </div>
-                            <div class="quantidade-administradores flex items-center pt-4 pl-4">
-                                <p>Mostrando <span th:text="${quantidadeExibida}"></span> de <span
-                                        th:text="${quantidadeTotal}"></span> administradores</p>
-                            </div>
+                <div class="flex pb-5 justify-between">
+                    <div class="flex">
+                        <div class="flex items-center pt-4 " method="get">
+                            <select name="size" class="items-center justify-center pl-1" id="quantpag"
+                                onchange="this.form.submit()">
+                                <option name="size10" th:value="10" th:select="${pageSize}"
+                                    th:selected="${pageSize == 10}">
+                                    <label> 10 </label>
+                                </option>
+                                <option name="size20" th:value="20" th:select="${pageSize}"
+                                    th:selected="${pageSize == 20}">
+                                    <label> 20 </label>
+                                </option>
+                                <option name="size30" th:value="30" th:select="${pageSize}"
+                                    th:selected="${pageSize == 30}">
+                                    <label> 30 </label>
+                                </option>
+                                <option name="size40" th:value="40" th:select="${pageSize}"
+                                    th:selected="${pageSize == 40}">
+                                    <label> 40 </label>
+                                </option>
+                            </select>
+                        </div>
+                        <div class="quantidade-administradores flex items-center pt-4 pl-4">
+                            <p>Mostrando <span th:text="${quantidadeExibida}"></span> de <span
+                                    th:text="${quantidadeTotal}"></span> administradores</p>
                         </div>
                     </div>
-                </form>
-            </form>
-            <div style="text-align: right">
-                <div class="inline-flex items-center lg:h-16  py-2">
-                    <div class="botao">
-                        <button name="excluir" class=" lg:w-32 md:w-26 p-2 focus:outline-none" data-action="excluir"
-                            onclick="excluir()">
-                            Excluir
-                        </button>
-                    </div>
-                    <div class="botao mx-2">
-                        <button name="editar" class="lg:w-32 md:w-26 p-2 focus:outline-none" value="editar"
-                            onclick="editar()">
-                            Editar
-                        </button>
+
+                    <div class="pt-4 " method="get">
+                        <div class="botao text-white flex align-items-center">
+                            <button name="page" th:href="@{|/adm?page|}" th:value="${page}-1" th:classappend="${page == 0} ? 'disabled'">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-caret-left-fill w-5" viewBox="0 0 16 16">
+                                    <path
+                                        d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+                                </svg>
+                            </button>
+                            <div class="bg-white text-black-50 w-6">
+                                <span th:text="${page+1}"></span>
+                            </div>
+                            <button name="page" th:href="@{|/adm?page|}" th:value="${page}+1"
+                                th:classappend="${(page+1) == totalPage} ? 'disabled'">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-caret-right-fill w-5" viewBox="0 0 16 16">
+                                    <path
+                                        d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
+
         </div>
     </div>
     <script>
-        function editar() {
-            const radios = document.getElementsByName('adminselected');
-            let id;
-            for (let i = 0; i < radios.length; i++) {
-                if (radios[i].checked) {
-                    id = radios[i].value;
-                    break;
-                }
+    const backButton = document.querySelector('back-button');
+        let page = 0;
+
+        function goToPreviouspage() {
+            if (page > 0) {
+                page--;
+                // Atualiza a página aqui
+            } else {
+                alert('Você já está na primeira página.');
             }
-            console.log(id);
-
-            const options = {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(id)
-            };
-
-
-            fetch('/adm/editar', options)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Erro ao enviar dados para o servidor');
-                    }
-                    console.log('Dados enviados com sucesso!');
-                })
         }
-        function excluir() {
-            const radios = document.getElementsByName('adminselected');
-            let adminselecionado;
-            for (let i = 0; i < radios.length; i++) {
-                if (radios[i].checked) {
-                    adminselecionado = radios[i].value;
-                    break;
-                }
-            }
-            console.log(adminselecionado);
-        }
-    </script>
+
+        if (page === 0) {
+            backButton.disabled = true;
+        }</script>
 </body>

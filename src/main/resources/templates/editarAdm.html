@@ -10,11 +10,13 @@
 
 <body>
     <h1>Administrador</h1>
-    <div name="admin" th:each="adm : ${administrador}"></div>
-    <div th:text="${adm.cracha}"></div>
-    <div th:text="${adm.nome}"></div>
-    <div th:text="${adm.telefone}"> </div>
-    <div th:text="${adm.email}"></div>
+    <tr name="admin" th:each="adm : ${administrador}">
+        <td th:text="${adm.cracha}"></td>
+        <td th:text="${adm.nome}"></td>
+        <td th:text="${adm.telefone}"> </td>
+        <td th:text="${adm.email}"></td>
+        <td class="w-24"></td>
+    </tr>
 </body>
 
 </html>

@@ -99,4 +99,8 @@ public class Administrador {
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
     }
+
+    public boolean isPresent() {
+        return false;
+    }
 }

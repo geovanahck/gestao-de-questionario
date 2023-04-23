@@ -16,11 +16,16 @@ public class AdministradorService {
     @Autowired
     private static AdministradorRepository administradorRepository;
     
-    public static Administrador buscarPorId(Long Id) {
-        Optional<Administrador> administradorOpt = administradorRepository.findById(Id);
+    public long calcularTotalPaginas(int tamanhoPagina) {
+        long totalAdministradores = administradorRepository.count();
+        return (totalAdministradores + tamanhoPagina - 1) / tamanhoPagina;
+    }
+    
+    public static boolean buscarPorId(int Id) {
+        Administrador administradorOpt = administradorRepository.buscarID(Id);
         if (administradorOpt.isPresent()) {
-            Administrador administrador = administradorOpt.get();
-           return administrador;
+            
+           return true;
         } else {
             throw new EntityNotFoundException("Usuário não encontrado");
         }
