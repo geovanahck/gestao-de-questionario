@@ -30,9 +30,30 @@ function exibirMensagemConfirmacao() {
     botaoSim.style.marginRight = "10px";
 
     // Adiciona um evento de clique no botão de confirmar
-    botaoSim.onclick = function () {
+    botaoSim.onclick = function sendData() {
         // Código a ser executado quando o usuário confirma
+        // Envia a solicitação AJAX para definir o atributo "ativo" como false
+        var adm = {
+            id: document.querySelector('#Identificador').value
+        };
+        var formData = new FormData();
+
+        formData.append("Identificador", JSON.stringify(adm));
+
+        fetch('http://localhost:8080/adm/desativar', {
+            method: 'POST',
+            body: formData,
+            headers: { 'Content-Type': 'application/json' }
+        }).then(response => {
+            if (!response.ok)
+                throw new Error("não foi possível excluir");
+
+            return response.text();
+        })
+            .then(data => alert(data));
+
         spanConfirmacao.style.display = "none";
+        console.log(adm);
     }
 
     // Cria um botão de cancelar

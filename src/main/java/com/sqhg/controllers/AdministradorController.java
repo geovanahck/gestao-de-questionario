@@ -1,13 +1,20 @@
 package com.sqhg.controllers;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -21,19 +28,6 @@ public class AdministradorController {
 
     @Autowired
     private AdministradorRepository administradorrepository;
-    @Autowired
-    private AdministradorService administradorService;
-
-    @GetMapping(value = "/editar/{id}")
-    public ModelAndView editarAdministrador(@PathVariable("id") int id) {
-        Administrador administrador = this.administradorrepository.buscarID(id);
-
-        ModelAndView editarAdministrador = new ModelAndView("editarAdm");
-        editarAdministrador.addObject("administrador", administrador);
-
-        return editarAdministrador;
-
-    }
 
     @GetMapping(value = "/lista")
     // retornar pagina de administradores com quantidade de administradores e filtro
@@ -77,5 +71,22 @@ public class AdministradorController {
             System.out.println(e);
         }
         return mv;
+    }
+
+    @GetMapping(value = "/editar/{id}")
+    public ModelAndView editarAdministrador(@PathVariable("id") int id) {
+        Administrador administrador = this.administradorrepository.buscarID(id);
+        ModelAndView editarAdministrador = new ModelAndView("editarAdm");
+        editarAdministrador.addObject("administrador", administrador);
+        return editarAdministrador;
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/desativar", consumes=MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> setarAtivoFalso(@PathVariable (required = false) String Id) {
+        // Atualiza o atributo "ativo" para false na sua entidade
+        System.out.println(Id);
+        // Optional<Administrador> administrador = this.administradorrepository.findById(Id);
+        // System.out.println(administrador);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

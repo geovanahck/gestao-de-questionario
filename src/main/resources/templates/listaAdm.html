@@ -48,12 +48,12 @@
                             <th>Nome</th>
                             <th>Telefone</th>
                             <th>Email</th>
-                            <th class="w-10"> Ação</th>
+                            <th class="w-10">Ação</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr name="admin" th:each="adm : ${administradores}">
-                            <td th:text="${adm.cracha}"></td>
+                            <td th:object="${adm}" id="Identificador" th:value="${adm.id}" th:text="${adm.cracha}"></td>
                             <td th:text="${adm.nome}"></td>
                             <td th:text="${adm.telefone}"> </td>
                             <td th:text="${adm.email}"></td>
@@ -71,10 +71,10 @@
                                                 </svg>
                                             </a>
                                         </div>
-                                        <div class="w-10  justify-center">
-                                            <a title="Excluir" id="botao-action" type="button"
+                                        <div class="w-10 justify-center">
+                                            <a id="botao-excluir" title="Excluir" type="button"
                                                 onclick="exibirMensagemConfirmacao()"
-                                                class="w-flex p-2 focus:outline-none" th:value="${adm.id}">
+                                                class="w-flex p-2 focus:outline-none">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                                     <path

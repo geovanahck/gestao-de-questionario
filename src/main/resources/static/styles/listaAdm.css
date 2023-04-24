@@ -27,6 +27,13 @@
         border-radius: 10px;
     }
 
+    #botao-excluir{
+        background-color: #5c2472;
+        color: white;
+        text-align: center;
+        border-radius: 10px;
+    }
+
     .background {
         background-color: #D8D8D9;
         border-radius: 0.375rem;
