@@ -5,87 +5,19 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Lista de Administradores</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link type="text/css" th:href="@{/styles/listaAdm.css}" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-N/OZl1+hZG8f+RYXmO6nt/iTp+51GkNYjKwHcP/MJQYSI2AXZT0HICWjJ9++vq3r3t+3PLQ8WYtHnKxPYfZFZA=="
         crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/listaAdm.css}" />
+    <script rel="javascript" type="text/javascript" th:src="@{/scripts/excluirAdm.js}"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" type="text/css" href="../static/styles/listaAdm.css" />
+    <script rel="javascript" type="text/javascript" src="../static/scripts/excluirAdm.js"></script>
 </head>
-
-
-<style>
-    #quantpag {
-        width: 60px;
-        border-radius: 8px;
-    }
-
-    #fundo {
-        background-color: #5c2472;
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
-    }
-
-    .botao {
-        background-color: #5c2472;
-        color: white;
-        text-align: center;
-        border-radius: 10px;
-    }
-
-    #href {
-        background-color: #5c2472;
-        color: white;
-        text-align: center;
-        border-radius: 10px;
-    }
-
-    .background {
-        background-color: #D8D8D9;
-        border-radius: 0.375rem;
-
-    }
-
-    table {
-        border-collapse: separate;
-        width: 100%;
-        max-width: 900px;
-        margin: 0 auto;
-        border-radius: 8px;
-        border-style: hidden;
-        box-shadow: 0 0 0 3px #5c2472;
-        background-color: white;
-        padding: 5px;
-
-    }
-
-    input {
-        border-radius: 8px;
-    }
-
-    #pesquisa {
-        border-collapse: separate;
-        width: 100%;
-        max-width: 900px;
-        margin: 0 auto;
-        border-radius: 8px;
-        border-style: hidden;
-        box-shadow: 0 0 0 3px #5c2472;
-        background-color: white;
-    }
-
-    th,
-    td {
-        flex: auto;
-        padding-top: 2px;
-        padding-bottom: 2px;
-        text-align: center;
-        border: solid #5c2472 3px;
-        height: 35px;
-    }
-</style>
 
 <body class="overflow-scroll px-10">
     <h1 class="flex justify-center items-center py-10 text-3xl">
@@ -112,17 +44,10 @@
                 <table>
                     <thead>
                         <tr class="h-12">
-                            <th
-                                th:href="@{'/page/' + ${currentPage} + '?sortField=cracha&sortDir' + ${reverseSortDir}}">
-                                Nº Crachá</th>
-                            <th th:href="@{'/page/' + ${currentPage} + '?sortField=name&sortDir=' + ${reverseSortDir}}">
-                                Nome</th>
-                            <th
-                                th:href="@{'/page/' + ${currentPage} + '?sortField=telefone&sortDir=' + ${reverseSortDir}}">
-                                Telefone</th>
-                            <th
-                                th:href="@{'/page/' + ${currentPage} + '?sortField=emaile&sortDir=' + ${reverseSortDir}}">
-                                Email</th>
+                            <th>Crachá</th>
+                            <th>Nome</th>
+                            <th>Telefone</th>
+                            <th>Email</th>
                             <th class="w-10"> Ação</th>
                         </tr>
                     </thead>
@@ -133,28 +58,32 @@
                             <td th:text="${adm.telefone}"> </td>
                             <td th:text="${adm.email}"></td>
                             <td class="w-24">
-                                <div class="flex justify-center w-24">
-                                    <div class="w-10">
-                                        <a id="href" type="button" class="lg:w-flex p-2 focus:outline-none" method="get"
-                                            th:value="${adm.id}" th:href="@{/adm/editar/{id}(id=${adm.id})}">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
-                                                <path
-                                                    d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
-                                            </svg>
-                                        </a>
-                                    </div>
-                                    <div class="w-10">
-                                        <a id="href" type="button" class="lg:w-flex p-2 focus:outline-none"
-                                            th:value="${adm.id}" th:href="@{/adm/editar/{id}(id=${adm.id})}">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
-                                                <path
-                                                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
-                                            </svg>
-                                        </a>
+                                <div class="flex items-center">
+                                    <div class="flex flex-row justify-center items-center w-24">
+                                        <div class="w-10 justify-center">
+                                            <a title="Editar" id="botao-action" type="button"
+                                                class="w-flex p-2 focus:outline-none" method="get" th:value="${adm.id}"
+                                                th:href="@{/adm/editar/{id}(id=${adm.id})}">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
+                                                </svg>
+                                            </a>
+                                        </div>
+                                        <div class="w-10  justify-center">
+                                            <a title="Excluir" id="botao-action" type="button"
+                                                onclick="exibirMensagemConfirmacao()"
+                                                class="w-flex p-2 focus:outline-none" th:value="${adm.id}">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                                                    <path
+                                                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                                                </svg>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </td>
@@ -192,7 +121,8 @@
 
                     <div class="pt-4 " method="get">
                         <div class="botao text-white flex align-items-center">
-                            <button name="page" th:href="@{|/adm?page|}" th:value="${page}-1" th:classappend="${page == 0} ? 'disabled'">
+                            <button name="page" th:href="@{|/adm?page|}" th:value="${page}-1"
+                                th:classappend="${page == 0} ? 'disabled'">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-caret-left-fill w-5" viewBox="0 0 16 16">
                                     <path
@@ -217,20 +147,5 @@
 
         </div>
     </div>
-    <script>
-    const backButton = document.querySelector('back-button');
-        let page = 0;
 
-        function goToPreviouspage() {
-            if (page > 0) {
-                page--;
-                // Atualiza a página aqui
-            } else {
-                alert('Você já está na primeira página.');
-            }
-        }
-
-        if (page === 0) {
-            backButton.disabled = true;
-        }</script>
 </body>
