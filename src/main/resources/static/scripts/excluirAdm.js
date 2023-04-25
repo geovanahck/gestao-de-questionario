@@ -38,6 +38,7 @@ function exibirMensagemConfirmacao() {
         };
         var formData = new FormData();
 
+        console.log(adm);
         formData.append("Identificador", JSON.stringify(adm));
 
         fetch('http://localhost:8080/adm/desativar', {

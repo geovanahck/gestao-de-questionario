@@ -1,7 +1,5 @@
 package com.sqhg.controllers;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -11,8 +9,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,14 +16,17 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import com.sqhg.entities.Administrador;
 import com.sqhg.repositories.AdministradorRepository;
-import com.sqhg.service.AdministradorService;
 
 @RestController
 @RequestMapping(value = "/adm")
 public class AdministradorController {
 
-    @Autowired
     private AdministradorRepository administradorrepository;
+
+    @Autowired
+    public AdministradorController(AdministradorRepository administradorrepository) {
+        this.administradorrepository = administradorrepository;
+    }
 
     @GetMapping(value = "/lista")
     // retornar pagina de administradores com quantidade de administradores e filtro
@@ -59,12 +58,12 @@ public class AdministradorController {
                 administradores = this.administradorrepository.buscarAdministradoresPorFiltro(Search, pageable);
             }
 
-            mv.addObject("totalPages", totalPages = administradores.getTotalPages());
+            mv.addObject("totalPages", totalPages);
             mv.addObject("administradores", administradores);
             mv.addObject("page", page);
             mv.addObject("pageSize", size);
             mv.addObject("quantidadeExibida", quantidadeExibida = administradores.getNumberOfElements());
-            mv.addObject("quantidadeTotal", quantidadeTotal = administradores.getTotalElements());
+            mv.addObject("quantidadeTotal", quantidadeTotal);
             mv.addObject(HttpStatus.OK);
         } catch (Exception e) {
             mv.addObject("message", e.getMessage());
@@ -81,11 +80,12 @@ public class AdministradorController {
         return editarAdministrador;
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/desativar", consumes=MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> setarAtivoFalso(@PathVariable (required = false) String Id) {
+    @RequestMapping(method = RequestMethod.POST, value = "/desativar", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> setarAtivoFalso(@PathVariable(required = false) String Id) {
         // Atualiza o atributo "ativo" para false na sua entidade
         System.out.println(Id);
-        // Optional<Administrador> administrador = this.administradorrepository.findById(Id);
+        // Optional<Administrador> administrador =
+        // this.administradorrepository.findById(Id);
         // System.out.println(administrador);
         return new ResponseEntity<>(HttpStatus.OK);
     }

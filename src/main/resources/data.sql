@@ -12,7 +12,7 @@ INSERT INTO administrador( cracha, email, nome, senha, telefone, ativo) VALUES (
 INSERT INTO administrador( cracha, email, nome, senha, telefone, ativo) VALUES ( '1234123','teste1@gmail.com', 'teste4', '1234', '99999 9999', '1');
 INSERT INTO administrador( cracha, email, nome, senha, telefone, ativo) VALUES ( '123654','teste2@gmail.com', 'teste5', '1234', '8888 9999', '0');
 INSERT INTO administrador( cracha, email, nome, senha, telefone, ativo) VALUES ( '123654','teste1@gmail.com', 'teste6', '123654', '99999 9999', 'false');
-INSERT INTO administrador( cracha, email, nome, senha, telefone, nascimento, ativo) VALUES ( '123654','teste2@gmail.com', 'teste7', '1234', '8888 9999', '2003-04-10', 'true');
+INSERT INTO administrador( cracha, email, nome, senha, telefone, nascimento, ativo) VALUES ( '4321','teste2@gmail.com', 'teste7', '1234', '8888 9999', '2003-04-10', 'true');
 INSERT INTO administrador( cracha, email, nome, senha, telefone, ativo) VALUES ( '123654','teste1@gmail.com', 'teste8', '123654', '99999 9999', 'true');
 INSERT INTO administrador( cracha, email, nome, senha, telefone, ativo) VALUES ( '123654','teste2@gmail.com', 'teste9', '1234', '8888 9999', 'true');
 INSERT INTO administrador( cracha, email, nome, senha, telefone, ativo) VALUES ( '123654','teste1@gmail.com', 'teste10', '123654', '99999 9999', 'true');
