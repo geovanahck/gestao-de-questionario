@@ -103,4 +103,8 @@ public class Administrador {
     public boolean isPresent() {
         return false;
     }
+
+    public Administrador get() {
+        return null;
+    }
 }

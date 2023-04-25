@@ -13,11 +13,11 @@
         integrity="sha512-N/OZl1+hZG8f+RYXmO6nt/iTp+51GkNYjKwHcP/MJQYSI2AXZT0HICWjJ9++vq3r3t+3PLQ8WYtHnKxPYfZFZA=="
         crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" th:href="@{/styles/listaAdm.css}" />
-    <script rel="javascript" type="text/javascript" th:src="@{/scripts/excluirAdm.js}"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" type="text/css" href="../static/styles/listaAdm.css" />
-    <script rel="javascript" type="text/javascript" src="../static/scripts/excluirAdm.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+
 
 <body class="overflow-scroll px-10">
     <h1 class="flex justify-center items-center py-10 text-3xl">
@@ -62,7 +62,7 @@
                                     <div class="flex flex-row justify-center items-center w-24">
                                         <div class="w-10 justify-center">
                                             <a title="Editar" id="botao-action" type="button"
-                                                class="w-flex p-2 focus:outline-none" method="get" th:value="${adm.id}"
+                                                class="w-flex p-2 focus:outline-none" method="get" th:object="${adm}"
                                                 th:href="@{/adm/editar/{id}(id=${adm.id})}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
@@ -72,8 +72,7 @@
                                             </a>
                                         </div>
                                         <div class="w-10 justify-center">
-                                            <a id="botao-excluir" title="Excluir" type="button"
-                                                onclick="exibirMensagemConfirmacao()"
+                                            <a id="botao-action" title="Excluir" type="button"
                                                 class="w-flex p-2 focus:outline-none">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
@@ -144,8 +143,14 @@
                     </div>
                 </div>
             </form>
-
+            <span id="spanConfirmacao"
+                class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-200 p-4 border border-gray-400 rounded-lg z-50 h-200 hidden">
+                <p>Deseja confirmar a ação?</p>
+                <button id="botaoSim" class="bg-blue-500 text-white font-bold py-2 px-4 rounded mr-2"
+                    href="/funcao-na-controller/{{administrador.id}}">Sim</button>
+                <button id="botaoNao" class="bg-gray-500 text-white font-bold py-2 px-4 rounded">Não</button>
+            </span>
         </div>
     </div>
-
+    
 </body>

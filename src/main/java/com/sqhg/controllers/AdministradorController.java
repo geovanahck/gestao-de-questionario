@@ -1,5 +1,10 @@
 package com.sqhg.controllers;
 
+import java.sql.Date;
+import java.util.Optional;
+
+import javax.naming.Binding;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -7,8 +12,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -73,20 +82,44 @@ public class AdministradorController {
     }
 
     @GetMapping(value = "/editar/{id}")
-    public ModelAndView editarAdministrador(@PathVariable("id") int id) {
-        Administrador administrador = this.administradorrepository.buscarID(id);
-        ModelAndView editarAdministrador = new ModelAndView("editarAdm");
-        editarAdministrador.addObject("administrador", administrador);
-        return editarAdministrador;
+    public ModelAndView irParaTelaAdministrador(@PathVariable("id") long id, Administrador administrador)
+            throws IllegalAccessException {
+        Optional<Administrador> administradorVelho = this.administradorrepository.findById(id);
+
+        if (!administradorVelho.isPresent()) {
+            throw new IllegalAccessException("usuário inválido");
+        }
+        Administrador admin = administradorVelho.get();
+        System.out.println(id);
+        ModelAndView editarMV = new ModelAndView("editarAdm");
+        editarMV.addObject("administrador", admin);
+        return editarMV;
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/desativar", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> setarAtivoFalso(@PathVariable(required = false) String Id) {
-        // Atualiza o atributo "ativo" para false na sua entidade
-        System.out.println(Id);
-        // Optional<Administrador> administrador =
-        // this.administradorrepository.findById(Id);
-        // System.out.println(administrador);
-        return new ResponseEntity<>(HttpStatus.OK);
+    @RequestMapping(value = "/editar/{id}", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
+    public String atualizarAdministrador(@PathVariable("id") Long id,
+            @Valid @RequestBody Administrador administradorAtualizado, BindingResult result) {
+        Optional<Administrador> administradorExistente = administradorrepository.findById(id);
+        if (!administradorExistente.isPresent()) {
+            ResponseEntity.notFound().build();
+            return "editarAdm";
+        }
+        Administrador administradorAntigo = administradorExistente.get();
+
+        if (result.hasErrors()) {
+            ResponseEntity.badRequest().build();
+            return "editarAdm";
+        }
+
+        administradorAntigo.setCracha(administradorAtualizado.getCracha());
+        administradorAntigo.setNome(administradorAtualizado.getNome());
+        administradorAntigo.setNascimento(administradorAtualizado.getNascimento());
+        administradorAntigo.setEmail(administradorAtualizado.getEmail());
+        administradorAntigo.setTelefone(administradorAtualizado.getTelefone());
+        Administrador administradorSalvo = administradorrepository.save(administradorAntigo);
+
+        ResponseEntity.ok(administradorSalvo);
+        return "redirect:/listarAdm";
     }
+
 }

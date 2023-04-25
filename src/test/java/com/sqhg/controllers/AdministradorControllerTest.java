@@ -14,26 +14,24 @@ import com.sqhg.repositories.AdministradorRepository;
 public class AdministradorControllerTest {
     
     private AdministradorRepository administradorRepository;
-    private AdministradorController controller;
+    private AdministradorController administradorController;
 
     @Before
     public void setUp() {
         administradorRepository = mock(AdministradorRepository.class);
-        controller = new AdministradorController(administradorRepository);
-    }
-
-    @Test
-    public void testFuncaoEditarAdministrador() {
+        administradorController = new AdministradorController(administradorRepository);
+    }    @Test
+    public void testFuncaoEditarAdministrador() throws IllegalAccessException {
         // given
         Administrador administrador = new Administrador();
         
         when(administradorRepository.buscarID(1)).thenReturn(administrador);
 
         // when
-        ModelAndView modelAndView = controller.editarAdministrador(1);
+        ModelAndView modelAndView = administradorController.irParaTelaAdministrador(1,administrador);
 
         // assert
-        assertEquals("editarAdm", modelAndView.getViewName());
-        assertEquals(administrador, modelAndView.getModel().get("administrador"));
+         assertEquals("editarAdm", modelAndView.getViewName());
+         assertEquals(administrador, modelAndView.getModel().get("administrador"));
     }
 }
