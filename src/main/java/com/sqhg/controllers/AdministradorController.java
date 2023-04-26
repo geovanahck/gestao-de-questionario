@@ -1,9 +1,6 @@
 package com.sqhg.controllers;
 
-import java.sql.Date;
 import java.util.Optional;
-
-import javax.naming.Binding;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -12,17 +9,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+
 import com.sqhg.entities.Administrador;
 import com.sqhg.repositories.AdministradorRepository;
 
@@ -89,6 +84,7 @@ public class AdministradorController {
         if (!administradorVelho.isPresent()) {
             throw new IllegalAccessException("usuário inválido");
         }
+
         Administrador admin = administradorVelho.get();
         System.out.println(id);
         ModelAndView editarMV = new ModelAndView("editarAdm");
@@ -96,30 +92,40 @@ public class AdministradorController {
         return editarMV;
     }
 
-    @RequestMapping(value = "/editar/{id}", method = RequestMethod.POST, consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
-    public String atualizarAdministrador(@PathVariable("id") Long id,
-            @Valid @RequestBody Administrador administradorAtualizado, BindingResult result) {
+    @PostMapping(value = "/editar/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Administrador> atualizarAdministrador(@PathVariable("id") Long id,
+            @Validated Administrador administradorAtualizado) {
+
         Optional<Administrador> administradorExistente = administradorrepository.findById(id);
+
         if (!administradorExistente.isPresent()) {
-            ResponseEntity.notFound().build();
-            return "editarAdm";
+            return ResponseEntity.notFound().build();          
         }
+
         Administrador administradorAntigo = administradorExistente.get();
 
-        if (result.hasErrors()) {
-            ResponseEntity.badRequest().build();
-            return "editarAdm";
+        if (administradorAtualizado.getCracha() != null) {
+            administradorAntigo.setCracha(administradorAtualizado.getCracha());
         }
 
-        administradorAntigo.setCracha(administradorAtualizado.getCracha());
-        administradorAntigo.setNome(administradorAtualizado.getNome());
-        administradorAntigo.setNascimento(administradorAtualizado.getNascimento());
-        administradorAntigo.setEmail(administradorAtualizado.getEmail());
-        administradorAntigo.setTelefone(administradorAtualizado.getTelefone());
-        Administrador administradorSalvo = administradorrepository.save(administradorAntigo);
+        if (administradorAtualizado.getNome() != null) {
+            administradorAntigo.setNome(administradorAtualizado.getNome());
+        }
 
-        ResponseEntity.ok(administradorSalvo);
-        return "redirect:/listarAdm";
+        if (administradorAtualizado.getNascimento() != null) {
+            administradorAntigo.setNascimento(administradorAtualizado.getNascimento());
+        }
+
+        if (administradorAtualizado.getEmail() != null) {
+            administradorAntigo.setEmail(administradorAtualizado.getEmail());
+        }
+
+        if (administradorAtualizado.getTelefone() != null) {
+            administradorAntigo.setTelefone(administradorAtualizado.getTelefone());
+        }
+
+        Administrador administradornovo = administradorrepository.save(administradorAntigo);
+
+        return ResponseEntity.ok(administradornovo);
     }
-
 }
