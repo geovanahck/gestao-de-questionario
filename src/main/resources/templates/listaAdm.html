@@ -53,14 +53,14 @@
                     </thead>
                     <tbody>
                         <tr name="admin" th:each="adm : ${administradores}">
-                            <td th:object="${adm}" id="Identificador" th:value="${adm.id}" th:text="${adm.cracha}"></td>
+                            <td th:object="${adm}" th:value="${adm.id}" th:text="${adm.cracha}"></td>
                             <td th:text="${adm.nome}"></td>
                             <td th:text="${adm.telefone}"> </td>
                             <td th:text="${adm.email}"></td>
                             <td class="w-24">
-                                <div class="flex items-center">
-                                    <div class="flex flex-row justify-center items-center w-24">
-                                        <div class="w-10 justify-center">
+                                <div class="items-center justify-items">
+                                    <div class="flex flex-row items-center justify-center ">
+                                        <div class="flex w-10 justify-center items-center">
                                             <a title="Editar" id="botao-action" type="button"
                                                 class="w-flex p-2 focus:outline-none" method="get" th:object="${adm}"
                                                 th:href="@{/adm/editar/{id}(id=${adm.id})}">
@@ -71,17 +71,20 @@
                                                 </svg>
                                             </a>
                                         </div>
-                                        <div class="w-10 justify-center">
-                                            <a id="botao-action" title="Excluir" type="button"
-                                                class="w-flex p-2 focus:outline-none">
+                                        <div class="flex w-8 items-center">
+                                            <button method="get" id="botao-action" title="Excluir"
+                                                class="p-2 focus:outline-none"
+                                                th:action="@{/adm/excluir/{id}(id=${adm.id})}" th:object="${adm}">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
-                                                    <path
-                                                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                                                    viewBox="0 0 16 16">
+                                                    <g fill="currentColor">
+                                                        <path
+                                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                                                        <path
+                                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                                                    </g>
                                                 </svg>
-                                            </a>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -114,7 +117,8 @@
                         </div>
                         <div class="quantidade-administradores flex items-center pt-4 pl-4">
                             <p>Mostrando <span th:text="${quantidadeExibida}"></span> de <span
-                                    th:text="${quantidadeTotal}"></span> administradores</p>
+                                    th:text="${quantidadeTotal}"></span>
+                                administradores</p>
                         </div>
                     </div>
 
@@ -152,5 +156,4 @@
             </span>
         </div>
     </div>
-    
 </body>

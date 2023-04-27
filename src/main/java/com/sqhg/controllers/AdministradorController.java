@@ -1,27 +1,33 @@
 package com.sqhg.controllers;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sqhg.entities.Administrador;
 import com.sqhg.repositories.AdministradorRepository;
+import com.sqhg.service.AdministradorService;
 
-@RestController
+@Controller
 @RequestMapping(value = "/adm")
 public class AdministradorController {
 
@@ -77,55 +83,77 @@ public class AdministradorController {
     }
 
     @GetMapping(value = "/editar/{id}")
-    public ModelAndView irParaTelaAdministrador(@PathVariable("id") long id, Administrador administrador)
+    public ModelAndView irParaTelaAdministrador(@PathVariable("id") long id, RedirectAttributes redirectAttributes,
+            @ModelAttribute Administrador administrador)
             throws IllegalAccessException {
         Optional<Administrador> administradorVelho = this.administradorrepository.findById(id);
-
-        if (!administradorVelho.isPresent()) {
-            throw new IllegalAccessException("usuário inválido");
+        ModelAndView editarMV = new ModelAndView("editarAdm");
+        if (administrador.isAtivo()) {
+            redirectAttributes.addFlashAttribute("messageerror", "Este administrador foi excluído");
+            editarMV.addObject("messageerror", redirectAttributes);
         }
 
         Administrador admin = administradorVelho.get();
-        System.out.println(id);
-        ModelAndView editarMV = new ModelAndView("editarAdm");
         editarMV.addObject("administrador", admin);
         return editarMV;
     }
 
-    @PostMapping(value = "/editar/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Administrador> atualizarAdministrador(@PathVariable("id") Long id,
-            @Validated Administrador administradorAtualizado) {
+    @PostMapping(value = ("/edicao/{id}"))
+    public String editarAdministrador(@PathVariable("id") long id,
+            @ModelAttribute Administrador administradorAtualizado,
+            RedirectAttributes redirectAttributes, BindingResult bindingResult, String senha, String confirmacaoSenha) {
 
         Optional<Administrador> administradorExistente = administradorrepository.findById(id);
+        System.out.println(administradorAtualizado.getCracha());
 
-        if (!administradorExistente.isPresent()) {
-            return ResponseEntity.notFound().build();          
+        Administrador administradorEditado = administradorExistente.get();
+
+        System.out.println(administradorAtualizado.getSenha());
+        try {
+            if (administradorAtualizado.getCracha() != null) {
+                administradorEditado.setCracha(administradorAtualizado.getCracha());
+            }
+
+            if (administradorAtualizado.getNome() != null) {
+                administradorEditado.setNome(administradorAtualizado.getNome());
+            }
+
+            if (administradorAtualizado.getEmail() != null) {
+                administradorEditado.setEmail(administradorAtualizado.getEmail());
+            }
+            if (administradorAtualizado.getSenha() != null && administradorAtualizado.getSenha() == confirmacaoSenha) {
+                administradorEditado.setSenha(administradorAtualizado.getSenha());
+            }
+            System.out.println(confirmacaoSenha);
+            if (administradorAtualizado.getTelefone() != null) {
+                administradorEditado.setTelefone(administradorAtualizado.getTelefone());
+            }
+            if (administradorAtualizado.getNascimento() != null) {
+                try {
+                    administradorEditado.setNascimento(administradorAtualizado.getNascimento());
+                } catch (Exception e) {
+                    redirectAttributes.addFlashAttribute("messageerror",
+                            "Verifique se os campos estão preenchidos corretamente");
+                    return "redirect:/adm/editar/" + id;
+                }
+            }
+            administradorrepository.save(administradorEditado);
+            ResponseEntity.ok().body(administradorEditado);
+            redirectAttributes.addFlashAttribute("messagesucess", "Administrador editado com sucesso!");
+
+        } catch (Exception e) {
+            redirectAttributes.addFlashAttribute("messageerror",
+                    "Verifique se os campos estão preenchidos corretamente");
+            return "redirect:/adm/editar/" + id;
         }
 
-        Administrador administradorAntigo = administradorExistente.get();
-
-        if (administradorAtualizado.getCracha() != null) {
-            administradorAntigo.setCracha(administradorAtualizado.getCracha());
-        }
-
-        if (administradorAtualizado.getNome() != null) {
-            administradorAntigo.setNome(administradorAtualizado.getNome());
-        }
-
-        if (administradorAtualizado.getNascimento() != null) {
-            administradorAntigo.setNascimento(administradorAtualizado.getNascimento());
-        }
-
-        if (administradorAtualizado.getEmail() != null) {
-            administradorAntigo.setEmail(administradorAtualizado.getEmail());
-        }
-
-        if (administradorAtualizado.getTelefone() != null) {
-            administradorAntigo.setTelefone(administradorAtualizado.getTelefone());
-        }
-
-        Administrador administradornovo = administradorrepository.save(administradorAntigo);
-
-        return ResponseEntity.ok(administradornovo);
+        return "redirect:/adm/editar/" + id;
     }
+
+    @GetMapping(value = ("/excluir/{id}"))
+    public String excluirAdministrador(@PathVariable("id") long id,
+            @ModelAttribute Administrador administradorAtualizado) {
+        return "excluir";
+    }
+
 }

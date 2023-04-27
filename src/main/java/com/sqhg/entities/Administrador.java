@@ -3,6 +3,7 @@ package com.sqhg.entities;
 import java.sql.Date;
 import java.util.List;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,7 +19,7 @@ public class Administrador {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String cracha;
-    private String nome;
+    private String nome;   
     private Date nascimento;
     private String email;
     private String telefone;
