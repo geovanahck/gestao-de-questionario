@@ -56,7 +56,7 @@
     setTimeout(() => {
         // Ocultar o alerta
         successMessage.style.display = 'none';
-    }, 10000); 
+    }, 10000);
 </script>
 
 <body>
@@ -104,8 +104,9 @@
                     <h2>Data de Nascimento</h2>
                 </div>
                 <div class="input-container rounded-lg w-3/6">
-                    <input type="date" th:value="${administrador.nascimento}" th:field="*{nascimento}" class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3
-                        l-bege " placeholder="">
+                    <input id="nascimento" type="date" th:value="${administrador.nascimento}" th:field="*{nascimento}"
+                        class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3
+                        l-bege " placeholder="" required>
                 </div>
             </div>
 
@@ -164,7 +165,7 @@
                     class="h-14 w-48 text-center text-white purple-color rounded-lg ml-2">Editar</button>
             </div>
         </div>
-
+    </form>
 
 </body>
 

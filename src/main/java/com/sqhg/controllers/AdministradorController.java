@@ -1,14 +1,11 @@
 package com.sqhg.controllers;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -19,13 +16,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sqhg.entities.Administrador;
 import com.sqhg.repositories.AdministradorRepository;
-import com.sqhg.service.AdministradorService;
 
 @Controller
 @RequestMapping(value = "/adm")
@@ -88,7 +83,7 @@ public class AdministradorController {
             throws IllegalAccessException {
         Optional<Administrador> administradorVelho = this.administradorrepository.findById(id);
         ModelAndView editarMV = new ModelAndView("editarAdm");
-        if (administrador.isAtivo()) {
+        if (administrador.getAtivo()) {
             redirectAttributes.addFlashAttribute("messageerror", "Este administrador foi excluído");
             editarMV.addObject("messageerror", redirectAttributes);
         }
@@ -104,11 +99,9 @@ public class AdministradorController {
             RedirectAttributes redirectAttributes, BindingResult bindingResult, String senha, String confirmacaoSenha) {
 
         Optional<Administrador> administradorExistente = administradorrepository.findById(id);
-        System.out.println(administradorAtualizado.getCracha());
 
         Administrador administradorEditado = administradorExistente.get();
 
-        System.out.println(administradorAtualizado.getSenha());
         try {
             if (administradorAtualizado.getCracha() != null) {
                 administradorEditado.setCracha(administradorAtualizado.getCracha());
@@ -146,14 +139,26 @@ public class AdministradorController {
                     "Verifique se os campos estão preenchidos corretamente");
             return "redirect:/adm/editar/" + id;
         }
-
         return "redirect:/adm/editar/" + id;
     }
 
     @GetMapping(value = ("/excluir/{id}"))
-    public String excluirAdministrador(@PathVariable("id") long id,
-            @ModelAttribute Administrador administradorAtualizado) {
-        return "excluir";
-    }
+    public String excluirAdministrador(@PathVariable("id") long id, Administrador AdmExcluir,
+            RedirectAttributes redirectAttributes) {
+        System.out.println(id);
+        try {
+            System.out.println(id);
+            Administrador administradorExcluido = AdmExcluir.get();
+            administradorExcluido.setAtivo(false);
 
+            administradorrepository.save(AdmExcluir);
+            System.out.println(administradorExcluido.getAtivo());
+            redirectAttributes.addFlashAttribute("messagesucess",
+                    "Adiministrador excluido com sucesso");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        return "redirect:/adm/lista";
+    }
 }

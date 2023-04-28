@@ -93,7 +93,7 @@ public class Administrador {
         this.questionario = questionario;
     }
 
-    public boolean isAtivo() {
+    public boolean getAtivo() {
         return ativo;
     }
 
