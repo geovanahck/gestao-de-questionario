@@ -1,13 +1,10 @@
 package com.sqhg.service;
 
-import java.sql.Date;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.time.format.ResolverStyle;
+import java.util.Optional;
 
-import javax.xml.crypto.Data;
-
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.sqhg.entities.Administrador;
@@ -20,19 +17,20 @@ public class AdministradorService {
 
     private static AdministradorRepository administradorRepository;
 
-    public long calcularTotalPaginas(int tamanhoPagina) {
-        long totalAdministradores = administradorRepository.count();
-        return (totalAdministradores + tamanhoPagina - 1) / tamanhoPagina;
-    }
-
-    public static boolean buscarPorId(int Id) {
-        Administrador administradorOpt = administradorRepository.buscarID(Id);
+    public static boolean buscarPorId(long Id) {
+        Optional<Administrador> administradorOpt = administradorRepository.findById(Id);
         if (administradorOpt.isPresent()) {
 
             return true;
         } else {
             throw new EntityNotFoundException("Usuário não encontrado");
         }
-    } 
-  
+    }
+
+    @Bean
+    public PasswordEncoder getPassWordEncoder() {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        return encoder;
+    }
+
 }

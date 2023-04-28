@@ -19,7 +19,7 @@ public class AdministradorControllerTest {
     @Before
     public void setUp() {
         administradorRepository = mock(AdministradorRepository.class);
-        administradorController = new AdministradorController(administradorRepository);
+       // administradorController = new AdministradorController(administradorRepository);
     }    @Test
     public void testFuncaoEditarAdministrador() throws IllegalAccessException {
         // given

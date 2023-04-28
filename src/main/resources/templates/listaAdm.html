@@ -18,15 +18,101 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
+<style>
+    #quantpag {
+        width: 60px;
+        border-radius: 8px;
+    }
+
+    .alert {
+        width: 40%;
+    }
+
+    #fundo {
+        background-color: #5c2472;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    .botao {
+        background-color: #5c2472;
+        color: white;
+        text-align: center;
+        border-radius: 10px;
+    }
+
+    #botao-action {
+        background-color: #5c2472;
+        text-align: center;
+        border-radius: 10px;
+        color: white;
+    }
+
+    .background {
+        background-color: #D8D8D9;
+        border-radius: 0.375rem;
+    }
+
+    table {
+        border-collapse: separate;
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+        border-radius: 8px;
+        border-style: hidden;
+        box-shadow: 0 0 0 3px #5c2472;
+        background-color: white;
+        padding: 5px;
+    }
+
+    input {
+        border-radius: 8px;
+    }
+
+    #pesquisa {
+        border-collapse: separate;
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+        border-radius: 8px;
+        border-style: hidden;
+        box-shadow: 0 0 0 3px #5c2472;
+        background-color: white;
+    }
+
+    th,
+    td {
+        flex: auto;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        text-align: center;
+        border: solid #5c2472 3px;
+        height: 35px;
+    }
+</style>
 
 <body class="overflow-scroll px-10">
+    <div class="items-center justify-items">
+        <div class="justify-center items-center w-5/6 pt-3">
+            <div id="messagesucess" th:if="${messagesucess != null}"
+                class="float-right alert alert-success text-center message" role="alert">
+                [[${messagesucess}]]
+            </div>
+        </div>
+        <div class="justify-center items-center w-5/6">
+            <div id="message" th:if="${messageerror != null}"
+                class="float-right justify-center alert alert-danger text-center message" role="alert">
+                [[${messageerror}]]
+            </div>
+        </div>
+    </div>
     <h1 class="flex justify-center items-center py-10 text-3xl">
         Lista de Administradores
     </h1>
     <div class="background justify-center items-center pt-10 flex flex-col ">
         <div class=" w-2/4 justify-center tems-center">
             <form th:href="@{/adm/lista}" method="GET">
-                <div class="pt-10 pb-16 w-full flex justify-center items-center flex flex-col">
+                <div class="pt-10 pb-16 w-full justify-center items-center flex flex-col">
                     <div id="pesquisa" class="p-1 relative w-4/5">
                         <input name="Search" type="text" class="p-1 block w-full focus:outline-none"
                             placeholder="Encontrar">
@@ -122,7 +208,7 @@
                         </div>
                     </div>
 
-                    <div class="pt-4 " method="get">
+                    <div class="pt-4" method="get">
                         <div class="botao text-white flex align-items-center">
                             <button name="page" th:href="@{|/adm?page|}" th:value="${page}-1"
                                 th:classappend="${page == 0} ? 'disabled'">
@@ -147,13 +233,16 @@
                     </div>
                 </div>
             </form>
-            <span id="spanConfirmacao"
-                class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-200 p-4 border border-gray-400 rounded-lg z-50 h-200 hidden">
-                <p>Deseja confirmar a ação?</p>
-                <button id="botaoSim" class="bg-blue-500 text-white font-bold py-2 px-4 rounded mr-2"
-                    href="/funcao-na-controller/{{administrador.id}}">Sim</button>
-                <button id="botaoNao" class="bg-gray-500 text-white font-bold py-2 px-4 rounded">Não</button>
-            </span>
         </div>
     </div>
+    <script>
+        // Obter o elemento do alerta pelo ID
+        const successMessage = document.getElementById('messagesucess');
+
+        // Definir um temporizador de 10 segundos
+        setTimeout(() => {
+            // Ocultar o alerta
+            successMessage.style.display = 'none';
+        }, 20000);
+    </script>
 </body>

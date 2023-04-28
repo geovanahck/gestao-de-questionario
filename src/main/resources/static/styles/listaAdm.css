@@ -26,14 +26,6 @@
 
 #botao-action {
     background-color: #5c2472;
-    color: white;
-    text-align: center;
-    border-radius: 10px;
-}
-
-#botaoExibirSpan {
-    background-color: #5c2472;
-    color: white;
     text-align: center;
     border-radius: 10px;
 }
@@ -53,7 +45,6 @@ table {
     box-shadow: 0 0 0 3px #5c2472;
     background-color: white;
     padding: 5px;
-
 }
 
 input {
