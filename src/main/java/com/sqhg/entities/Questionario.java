@@ -7,19 +7,26 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 
 @Entity
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "questionario")
 public class Questionario {
         
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String nome;
     private String descricao;
 
@@ -37,56 +44,4 @@ public class Questionario {
     @ManyToOne
     @JoinColumn(name = "id_resposta")
     private Resposta resposta;
-
-    public int getId() {
-        return id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public Administrador getAdministrador() {
-        return administrador;
-    }
-
-    public void setAdministrador(Administrador administrador) {
-        this.administrador = administrador;
-    }
-
-    public ModeloQuestionario getModeloQuestionario() {
-        return modeloQuestionario;
-    }
-
-    public void setModeloQuestionario(ModeloQuestionario modeloQuestionario) {
-        this.modeloQuestionario = modeloQuestionario;
-    }
-
-    public List<SuperiorImediato> getSuperiorImediato() {
-        return superiorImediato;
-    }
-
-    public void setSuperiorImediato(List<SuperiorImediato> superiorImediato) {
-        this.superiorImediato = superiorImediato;
-    }
-
-    public Resposta getResposta() {
-        return resposta;
-    }
-
-    public void setResposta(Resposta resposta) {
-        this.resposta = resposta;
-    }
 }
