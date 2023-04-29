@@ -12,14 +12,18 @@ function closePopup() {
     popup.style.display = "none";
 }
 
+
+
 function addQuestion() {
+   
     console.log("TESTE");
     const questions = document.getElementById('question');
     const question = `<div class="mb-5">
    <table>
        <thead>
            <tr>
-               <th class="w-60 rounded-tl-md">Questão 1</th>
+               <th class="w-60 rounded-tl-md">Questão <p id="questao"></p>
+               </th>
                <td class="px-1">
                    <input class="w-full rounded-none px-2" type="text">
                </td>

@@ -10,7 +10,7 @@ import java.time.Instant;
 
 @Data
 @Entity
-public class Questionario {
+public class QuestionarioModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

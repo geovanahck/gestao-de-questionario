@@ -1,7 +1,7 @@
 package com.sqhg.exception;
 
 public class QuestionarioNaoEncontradoException extends RuntimeException {
-    public ClienteNaoEncontradoException(String mensagem) {
+    public QuestionarioNaoEncontradoException(String mensagem) {
         super(mensagem);
     }   
 }

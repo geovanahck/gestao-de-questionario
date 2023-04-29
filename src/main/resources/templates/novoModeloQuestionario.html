@@ -6,14 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Novo Modelo de Questionário</title>
-    <link rel="stylesheet" type="text/css" href="/src/main/resources/static/styles/novoModeloQuestionario.css" />
-
-    <!-- <style>
-        
-    </style>
-    <script type="text/javascript">
-     
-    </script> -->
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/novoModeloQuestionario.css}" />
+    <script rel="javascript" type="text/javascript" th:src="@{/scripts/novoModeloQuestionario.js}" ></script>
 </head>
 
 <body>
@@ -162,10 +156,27 @@
         </div>
 
     </div>
-    <script rel="javascript" type="text/javascript"
-        src="/src/main/resources/static/scripts/novoModeloQuestionario.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    
 
+
+    <script src="https://cdn.tailwindcss.com"></script>
+<script>// selecione o botão pelo ID
+    var meuBotao = document.getElementById("fundo");
+    
+    // inicialize o contador
+    var contador = 2;
+    
+    // adicione um ouvinte de evento ao botão
+    meuBotao.addEventListener("click", function() {
+      // incrementa o contador em 1
+      contador++;
+    
+      // exibe o valor do contador no console
+      console.log("Contador: " + contador);
+       questao = document.getElementById("questao");
+       questao.innerHtml = contador;
+    });
+    </script>
 </body>
 
 </html>

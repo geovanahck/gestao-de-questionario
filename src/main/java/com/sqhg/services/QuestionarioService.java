@@ -1,12 +1,9 @@
 package com.sqhg.services;
 
-import java.time.Instant;
 import java.util.List;
-import com.sqhg.controllers.dto.IncluirNovoModeloQuestionarioResponse;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
-import com.sqhg.controllers.NovoModeloQuestionarioController;
 import com.sqhg.controllers.dto.AtualizarModeloQuestionarioRequest;
 import com.sqhg.controllers.dto.IncluirNovoModeloQuestionarioRequest;
 import com.sqhg.entities.ModeloQuestionario;
@@ -33,12 +30,9 @@ public class QuestionarioService {
     }
 
     public Questionario incluir(IncluirNovoModeloQuestionarioRequest questionarioRequest) {
-        var data = Instant.now();
 
         var questionario = new Questionario();
         BeanUtils.copyProperties(questionarioRequest, questionario);
-        questionario.setDataCadastro(data);
-        questionario.setUltimaAtualizacao(data);
         novoModeloQuestionarioRepository.save(questionario);
 
         return questionario;
@@ -48,8 +42,6 @@ public class QuestionarioService {
         var questionario = novoModeloQuestionarioRepository.findById(atualizarQuestionarioRequest.getId()).get();
 
         BeanUtils.copyProperties(atualizarQuestionarioRequest, questionario);
-        questionario.IncluirNovoModeloQuestionarioResponse.;
-        questionario.setUltimaAtualizacao(Instant.now());
         novoModeloQuestionarioRepository.save(questionario);
         return questionario;
     }

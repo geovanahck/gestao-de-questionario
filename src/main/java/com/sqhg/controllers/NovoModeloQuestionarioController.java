@@ -20,6 +20,7 @@ import com.sqhg.controllers.dto.AtualizarModeloQuestionarioRequest;
 import com.sqhg.controllers.dto.IncluirNovoModeloQuestionarioRequest;
 import com.sqhg.controllers.dto.IncluirNovoModeloQuestionarioResponse;
 import com.sqhg.entities.Questionario;
+import com.sqhg.models.QuestionarioModel;
 import com.sqhg.repositories.NovoModeloQuestionarioRepository;
 import com.sqhg.services.QuestionarioService;
 
@@ -29,8 +30,9 @@ public class NovoModeloQuestionarioController {
     private final QuestionarioService questionarioService;
     private final ObjectMapper mapper = new ObjectMapper();
 
-    @Autowired
-    private NovoModeloQuestionarioRepository novoModeloQuestionarioRepository;
+    public NovoModeloQuestionarioController(QuestionarioService questionarioService) {
+        this.questionarioService = questionarioService;
+    }
 
     @Autowired
     @GetMapping(value = "/novoModeloQuestionario")
@@ -43,9 +45,8 @@ public class NovoModeloQuestionarioController {
         @RequestParam String questionarioData, 
         @RequestParam("file") final MultipartFile file) throws IOException {
 
-        Class<IncluirNovoModeloQuestionarioRequest> valueType;
         final var incluirNovoModeloQuestionarioRequest = mapper.readValue(
-            questionarioData, valueType=IncluirNovoModeloQuestionarioRequest.class);
+            questionarioData, IncluirNovoModeloQuestionarioRequest.class);
         
         var questionario = questionarioService.incluir(incluirNovoModeloQuestionarioRequest);
 
@@ -55,16 +56,16 @@ public class NovoModeloQuestionarioController {
     }
 
     @PutMapping()
-    public ResponseEntity<Questionario> atualizar(@RequestParam String questionarioData,
+    public ResponseEntity<QuestionarioModel> atualizar(@RequestParam String questionarioData,
             @RequestParam(value = "file", required = false) final MultipartFile file) throws IOException {
         final var atualizarQuestionarioRequest = mapper.readValue(questionarioData, AtualizarModeloQuestionarioRequest.class);
 
         if (file != null) {
-           // atualizarQuestionarioRequest.setFoto(file.getInputStream().readAllBytes());
+           atualizarQuestionarioRequest.setNomeQuestionario(questionarioData);
         }
 
-       // var questionario = questionarioService.atualizar(atualizarQuestionarioRequest);
-       // return new ResponseEntity<>(questionario, HttpStatus.OK);
+       var questionario = questionarioService.atualizar(atualizarQuestionarioRequest);
+       return new ResponseEntity<>(questionario, HttpStatus.OK);
        return null;
     }
 
