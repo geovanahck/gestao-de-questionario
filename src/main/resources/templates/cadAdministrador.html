@@ -7,8 +7,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>cadAdministrador</title>
     <link rel="stylesheet" type="text/css" th:href="@{/styles/cadAdministrador.css}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.fonte-poppins{
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    background-color: #D9D9D9;
+}
+
+.titulo{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+}
+
+.l-bege {
+    background-color: #F3F3F3;
+}
+
+.div-form {
+    background-color: #D9D9D9;
+    position: absolute;
+    top: 133px;
+}
+
+.purple-color{
+    background-color: #5C2472;
+}
+
+.l-roxo{
+    border: solid #5C2472;
+}
+</style>
 
 <body>
     <div>
@@ -16,95 +55,98 @@
             <h1 class=" dark:text-black text-center titulo">Cadastro de Administrador</h1>
         </div>
 
-        <div class="space-y-4 justify-center">
+        <form action="#" th:action="@{/administradores}" th:object="${administrador}" method="post">
+            <div class="space-y-4">
 
-            <div class="flex flex-row justify-center w-full">
-                <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                    <h2>Crachá</h2>
+                <div class="flex flex-row w-full mt-6 justify-center">
+                    <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                        <h2 class="fonte-poppins" >Crachá</h2>
+                    </div>
+                    <div class="input-container rounded-lg w-3/6">
+                        <input
+                            class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins "
+                            type="number" placeholder="" th:field="*{cracha}">
+                    </div>
                 </div>
-                <div class="input-container rounded-lg w-3/6">
-                    <input
-                        class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege "
-                        type="number" placeholder="">
+    
+                <div class="flex flex-row justify-center w-full">
+                    <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                        <h2 class="fonte-poppins" >Nome</h2>
+                    </div>
+                    <div class="input-container rounded-lg w-3/6">
+                        <input
+                            class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
+                            type="text" placeholder="" th:field="*{nome}">
+                    </div>
+                </div>
+    
+                <div class="flex flex-row justify-center w-full">
+                    <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                        <h2 class="fonte-poppins">Data de Nascimento</h2>
+                    </div>
+                    <div class="input-container rounded-lg w-3/6">
+                        <input
+                            class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
+                            type="date" placeholder="" th:field="*{nascimento}">
+                    </div>
+                </div>
+    
+                <div class="flex flex-row justify-center w-full">
+                    <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                        <h2 class="fonte-poppins">E-mail</h2>
+                    </div>
+                    <div class="input-container rounded-lg w-3/6">
+                        <input
+                            class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
+                            type="email" placeholder="" th:field="*{email}" >
+                    </div>
+                </div>
+    
+                <div class="flex flex-row justify-center w-full">
+                    <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                        <h2 class="fonte-poppins">Telefone</h2>
+                    </div>
+                    <div class="input-container rounded-lg w-3/6">
+                        <input
+                            class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
+                            type="tel" placeholder="" th:field="*{telefone}">
+                    </div>
+                </div>
+    
+                <div class="flex flex-row justify-center w-full">
+                    <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                        <h2 class="fonte-poppins">Senha</h2>
+                    </div>
+                    <div class="input-container rounded-lg w-3/6">
+                        <input
+                            class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
+                            type="password" placeholder="" th:field="*{senha}">
+                    </div>
+                </div>
+    
+                <div class="flex flex-row justify-center w-full">
+                    <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                        <h2 class="fonte-poppins">Confirmação de Senha</h2>
+                    </div>
+                    <div class="input-container rounded-lg w-3/6">
+                        <input
+                            class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
+                            type="password" placeholder="" th:field="*{confirmacaoSenha}">
+                    </div>
                 </div>
             </div>
-
-            <div class="flex flex-row justify-center w-full">
-                <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                    <h2>Nome</h2>
+    
+    
+            <div class="flex flex-row absolute right-20 mr-16 bottom-5 ">
+                <div>
+                    <button class="h-14 w-48 text-center text-white purple-color rounded-lg fonte-poppins">Cancelar</button>
                 </div>
-                <div class="input-container rounded-lg w-3/6">
-                    <input
-                        class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege "
-                        type="text" placeholder="">
-                </div>
-            </div>
-
-            <div class="flex flex-row justify-center w-full">
-                <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                    <h2>Data de Nascimento</h2>
-                </div>
-                <div class="input-container rounded-lg w-3/6">
-                    <input
-                        class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege "
-                        type="date" placeholder="">
+                <div>
+                    <button class="h-14 w-48 text-center text-white purple-color rounded-lg ml-2 fonte-poppins" type="submit">Gravar</button>
                 </div>
             </div>
-
-            <div class="flex flex-row justify-center w-full">
-                <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                    <h2>E-mail</h2>
-                </div>
-                <div class="input-container rounded-lg w-3/6">
-                    <input
-                        class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege "
-                        type="email" placeholder="">
-                </div>
-            </div>
-
-            <div class="flex flex-row justify-center w-full">
-                <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                    <h2>Telefone</h2>
-                </div>
-                <div class="input-container rounded-lg w-3/6">
-                    <input
-                        class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege "
-                        type="tel" placeholder="">
-                </div>
-            </div>
-
-            <div class="flex flex-row justify-center w-full">
-                <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                    <h2>Senha</h2>
-                </div>
-                <div class="input-container rounded-lg w-3/6">
-                    <input
-                        class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege "
-                        type="password" placeholder="">
-                </div>
-            </div>
-
-            <div class="flex flex-row justify-center w-full">
-                <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                    <h2>Confirmação de Senha</h2>
-                </div>
-                <div class="input-container rounded-lg w-3/6">
-                    <input
-                        class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege "
-                        type="password" placeholder="">
-                </div>
-            </div>
-        </div>
-
-
-        <div class="flex flex-row absolute right-5 bottom-5 ">
-            <div>
-                <button class="h-14 w-48 text-center text-white purple-color rounded-lg">Cancelar</button>
-            </div>
-            <div>
-                <button class="h-14 w-48 text-center text-white purple-color rounded-lg ml-2">Gravar</button>
-            </div>
-        </div>
+        </form>
+        
     </div>
 
 </body>
