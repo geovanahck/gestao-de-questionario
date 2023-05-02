@@ -1,8 +1,6 @@
 package com.sqhg.controllers;
 
 import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -28,7 +26,6 @@ public class AdministradorController {
 
     private AdministradorRepository administradorrepository;
 
-    @Autowired
     public AdministradorController(AdministradorRepository administradorrepository) {
         this.administradorrepository = administradorrepository;
     }
@@ -47,7 +44,7 @@ public class AdministradorController {
             Pageable pageable = PageRequest.of(page, size);
             Page<Administrador> administradores = this.administradorrepository.findAllActives(pageable);
             long quantidadeTotal = administradores.getTotalElements();
-            int quantidadeExibida = administradores.getNumberOfElements();
+            int quantidadeExibida;
             int totalPages = administradores.getTotalPages();
             System.out.println(totalPages);
 
@@ -143,22 +140,23 @@ public class AdministradorController {
     }
 
     @GetMapping(value = ("/excluir/{id}"))
-    public String excluirAdministrador(@PathVariable("id") long id, Administrador AdmExcluir,
+    public String excluirAdministrador(@PathVariable("id") long id,
+            @ModelAttribute Administrador administradorExcluir,
             RedirectAttributes redirectAttributes) {
-        System.out.println(id);
-        try {
-            System.out.println(id);
-            Administrador administradorExcluido = AdmExcluir.get();
-            administradorExcluido.setAtivo(false);
+        Optional<Administrador> administradorOpt = administradorrepository.findById(id);
 
-            administradorrepository.save(AdmExcluir);
-            System.out.println(administradorExcluido.getAtivo());
-            redirectAttributes.addFlashAttribute("messagesucess",
-                    "Adiministrador excluido com sucesso");
+        try {
+            if (administradorOpt.isPresent()) {
+                Administrador adminEncontrado = administradorOpt.get();
+                adminEncontrado.setAtivo(false);
+                administradorrepository.save(adminEncontrado);
+                redirectAttributes.addFlashAttribute("messagesucess", "Adiministrador excluido com sucesso");
+                return "redirect:/adm/lista";
+            }
         } catch (Exception e) {
             System.out.println(e);
         }
-
         return "redirect:/adm/lista";
     }
+
 }

@@ -15,17 +15,16 @@
 
 
 <style>
-    body {
+    #fundo {
         background-color: #D9D9D9;
+        padding-bottom: 20px;
     }
 
     .titulo {
-
         font-family: 'Poppins';
         font-style: normal;
         font-weight: 400;
         font-size: 36px;
-
     }
 
     .l-bege {
@@ -39,46 +38,46 @@
     }
 
     .purple-color {
-
         background-color: #5C2472;
-
     }
 
     .l-roxo {
         border: solid #5C2472;
     }
+
+    #botao-action {
+        background-color: #5c2472;
+        color: white;
+        text-align: center;
+        border-radius: 10px;
+    }
 </style>
-<script>
-    // Obter o elemento do alerta pelo ID
-    const successMessage = document.getElementById('message');
 
-    // Definir um temporizador de 10 segundos
-    setTimeout(() => {
-        // Ocultar o alerta
-        successMessage.style.display = 'none';
-    }, 10000);
-</script>
 
-<body>
-    <div class="justify-center ">
-        <div id="message" th:if="${messagesucess != null}" class=" alert alert-success text-center message"
-            role="alert">
-            [[${messagesucess}]]
+<body class="l-bege">
+    <div class="items-center justify-items">
+        <div class="justify-center items-center w-5/6 pt-3">
+            <div id="messagesucess" th:if="${messagesucess != null}"
+                class="float-right alert alert-success text-center message" role="alert">
+                [[${messagesucess}]]
+            </div>
+        </div>
+        <div class="justify-center items-center w-5/6">
+            <div id="message" th:if="${messageerror != null}"
+                class="float-right justify-center alert alert-danger text-center message" role="alert">
+                [[${messageerror}]]
+            </div>
         </div>
     </div>
-
-    <div id="message" th:if="${messageerror != null}" class="justify-center alert alert-danger text-center message"
-        role="alert">
-        [[${messageerror}]]
-    </div>
-    <div class="w-full h-40 l-bege flex items-center justify-center">
+    <div class="w-full h-40 flex items-center justify-center">
         <h1 class="dark:text-black text-center titulo">Editar Administrador</h1>
     </div>
-    <form action="#" th:action="@{/adm/edicao/{id} (id=${administrador.id})}" th:object="${administrador}"
+    <form id="fundo" action="#" th:action="@{/adm/edicao/{id} (id=${administrador.id})}" th:object="${administrador}"
         th:value="${administrador.id}" method="post">
-        <div class="space-y-4 justify-center">
+        <div class="space-y-4 pt-10 justify-center">
             <div class="flex flex-row justify-center w-full">
-                <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                <div
+                    class="flex items-center justify-center h-10 w-48 sm:w-36 lg:text-base sm:text-sm purple-color rounded-l-full text-white">
                     <h2>Crachá</h2>
                 </div>
                 <div class="input-container rounded-lg w-3/6">
@@ -89,7 +88,8 @@
             </div>
 
             <div class="flex flex-row justify-center w-full">
-                <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                <div
+                    class="flex items-center justify-center h-10 w-48 sm:w-36 sm:text-sm lg:text-base purple-color rounded-l-full text-white">
                     <h2>Nome</h2>
                 </div>
                 <div class="input-container rounded-lg w-3/6">
@@ -100,7 +100,8 @@
             </div>
 
             <div class="flex flex-row justify-center w-full">
-                <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                <div
+                    class="flex items-center justify-center h-10 w-48 sm:w-36 lg:text-sm purple-color sm:text-sm rounded-l-full text-white">
                     <h2>Data de Nascimento</h2>
                 </div>
                 <div class="input-container rounded-lg w-3/6">
@@ -111,7 +112,8 @@
             </div>
 
             <div class="flex flex-row justify-center w-full">
-                <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                <div
+                    class="flex items-center justify-center h-10 w-48 sm:w-36 sm:text-sm lg:text-base purple-color rounded-l-full text-white">
                     <h2>E-mail</h2>
                 </div>
                 <div class="input-container rounded-lg w-3/6">
@@ -122,7 +124,8 @@
             </div>
 
             <div class="flex flex-row justify-center w-full">
-                <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                <div
+                    class="flex items-center justify-center h-10 w-48 sm:w-36 sm:text-sm lg:text-base purple-color rounded-l-full text-white">
                     <h2>Telefone</h2>
                 </div>
                 <div class="input-container rounded-lg w-3/6">
@@ -133,7 +136,8 @@
             </div>
 
             <div class="flex flex-row justify-center w-full">
-                <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                <div
+                    class="flex items-center justify-center h-10 w-48 sm:w-36 sm:text-sm lg:text-base purple-color rounded-l-full text-white">
                     <h2>Senha</h2>
                 </div>
                 <div class="input-container rounded-lg w-3/6">
@@ -144,7 +148,8 @@
             </div>
 
             <div class="flex flex-row justify-center w-full">
-                <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                <div
+                    class="flex items-center justify-center h-10 w-48 sm:w-36 sm:text-sm lg:text-sm purple-color rounded-l-full text-white">
                     <h2>Confirmação de Senha</h2>
                 </div>
                 <div class="input-container rounded-lg w-3/6">
@@ -156,17 +161,32 @@
         </div>
 
 
-        <div class="flex flex-row absolute right-5 bottom-5 ">
-            <div>
-                <button class="h-14 w-48 text-center text-white purple-color rounded-lg">Cancelar</button>
-            </div>
-            <div>
-                <button type="submit"
-                    class="h-14 w-48 text-center text-white purple-color rounded-lg ml-2">Editar</button>
+        <div class="flex flex-row pt-5 items-center justify-center lg:w-4/5 md:w-5/6 sm:w-5/6 ">
+            <div class="flex sm:flex sm:pt-10 lg:w-64 md:w-40 ml-auto">
+                <a id="botao-action"
+                    class="flex mx-2 items-center justify-center lg:w-36 md:w-24 md:h-10 sm:w-24 sm:h-10 ml-auto focus:outline-none"
+                    th:href="@{/adm/lista}">
+                    Voltar
+                </a>
+
+                <button id="botao-action"
+                    class="flex lg:w-36 lg:h-10 md:w-24 md:h-10 sm:w-24 sm:h-10 items-center justify-center focus:outline-none">
+                    Editar
+                </button>
             </div>
         </div>
+        </div>
     </form>
+    <script>
+        // Obter o elemento do alerta pelo ID
+        const successMessage = document.getElementById('messagesucess');
 
+        // Definir um temporizador de 10 segundos
+        setTimeout(() => {
+            // Ocultar o alerta
+            successMessage.style.display = 'none';
+        }, 20000);
+    </script>
 </body>
 
 </html>
