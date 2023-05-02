@@ -2,57 +2,35 @@ package com.sqhg.controllers;
 
 import org.springframework.ui.Model;
 import org.springframework.stereotype.Controller;
-
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sqhg.entities.Administrador;
 import com.sqhg.repositories.AdministradorRepository;
 
 @Controller
-@SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
+
 public class LoginController {
     @Autowired
-    private AdministradorRepository administradorrepository;
-    private final PasswordEncoder encoder;
+    private AdministradorRepository repository;
 
-    public LoginController(AdministradorRepository administradorrepository, PasswordEncoder encoder) {
-        this.administradorrepository = administradorrepository;
-        this.encoder = encoder;
-    }
-
+    @Autowired
     @GetMapping(value = "/login")
     public String login() {
         return "login";
     }
 
-    @PostMapping(value = "/login")
-    public String validarSenha(@RequestParam(required = true) String cracha,
-            @RequestParam(required = true) String senha, RedirectAttributes redirectAttributes) {
-
-        Optional<Administrador> optUsuario = administradorrepository.findByCracha(cracha);
-
-        if (optUsuario.isEmpty()) {
-            redirectAttributes.addFlashAttribute("messageerror", "Login ou senha inválido");
-            ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(false);
-            return "redirect:/login";
+    @PostMapping(value = "/logar")
+    public String Login(Model model, Administrador admParam) {
+        Administrador adm = this.repository.Login(admParam.getCracha(),
+                admParam.getSenha());
+        if (adm != null) {
+            System.out.println("Login efetuado");
+            return "redirect:/adm/lista";
         }
-        Administrador adm = optUsuario.get();
-        boolean valid = encoder.matches(senha, adm.getSenha());
-        HttpStatus status = (valid) ? HttpStatus.OK : HttpStatus.UNAUTHORIZED;
-        ResponseEntity.status(status).body(valid);
-        return "redirect:/adm/lista";
+        model.addAttribute("erro", "Usuário ou senha inválidos");
+        return "login";
     }
 
 }

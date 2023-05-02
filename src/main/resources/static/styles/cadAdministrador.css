@@ -2,15 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-.alert {
-    width: 40%;
-}
-
-#fundo {
+body {
     background-color: #D9D9D9;
 }
 
-.titulo {
+.titulo{
 
     font-family: 'Poppins';
     font-style: normal;
@@ -29,11 +25,12 @@
     top: 133px;
 }
 
-.purple-color {
+.purple-color{
 
     background-color: #5C2472;
 
 }
 
+.l-roxo{
     border: solid #5C2472;
 }

@@ -3,7 +3,7 @@ package com.sqhg.entities;
 import java.sql.Date;
 import java.util.List;
 
-import jakarta.persistence.Column;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,9 +18,8 @@ public class Administrador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(unique = true)
     private String cracha;
-    private String nome;
+    private String nome;   
     private Date nascimento;
     private String email;
     private String telefone;
@@ -83,7 +82,7 @@ public class Administrador {
     }
 
     public void setSenha(String senha) {
-        this.senha = (senha);
+        this.senha = senha;
     }
 
     public List<Questionario> getQuestionario() {
@@ -102,11 +101,11 @@ public class Administrador {
         this.ativo = ativo;
     }
 
-    public Administrador get() {
-        return null;
+    public boolean isPresent() {
+        return false;
     }
 
-    public boolean isAtivo() {
-        return false;
+    public Administrador get() {
+        return null;
     }
 }

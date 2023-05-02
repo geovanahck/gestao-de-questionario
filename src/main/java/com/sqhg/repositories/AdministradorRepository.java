@@ -1,7 +1,5 @@
 package com.sqhg.repositories;
 
-import java.util.Optional;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -20,5 +18,7 @@ public interface AdministradorRepository extends JpaRepository<Administrador, Lo
     @Query("SELECT a FROM Administrador a WHERE a.ativo = true")
     Page<Administrador> findAllActives(Pageable pageable);
 
-    public Optional<Administrador> findByCracha(String cracha);
+    @Query("SELECT a FROM Administrador a WHERE a.id = :id")
+    Administrador buscarID(int id);
+
 }
