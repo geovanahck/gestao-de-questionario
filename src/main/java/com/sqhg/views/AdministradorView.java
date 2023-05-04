@@ -1,35 +1,49 @@
 package com.sqhg.views;
 
 import com.sqhg.entities.Administrador;
-import com.sqhg.repositories.AdministradorRepository;
+import com.sqhg.forms.AdministradorForm;
 import com.sqhg.services.AdministradorService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping
+@RequestMapping(path = "/administradores")
 @AllArgsConstructor
 public class AdministradorView {
 
     private AdministradorService administradorService;
 
-    // Tela Cadastro de Administrador
-    @GetMapping(value="/administradores")
+    @GetMapping(value="/novo")
     public String cadastrarAdministrador(Model model) {
-        Administrador administrador = new Administrador();
-        model.addAttribute("administrador", administrador);
+        model.addAttribute("administrador", new AdministradorForm());
         return "cadAdministrador";
     }
 
-    @PostMapping(value = "/administradores")
-    public String salvarAdministrador(@ModelAttribute("administrador") Administrador administrador, BindingResult result) {
+    @PostMapping(value = "/novo")
+    public String salvarAdministrador(@Valid @ModelAttribute("administrador") AdministradorForm administradorForm,
+                                      BindingResult result) {
         if (result.hasErrors()) {
             return "cadAdministrador";
         }
+        if (!administradorForm.getSenha().equals(administradorForm.getConfirmacaoSenha())) {
+            result.rejectValue("confirmacaoSenha", "", "Senhas não correspondem.");
+            return "cadAdministrador";
+        }
+        Administrador administrador = new Administrador();
+        administrador.setCracha(administradorForm.getCracha());
+        administrador.setNome(administradorForm.getNome());
+        administrador.setEmail(administradorForm.getEmail());
+        administrador.setTelefone(administradorForm.getTelefone());
+        administrador.setSenha(administradorForm.getSenha());
+
         administradorService.salvarAdministrador(administrador);
-        return "redirect:/login";
+        return "redirect:/users";
     }
 }

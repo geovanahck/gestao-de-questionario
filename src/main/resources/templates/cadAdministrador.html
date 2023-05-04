@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cadAdministrador</title>
+    <title>Novo Administrador</title>
     <link rel="stylesheet" type="text/css" th:href="@{/styles/cadAdministrador.css}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,7 +55,7 @@ body {
             <h1 class=" dark:text-black text-center titulo">Cadastro de Administrador</h1>
         </div>
 
-        <form action="#" th:action="@{/administradores}" th:object="${administrador}" method="post">
+        <form action="#" th:action="@{/administradores/novo}" th:object="${administrador}" method="post">
             <div class="space-y-4">
 
                 <div class="flex flex-row w-full mt-6 justify-center">
