@@ -19,9 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sqhg.controllers.dto.AtualizarModeloQuestionarioRequest;
 import com.sqhg.controllers.dto.IncluirNovoModeloQuestionarioRequest;
 import com.sqhg.controllers.dto.IncluirNovoModeloQuestionarioResponse;
-import com.sqhg.entities.Questionario;
 import com.sqhg.models.QuestionarioModel;
-import com.sqhg.repositories.NovoModeloQuestionarioRepository;
 import com.sqhg.services.QuestionarioService;
 
 @Controller
@@ -65,7 +63,7 @@ public class NovoModeloQuestionarioController {
         }
 
        var questionario = questionarioService.atualizar(atualizarQuestionarioRequest);
-       return new ResponseEntity<>(questionario, HttpStatus.OK);
+      // return new ResponseEntity<>(questionario, HttpStatus.OK);
        return null;
     }
 
