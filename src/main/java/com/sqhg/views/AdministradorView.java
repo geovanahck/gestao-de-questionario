@@ -39,6 +39,7 @@ public class AdministradorView {
         Administrador administrador = new Administrador();
         administrador.setCracha(administradorForm.getCracha());
         administrador.setNome(administradorForm.getNome());
+        administrador.setNascimento(administradorForm.getNascimento());
         administrador.setEmail(administradorForm.getEmail());
         administrador.setTelefone(administradorForm.getTelefone());
         administrador.setSenha(administradorForm.getSenha());

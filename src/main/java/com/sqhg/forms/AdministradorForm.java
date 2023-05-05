@@ -1,11 +1,10 @@
 package com.sqhg.forms;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Date;
 
@@ -14,25 +13,26 @@ import java.sql.Date;
 @NoArgsConstructor
 public class AdministradorForm {
 
-    @NotBlank(message = "Crachá é um campo obrigatório.")
+    @NotEmpty(message = "* Campo obrigatório")
     private String cracha;
 
-    @NotBlank(message = "Nome é um campo obrigatório.")
+    @NotEmpty(message = "* Campo obrigatório")
     private String nome;
-
-    @NotBlank(message = "Data de nascimento é um campo obrigatório.")
+    @NotNull(message = "* Campo obrigatório")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date nascimento;
 
+
     @Email(message = "Email inválido.")
-    @NotBlank(message = "Email é um campo obrigatório.")
+    @NotEmpty(message = "* Campo obrigatório")
     private String email;
 
     private String telefone;
 
-    @NotBlank(message = "Senha é um campo obrigatório.")
+    @NotEmpty(message = "* Campo obrigatório")
     @Size(min = 6, message = "Senha deve conter ao menos seis caracteres.")
     private String senha;
 
-    @NotBlank(message = "Confirme a senha.")
+    @NotEmpty(message = "Confirme a senha.")
     private String confirmacaoSenha;
 }

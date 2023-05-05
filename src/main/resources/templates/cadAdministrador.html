@@ -14,39 +14,7 @@
 
 </head>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
-.fonte-poppins{
-    font-family: 'Poppins', sans-serif;
-}
-body {
-    background-color: #D9D9D9;
-}
-
-.titulo{
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 36px;
-}
-
-.l-bege {
-    background-color: #F3F3F3;
-}
-
-.div-form {
-    background-color: #D9D9D9;
-    position: absolute;
-    top: 133px;
-}
-
-.purple-color{
-    background-color: #5C2472;
-}
-
-.l-roxo{
-    border: solid #5C2472;
-}
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 </style>
 
 <body>
@@ -66,6 +34,7 @@ body {
                         <input
                             class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins "
                             type="number" placeholder="" th:field="*{cracha}">
+                        <div th:if="${#fields.hasErrors('cracha')}" th:errors="*{cracha}" class="invalid-feedback text-red-600 fonte-poppins"></div>
                     </div>
                 </div>
     
@@ -77,6 +46,7 @@ body {
                         <input
                             class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
                             type="text" placeholder="" th:field="*{nome}">
+                        <div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" class="invalid-feedback text-red-600 fonte-poppins"></div>
                     </div>
                 </div>
     
@@ -88,6 +58,7 @@ body {
                         <input
                             class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
                             type="date" placeholder="" th:field="*{nascimento}">
+                        <div th:if="${#fields.hasErrors('nascimento')}" th:errors="*{nascimento}" class="invalid-feedback text-red-600 fonte-poppins"></div>
                     </div>
                 </div>
     
@@ -99,6 +70,7 @@ body {
                         <input
                             class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
                             type="email" placeholder="" th:field="*{email}" >
+                        <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="invalid-feedback text-red-600 fonte-poppins"></div>
                     </div>
                 </div>
     
@@ -110,6 +82,7 @@ body {
                         <input
                             class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
                             type="tel" placeholder="" th:field="*{telefone}">
+                        <div th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}" class="invalid-feedback text-red-600 fonte-poppins"></div>
                     </div>
                 </div>
     
@@ -121,6 +94,18 @@ body {
                         <input
                             class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
                             type="password" placeholder="" th:field="*{senha}">
+                        <div th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}" class="invalid-feedback text-red-600 fonte-poppins"></div>
+                    </div>
+                </div>
+                <div class="flex flex-row justify-center w-full">
+                    <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                        <h2 class="fonte-poppins">Confirmação de Senha</h2>
+                    </div>
+                    <div class="input-container rounded-lg w-3/6">
+                        <input
+                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
+                                type="password" placeholder="" th:field="*{confirmacaoSenha}">
+                        <div th:if="${#fields.hasErrors('confirmacaoSenha')}" th:errors="*{confirmacaoSenha}" class="invalid-feedback text-red-600 fonte-poppins"></div>
                     </div>
                 </div>
             </div>
@@ -131,7 +116,7 @@ body {
                     <button class="h-14 w-48 text-center text-white purple-color rounded-lg fonte-poppins">Cancelar</button>
                 </div>
                 <div>
-                    <button class="h-14 w-48 text-center text-white purple-color rounded-lg ml-2 fonte-poppins" type="submit">Gravar</button>
+                    <button type="submit" class="h-14 w-48 text-center text-white purple-color rounded-lg ml-2 fonte-poppins">Gravar</button>
                 </div>
             </div>
         </form>
