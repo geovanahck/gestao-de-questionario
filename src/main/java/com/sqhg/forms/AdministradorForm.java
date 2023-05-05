@@ -16,7 +16,6 @@ public class AdministradorForm {
     @NotEmpty(message = "* Campo obrigatório")
     private String cracha;
 
-    @NotEmpty(message = "* Campo obrigatório")
     private String nome;
     @NotNull(message = "* Campo obrigatório")
     @DateTimeFormat(pattern = "dd/MM/yyyy")
@@ -29,10 +28,9 @@ public class AdministradorForm {
 
     private String telefone;
 
-    @NotEmpty(message = "* Campo obrigatório")
-    @Size(min = 6, message = "Senha deve conter ao menos seis caracteres.")
+    @Size(min = 6, message = "Senha deve conter ao menos seis caracteres")
     private String senha;
 
-    @NotEmpty(message = "Confirme a senha.")
+    @NotEmpty(message = "Confirme a senha")
     private String confirmacaoSenha;
 }
