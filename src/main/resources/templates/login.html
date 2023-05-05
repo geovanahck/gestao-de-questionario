@@ -17,10 +17,10 @@
                 <div class="h-60 flex justify-center imagem">
                     <img class="" th:src="@{/images/logoPrati.png}" alt="">
                 </div>
-                <div class="h-fit  formulario-uteis space-y-5">
-                    <form action="/logar" method="post">
+                <div class="h-fit formulario-uteis space-y-5">
+                    <form th:action="@{/login}" method="post" role="form">
                         <div class="formulario h-fit lg:h-5/6 flex items-center flex-col justify-between space-y-5">
-                            <div th:if="${erro != null}" th:text="${erro}"
+                            <div th:if="${param.error}"
                                 class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
                                 role="alert">
                                 <strong class="font-bold">Falha no login</strong>
@@ -35,13 +35,13 @@
                                 </span>
                             </div>
                             <div class="w-full flex flex-col space-y-3 items-center h-1/3 ">
-                                <input name="cracha" id="color" class="w-3/4 sm:w-full lg:w-3/4 xl:w-1/2 rounded"
+                                <input name="cracha" class="w-3/4 sm:w-full lg:w-3/4 xl:w-1/2 rounded"
                                     type="text" placeholder=" Crachá">
-                                <input name="senha" id="color" type="password"
+                                <input name="senha" type="password"
                                     class="w-3/4 sm:w-full lg:w-3/4 xl:w-1/2 rounded" placeholder=" Senha">
                             </div>
                             <div class="flex items-center justify-center w-full h-2/3">
-                                <button type="submit" id="color" class="w-fit h-fit py-1 px-11 bg-white rounded">Entrar
+                                <button type="submit" class="w-fit h-fit py-1 px-11 bg-white rounded">Entrar
                                 </button>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                         <img th:src="@{/images/atendimento-vendas.png}" alt="">
                     </div>
                     <span class="text-white">Atendimento Geral</span>
-                    <span class="text-white rounded-md border border-white px-2">45 2103-1166</label>
+                    <span class="text-white rounded-md border border-white px-2">45 2103-1166</span>
                 </div>
             </div>
         </div>

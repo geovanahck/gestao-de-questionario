@@ -7,7 +7,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.sqhg.entities.Administrador;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface AdministradorRepository extends JpaRepository<Administrador, Long> {
     @Query(value = "SELECT * FROM administrador where cracha = :cracha and senha = :senha", nativeQuery = true)
     public Administrador Login(String cracha, String senha);
@@ -18,4 +20,5 @@ public interface AdministradorRepository extends JpaRepository<Administrador, Lo
     @Query("SELECT a FROM Administrador a WHERE a.ativo = true")
     Page<Administrador> findAllActives(Pageable pageable);
 
+    Administrador findByCracha(String cracha);
 }

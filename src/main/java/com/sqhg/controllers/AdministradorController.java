@@ -19,16 +19,17 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sqhg.entities.Administrador;
 import com.sqhg.repositories.AdministradorRepository;
+import com.sqhg.services.AdministradorService;
+import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping(value = "/adm")
+@RequestMapping(value = "/administradores")
+@AllArgsConstructor
 public class AdministradorController {
 
-    private AdministradorRepository administradorrepository;
-
-    public AdministradorController(AdministradorRepository administradorrepository) {
-        this.administradorrepository = administradorrepository;
-    }
+    private AdministradorRepository administradorRepository;
+    private AdministradorService administradorService;
 
     @GetMapping(value = "/lista")
     // retornar pagina de administradores com quantidade de administradores e filtro
@@ -42,7 +43,7 @@ public class AdministradorController {
         ModelAndView mv = new ModelAndView("listaAdm");
         try {
             Pageable pageable = PageRequest.of(page, size);
-            Page<Administrador> administradores = this.administradorrepository.findAllActives(pageable);
+            Page<Administrador> administradores = this.administradorRepository.findAllActives(pageable);
             long quantidadeTotal = administradores.getTotalElements();
             int quantidadeExibida;
             int totalPages = administradores.getTotalPages();
@@ -55,9 +56,9 @@ public class AdministradorController {
                 quantidadeTotal = administradores.getTotalElements();
             }
             if (Search == null) {
-                administradores = this.administradorrepository.findAllActives(pageable);
+                administradores = this.administradorRepository.findAllActives(pageable);
             } else {
-                administradores = this.administradorrepository.buscarAdministradoresPorFiltro(Search, pageable);
+                administradores = this.administradorRepository.buscarAdministradoresPorFiltro(Search, pageable);
             }
 
             mv.addObject("totalPages", totalPages);
@@ -78,7 +79,7 @@ public class AdministradorController {
     public ModelAndView irParaTelaAdministrador(@PathVariable("id") long id, RedirectAttributes redirectAttributes,
             @ModelAttribute Administrador administrador)
             throws IllegalAccessException {
-        Optional<Administrador> administradorVelho = this.administradorrepository.findById(id);
+        Optional<Administrador> administradorVelho = this.administradorRepository.findById(id);
         ModelAndView editarMV = new ModelAndView("editarAdm");
         if (administrador.getAtivo()) {
             redirectAttributes.addFlashAttribute("messageerror", "Este administrador foi excluído");
@@ -95,7 +96,7 @@ public class AdministradorController {
             @ModelAttribute Administrador administradorAtualizado,
             RedirectAttributes redirectAttributes, BindingResult bindingResult, String senha, String confirmacaoSenha) {
 
-        Optional<Administrador> administradorExistente = administradorrepository.findById(id);
+        Optional<Administrador> administradorExistente = administradorRepository.findById(id);
 
         Administrador administradorEditado = administradorExistente.get();
 
@@ -127,7 +128,7 @@ public class AdministradorController {
                     return "redirect:/adm/editar/" + id;
                 }
             }
-            administradorrepository.save(administradorEditado);
+            administradorRepository.save(administradorEditado);
             ResponseEntity.ok().body(administradorEditado);
             redirectAttributes.addFlashAttribute("messagesucess", "Administrador editado com sucesso!");
 
@@ -143,13 +144,13 @@ public class AdministradorController {
     public String excluirAdministrador(@PathVariable("id") long id,
             @ModelAttribute Administrador administradorExcluir,
             RedirectAttributes redirectAttributes) {
-        Optional<Administrador> administradorOpt = administradorrepository.findById(id);
+        Optional<Administrador> administradorOpt = administradorRepository.findById(id);
 
         try {
             if (administradorOpt.isPresent()) {
                 Administrador adminEncontrado = administradorOpt.get();
                 adminEncontrado.setAtivo(false);
-                administradorrepository.save(adminEncontrado);
+                administradorRepository.save(adminEncontrado);
                 redirectAttributes.addFlashAttribute("messagesucess", "Adiministrador excluido com sucesso");
                 return "redirect:/adm/lista";
             }
@@ -159,4 +160,9 @@ public class AdministradorController {
         return "redirect:/adm/lista";
     }
 
+    @PostMapping
+    public ResponseEntity<Administrador> create(@RequestBody Administrador administrador) {
+        administradorService.salvarAdministrador(administrador);
+        return new ResponseEntity<>(administrador, HttpStatus.CREATED);
+    }
 }
