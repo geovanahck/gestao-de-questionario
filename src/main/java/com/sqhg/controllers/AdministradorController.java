@@ -16,7 +16,7 @@ import com.sqhg.entities.Administrador;
 @RestController
 @RequestMapping(value = "/users")
 public class AdministradorController {
-    
+
     @Autowired
     private AdministradorRepository repository;
 
@@ -30,6 +30,7 @@ public class AdministradorController {
      * @param id
      * @return
      */
+
     @GetMapping(value = "/{id}")
     public Administrador findById(@PathVariable Long id) {
         Administrador result = repository.findById(id).get();
