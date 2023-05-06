@@ -12,14 +12,11 @@ function closePopup() {
     popup.style.display = "none";
 }
 
-
-
 function addQuestion() {
-
-    console.log("TESTE");
     const questions = document.getElementById('question');
-    const question = `<div class="mb-5">
-   <table>
+    const question = `
+<div class="mb-5" id="question-${contador}">
+   <table >
        <thead>
            <tr>
                <th class="w-60 rounded-tl-md">Questão ${contador}<p id="questao"></p>
@@ -36,7 +33,7 @@ function addQuestion() {
                <td class="px-1">
                    <input type="checkbox" id="color" name="vehicle1" value="0 a 10">
                    <label for="0a10">0 a 10 </label>
-                   <input onchange="checkboxClicado()" id="meuCheckbox" type="checkbox" name="vehicle2" value="Alternativas">
+                   <input onchange="checkboxClicado('${contador}')" id="meuCheckbox" type="checkbox" name="vehicle2" value="Alternativas">
                    <label >Alternativas </label>
                    <input type="checkbox" id="color" name="vehicle3" value="Múltipla escolha">
                    <label for="multiplaEscolha">Múltipla escolha </label>
@@ -45,16 +42,17 @@ function addQuestion() {
                </td>
            </tr>
        </tbody>
+       <thead class="alternativas">
+            <!-- ...alternativas -->
+       </thead>
    </table>
 </div>`;
     questions.innerHTML += question;
 }
 
-
-// document.getElementById("myButton").addEventListener("click", openPopup);
-function addLine() {
-    const lines = document.getElementById('alternativas');
-    const line = `<thead>
+function checkboxClicado(id) {
+    var checkBox = document.getElementById('meuCheckbox');
+    var meuElementoHTML = `<thead>
     <tr>
         <th class="w-60">Opção 1</th>
         <td class="px-1">
@@ -68,24 +66,32 @@ function addLine() {
         </td>
     </tr>
 </thead>`;
-    lines.innerHTML += line;
-}
-
-function checkboxClicado() {
-    var checkBox = document.getElementById("meuCheckbox");
-    var elementoHTML = document.getElementById("meuElementoHTML");
+    var domHTML = document.createElement("thead");
+    domHTML.innerHTML = meuElementoHTML;
+    var realElement = domHTML.querySelector("thead");
+    console.table(realElement)
+    console.log(domHTML);
     if (checkBox.checked == true) {
-        elementoHTML.elementoinnerHTML = `
-        < tr >
-        <th class="w-60">Opção 1</th>
-        <td class="px-1">
-            <input class="w-full rounded-none px-2" type="text">
-        </td>
-        </tr >`
-        console.log("Checkbox marcado!");
+
+        var question = document.getElementById('question-' + id);
+        question.querySelector('.alternativas').appendChild(domHTML);
+        console.log(question);
+        return;
+
+        // adiciona o elemento HTML
+        //   var meuParagrafo = document.createElement("p");
+        //   var texto = document.createTextNode("Checkbox marcado!");
+        //   meuParagrafo.appendChild(texto);
+        //   console.table(realElement);
+        //domHTML.appendChild(meuParagrafo);
+        console.log("passou");
     } else {
-        // fazer algo se o checkbox não estiver marcado
-        console.log("Checkbox desmarcado!");
+        // remove o elemento HTML, se existir
+        if (meuElementoHTML.firstChild != null) {
+            //var question = document.getElementById('question-'+id);
+            question.querySelector('.alternativas').removeChild(domHTML);
+        }
     }
+    checkBox.innerHTML += meuElementoHTML;
 }
 
