@@ -1,8 +1,11 @@
-package com.sqhg.entities;
+package com.sqhg.model;
 
 import jakarta.persistence.*;
 
 import java.util.List;
+
+import com.sqhg.entities.ModeloQuestionario;
+import com.sqhg.entities.Opcao;
 
 @Entity
 @Table(name = "questao")
@@ -10,7 +13,7 @@ public class Questao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String descricao;
     private int tipo;
 
@@ -21,7 +24,17 @@ public class Questao {
     @OneToMany(mappedBy = "questao")
     private List<Opcao> opcao;
 
-    public int getId() {
+    public Questao(Long id, String descricao, int tipo) {
+        this.id = id;
+        this.descricao = descricao;
+        this.tipo = tipo;
+    }
+
+    public Questao() {
+
+    }
+
+    public Long getId() {
         return id;
     }
 

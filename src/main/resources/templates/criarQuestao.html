@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/novoModeloQuestionario.css}" />
+    <!-- <script rel="javascript" type="text/javascript" th:src="@{/scripts/novoModeloQuestionario.js}" ></script> -->
+    <title>Criar Nova Questão</title>
+</head>
+
+<body>
+    <section class="h-screen flex tela-inteira justify-center">
+
+        <div class="flex flex-col items-center tela-inteira p-5 w-4/5 gh-full overflow-auto">
+            <header class="flex justify-center w-full">
+                <span class="text-2xl">Criar Nova Questão</span>
+            </header>
+            <div class="bg-[#F3F3F3] w-full p-5">
+
+                <ul>
+                    <li>
+                        <a href="/criarQuestao">Cadastro</a>
+
+                        <a href="/listarQuestao">Listagem</a>
+                    </li>
+                </ul>
+
+                <form method="POST" action="/criarQuestao" th:object="${questao}">
+                    <div id="question">
+                        <div class="mb-5">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="w-60 rounded-tl-md">Questão</th>
+                                        <td class="px-1">
+                                            <input class="w-full rounded-none px-2" type="text" th:value="${questao.id}"
+                                                name="id" />
+                                        </td>
+                                        <td class="w-16">&nbsp;</td>
+                                    </tr>
+                                </thead>
+                            </table>
+
+                            <tbody>
+                                <tr>
+                                    <th>Tipo</th>
+                                    <td class="px-1">
+                                        <input type="checkbox" id="color" value="0 a 10">
+                                        <label for="0a10">0 a 10 </label>
+                                        <input type="checkbox" id="color" value="Alternativas">
+                                        <label for="alternativas">Alternativas </label>
+                                        <input type="checkbox" id="color" value="Múltipla escolha">
+                                        <label for="multiplaEscolha">Múltipla escolha </label>
+                                        <input type="checkbox" id="color" value="Aberta">
+                                        <label for="vehicle3">Aberta </label>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </div>
+                    </div>
+                </form>
+                <div class="justify-items items-center inline-block flex flex-row-reverse pr-0 gap-x-2">
+                    <div class="py-4">
+                        <form>
+                            <button id="fundo1" formaction="modelosQuestionario" method="post"
+                                class="w-fit h-fit py-1 px-6 bg-white rounded">Gravar</button>
+                        </form>
+                    </div>
+                    <div class=" w-fit">
+                        <button onclick="openPopup();" id="fundo1"
+                            class="w-fit h-fit py-1 px-6 bg-white rounded">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+    </section>
+    <div id="popup" class="popup hidden flex-col justify-between">
+        <div>
+            <h1>Tem certeza que deseja cancelar?</h1>
+            <p>Seu progresso será perdido!</p>
+        </div>
+
+        <div class="justify-items items-center inline-block flex flex-row-reverse pr-0 gap-x-2">
+            <div class=" w-fit">
+                <button onclick="closePopup();" id="fundo1" class="w-fit h-fit py-1 px-6 bg-white rounded">Sim</button>
+            </div>
+            <div class=" w-fit">
+                <button onclick="closePopup();" id="fundo1" class="w-fit h-fit py-1 px-6 bg-white rounded">Não</button>
+            </div>
+        </div>
+
+    </div>
+</body>

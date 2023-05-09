@@ -1,5 +1,7 @@
 package com.sqhg.entities;
 
+import com.sqhg.model.Questao;
+
 import jakarta.persistence.*;
 
 @Entity

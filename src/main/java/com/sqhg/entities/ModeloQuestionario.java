@@ -2,6 +2,8 @@ package com.sqhg.entities;
 
 import java.util.List;
 
+import com.sqhg.model.Questao;
+
 import jakarta.persistence.*;
 
 @Entity

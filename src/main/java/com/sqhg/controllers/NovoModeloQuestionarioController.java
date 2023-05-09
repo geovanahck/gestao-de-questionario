@@ -19,7 +19,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sqhg.controllers.dto.AtualizarModeloQuestionarioRequest;
 import com.sqhg.controllers.dto.IncluirNovoModeloQuestionarioRequest;
 import com.sqhg.controllers.dto.IncluirNovoModeloQuestionarioResponse;
-import com.sqhg.models.QuestionarioModel;
+import com.sqhg.model.QuestionarioModel;
 import com.sqhg.services.QuestionarioService;
 
 @Controller

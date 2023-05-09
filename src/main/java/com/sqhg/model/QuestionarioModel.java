@@ -1,4 +1,4 @@
-package com.sqhg.models;
+package com.sqhg.model;
 
 import lombok.Data;
 import jakarta.persistence.Column;
