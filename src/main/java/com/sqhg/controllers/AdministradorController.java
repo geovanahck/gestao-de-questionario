@@ -20,9 +20,9 @@ public class AdministradorController {
 
     @GetMapping
     public List<Administrador> findAll() {
-        List<Administrador> result = repository.findAll();
-        return result;
+        return repository.findAll();
     }
+
     @PostMapping
     public ResponseEntity<Administrador> create(@RequestBody Administrador administrador) {
         administradorService.salvarAdministrador(administrador);
