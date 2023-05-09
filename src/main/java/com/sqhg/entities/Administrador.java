@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
@@ -25,6 +26,7 @@ public class Administrador {
     private Long id;
     private String cracha;
     private String nome;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date nascimento;
     private String email;
     private String telefone;

@@ -2,17 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+.fonte-poppins{
+    font-family: 'Poppins', sans-serif;
+}
 body {
     background-color: #D9D9D9;
 }
 
 .titulo{
-
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
     font-size: 36px;
-
 }
 
 .l-bege {
@@ -26,9 +27,7 @@ body {
 }
 
 .purple-color{
-
     background-color: #5C2472;
-
 }
 
 .l-roxo{

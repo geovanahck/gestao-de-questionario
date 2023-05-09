@@ -20,15 +20,14 @@ import java.util.stream.IntStream;
 @AllArgsConstructor
 public class AdministradorController {
 
-    private AdministradorRepository administradorRepository;
     private AdministradorService administradorService;
 
     @GetMapping(value = "/lista")
     // retornar pagina de administradores com quantidade de administradores e filtro
     public String listaAdministradores(Model model,
-                                       @RequestParam(name = "search") Optional<String> search,
-                                       @RequestParam(name = "size") Optional<Integer> size,
-                                       @RequestParam(name = "page") Optional<Integer> page) {
+            @RequestParam(name = "search") Optional<String> search,
+            @RequestParam(name = "size") Optional<Integer> size,
+            @RequestParam(name = "page") Optional<Integer> page) {
 
         int currentPage = page.orElse(1) - 1;
         int pageSize = page.orElse(10);
