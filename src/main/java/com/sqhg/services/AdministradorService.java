@@ -1,6 +1,7 @@
 package com.sqhg.services;
 
 import com.sqhg.entities.Administrador;
+import com.sqhg.forms.AdministradorForm;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public interface AdministradorService {
     Page<Administrador> acharAdministradoresPorPagina(int pageNo, int pageSize, String keyword);
 
     void salvarAdministrador(Administrador administrador);
+    void salvarAdministradorPorForm(AdministradorForm administradorForm);
 
     Administrador acharAdministradorPorCracha(String cracha);
 

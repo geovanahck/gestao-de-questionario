@@ -1,14 +1,16 @@
 package com.sqhg.controllers;
 
 import com.sqhg.entities.Administrador;
-import com.sqhg.repositories.AdministradorRepository;
+import com.sqhg.forms.AdministradorForm;
 import com.sqhg.services.AdministradorService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,8 +24,27 @@ public class AdministradorController {
 
     private AdministradorService administradorService;
 
+    @GetMapping(value="/novo")
+    public String cadastrarAdministrador(Model model) {
+        model.addAttribute("administrador", new AdministradorForm());
+        return "cadAdministrador";
+    }
+
+    @PostMapping(value = "/novo")
+    public String salvarAdministrador(@Valid @ModelAttribute("administrador") AdministradorForm administradorForm,
+                                      BindingResult result) {
+        if (result.hasErrors()) {
+            return "cadAdministrador";
+        }
+        if (!administradorForm.getSenha().equals(administradorForm.getConfirmacaoSenha())) {
+            result.rejectValue("confirmacaoSenha", "", "Senhas não correspondem.");
+            return "cadAdministrador";
+        }
+        administradorService.salvarAdministradorPorForm(administradorForm);
+        return "redirect:/users";
+    }
+
     @GetMapping(value = "/lista")
-    // retornar pagina de administradores com quantidade de administradores e filtro
     public String listaAdministradores(Model model,
             @RequestParam(name = "search") Optional<String> search,
             @RequestParam(name = "size") Optional<Integer> size,
@@ -52,8 +73,17 @@ public class AdministradorController {
     }
 
     @PostMapping(value = ("/editar/{id}"))
-    public String editarAdministrador(@ModelAttribute("administrador") Administrador administrador) {
-        return null;
+    public String editarAdministrador(@Valid @ModelAttribute("administrador") AdministradorForm administradorForm,
+                                      BindingResult result) {
+        if (result.hasErrors()) {
+            return "cadAdministrador";
+        }
+        if (!administradorForm.getSenha().equals(administradorForm.getConfirmacaoSenha())) {
+            result.rejectValue("confirmacaoSenha", "", "Senhas não correspondem.");
+            return "cadAdministrador";
+        }
+        administradorService.salvarAdministradorPorForm(administradorForm);
+        return "redirect:/users";
     }
 
     @GetMapping(value = ("/excluir/{id}"))
