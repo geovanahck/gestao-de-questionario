@@ -6,10 +6,18 @@ function openPopup() {
     // popup.style.display = "block";
 }
 
-
 function closePopup() {
     var popup = document.getElementById("myPopup");
     popup.style.display = "none";
+}
+
+function openAlternativas() {
+    document.getElementById('alternativas').style.display = 'block';
+}
+
+function closeAlternativas() {
+    var alternativas = document.getElementById("myAlternativas");
+    alternativas.style.display = "none";
 }
 
 function addQuestion() {

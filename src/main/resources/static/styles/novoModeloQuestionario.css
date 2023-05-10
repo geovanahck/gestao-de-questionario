@@ -66,9 +66,15 @@ th {
     display: none;
 }
 
-#botao-action {
+#botao-action,
+#fundo1 {
     background-color: #5c2472;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 5px;
     color: white;
+}
+
+button {
+    background: #5c2472;
+    border: solid #5c2472 2px;
 }
