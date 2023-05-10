@@ -6,16 +6,6 @@ body {
     background-color: #D9D9D9;
 }
 
-
-#color {
-    background-color: #F3F3F3 !important;
-    color: black;
-}
-
-#tipoquestao {
-    background-color: #D9D9D9;
-    color: black;
-}
 #container {
     display: flex;
     justify-content: center;
@@ -30,50 +20,11 @@ body {
     display: block;
 }
 
-#i-caret {}
-
-#fundo, #fundo1{
-    background-color: #5c2472;
-    border-right: 5px;
-    color: white;
-
-}
-
-.botao {
-    background-color: #5c2472;
-    color: white;
-    text-align: center;
-    border-radius: 10px;
-}
-
-
-.background {
-
-    background-color: #D8D8D9;
-    border-radius: 0.375rem;
-}
 
 table {
     border-collapse: separate;
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-    border-radius: 8px;
-    border-style: hidden;
-    box-shadow: 0 0 0 2px #5c2472;
-    background-color: white;
-    padding: 1px;
-
-}
-
-input {
-    border-radius: 8px;
-}
-
-#pesquisa {
-    border-collapse: separate;
-    width: 100%;
-    max-width: 900px;
+    width: 90%;
+    max-width: 90%;
     margin: 0 auto;
     border-radius: 8px;
     border-style: hidden;
@@ -84,20 +35,20 @@ input {
 th,
 td {
     border-collapse: separate;
-    padding: 6px 0px;
+    padding: 6px 4px;
     text-align: center;
     border: solid #5c2472 2px;
+    min-width: 20px;
 }
 
 th {
-
     text-align: center;
     background-color: #5c2472;
     color: #fff;
 }
 
 /* #myPopup {
-    display: none;
+  display: none;
 } */
 
 .popup {
@@ -113,5 +64,11 @@ th {
     border: solid 1px #5c2472;
     background: white;
     display: none;
+}
 
+#botao-action {
+    background-color: #5c2472;
+    text-align: center;
+    border-radius: 10px;
+    color: white;
 }
