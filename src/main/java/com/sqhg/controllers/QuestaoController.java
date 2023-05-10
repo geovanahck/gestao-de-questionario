@@ -47,7 +47,7 @@ public class QuestaoController {
 
   @GetMapping("/edit/{id}")
   public ModelAndView edit(@PathVariable("id") Long id) {
-    ModelAndView mav = new ModelAndView("create");
+    ModelAndView mav = new ModelAndView("criarQuestao");
 
     Questao questaoFind = questoes.stream().filter(questao -> id.equals(questao.getId())).findFirst().get();
     mav.addObject("questao", questaoFind);
