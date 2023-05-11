@@ -24,7 +24,7 @@ public class AdministradorController {
 
     private AdministradorService administradorService;
 
-    @GetMapping(value="/novo")
+    @GetMapping(value = "/novo")
     public String cadastrarAdministrador(Model model) {
         model.addAttribute("administrador", new AdministradorForm());
         return "cadAdministrador";
@@ -32,7 +32,7 @@ public class AdministradorController {
 
     @PostMapping(value = "/novo")
     public String salvarAdministrador(@Valid @ModelAttribute("administrador") AdministradorForm administradorForm,
-                                      BindingResult result) {
+            BindingResult result) {
         if (result.hasErrors()) {
             return "cadAdministrador";
         }
@@ -47,20 +47,19 @@ public class AdministradorController {
     @GetMapping(value = "/lista")
     public String listaAdministradores(Model model,
             @RequestParam(name = "search") Optional<String> search,
-            @RequestParam(name = "size") Optional<Integer> size,
+            @RequestParam(name = "pageSize") Optional<Integer> size,
             @RequestParam(name = "page") Optional<Integer> page) {
 
         int currentPage = page.orElse(1) - 1;
-        int pageSize = page.orElse(10);
+        int pageSize = size.orElse(10);
         String keyword = search.orElse(null);
 
         Page<Administrador> administradorPage = administradorService
-                .acharAdministradoresPorPagina(currentPage, pageSize, keyword);
-        List<Integer> pages = IntStream.rangeClosed(1, administradorPage.getTotalPages()).boxed().toList();
+                .acharAdministradoresPorPagina(currentPage, pageSize, keyword);                
 
-        model.addAttribute("administradorPage", administradorPage);
-        model.addAttribute("pages", pages);
-        model.addAttribute("keyword", keyword);
+        model.addAttribute("administradores", administradorPage);
+        model.addAttribute("pages", currentPage);
+        model.addAttribute("pageSize", pageSize);           
 
         return "listaAdm";
     }
@@ -74,7 +73,7 @@ public class AdministradorController {
 
     @PostMapping(value = ("/editar/{id}"))
     public String editarAdministrador(@Valid @ModelAttribute("administrador") AdministradorForm administradorForm,
-                                      BindingResult result) {
+            BindingResult result) {
         if (result.hasErrors()) {
             return "cadAdministrador";
         }
