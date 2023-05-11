@@ -20,42 +20,32 @@ function closeAlternativas() {
     alternativas.style.display = "none";
 }
 
+ // selecione o botão pelo ID
+ var meuBotao = document.getElementById("fundo");
+    
+ // inicialize o contador
+ var contador = 0;
+
+
 function addQuestion() {
-    const questions = document.getElementById('question');
-    const question = `
-<div class="mb-5" id="question-${contador}">
-   <table >
-       <thead>
-           <tr>
-               <th class="w-60 rounded-tl-md">Questão ${contador}<p id="questao"></p>
-               </th>
-               <td class="px-1">
-                   <input class="w-full rounded-none px-2" type="text">
-               </td>
-               <td class="w-16">&nbsp;</td>
-           </tr>
-       </thead>
-       <tbody>
-           <tr>
-               <th>Tipo</th>
-               <td class="px-1">
-                   <input type="checkbox" id="color" name="vehicle1" value="0 a 10">
-                   <label for="0a10">0 a 10 </label>
-                   <input onchange="checkboxClicado('${contador}')" id="meuCheckbox" type="checkbox" name="vehicle2" value="Alternativas">
-                   <label >Alternativas </label>
-                   <input type="checkbox" id="color" name="vehicle3" value="Múltipla escolha">
-                   <label for="multiplaEscolha">Múltipla escolha </label>
-                   <input type="checkbox" id="color" name="vehicle3" value="Aberta">
-                   <label for="vehicle3">Aberta </label>
-               </td>
-           </tr>
-       </tbody>
-       <thead class="alternativas">
-            <!-- ...alternativas -->
-       </thead>
-   </table>
-</div>`;
-    questions.innerHTML += question;
+         // incrementa o contador em 1
+         contador++;
+
+         let question = `
+     <div class="mb-5" id="question-${contador}">
+        <table >
+            <thead>
+                <tr>
+                    <th class="w-60 rounded-tl-md">Opção ${contador}<p id="questao"></p>
+                    </th>
+                    <td class="px-1">
+                        <input class="w-full rounded-none px-2" type="text">
+                    </td>
+                </tr>
+            </thead>
+          </table>
+     </div>`;
+         document.getElementById('question').innerHTML += question;
 }
 
 function checkboxClicado(id) {
