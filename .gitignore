@@ -24,3 +24,7 @@ target/
 ### VS Code ###
 .vscode/
 
+## JSON
+*.json
+*.config.js
+node_modules/

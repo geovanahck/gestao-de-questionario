@@ -6,11 +6,46 @@
 -- INSERT INTO tb_user(department_id, name, email) VALUES (2, 'Alex', 'alex@gmail.com');
 -- INSERT INTO tb_user(department_id, name, email) VALUES (1, 'Bob', 'bob@gmail.com');
 -- INSERT INTO tb_user(department_id, name, email) VALUES (2, 'Ana', 'ana@gmail.com');
-<<<<<<< HEAD
-INSERT INTO administrador(id, cracha, email, nome, senha, telefone) 
-                  VALUES (1, '123','teste1@gmail.com', 'teste1', '123', '99999 9999');
-INSERT INTO administrador(id, cracha, email, nome, senha, telefone) 
-                  VALUES (2, '123654','teste2@gmail.com', 'teste2', '1234', '8888 9999');
-=======
-INSERT INTO administrador(cracha, senha, id) VALUES ('9999','123', 1);
->>>>>>> 937e55053e5ccb519376d695020826e3f2e08e6a
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '1','ativo@gmail.com', 'mateus', '99999 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '2','inativo@gmail.com', 'teste2', '8888 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '3','ativo@gmail.com', 'teste3', '8888 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '4','teste1@gmail.com', 'teste4', '99999 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '5','teste2@gmail.com', 'teste5', '8888 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '6','teste1@gmail.com', 'teste6', '99999 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '8','teste1@gmail.com', 'teste8', '99999 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '9','teste2@gmail.com', 'teste9', '8888 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '10','teste1@gmail.com', 'teste10', '99999 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '11','teste2@gmail.com', 'teste11', '8888 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '12','teste1@gmail.com', 'teste12', '99999 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '13','teste2@gmail.com', 'teste13', '8888 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '14','teste1@gmail.com', 'teste14', '99999 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '15','teste2@gmail.com', 'teste15', '8888 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '16','teste1@gmail.com', 'teste16', '99999 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '17','testeteste2@gmail.com', 'teste17', '8888 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '18','teste1@gmail.com', 'teste18', '99999 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '19','teste2@gmail.com', 'teste19', '8888 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '20','testestestetestetesteststeste1@gmail.com', 'teste20', '99999 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '21','ativo@gmail.com', 'mateus', '99999 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '22','inativo@gmail.com', 'teste2', '8888 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '23','ativo@gmail.com', 'teste3', '8888 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '24','teste1@gmail.com', 'teste4', '99999 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '25','teste2@gmail.com', 'teste5', '8888 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '26','teste1@gmail.com', 'teste6', '99999 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '27','teste2@gmail.com', 'teste7', '8888 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '28','teste1@gmail.com', 'teste8', '99999 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '29','teste2@gmail.com', 'teste9', '8888 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '30','teste1@gmail.com', 'teste10', '99999 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '31','teste2@gmail.com', 'teste11', '8888 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '32','teste1@gmail.com', 'teste12', '99999 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '33','ativo@gmail.com', 'mateus', '99999 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '34','inativo@gmail.com', 'teste2', '8888 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '35','ativo@gmail.com', 'teste3', '8888 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '36','teste1@gmail.com', 'teste4', '99999 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '37','teste2@gmail.com', 'teste5', '8888 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '38','teste1@gmail.com', 'teste6', '99999 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '39','teste2@gmail.com', 'teste7', '8888 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '40','teste1@gmail.com', 'teste8', '99999 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '41','teste2@gmail.com', 'teste9', '8888 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '42','teste1@gmail.com', 'teste10', '99999 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '43','teste2@gmail.com', 'teste11', '8888 9999');
+INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '44','teste1@gmail.com', 'teste12', '99999 9999');

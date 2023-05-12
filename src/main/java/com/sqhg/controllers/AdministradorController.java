@@ -1,39 +1,31 @@
 package com.sqhg.controllers;
 
-import java.util.List;
-
 import com.sqhg.entities.Administrador;
 import com.sqhg.repositories.AdministradorRepository;
+import com.sqhg.services.AdministradorService;
+import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.sqhg.entities.Administrador;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/users")
+@AllArgsConstructor
 public class AdministradorController {
 
-    @Autowired
     private AdministradorRepository repository;
+    private AdministradorService administradorService;
 
     @GetMapping
     public List<Administrador> findAll() {
-        List<Administrador> result = repository.findAll();
-        return result;
+        return repository.findAll();
     }
 
-    /**
-     * @param id
-     * @return
-     */
-
-    @GetMapping(value = "/{id}")
-    public Administrador findById(@PathVariable Long id) {
-        Administrador result = repository.findById(id).get();
-        return (Administrador) result;
+    @PostMapping
+    public ResponseEntity<Administrador> create(@RequestBody Administrador administrador) {
+        administradorService.salvarAdministrador(administrador);
+        return new ResponseEntity<>(administrador, HttpStatus.CREATED);
     }
 }
