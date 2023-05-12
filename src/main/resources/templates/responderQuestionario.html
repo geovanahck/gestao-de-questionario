@@ -6,12 +6,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SQHG</title>
-    <link rel="stylesheet" type="text/css" href="/menu.css" />
+    <link rel="stylesheet" type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
 
 </head>
 <style>
+    #questao {
+        background-color: #5c2472;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        width: 500px;
+        height: 100px;
+    }
+    .teste {
+        width: 92.5%;
+        margin-right: 5.5%;
+        margin-left: 5.5;
+        text-align: justify;
+
+    }
+
     * {
         margin: 0;
         padding: 0;
@@ -69,78 +84,51 @@
     }
 
 
-#container {
-    display: flex;
-    justify-content: center;
-    /* centraliza as divs horizontalmente */
-}
 
-#div.menu-bar ul ul {
-    display: none;
-}
+    #div.menu-bar ul ul {
+        display: none;
+    }
 
-#div.menu-bar li:hover>ul {
-    display: block;
-}
+    #div.menu-bar li:hover>ul {
+        display: block;
+    }
 
-
-table {
-    border-collapse: separate;
-    width: 90%;
-    max-width: 90%;
-    margin: 0 auto;
-    border-radius: 8px;
-    border-style: hidden;
-    box-shadow: 0 0 0 2px #5c2472;
-    background-color: white;
-}
-
-th,
-td {
-    border-collapse: separate;
-    padding: 6px 4px;
-    text-align: center;
-    border: solid #5c2472 2px;
-    min-width: 20px;
-}
-
-th {
-    text-align: center;
-    background-color: #5c2472;
-    color: #fff;
-}
-
-/* #myPopup {
+    /* #myPopup {
   display: none;
 } */
 
-.popup {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 300px;
-    height: 180px;
-    padding: 15px;
-    border: solid 1px #5c2472;
-    background: white;
-    display: none;
-}
+    .popup {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 300px;
+        height: 180px;
+        padding: 15px;
+        border: solid 1px #5c2472;
+        background: white;
+        display: none;
+    }
 
-#botao-action,
-#fundo1 {
-    background-color: #5c2472;
-    text-align: center;
-    border-radius: 5px;
-    color: white;
-}
+    #botao-action,
+    #fundo1 {
+        background-color: #5c2472;
+        text-align: center;
+        border-radius: 5px;
+        color: white;
+    }
 
-button {
-    background: #5c2472;
-    border: solid #5c2472 2px;
-}
+    section {
+        width: 95%;
+        right: 0;
+    }
+
+    button {
+        background: #5c2472;
+        border: solid #5c2472 2px;
+    }
 </style>
 <script>
 
@@ -170,7 +158,7 @@ button {
             //  }, 100);
         });
     }
-    
+
 </script>
 
 <body>
@@ -403,48 +391,21 @@ button {
             </li>
         </ul>
     </nav> <!--  menu-lateral -->
-    <section>
-        <div class="absolute inset-x-0 top-9 h-16  flex justify-center items-center">
-            <h1 class="text-8xl font-literata">Avaliação de Superiores</h1>
+    <div class="teste">
+        <h1 class="flex justify-center items-center py-10 text-3xl">
+            Avaliação de Superiores</h1>
+        <div class="justify-center items-center pt-10 flex flex-col">
+            <div id="questao" class="flex justify-center items-center bg-gray-400">
+                Estamos te ouvindo. Deixe um comentário sobre seu superior!
+            </div>
+            <textarea class="">
+                Digite sua opinião!
+            </textarea>
         </div>
+    </div>
 
-        <div>
-            <table class=" items-center justify-items overflow-x-auto">
-                <thead>
-                    <tr>
-                        <th class="w-8"></th>
-                        <th class="w-16">Questão</th>
-                        <th>Descrição</th>
-                        <th class="w-16">Tipo</th>
-                        <th class="w-16">Editar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr data-th-each="questao : ${questoes}" class="items-center justify-items">
-                        <td><input type="checkbox"></td>
-                        <td data-th-text="${questao.id}"></td>
-                        <td data-th-text="${questao.descricao}"></td>
-                        <td data-th-text="${questao.tipo}"></td>
-                        <td>
-                            <div class="items-center justify-items">
-                                <a th:href="@{'/edit/'+${questao.id}}" title="Editar" id="botao-action" type="button"
-                                    class="w-flex p-2 focus:outline-none" method="get">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-pen" viewBox="0 0 16 16">
-                                        <path
-                                            d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
-                                    </svg>
-                                </a>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-    </section>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js">
+    </script>
 </body>
 
 </html>
