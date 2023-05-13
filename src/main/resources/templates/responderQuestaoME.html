@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questao Aberta</title>
+    <link rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
+
+</head>
+<style>
+    #questao {
+        background-color: #5c2472;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-color: #5c2472;
+        width: 700px;
+        height: 100px;
+        color: #f0f0f0;
+    }
+
+    #resposta {
+        background-color: #f0f0f0;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border-color: #5c2472;
+        width: 700px;
+        height: 100px;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: 0;
+        font-family: 'Outfit', sans-serif;
+    }
+
+    body {
+        height: 100vh;
+        background-color: #D9D9D9;
+    }
+
+    nav.menu-lateral {
+        width: 90px;
+        height: 100%;
+        background-color: #5c2472;
+        padding: 40px 0 40px 1%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        transition: .3s;
+    }
+
+    span {
+        display: none;
+    }
+
+    .btn-expandir {
+        width: 100%;
+        padding-left: 10px;
+        color: #fff;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+
+    ul {
+        height: 100%;
+        list-style-type: none;
+    }
+
+    ul li.item-menu {
+        color: #fff;
+        text-decoration: none;
+        display: flex;
+    }
+
+    #sidebar-toggle-item {
+        display: none;
+    }
+
+
+    /* #myPopup {
+  display: none;
+} */
+
+    .popup {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 300px;
+        height: 180px;
+        padding: 15px;
+        border: solid 1px #5c2472;
+        background: white;
+        display: none;
+    }
+
+    #botao-action,
+    #fundo1 {
+        background-color: #5c2472;
+        text-align: center;
+        border-radius: 5px;
+        color: white;
+    }
+</style>
+
+<body>
+
+    <section>
+        <nav class="menu-lateral">
+            <div class="flex justify-center pb-5">
+                <img src="../static/images/logoPrati.png" alt="" class="w-36 pr-3">
+            </div>
+        </nav> <!--  menu-lateral -->
+        <div class="teste">
+            <h1 class="flex justify-center items-center py-10 text-3xl">
+                Avaliação de Superiores</h1>
+            <div th:value="${#}"
+                class="grid grid-cols-10 justify-items items-center inline-block flex flex-row pr-0 gap-x-2">
+                <div class="col-start-4">
+                    #Questão
+                </div>
+                <div th:value="${#}" class="col-end-8">
+                    #Nome do Avaliado
+                </div>
+            </div>
+            <div class="justify-center items-center pt-12 flex flex-col">
+                <div th:value="${#}" id="questao" class="flex justify-center items-center">
+                    Selecione as características que mais o agradam em
+                    relação ao seu superior.
+                </div>
+                <div id="resposta" type="" th:value="${#}" class="flex flex-col">
+                    <input type="checkbox">
+                    <input type="checkbox">
+                    <input type="checkbox">
+                    <input type="checkbox">
+                    <input type="checkbox">
+                </div>
+
+
+            </div>
+        </div>
+        <form action="#" method="post">
+            <div>
+                <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                    <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20">
+                        <path
+                            d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
+                    </svg>
+                </span>
+            </div>
+            <form action="">
+                <div class="grid grid-cols-12 justify-items items-center inline-block flex flex-row pr-0 gap-4 gap-x-2">
+                    <div class="col-start-4 col-span-2 py-4">
+                        <form>
+                            <button id="fundo1" method="#"
+                                class="w-fit h-fit py-1 px-6 bg-white rounded">Anterior</button>
+                        </form>
+                    </div>
+                    <div class="col-start-9 col-span-2 w-fit">
+                        <button id="fundo1" class="w-fit h-fit py-1 px-6 bg-white rounded">Finalizar</button>
+                    </div>
+                </div>
+            </form>
+        </form>
+    </section>
+</body>
+
+</html>
