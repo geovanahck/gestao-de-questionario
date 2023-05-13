@@ -2,6 +2,7 @@ package com.sqhg.controllers;
 
 import com.sqhg.entities.Administrador;
 import com.sqhg.forms.AdministradorForm;
+import com.sqhg.repositories.AdministradorRepository;
 import com.sqhg.services.AdministradorService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -55,12 +56,11 @@ public class AdministradorController {
         String keyword = search.orElse(null);
 
         Page<Administrador> administradorPage = administradorService
-                .acharAdministradoresPorPagina(currentPage, pageSize, keyword);                
+                .acharAdministradoresPorPagina(currentPage, pageSize, keyword);
 
         model.addAttribute("administradores", administradorPage);
-        model.addAttribute("pages", currentPage);
-        model.addAttribute("pageSize", pageSize);           
-
+        model.addAttribute("page", currentPage);
+        model.addAttribute("pageSize", pageSize);
         return "listaAdm";
     }
 
