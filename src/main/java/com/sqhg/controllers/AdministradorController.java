@@ -51,9 +51,13 @@ public class AdministradorController {
             @RequestParam(name = "pageSize") Optional<Integer> size,
             @RequestParam(name = "page") Optional<Integer> page) {
 
-        int currentPage = page.orElse(1) - 1;
+        int currentPage = page.orElse(0);
         int pageSize = size.orElse(10);
         String keyword = search.orElse(null);
+        
+        if (currentPage < 0) {
+            currentPage = 0;
+        }
 
         Page<Administrador> administradorPage = administradorService
                 .acharAdministradoresPorPagina(currentPage, pageSize, keyword);
@@ -65,7 +69,7 @@ public class AdministradorController {
     }
 
     @GetMapping(value = "/editar/{id}")
-    public String telaEditarAdministrador(Model model, @RequestParam(name = "id") Long id) {
+    public String telaEditarAdministrador(Model model, @PathVariable(name = "id") Long id) {
         Administrador administrador = administradorService.acharAdministradorPorId(id).orElse(null);
         model.addAttribute("administrador", administrador);
         return "editarAdm";

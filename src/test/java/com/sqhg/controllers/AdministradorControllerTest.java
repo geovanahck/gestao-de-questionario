@@ -1,41 +1,34 @@
 package com.sqhg.controllers;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import java.util.Optional;
-
-import org.junit.Before;
-import org.junit.Test;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.ui.ExtendedModelMap;
 
 import com.sqhg.entities.Administrador;
-import com.sqhg.repositories.AdministradorRepository;
 
 public class AdministradorControllerTest {
 
-    private AdministradorRepository administradorRepository;
     private AdministradorController administradorController;
 
-    @Before
-    public void setUp() {
-        administradorRepository = mock(AdministradorRepository.class);
-        
+    @org.junit.jupiter.api.Test
+    public void testTelaEditarAdministrador() {
+        // Crie um objeto Model e um objeto AdministradorService para usar no teste
+        ExtendedModelMap model = new ExtendedModelMap();
+
+        // Defina o ID de um administrador existente para editar
+        Long id = 1L;
+
+        // Chame o método telaEditarAdministrador
+        String resultado = administradorController.telaEditarAdministrador(model, id);
+
+        // Verifique se o resultado é o esperado
+        assertEquals("editarAdm", resultado);
+
+        // Verifique se o objeto Administrador foi adicionado ao Model corretamente
+        Administrador administrador = (Administrador) model.getAttribute("administrador");
+        assertNotNull(administrador);
+        assertEquals(id, administrador.getId());
     }
 
-    @Test
-    public void testFuncaoEditarAdministrador() throws IllegalAccessException {
-        // given
-        Administrador administrador = new Administrador();
-        long id = 1;
-        when(administradorRepository.findById(id)).thenReturn(Optional.of(administrador));
-
-        // when
-        ModelAndView modelAndView = administradorController.irParaTelaAdministrador(1, null, administrador);
-
-        // assert
-        assertEquals("editarAdm", modelAndView.getViewName());
-        assertEquals(administrador, modelAndView.getModel().get("administrador"));
-    }
 }
