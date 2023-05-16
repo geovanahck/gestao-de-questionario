@@ -15,6 +15,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
     
+    <script rel="javascript" type="text/javascript" th:src="@{/scripts/menu.js}"></script>
 </head>
 
 
@@ -114,8 +115,7 @@
                     </div>
                     <div class="pt-4 ">
                         <div class="botao text-white flex align-items-center">
-                            <button name="page" th:href="@{|/adm?page|}" th:value="${page}-1"
-                                th:classappend="${page == 0} ? 'disabled'">
+                            <button name="page" th:value="${page}-1" th:classappend="${page == 0} ? 'disabled'">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-caret-left-fill w-5" viewBox="0 0 16 16">
                                     <path

@@ -2,7 +2,7 @@ package com.sqhg.controllers;
 
 import com.sqhg.entities.Administrador;
 import com.sqhg.forms.AdministradorForm;
-import com.sqhg.repositories.AdministradorRepository;
+
 import com.sqhg.services.AdministradorService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -14,9 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.IntStream;
 
 @Controller
 @RequestMapping(value = "/administradores")
@@ -54,10 +52,6 @@ public class AdministradorController {
         int currentPage = page.orElse(0);
         int pageSize = size.orElse(10);
         String keyword = search.orElse(null);
-        
-        if (currentPage < 0) {
-            currentPage = 0;
-        }
 
         Page<Administrador> administradorPage = administradorService
                 .acharAdministradoresPorPagina(currentPage, pageSize, keyword);
