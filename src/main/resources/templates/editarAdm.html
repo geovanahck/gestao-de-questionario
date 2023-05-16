@@ -22,14 +22,14 @@
 <body class="overflow-y-auto">
     <div class="flex flex-row">
         <div class="flex-grow ">
-            <div class="w-full h-24 l-bege flex items-center justify-center ">
-                <h1 class=" dark:text-black text-center titulo">Editar Administrador</h1>
+            <div style="background-color: #fff" class="flex justify-center items-center md:py-10 sm:py-6">
+                <h1 class="dark:text-black text-center titulo">Editar Administrador</h1>
             </div>
             <form th:href="@{/administradores/editar/{id}(id=${administrador.id})}" th:object=" ${administrador}"
                 method="post">
                 <div
-                    class="flex flex-col justify-center items-center pt-10 space-y-2 h-auto overflow-y-auto items-center">
-                    <div class="flex flex-row justify-center w-2/3 pt-3">
+                    class="flex flex-col justify-center items-center pt-4 space-y-2 h-auto overflow-y-auto items-center">
+                    <div class="flex flex-row justify-center w-4/5 pt-2">
                         <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
                             <h2 class="fonte-poppins">Crachá</h2>
                         </div>
@@ -42,7 +42,7 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-row justify-center w-2/3 pt-5">
+                    <div class="flex flex-row justify-center w-4/5 pt-4">
                         <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
                             <h2 class="fonte-poppins">Nome</h2>
                         </div>
@@ -55,7 +55,7 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-row justify-center w-2/3 pt-5">
+                    <div class="flex flex-row justify-center w-4/5 pt-4">
                         <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
                             <h2 class="fonte-poppins">Data de Nascimento</h2>
                         </div>
@@ -68,7 +68,7 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-row justify-center w-2/3 pt-5">
+                    <div class="flex flex-row justify-center w-4/5 pt-4">
                         <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
                             <h2 class="fonte-poppins">E-mail</h2>
                         </div>
@@ -81,7 +81,7 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-row justify-center w-2/3 pt-5">
+                    <div class="flex flex-row justify-center w-4/5 pt-4">
                         <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
                             <h2 class="fonte-poppins">Telefone</h2>
                         </div>
@@ -94,7 +94,7 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-row justify-center w-2/3 pt-5">
+                    <div class="flex flex-row justify-center w-4/5 pt-4">
                         <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
                             <h2 class="fonte-poppins">Senha</h2>
                         </div>
@@ -107,7 +107,7 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-row justify-center w-2/3 pt-5">
+                    <div class="flex flex-row justify-center w-4/5 pt-4">
                         <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
                             <h2 class="fonte-poppins">Confirmação de Senha</h2>
                         </div>
@@ -118,15 +118,14 @@
 
                         </div>
                     </div>
-                    <div class="flex flex-row justify-end w-2/3 pb-5 px-8 pt-6">
-                        <div class="h-14 w-48 purple-color rounded-lg fonte-poppins">
-                            <a class="text-center text-white">
-                                Cancelar
-                            </a>
+                    <div class="flex flex-row justify-end items-center w-3/5 pb-5 px-8 pt-6">
+                        <div>
+                            <a th:href="@{/administradores/lista}" style="background-color: #5c2472"
+                                class="appearance-none h-14 w-36 text-center text-white rounded-lg ml-2 fonte-poppins">Cancelar</a>
                         </div>
                         <div>
                             <button type="submit" style="background-color: #5c2472"
-                                class="appearance-none h-14 w-48 text-center text-white rounded-lg ml-2 fonte-poppins">Gravar</button>
+                                class="appearance-none h-14 w-36 text-center text-white rounded-lg ml-2 fonte-poppins">Gravar</button>
                         </div>
                     </div>
                 </div>

@@ -12,30 +12,32 @@
         integrity="sha512-N/OZl1+hZG8f+RYXmO6nt/iTp+51GkNYjKwHcP/MJQYSI2AXZT0HICWjJ9++vq3r3t+3PLQ8WYtHnKxPYfZFZA=="
         crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" th:href="@{/styles/listaAdm.css}" />
+    <link rel="stylesheet" type="text/css" href="/src/main/resources/static/styles/listaAdm.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
-    
+
     <script rel="javascript" type="text/javascript" th:src="@{/scripts/menu.js}"></script>
+    <script rel="javascript" type="text/javascript" src="/src/main/resources/static/scripts/menu.js"></script>
 </head>
 
 
 <body class="overflow-scroll">
-    <h1 class="flex justify-center items-center pb-10 pt-4 text-3xl">
-        Lista de Administradores
-    </h1>
-    <div class="background justify-center items-center pt-10 flex flex-col ">
-        <div class=" w-2/4 justify-center tems-center">
+    <div style="background-color: #fff" class="flex justify-center items-center md:py-12 sm:py-6">
+        <h1 class="dark:text-black text-center titulo">Lista de Administradores</h1>
+    </div>
+    <div class="background items-center pt-6 flex flex-col">
+        <div class="w-2/4 justify-center items-center">
             <form th:href="@{/administradores/lista}" method="GET">
                 <div class="pb-16 w-full flex justify-center items-center flex flex-col">
                     <div id="pesquisa" class="p-1 relative w-4/5">
                         <input name="search" type="text" class=" p-1 block w-full" placeholder="Encontrar">
                         <button id="fundo" name="pesquisar"
-                            class="absolute inset-y-0 right-0 flex items-center outline-none" type="submit">
+                            class="absolute inset-y-0 right-0 flex items-center focus:outline-none" type="submit">
                             <svg class="h-3.5 w-10 text-white" xmlns="http://www.w3.org/2000/svg" width="5" height="5"
                                 fill="currentColor" viewBox="0 0 16 16">
                                 <path
                                     d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 
-                                            1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                                               1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                             </svg>
                         </button>
                     </div>
@@ -71,8 +73,8 @@
                                             </a>
                                         </div>
                                         <div class="flex w-8 items-center">
-                                            <a id="botao-action" title="Excluir" class="p-2 focus:outline-none"
-                                                method="get" th:href="@{/administradores/excluir/{id}(id=${adm.id})}">
+                                            <a id="botao-action" title="Excluir" onclick="openPopup()"
+                                                class="p-2 focus:outline-none">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     viewBox="0 0 16 16">
                                                     <g fill="currentColor">
@@ -90,10 +92,11 @@
                         </tr>
                     </tbody>
                 </table>
-                <div class="flex pb-5 justify-between">
+                <div class="flex justify-between">
                     <div class="flex">
                         <div class="flex items-center pt-4 ">
-                            <select name="pageSize" class="pl-2" id="quantpag" onchange="this.form.submit()">
+                            <select name="pageSize" class="pl-2 focus:outline-none" id="quantpag"
+                                onchange="this.form.submit()">
                                 <option name="size10" th:value="10" th:select="${pageSize}"
                                     th:selected="${pageSize == 10}">
                                     <label> 10 </label>
@@ -115,7 +118,8 @@
                     </div>
                     <div class="pt-4 ">
                         <div class="botao text-white flex align-items-center">
-                            <button name="page" th:value="${page}-1" th:classappend="${page == 0} ? 'disabled'">
+                            <button name="page" class="focus:outline-none" th:value="${page}-1"
+                                th:classappend="${page == 0} ? 'disabled'">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-caret-left-fill w-5" viewBox="0 0 16 16">
                                     <path
@@ -125,8 +129,8 @@
                             <div class="bg-white text-black-50 w-6">
                                 <span th:text="${page+1}"></span>
                             </div>
-                            <button name="page" th:href="@{|/adm?page|}" th:value="${page}+1"
-                                th:classappend="${(page+1) == totalPage} ? 'disabled'">
+                            <button name="page" class="focus:outline-none" th:href="@{|/adm?page|}"
+                                th:value="${page}+1">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-caret-right-fill w-5" viewBox="0 0 16 16">
                                     <path
@@ -138,8 +142,24 @@
                 </div>
             </form>
         </div>
-
     </div>
+    <div id="popup" class="hidden flex flex-col justify-between">
+        <div>
+            <span class="text-md">Tem certeza que deseja excluir este administrador?</span>
+        </div>
+        <div class="justify-items items-center inline-block flex flex-row-reverse pt-16 gap-x-2">
+            <div class="w-flex">
+                <button class="w-fit h-fit py-1 text-white px-3 rounded" onclick="closePopup()"
+                    th:value="${administradores.id}" th:object="${administradores}" id="fundo1"
+                    th:href="@{/administradores/excluir/{id}(id=${adm.id})}" method="POST">Sim</button>
+            </div>
+            <div class="w-flex">
+                <button onclick="closePopup();" id="fundo1"
+                    class="w-fit h-fit py-1 text-white px-3 rounded">Não</button>
+            </div>
+        </div>
+    </div>
+
 
     <nav class="menu-lateral flex justify-center items-center" onmouseover="mostrarMenu()" onmouseout="esconderMenu()">
         <div class="flex justify-center pb-5">

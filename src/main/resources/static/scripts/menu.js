@@ -35,3 +35,14 @@ function mostrarMenu() {
         svgIcon.style.display = "block";
     });
 }
+
+function openPopup() {
+    document.getElementById('popup').style.display = 'block';
+    // popup.classList.add("");
+    // popup.style.display = "block";
+}
+
+function closePopup() {
+    var popup = document.getElementById("popup");
+    popup.style.display = "none";
+}

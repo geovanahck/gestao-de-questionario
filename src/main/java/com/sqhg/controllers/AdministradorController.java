@@ -75,12 +75,15 @@ public class AdministradorController {
         if (result.hasErrors()) {
             return "cadAdministrador";
         }
-        if (!administradorForm.getSenha().equals(administradorForm.getConfirmacaoSenha())) {
-            result.rejectValue("confirmacaoSenha", "", "Senhas não correspondem.");
-            return "cadAdministrador";
+        if (administradorForm.getSenha() != null) {
+            if (!administradorForm.getSenha().equals(administradorForm.getConfirmacaoSenha())) {
+                result.rejectValue("confirmacaoSenha", "", "Senhas não correspondem.");
+                return "cadAdministrador";
+            }
         }
         administradorService.salvarAdministradorPorForm(administradorForm);
         return "redirect:/users";
+
     }
 
     @GetMapping(value = ("/excluir/{id}"))

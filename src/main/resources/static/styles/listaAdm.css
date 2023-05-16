@@ -7,6 +7,13 @@
     border-radius: 8px;
 }
 
+.titulo {
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+}
+
 .alert {
     width: 40%;
 }
@@ -46,10 +53,11 @@ input {
     outline: none;
 }
 
-.background {
+
+body {
     background-color: #D8D8D9;
-    border-radius: 0.375rem;
 }
+
 
 table {
     border-collapse: separate;
@@ -87,6 +95,29 @@ td {
     text-align: center;
     border: solid #5c2472 3px;
     height: 35px;
+}
+
+#popup {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 300px;
+    height: 180px;
+    padding: 15px;
+    border: solid 1px #5c2472;
+    background: white;
+    display: none;
+}
+
+
+#fundo1 {
+    background-color: #5c2472;
+    text-align: center;
+    border-radius: 5px;
+    color: black;
 }
 
 /* sidebar */

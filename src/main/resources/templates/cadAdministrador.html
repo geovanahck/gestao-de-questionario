@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/src/main/resources/static/styles/cadAdministrador.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
     <script rel="javascript" type="text/javascript" th:src="@{/scripts/menu.js}"></script>
+    <script rel="javascript" type="text/javascript" src="/src/main/resources/static/scripts/menu.js"></script>
 </head>
 
 <style>
@@ -22,14 +23,14 @@
 
 <body class="overflow-scroll">
     <div class="flex flex-row">
-        <div class="flex-grow ">
-            <div class="w-full h-24 l-bege flex items-center justify-center ">
-                <h1 class=" dark:text-black text-center titulo">Cadastro de Administrador</h1>
+        <div class="content flex-grow">
+            <div style="background-color: #fff" class="flex justify-center items-center md:py-10 sm:py-6">
+                <h1 class="dark:text-black text-center titulo">Cadastro de Administrador</h1>
             </div>
             <form th:href="@{/administradores/novo}" th:object=" ${administrador}" method="post">
                 <div
-                    class="flex flex-col justify-center items-center pt-10 space-y-2 h-auto overflow-y-auto items-center">
-                    <div class="flex flex-row justify-center w-2/3 pt-3">
+                    class="background flex flex-col justify-center items-center pt-4 space-y-2 h-auto overflow-y-auto items-center">
+                    <div class="flex flex-row justify-center w-4/5 pt-2">
                         <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
                             <h2 class="fonte-poppins">Crachá</h2>
                         </div>
@@ -42,7 +43,7 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-row justify-center w-2/3 pt-5">
+                    <div class="flex flex-row justify-center w-4/5 pt-4">
                         <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
                             <h2 class="fonte-poppins">Nome</h2>
                         </div>
@@ -55,8 +56,9 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-row justify-center w-2/3 pt-5">
-                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                    <div class="flex flex-row justify-center w-4/5 pt-4">
+                        <div
+                            class="flex items-center justify-center align-items-center h-10 w-48 purple-color rounded-l-full text-white">
                             <h2 class="fonte-poppins">Data de Nascimento</h2>
                         </div>
                         <div class="input-container rounded-lg w-3/6">
@@ -68,7 +70,7 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-row justify-center w-2/3 pt-5">
+                    <div class="flex flex-row justify-center w-4/5 pt-4">
                         <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
                             <h2 class="fonte-poppins">E-mail</h2>
                         </div>
@@ -81,7 +83,7 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-row justify-center w-2/3 pt-5">
+                    <div class="flex flex-row justify-center w-4/5 pt-4">
                         <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
                             <h2 class="fonte-poppins">Telefone</h2>
                         </div>
@@ -94,7 +96,7 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-row justify-center w-2/3 pt-5">
+                    <div class="flex flex-row justify-center w-4/5 pt-4">
                         <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
                             <h2 class="fonte-poppins">Senha</h2>
                         </div>
@@ -107,7 +109,7 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-row justify-center w-2/3 pt-5">
+                    <div class="flex flex-row justify-center w-4/5 pt-4">
                         <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
                             <h2 class="fonte-poppins">Confirmação de Senha</h2>
                         </div>
@@ -119,15 +121,14 @@
                                 class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
                         </div>
                     </div>
-                    <div class="flex flex-row justify-end w-2/3 pb-5 px-8 pt-6">
-                        <div style="background-color: #5c2472" class="h-14 w-48 text-center text-white rounded-lg ml-2 fonte-poppins">
-                            <a>
-                                Cancelar
-                            </a>
+                    <div class="flex flex-row items-center justify-end w-3/5 pb-5 px-8 pt-6">
+                        <div style="background-color: #5c2472"
+                            class="appearance-none h-14 w-36 text-center text-white rounded-lg ml-2 fonte-poppins">
+                            <a th:href="@{/administradores/lista}">Cancelar</a>
                         </div>
                         <div>
                             <button type="submit" style="background-color: #5c2472"
-                                class="appearance-none h-14 w-48 text-center text-white rounded-lg ml-2 fonte-poppins">Gravar</button>
+                                class="appearance-none h-14 w-36 text-center text-white rounded-lg ml-2 fonte-poppins">Gravar</button>
                         </div>
                     </div>
                 </div>
@@ -201,7 +202,7 @@
                 </ul>
             </li>
 
-            <li class="p-2 md:pt-4 lg:pt-8 justify-center items-center">
+            <li class="p-2 justify-center items-center">
                 <a class="flex justify-center items-center p-2 text-white rounded-lg bg-[#853a9e] group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]"
                     aria-controls="dropdown-example1" data-collapse-toggle="dropdown-example1">
                     <svg fill="#ffffff" width="24px" height="24px" viewBox="0 0 32 32" version="1.1"
@@ -256,7 +257,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="p-2 md:pt-4 lg:pt-8 justify-center items-center">
+            <li class="p-2 justify-center items-center">
                 <a href="#"
                     class="flex items-center p-2 text-white bg-[#853a9e] rounded-lg dark:text-white hover:bg-gray-900 dark:hover:bg-[#1E1E1E]">
                     <svg fill="#ffffff" width="24px" height="24px" viewBox="0 0 64 64" version="1.1"
