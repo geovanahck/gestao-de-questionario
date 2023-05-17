@@ -2,7 +2,6 @@ package com.sqhg.controllers;
 
 import com.sqhg.entities.Administrador;
 import com.sqhg.forms.AdministradorForm;
-
 import com.sqhg.services.AdministradorService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -73,16 +72,19 @@ public class AdministradorController {
     public String editarAdministrador(@Valid @ModelAttribute("administrador") AdministradorForm administradorForm,
             BindingResult result) {
         if (result.hasErrors()) {
-            return "cadAdministrador";
+            return "editarAdm";
+        }
+        if (!administradorForm.getSenha().equals(administradorForm.getConfirmacaoSenha())) {
+            result.rejectValue("confirmacaoSenha", "", "Senhas não correspondem.");
+            return "editarAdm";
         }
         if (administradorForm.getSenha() != null) {
             if (!administradorForm.getSenha().equals(administradorForm.getConfirmacaoSenha())) {
                 result.rejectValue("confirmacaoSenha", "", "Senhas não correspondem.");
                 return "cadAdministrador";
-            }
         }
         administradorService.salvarAdministradorPorForm(administradorForm);
-        return "redirect:/users";
+        return "redirect:/administradores/lista";
 
     }
 

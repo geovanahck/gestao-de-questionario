@@ -25,13 +25,13 @@
             <div style="background-color: #fff" class="flex justify-center items-center md:py-10 sm:py-6">
                 <h1 class="dark:text-black text-center titulo">Editar Administrador</h1>
             </div>
-            <form th:href="@{/administradores/editar/{id}(id=${administrador.id})}" th:object=" ${administrador}"
+            <form th:object=" ${administrador}" th:href="@{/administradores/editar/{id}(id=${administrador.id})}"
                 method="post">
                 <div
                     class="flex flex-col justify-center items-center pt-4 space-y-2 h-auto overflow-y-auto items-center">
                     <div class="flex flex-row justify-center w-4/5 pt-2">
                         <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <h2 class="fonte-poppins">Crachá</h2>
+                            <div class="fonte-poppins">Crachá</div>
                         </div>
                         <div class="input-container rounded-lg w-3/6">
                             <input
@@ -44,7 +44,7 @@
 
                     <div class="flex flex-row justify-center w-4/5 pt-4">
                         <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <h2 class="fonte-poppins">Nome</h2>
+                            <div class="fonte-poppins">Nome</div>
                         </div>
                         <div class="input-container rounded-lg w-3/6">
                             <input
@@ -57,7 +57,7 @@
 
                     <div class="flex flex-row justify-center w-4/5 pt-4">
                         <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <h2 class="fonte-poppins">Data de Nascimento</h2>
+                            <div class="fonte-poppins">Data de Nascimento</div>
                         </div>
                         <div class="input-container rounded-lg w-3/6">
                             <input
@@ -70,7 +70,7 @@
 
                     <div class="flex flex-row justify-center w-4/5 pt-4">
                         <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <h2 class="fonte-poppins">E-mail</h2>
+                            <div class="fonte-poppins">E-mail</div>
                         </div>
                         <div class="input-container rounded-lg w-3/6">
                             <input
@@ -83,7 +83,7 @@
 
                     <div class="flex flex-row justify-center w-4/5 pt-4">
                         <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <h2 class="fonte-poppins">Telefone</h2>
+                            <div class="fonte-poppins">Telefone</div>
                         </div>
                         <div class="input-container rounded-lg w-3/6">
                             <input
@@ -96,7 +96,7 @@
 
                     <div class="flex flex-row justify-center w-4/5 pt-4">
                         <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <h2 class="fonte-poppins">Senha</h2>
+                            <div class="fonte-poppins">Senha</div>
                         </div>
                         <div class="input-container rounded-lg w-3/6">
                             <input
@@ -109,7 +109,7 @@
 
                     <div class="flex flex-row justify-center w-4/5 pt-4">
                         <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <h2 class="fonte-poppins">Confirmação de Senha</h2>
+                            <div class="fonte-poppins">Confirmação de Senha</div>
                         </div>
                         <div class="input-container rounded-lg w-3/6">
                             <input
@@ -118,14 +118,19 @@
 
                         </div>
                     </div>
-                    <div class="flex flex-row justify-end items-center w-3/5 pb-5 px-8 pt-6">
-                        <div>
-                            <a th:href="@{/administradores/lista}" style="background-color: #5c2472"
-                                class="appearance-none h-14 w-36 text-center text-white rounded-lg ml-2 fonte-poppins">Cancelar</a>
+                    <div class="flex flex-reverse-row justify-end items-center w-3/5 pb-5 px-8 pt-6">
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <a type="button" th:href="@{/administradores/lista}"
+                                style="background-color: #5c2472; text-decoration: none;"
+                                class="flex h-12 w-32 items-center justify-center text-white rounded-lg ml-2 fonte-poppins">
+                                <div class="flex text-decoration: none;">
+                                    Cancelar
+                                </div>
+                            </a>
                         </div>
                         <div>
                             <button type="submit" style="background-color: #5c2472"
-                                class="appearance-none h-14 w-36 text-center text-white rounded-lg ml-2 fonte-poppins">Gravar</button>
+                                class="appearance-none h-12 w-32 text-center text-white rounded-lg ml-2 fonte-poppins">Gravar</button>
                         </div>
                     </div>
                 </div>

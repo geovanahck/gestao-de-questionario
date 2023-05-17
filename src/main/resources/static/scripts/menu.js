@@ -36,32 +36,11 @@ function mostrarMenu() {
     });
 }
 
-function openPopup(element) {
-    console.log(element);
+function openPopup() {
     document.getElementById('popup').style.display = 'block';
 }
 
 function closePopup() {
     var popup = document.getElementById("popup");
     popup.style.display = "none";
-}
-
-function deleteAdmin(adminId) {
-    console.log('bateu');
-    console.log(adminId);
-
-    fetch('/administradores/excluir/id', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ adminId: adminId }),
-    })
-        .then(response => {
-            // Lógica para lidar com a resposta da exclusão
-        })
-        .catch(error => {
-            // Lógica para lidar com erros
-        });
-
 }

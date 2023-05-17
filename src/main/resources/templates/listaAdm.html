@@ -12,13 +12,23 @@
         integrity="sha512-N/OZl1+hZG8f+RYXmO6nt/iTp+51GkNYjKwHcP/MJQYSI2AXZT0HICWjJ9++vq3r3t+3PLQ8WYtHnKxPYfZFZA=="
         crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" th:href="@{/styles/listaAdm.css}" />
-    <link rel="stylesheet" type="text/css" href="/src/main/resources/static/styles/listaAdm.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script rel="javascript" type="text/javascript" th:src="@{/scripts/menu.js}"></script>
-
-    <script rel="javascript" type="text/javascript" src="/src/main/resources/static/scripts/menu.js"></script>
 </head>
 
+<script>
+    var admins = /*[[${administradores}]]*/[];
+    console.log(admins);
+    function makeRequest(admin) {
+        axios.get('/administradores/excluir/' + admin.id)
+            .then(function (response) {
+                console.log(response.data);
+            })
+            .catch(function (error) {
+                console.error(error);
+            });
+    }
+</script>
 
 <body class="overflow-scroll">
     <nav class="menu-lateral flex justify-center items-center" onmouseover="mostrarMenu()" onmouseout="esconderMenu()">
@@ -303,7 +313,7 @@
                                             </a>
                                         </div>
                                         <div class="flex w-8 items-center">
-                                            <a id="botao-action" th:object="${adm}" title="Excluir" th:attr="data-admin-id=${adm.id}" onclick="openPopup(this.getAttribute('data-admin-id'))"
+                                            <button type="button" onclick="openPopup()" id="botao-action"
                                                 class="p-2 focus:outline-none">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     viewBox="0 0 16 16">
@@ -314,7 +324,26 @@
                                                             d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
                                                     </g>
                                                 </svg>
-                                            </a>
+                                            </button>
+                                            <div id="popup" class="hidden flex flex-col justify-between">
+                                                <div>
+                                                    <span class="text-md">Tem certeza que deseja excluir este
+                                                        administrador?</span>
+                                                </div>
+                                                <div
+                                                    class="justify-items items-center inline-block flex flex-row-reverse pt-16 gap-x-2">
+                                                    <div class="w-flex">
+                                                        <button type="button"
+                                                            th:href="@{/administradores/editar/{id}(id=${adm.id})}"
+                                                            class="w-fit h-fit py-1 text-white px-3 rounded"
+                                                            onclick="closePopup()" id=" fundo1">Sim</button>
+                                                    </div>
+                                                    <div class="w-flex">
+                                                        <button onclick="closePopup()" id="fundo1"
+                                                            class="w-fit h-fit py-1 text-white px-3 rounded">Não</button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -371,23 +400,6 @@
                     </div>
                 </div>
             </form>
-        </div>
-    </div>
-
-    <div id="popup" class="hidden flex flex-col justify-between">
-        <div>
-            <span class="text-md">Tem certeza que deseja excluir este
-                administrador?</span>
-        </div>
-        <div class="justify-items items-center inline-block flex flex-row-reverse pt-16 gap-x-2">
-            <div class="w-flex">
-                <button class="w-fit h-fit py-1 text-white px-3 rounded" onclick="deleteAdmin()"
-                    id="fundo1">Sim</button>
-            </div>
-            <div class="w-flex">
-                <button onclick="closePopup();" id="fundo1"
-                    class="w-fit h-fit py-1 text-white px-3 rounded">Não</button>
-            </div>
         </div>
     </div>
 
