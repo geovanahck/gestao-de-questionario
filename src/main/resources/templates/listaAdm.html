@@ -14,153 +14,13 @@
     <link rel="stylesheet" type="text/css" th:href="@{/styles/listaAdm.css}" />
     <link rel="stylesheet" type="text/css" href="/src/main/resources/static/styles/listaAdm.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
-
     <script rel="javascript" type="text/javascript" th:src="@{/scripts/menu.js}"></script>
+
     <script rel="javascript" type="text/javascript" src="/src/main/resources/static/scripts/menu.js"></script>
 </head>
 
 
 <body class="overflow-scroll">
-    <div style="background-color: #fff" class="flex justify-center items-center md:py-12 sm:py-6">
-        <h1 class="dark:text-black text-center titulo">Lista de Administradores</h1>
-    </div>
-    <div class="background items-center pt-6 flex flex-col">
-        <div class="w-2/4 justify-center items-center">
-            <form th:href="@{/administradores/lista}" method="GET">
-                <div class="pb-16 w-full flex justify-center items-center flex flex-col">
-                    <div id="pesquisa" class="p-1 relative w-4/5">
-                        <input name="search" type="text" class=" p-1 block w-full" placeholder="Encontrar">
-                        <button id="fundo" name="pesquisar"
-                            class="absolute inset-y-0 right-0 flex items-center focus:outline-none" type="submit">
-                            <svg class="h-3.5 w-10 text-white" xmlns="http://www.w3.org/2000/svg" width="5" height="5"
-                                fill="currentColor" viewBox="0 0 16 16">
-                                <path
-                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 
-                                               1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-                <table>
-                    <thead>
-                        <tr class="h-12">
-                            <th>Crachá</th>
-                            <th>Nome</th>
-                            <th>Telefone</th>
-                            <th>Email</th>
-                            <th class="w-10">Ação</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr name="admin" th:each="adm : ${administradores}">
-                            <td th:object="${adm}" th:value="${adm.id}" th:text="${adm.cracha}"></td>
-                            <td th:text="${adm.nome}"></td>
-                            <td th:text="${adm.telefone}"></td>
-                            <td th:text="${adm.email}"></td>
-                            <td class="w-24">
-                                <div class="items-center justify-items">
-                                    <div class="flex flex-row items-center justify-center ">
-                                        <div class="flex w-10 justify-center items-center">
-                                            <a title="Editar" id="botao-action" type="button"
-                                                class="w-flex p-2 focus:outline-none" method="get" th:object="${adm}"
-                                                th:href="@{/administradores/editar/{id}(id=${adm.id})}">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
-                                                    <path
-                                                        d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
-                                                </svg>
-                                            </a>
-                                        </div>
-                                        <div class="flex w-8 items-center">
-                                            <a id="botao-action" title="Excluir" onclick="openPopup()"
-                                                class="p-2 focus:outline-none">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    viewBox="0 0 16 16">
-                                                    <g fill="currentColor">
-                                                        <path
-                                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
-                                                        <path
-                                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
-                                                    </g>
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="flex justify-between">
-                    <div class="flex">
-                        <div class="flex items-center pt-4 ">
-                            <select name="pageSize" class="pl-2 focus:outline-none" id="quantpag"
-                                onchange="this.form.submit()">
-                                <option name="size10" th:value="10" th:select="${pageSize}"
-                                    th:selected="${pageSize == 10}">
-                                    <label> 10 </label>
-                                </option>
-                                <option name="size20" th:value="20" th:select="${pageSize}"
-                                    th:selected="${pageSize == 20}">
-                                    <label> 20 </label>
-                                </option>
-                                <option name="size30" th:value="30" th:select="${pageSize}"
-                                    th:selected="${pageSize == 30}">
-                                    <label> 30 </label>
-                                </option>
-                                <option name="size40" th:value="40" th:select="${pageSize}"
-                                    th:selected="${pageSize == 40}">
-                                    <label> 40 </label>
-                                </option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="pt-4 ">
-                        <div class="botao text-white flex align-items-center">
-                            <button name="page" class="focus:outline-none" th:value="${page}-1"
-                                th:classappend="${page == 0} ? 'disabled'">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-caret-left-fill w-5" viewBox="0 0 16 16">
-                                    <path
-                                        d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
-                                </svg>
-                            </button>
-                            <div class="bg-white text-black-50 w-6">
-                                <span th:text="${page+1}"></span>
-                            </div>
-                            <button name="page" class="focus:outline-none" th:href="@{|/adm?page|}"
-                                th:value="${page}+1">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-caret-right-fill w-5" viewBox="0 0 16 16">
-                                    <path
-                                        d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div id="popup" class="hidden flex flex-col justify-between">
-        <div>
-            <span class="text-md">Tem certeza que deseja excluir este administrador?</span>
-        </div>
-        <div class="justify-items items-center inline-block flex flex-row-reverse pt-16 gap-x-2">
-            <div class="w-flex">
-                <button class="w-fit h-fit py-1 text-white px-3 rounded" onclick="closePopup()"
-                    th:value="${administradores.id}" th:object="${administradores}" id="fundo1"
-                    th:href="@{/administradores/excluir/{id}(id=${adm.id})}" method="POST">Sim</button>
-            </div>
-            <div class="w-flex">
-                <button onclick="closePopup();" id="fundo1"
-                    class="w-fit h-fit py-1 text-white px-3 rounded">Não</button>
-            </div>
-        </div>
-    </div>
-
-
     <nav class="menu-lateral flex justify-center items-center" onmouseover="mostrarMenu()" onmouseout="esconderMenu()">
         <div class="flex justify-center pb-5">
             <img th:src="@{/images/logoPrati.png}" alt="" class="pt-8 w-36 pr-3">
@@ -391,5 +251,148 @@
             </li>
         </ul>
     </nav> <!--  menu-lateral -->
-    <script rel="javascript" type="text/javascript" th:href="@{/scripts/menu.js}"></script>
+
+    <div style="background-color: #fff" class="flex justify-center items-center md:py-12 sm:py-6">
+        <h1 class="dark:text-black text-center titulo">Lista de Administradores</h1>
+    </div>
+    <div class="background items-center pt-6 flex flex-col">
+        <div class="w-2/4 justify-center items-center">
+            <form th:href="@{/administradores/lista}" method="GET">
+                <div class="pb-16 w-full flex justify-center items-center flex flex-col">
+                    <div id="pesquisa" class="p-1 relative w-4/5">
+                        <input name="search" type="text" class=" p-1 block w-full" placeholder="Encontrar">
+                        <button id="fundo" name="pesquisar"
+                            class="absolute inset-y-0 right-0 flex items-center focus:outline-none" type="submit">
+                            <svg class="h-3.5 w-10 text-white" xmlns="http://www.w3.org/2000/svg" width="5" height="5"
+                                fill="currentColor" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 
+                                               1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <tr class="h-12">
+                            <th>Crachá</th>
+                            <th>Nome</th>
+                            <th>Telefone</th>
+                            <th>Email</th>
+                            <th class="w-10">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr name="admin" th:each="adm : ${administradores}">
+                            <td th:object="${adm}" th:value="${adm.id}" th:text="${adm.cracha}"></td>
+                            <td th:text="${adm.nome}"></td>
+                            <td th:text="${adm.telefone}"></td>
+                            <td th:text="${adm.email}"></td>
+                            <td class="w-24">
+                                <div class="items-center justify-items">
+                                    <div class="flex flex-row items-center justify-center ">
+                                        <div class="flex w-10 justify-center items-center">
+                                            <a title="Editar" type="button" id="botao-action"
+                                                class="w-flex p-2 focus:outline-none" th:object="${adm}"
+                                                th:href="@{/administradores/editar/{id}(id=${adm.id})}">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
+                                                </svg>
+                                            </a>
+                                        </div>
+                                        <div class="flex w-8 items-center">
+                                            <a id="botao-action" th:object="${adm}" title="Excluir" th:attr="data-admin-id=${adm.id}" onclick="openPopup(this.getAttribute('data-admin-id'))"
+                                                class="p-2 focus:outline-none">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    viewBox="0 0 16 16">
+                                                    <g fill="currentColor">
+                                                        <path
+                                                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                                                        <path
+                                                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                                                    </g>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="flex justify-between">
+                    <div class="flex">
+                        <div class="flex items-center pt-4 ">
+                            <select name="pageSize" class="pl-2 focus:outline-none" id="quantpag"
+                                onchange="this.form.submit()">
+                                <option name="size10" th:value="10" th:select="${pageSize}"
+                                    th:selected="${pageSize == 10}">
+                                    <label> 10 </label>
+                                </option>
+                                <option name="size20" th:value="20" th:select="${pageSize}"
+                                    th:selected="${pageSize == 20}">
+                                    <label> 20 </label>
+                                </option>
+                                <option name="size30" th:value="30" th:select="${pageSize}"
+                                    th:selected="${pageSize == 30}">
+                                    <label> 30 </label>
+                                </option>
+                                <option name="size40" th:value="40" th:select="${pageSize}"
+                                    th:selected="${pageSize == 40}">
+                                    <label> 40 </label>
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="pt-4 ">
+                        <div class="botao text-white flex align-items-center">
+                            <button name="page" class="focus:outline-none" th:value="${page}-1"
+                                th:classappend="${page == 0} ? 'disabled'">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-caret-left-fill w-5" viewBox="0 0 16 16">
+                                    <path
+                                        d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+                                </svg>
+                            </button>
+                            <div class="bg-white text-black-50 w-6">
+                                <span th:text="${page+1}"></span>
+                            </div>
+                            <button name="page" class="focus:outline-none" th:href="@{|/adm?page|}"
+                                th:value="${page}+1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-caret-right-fill w-5" viewBox="0 0 16 16">
+                                    <path
+                                        d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="popup" class="hidden flex flex-col justify-between">
+        <div>
+            <span class="text-md">Tem certeza que deseja excluir este
+                administrador?</span>
+        </div>
+        <div class="justify-items items-center inline-block flex flex-row-reverse pt-16 gap-x-2">
+            <div class="w-flex">
+                <button class="w-fit h-fit py-1 text-white px-3 rounded" onclick="deleteAdmin()"
+                    id="fundo1">Sim</button>
+            </div>
+            <div class="w-flex">
+                <button onclick="closePopup();" id="fundo1"
+                    class="w-fit h-fit py-1 text-white px-3 rounded">Não</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
+
 </body>
+
+</html>

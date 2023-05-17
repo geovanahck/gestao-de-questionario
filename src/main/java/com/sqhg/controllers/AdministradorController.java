@@ -40,7 +40,7 @@ public class AdministradorController {
             return "cadAdministrador";
         }
         administradorService.salvarAdministradorPorForm(administradorForm);
-        return "redirect:/users";
+        return "redirect:/administradores/lista";
     }
 
     @GetMapping(value = "/lista")
@@ -86,10 +86,10 @@ public class AdministradorController {
 
     }
 
-    @GetMapping(value = ("/excluir/{id}"))
-    public String deletarAdministrador(@RequestParam("id") Long id) {
+    @PostMapping(value = ("/excluir/{id}"))
+    public String deletarAdministrador(@PathVariable("id") Long id) {
         administradorService.deletar(id);
-        return "redirect:/listaAdm";
+        return "redirect:/administradores/lista";
     }
 
     @PostMapping
