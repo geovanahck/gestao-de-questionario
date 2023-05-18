@@ -1,10 +1,12 @@
 package com.sqhg.forms;
 
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Date;
 
@@ -17,8 +19,8 @@ public class AdministradorForm {
     private String cracha;
 
     private String nome;
+
     @NotNull(message = "* Campo obrigatório")
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date nascimento;
 
 
