@@ -28,7 +28,7 @@
         border-bottom-right-radius: 10px;
         border-color: #5c2472;
         width: 700px;
-        height: 100px;
+        height: 115px;
     }
 
     * {
@@ -145,18 +145,35 @@
                     Seu supervisor lhe passa feedback’s constantes?
                 </div>
                 <div id="resposta" type="" th:value="${#}" class="flex gap-2 columns-2 h-1/2">
-                    <div class="flex justify-between h-1/2">
+                    <div class="flex justify-between">
                         <div>
-                            <button id="botao" class="bg-[#FF0000] h-1/2 w-2/3">1</button>
+                            <div class="flex flex-row">
+                                <div>
+                                    <button id="botao" class="bg-[#FF0000] h-1/2 w-2/3">1</button>
+                                </div>
+                                <div>
+                                    <button id="botao" class="bg-[#F24D03] h-1/2 w-2/3">2</button>
+                                </div>
+                            </div>
+                            <div class="flex justify-center text-center">
+                                Discordo Totalmente
+                            </div>
                         </div>
                         <div>
-                            <button id="botao" class="bg-[#F24D03] h-1/2 w-2/3">2</button>
+                            <div class="flex flex-row">
+                                <div>
+                                    <button id="botao" class="bg-[#F06802] h-1/2 w-2/3">3</button>
+                                </div>
+                                <div>
+                                    <button id="botao" class="bg-[#FF7A00] h-1/2 w-2/3">4</button>
+                                </div>
+                            </div>
+                            <div class="flex justify-center text-center">
+                                Discordo
+                            </div>
                         </div>
                         <div>
-                            <button id="botao" class="bg-[#F06802] h-1/2 w-2/3">3</button>
-                        </div>
-                        <div>
-                            <button id="botao" class="bg-[#FF7A00] h-1/2 w-2/3">4</button>
+
                         </div>
                         <div>
                             <button id="botao" class="bg-[#F18F01] h-1/2 w-2/3">5</button>
@@ -165,10 +182,16 @@
                             <button id="botao" class="bg-[#F9D000] h-1/2 w-2/3">6</button>
                         </div>
                         <div>
+
+                        </div>
+                        <div>
                             <button id="botao" class="bg-[#8FE76E] h-1/2 w-2/3">7</button>
                         </div>
                         <div>
                             <button id="botao" class="bg-[#77DC4E] h-1/2 w-2/3">8</button>
+                        </div>
+                        <div>
+                            
                         </div>
                         <div>
                             <button id="botao" class="bg-[#53DC00] h-1/2 w-2/3">9</button>
@@ -177,20 +200,14 @@
                             <button id="botao" class="bg-[#46AD01] h-1/2 w-2/3">10</button>
                         </div>
                     </div>
-                    <div class="flex flex-col justify-center items-center mt-12 grid h-1/2 bg-gray-700">
-                        <div class="mb-1 h-1/2">
-                            Discordo Totalmente
-                        </div>
-                        <div class="mb-1 h-1/2">
-                            Discordo
-                        </div>
+                    <div class="flex flex-row justify-center items-center bg-gray-700">
                         <div class="mb-1 h-1/2 col-start-3">
                             Não Sei
                         </div>
                         <div class="mb-1 h-1/2 col-start-4">
                             Concordo
                         </div>
-                        <div class="mb-1 h-1/2 col-start-5">
+                        <div class="mb-1 col-start-5">
                             Concordo Totalmente
                         </div>
                     </div>
