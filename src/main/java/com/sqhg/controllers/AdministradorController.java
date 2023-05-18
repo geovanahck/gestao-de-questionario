@@ -2,6 +2,7 @@ package com.sqhg.controllers;
 
 import com.sqhg.entities.Administrador;
 import com.sqhg.forms.AdministradorForm;
+import com.sqhg.forms.AdministradorFormEdit;
 import com.sqhg.services.AdministradorService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -62,30 +63,30 @@ public class AdministradorController {
     }
 
     @GetMapping(value = "/editar/{id}")
-    public Administrador telaEditarAdministrador(@PathVariable(name = "id") Long id) {
-        Administrador administrador = administradorService.acharAdministradorPorId(id).orElse(null);
+    public String telaEditarAdministrador(Model model, @PathVariable(name = "id") Long id) {
+        Administrador administrador = administradorService.findbyId(id);
+        AdministradorFormEdit administradorFormEdit = administrador.getForm();
 
-        AdministradorForm administradorForm = administrador.getForm();
-        // model.addAttribute("administrador", administradorForm);
-        return administrador;
+        if (administradorFormEdit == null) {
+            return "redirect:/administradores/lista";
+        }
+        model.addAttribute("administradorFormEdit", administradorFormEdit);
+        return "editarAdm";
     }
 
     @PostMapping(value = ("/editar/{id}"))
-    public String editarAdministrador(@PathVariable(name = "id") Long id,
-            @Valid @ModelAttribute("administrador") AdministradorForm administradorForm,
-            BindingResult result) {
+    public String editarAdministrador(@Valid @ModelAttribute("administradorFormEdit") AdministradorFormEdit administradorFormEdit,
+            @PathVariable(name = "id") Long id, BindingResult result) {
         if (result.hasErrors()) {
             return "editarAdm";
         }
-        if (!administradorForm.getSenha().equals(administradorForm.getConfirmacaoSenha())) {
+
+        if (!administradorFormEdit.getSenha().equals(administradorFormEdit.getConfirmacaoSenha())) {
             result.rejectValue("confirmacaoSenha", "", "Senhas não correspondem.");
             return "editarAdm";
         }
-        if (!administradorForm.getSenha().equals(administradorForm.getConfirmacaoSenha())) {
-            result.rejectValue("confirmacaoSenha", "", "Senhas não correspondem.");
-            return "cadAdministrador";
-        }
-        administradorService.salvarAdministradorPorForm(administradorForm);
+
+        administradorService.editarAdministradorPorForm(administradorFormEdit, id);
         return "redirect:/administradores/lista";
     }
 

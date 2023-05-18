@@ -1,17 +1,28 @@
 package com.sqhg.entities;
 
-import jakarta.persistence.*;
+import java.sql.Date;
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
+import com.sqhg.forms.AdministradorForm;
+import com.sqhg.forms.AdministradorFormEdit;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import com.sqhg.forms.AdministradorForm;
-import java.sql.Date;
-import java.util.Collection;
-import java.util.List;
 
 @Entity
 @Data
@@ -41,17 +52,17 @@ public class Administrador {
         return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
-    public AdministradorForm getForm() {
-        AdministradorForm administradorForm = new AdministradorForm();
-        administradorForm.builder()
+    public AdministradorFormEdit getForm() {
+        AdministradorFormEdit administradorFormEdit = AdministradorFormEdit.builder()
+                .id(this.id)
                 .cracha(this.cracha)
                 .nome(this.nome)
                 .nascimento(this.nascimento)
                 .email(this.email)
                 .telefone(this.telefone)
-                .senha(this.senha)
-                .confirmacaoSenha(this.senha)
+                .senha(null)
+                .confirmacaoSenha(null)
                 .build();
-        return administradorForm;
+        return administradorFormEdit;
     }
 }
