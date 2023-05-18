@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-
+import com.sqhg.forms.AdministradorForm;
 import java.sql.Date;
 import java.util.Collection;
 import java.util.List;
@@ -39,5 +39,19 @@ public class Administrador {
 
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));
+    }
+
+    public AdministradorForm getForm() {
+        AdministradorForm administradorForm = new AdministradorForm();
+        administradorForm.builder()
+                .cracha(this.cracha)
+                .nome(this.nome)
+                .nascimento(this.nascimento)
+                .email(this.email)
+                .telefone(this.telefone)
+                .senha(this.senha)
+                .confirmacaoSenha(this.senha)
+                .build();
+        return administradorForm;
     }
 }

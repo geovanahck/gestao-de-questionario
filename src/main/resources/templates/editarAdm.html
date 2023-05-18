@@ -114,8 +114,9 @@
                         <div class="input-container rounded-lg w-3/6">
                             <input
                                 class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="password" placeholder="">
-
+                                type="password" placeholder="" th:field="*{confirmacaoSenha}">
+                            <div th:if="${#fields.hasErrors('confirmacaoSenha')}" th:errors="*{confirmacaoSenha}"
+                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
                         </div>
                     </div>
                     <div class="flex flex-reverse-row justify-end items-center w-3/5 pb-5 px-8 pt-6">

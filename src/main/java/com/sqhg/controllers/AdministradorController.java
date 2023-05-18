@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @Controller
-@RequestMapping(value = "/administradores")
 @AllArgsConstructor
+@RequestMapping(value = "/administradores")
 public class AdministradorController {
 
     private AdministradorService administradorService;
@@ -62,14 +62,17 @@ public class AdministradorController {
     }
 
     @GetMapping(value = "/editar/{id}")
-    public String telaEditarAdministrador(Model model, @PathVariable(name = "id") Long id) {
+    public Administrador telaEditarAdministrador(@PathVariable(name = "id") Long id) {
         Administrador administrador = administradorService.acharAdministradorPorId(id).orElse(null);
-        model.addAttribute("administrador", administrador);
-        return "editarAdm";
+
+        AdministradorForm administradorForm = administrador.getForm();
+        // model.addAttribute("administrador", administradorForm);
+        return administrador;
     }
 
     @PostMapping(value = ("/editar/{id}"))
-    public String editarAdministrador(@Valid @ModelAttribute("administrador") AdministradorForm administradorForm,
+    public String editarAdministrador(@PathVariable(name = "id") Long id,
+            @Valid @ModelAttribute("administrador") AdministradorForm administradorForm,
             BindingResult result) {
         if (result.hasErrors()) {
             return "editarAdm";
@@ -78,14 +81,12 @@ public class AdministradorController {
             result.rejectValue("confirmacaoSenha", "", "Senhas não correspondem.");
             return "editarAdm";
         }
-        if (administradorForm.getSenha() != null) {
-            if (!administradorForm.getSenha().equals(administradorForm.getConfirmacaoSenha())) {
-                result.rejectValue("confirmacaoSenha", "", "Senhas não correspondem.");
-                return "cadAdministrador";
+        if (!administradorForm.getSenha().equals(administradorForm.getConfirmacaoSenha())) {
+            result.rejectValue("confirmacaoSenha", "", "Senhas não correspondem.");
+            return "cadAdministrador";
         }
         administradorService.salvarAdministradorPorForm(administradorForm);
         return "redirect:/administradores/lista";
-
     }
 
     @PostMapping(value = ("/excluir/{id}"))
