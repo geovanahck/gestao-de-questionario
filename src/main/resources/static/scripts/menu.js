@@ -44,3 +44,21 @@ function closePopup() {
     var popup = document.getElementById("popup");
     popup.style.display = "none";
 }
+
+function deletarAdm(admId) {
+    var options = {
+        body: JSON.stringify({
+            'souumcapo':'souumvalor'
+        }),
+        method: 'POST',
+        headers: new Headers({
+            'Accept': 'application/json'
+        }),
+        mode: 'cors' // verifique se o cors sera necessario
+    }
+    fetch(`https://url.com?adminid=${admId}`, options).then(function (response) {
+        return response.json();
+    }).then(function (dados) {
+        console.log('dados da resposta', dados)
+    })
+}
