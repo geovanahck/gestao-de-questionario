@@ -36,29 +36,31 @@ function mostrarMenu() {
     });
 }
 
-function openPopup() {
+function openPopup(adminId) {
     document.getElementById('popup').style.display = 'block';
 }
-
 function closePopup() {
     var popup = document.getElementById("popup");
     popup.style.display = "none";
 }
 
-function deletarAdm(admId) {
-    var options = {
-        body: JSON.stringify({
-            'souumcapo':'souumvalor'
-        }),
-        method: 'POST',
-        headers: new Headers({
-            'Accept': 'application/json'
-        }),
-        mode: 'cors' // verifique se o cors sera necessario
-    }
-    fetch(`https://url.com?adminid=${admId}`, options).then(function (response) {
-        return response.json();
-    }).then(function (dados) {
-        console.log('dados da resposta', dados)
-    })
+function deleteAdm(adminId) {
+    console.log('Abrindo pop-up para o administrador com ID: ' + adminId);
+    $.ajax({
+        url: '/administradores/excluir/' + adminId,
+        type: 'POST',
+        data: { id: adminId },
+        success: function (response) {
+            // Lidar com a resposta da exclusão, por exemplo, atualizar a página ou exibir uma mensagem de sucesso
+            console.log('Exclusão realizada com sucesso!');
+            closePopup();
+        },
+        error: function (error) {
+            // Lidar com erros, se houver
+            console.error('Ocorreu um erro ao excluir o administrador.');
+
+        }
+    });
+
 }
+

@@ -4,8 +4,6 @@ import com.sqhg.entities.Administrador;
 import com.sqhg.forms.AdministradorForm;
 import com.sqhg.forms.AdministradorFormEdit;
 
-import jakarta.validation.Valid;
-
 import org.springframework.data.domain.Page;
 
 import java.util.List;

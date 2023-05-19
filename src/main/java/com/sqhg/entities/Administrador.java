@@ -8,7 +8,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-import com.sqhg.forms.AdministradorForm;
 import com.sqhg.forms.AdministradorFormEdit;
 
 import jakarta.persistence.Entity;

@@ -75,7 +75,8 @@ public class AdministradorController {
     }
 
     @PostMapping(value = ("/editar/{id}"))
-    public String editarAdministrador(@Valid @ModelAttribute("administradorFormEdit") AdministradorFormEdit administradorFormEdit,
+    public String editarAdministrador(
+            @Valid @ModelAttribute("administradorFormEdit") AdministradorFormEdit administradorFormEdit,
             @PathVariable(name = "id") Long id, BindingResult result) {
         if (result.hasErrors()) {
             return "editarAdm";

@@ -16,19 +16,6 @@
     <script rel="javascript" type="text/javascript" th:src="@{/scripts/menu.js}"></script>
 </head>
 
-<script>
-    var admins = /*[[${administradores}]]*/[];
-    console.log(admins);
-    function makeRequest(admin) {
-        axios.get('/administradores/excluir/' + admin.id)
-            .then(function (response) {
-                console.log(response.data);
-            })
-            .catch(function (error) {
-                console.error(error);
-            });
-    }
-</script>
 
 <body class="overflow-scroll">
     <nav class="menu-lateral flex justify-center items-center" onmouseover="mostrarMenu()" onmouseout="esconderMenu()">
@@ -268,7 +255,7 @@
     <div class="background items-center pt-6 flex flex-col">
         <div class="w-2/4 justify-center items-center">
             <form th:href="@{/administradores/lista}" method="GET">
-                <div class="pb-16 w-full flex justify-center items-center flex flex-col">
+                <div class="pb-16 w-full flex justify-center items-center flex-col">
                     <div id="pesquisa" class="p-1 relative w-4/5">
                         <input name="search" type="text" class=" p-1 block w-full" placeholder="Encontrar">
                         <button id="fundo" name="pesquisar"
@@ -293,7 +280,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr name="admin" th:each="adm : ${administradores}">
+                        <tr name="admin" th:each="adm : ${administradores}" th:data-id="${adm.id}">
                             <td th:object="${adm}" th:value="${adm.id}" th:text="${adm.cracha}"></td>
                             <td th:text="${adm.nome}"></td>
                             <td th:text="${adm.telefone}"></td>
@@ -313,8 +300,9 @@
                                             </a>
                                         </div>
                                         <div class="flex w-8 items-center">
-                                            <button type="button" onclick="openPopup('${adm.id}')" id="botao-action"
-                                                class="p-2 focus:outline-none">
+                                            <button type="button" th:attr="data-adminid=${adm.id}"
+                                                onclick="openPopup(this.getAttribute('data-adminid'));"
+                                                id="botao-action" class="p-2 focus:outline-none">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                     viewBox="0 0 16 16">
                                                     <g fill="currentColor">
@@ -325,22 +313,22 @@
                                                     </g>
                                                 </svg>
                                             </button>
-                                            <div id="popup" class="hidden flex flex-col justify-between">
+                                            <div id="popup" class="hidden flex-col justify-between">
                                                 <div>
                                                     <span class="text-md">Tem certeza que deseja excluir este
                                                         administrador?</span>
                                                 </div>
                                                 <div
-                                                    class="justify-items items-center inline-block flex flex-row-reverse pt-16 gap-x-2">
+                                                    class="flex justify-items items-center flex-row-reverse pt-16 gap-x-2">
                                                     <div class="w-flex">
-                                                        <button type="button"
-                                                            th:href="@{/administradores/editar/{id}(id=${adm.id})}"
-                                                            class="w-fit h-fit py-1 text-white px-3 rounded"
-                                                            onclick="closePopup()" id=" fundo1">Sim</button>
+                                                        <button type="button" id="fundo1"
+                                                            th:attr="data-adminid=${adm.id}"
+                                                            onclick="deleteAdm(this.getAttribute('data-adminid'));"
+                                                            class="w-fit h-fit py-1 text-white px-3 rounded">Sim</button>
                                                     </div>
                                                     <div class="w-flex">
-                                                        <button onclick="closePopup()" id="fundo1"
-                                                            class="w-fit h-fit py-1 text-white px-3 rounded">Não</button>
+                                                        <a onclick="closePopup()" id="fundo1"
+                                                            class="w-fit h-fit py-1 text-white px-3 rounded">Não</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -404,7 +392,7 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
 
 </html>
