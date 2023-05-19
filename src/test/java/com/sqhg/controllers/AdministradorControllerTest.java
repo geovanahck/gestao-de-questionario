@@ -50,10 +50,8 @@ public class AdministradorControllerTest {
 
         String result = administradorController.deletarAdministrador(id);
 
-        assertEquals("redirect:/listaAdm", result);
+        assertEquals("redirect:/administradores,listaAdm", result);
 
-        // Verifique se o método de deletar do administradorService foi chamado com o id
-        // correto
         verify(administradorService).deletar(id);
     }
 
