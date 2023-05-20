@@ -253,10 +253,12 @@
         <h1 class="dark:text-black text-center titulo">Lista de Administradores</h1>
     </div>
     <div class="background items-center pt-6 flex flex-col">
-        <div class="w-2/4 justify-center items-center">
-            <form th:href="@{/listaAdministradores(size=${pageSize}, page=${page}, search=${search})}">
-                <div class="pb-16 w-full flex justify-center items-center flex-col">
-                    <div id="pesquisa" class="p-1 relative w-4/5">
+        <div class="w-2/4 pt-3 justify-center items-center">
+            <div class="w-full flex-row pb-11">
+                <div id="pesquisa" class="p-1 relative">
+                    <form th:href="@{/administradores}">
+                        <input type="hidden" th:name="pageSize" th:value="${pageSize}" />
+                        <input type="hidden" th:name="page" th:value="${page}" />
                         <input name="search" type="text" class=" p-1 block w-full" placeholder="Encontrar">
                         <button id="fundo" class="absolute inset-y-0 right-0 flex items-center focus:outline-none"
                             type="submit">
@@ -267,9 +269,17 @@
                                                1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                             </svg>
                         </button>
-                    </div>
+                    </form>
+                    <form th:href="@{/administradores}">
+                        <button type="submit" class="w-5 h-5 absolute inset-y-14 right-5 pb-1 focus:outline-none">
+                            <svg class="h-3.5 w-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <path
+                                    d="M370.72 133.28C339.458 104.008 298.888 87.962 255.848 88c-77.458.068-144.328 53.178-162.791 126.85-1.344 5.363-6.122 9.15-11.651 9.15H24.103c-7.498 0-13.194-6.807-11.807-14.176C33.933 94.924 134.813 8 256 8c66.448 0 126.791 26.136 171.315 68.685L463.03 40.97C478.149 25.851 504 36.559 504 57.941V192c0 13.255-10.745 24-24 24H345.941c-21.382 0-32.09-25.851-16.971-40.971l41.75-41.749zM32 296h134.059c21.382 0 32.09 25.851 16.971 40.971l-41.75 41.75c31.262 29.273 71.835 45.319 114.876 45.28 77.418-.07 144.315-53.144 162.787-126.849 1.344-5.363 6.122-9.15 11.651-9.15h57.304c7.498 0 13.194 6.807 11.807 14.176C478.067 417.076 377.187 504 256 504c-66.448 0-126.791-26.136-171.315-68.685L48.97 471.03C33.851 486.149 8 475.441 8 454.059V320c0-13.255 10.745-24 24-24z" />
+                            </svg>
+                        </button>
+                    </form>
                 </div>
-            </form>
+            </div>
             <table>
                 <thead>
                     <tr class="h-12">
@@ -277,7 +287,7 @@
                         <th>Nome</th>
                         <th>Telefone</th>
                         <th>Email</th>
-                        <th class="w-10">Ação</th>
+                        <th class="w-14">Ação</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -313,15 +323,15 @@
                                                 </g>
                                             </svg>
                                         </button>
-                                        <div id="popup" class="hidden flex-col justify-between">
+                                        <div id="popup" class="hidden flex-col">
                                             <div>
-                                                <span class="text-md">Tem certeza que deseja excluir este
-                                                    administrador?</span>
+                                                <h1 class="text-md text-justify">Tem certeza que deseja excluir este
+                                                    administrador?</h1>
                                             </div>
-                                            <div class="flex justify-items items-center flex-row-reverse pt-16 gap-x-2">
+                                            <div class="flex justify-items items-center flex-row-reverse pt-20 gap-x-2">
                                                 <form th:action="@{/administradores/excluir/{id}(id=${adm.id})}"
                                                     method="post">
-                                                    <div class="w-flex">
+                                                    <div class="w-flex justify-between">
                                                         <button type="submit" id="fundo1" onclick="closePopup()"
                                                             class="w-fit h-fit py-1 text-white px-3 rounded">Sim</button>
                                                     </div>
@@ -339,8 +349,9 @@
                     </tr>
                 </tbody>
             </table>
-            <form th:href="@{/administradores/lista(search=${search})}" method="GET">
-                <div class="flex justify-between">
+            <form th:href="@{/administradores}">
+                <input type="hidden" th:name="search" th:value="${search}" />
+                <div class="flex justify-between px-3">
                     <div class="flex">
                         <div class="flex items-center pt-4 ">
                             <select name="pageSize" class="pl-2 focus:outline-none" id="quantpag"
@@ -388,7 +399,6 @@
                     </div>
                 </div>
             </form>
-
         </div>
     </div>
 

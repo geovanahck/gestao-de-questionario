@@ -70,15 +70,16 @@ public class AdministradorController {
         }
 
         AdministradorForm administradorForm = administrador.getForm();
-        model.addAttribute("administradorFormEdit", administradorForm);
+        model.addAttribute("administrador", administradorForm);
         return "editarAdm";
     }
 
     @PostMapping(value = ("/editar/{id}"))
     public String editarAdministrador(
-            @Valid @ModelAttribute("administradorFormEdit") AdministradorForm administradorForm,
+            @Valid @ModelAttribute("administrador") AdministradorForm administradorForm,
             BindingResult result,
             @PathVariable(name = "id") Long id) {
+
         if (result.hasErrors()) {
             return "editarAdm";
         }

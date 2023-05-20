@@ -76,12 +76,8 @@ public class AdministradorServiceImpl implements AdministradorService {
         administrador.setNascimento(administradorForm.getNascimento());
         administrador.setEmail(administradorForm.getEmail());
         administrador.setTelefone(administradorForm.getTelefone());
-
-        if (!administradorForm.getSenha().isEmpty()) {
-            administrador.setSenha(passwordEncoder.encode(administradorForm.getSenha()));
-        }
-        administrador.setRole(Role.ADMIN);
-        administradorRepository.save(administrador);
+        administrador.setSenha(administradorForm.getSenha());
+        this.salvarAdministrador(administrador);
     }
 
     @Override
