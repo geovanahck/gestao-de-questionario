@@ -2,7 +2,6 @@ package com.sqhg.controllers;
 
 import com.sqhg.entities.Administrador;
 import com.sqhg.forms.AdministradorForm;
-import com.sqhg.forms.AdministradorFormEdit;
 import com.sqhg.services.AdministradorService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -40,10 +39,10 @@ public class AdministradorController {
             return "cadAdministrador";
         }
         administradorService.salvarAdministradorPorForm(administradorForm);
-        return "redirect:/administradores/lista";
+        return "redirect:/administradores";
     }
 
-    @GetMapping(value = "/lista")
+    @GetMapping
     public String listaAdministradores(Model model,
             @RequestParam(name = "search") Optional<String> search,
             @RequestParam(name = "pageSize") Optional<Integer> size,
@@ -65,36 +64,38 @@ public class AdministradorController {
     @GetMapping(value = "/editar/{id}")
     public String telaEditarAdministrador(Model model, @PathVariable(name = "id") Long id) {
         Administrador administrador = administradorService.findbyId(id);
-        AdministradorFormEdit administradorFormEdit = administrador.getForm();
 
-        if (administradorFormEdit == null) {
-            return "redirect:/administradores/lista";
+        if (administrador == null) {
+            return "redirect:/administradores";
         }
-        model.addAttribute("administradorFormEdit", administradorFormEdit);
+
+        AdministradorForm administradorForm = administrador.getForm();
+        model.addAttribute("administradorFormEdit", administradorForm);
         return "editarAdm";
     }
 
     @PostMapping(value = ("/editar/{id}"))
     public String editarAdministrador(
-            @Valid @ModelAttribute("administradorFormEdit") AdministradorFormEdit administradorFormEdit,
-            @PathVariable(name = "id") Long id, BindingResult result) {
+            @Valid @ModelAttribute("administradorFormEdit") AdministradorForm administradorForm,
+            BindingResult result,
+            @PathVariable(name = "id") Long id) {
         if (result.hasErrors()) {
             return "editarAdm";
         }
 
-        if (!administradorFormEdit.getSenha().equals(administradorFormEdit.getConfirmacaoSenha())) {
+        if (!administradorForm.getSenha().equals(administradorForm.getConfirmacaoSenha())) {
             result.rejectValue("confirmacaoSenha", "", "Senhas não correspondem.");
             return "editarAdm";
         }
 
-        administradorService.editarAdministradorPorForm(administradorFormEdit, id);
-        return "redirect:/administradores/lista";
+        administradorService.editarAdministradorPorForm(administradorForm, id);
+        return "redirect:/administradores";
     }
 
     @PostMapping(value = ("/excluir/{id}"))
     public String deletarAdministrador(@PathVariable("id") Long id) {
         administradorService.deletar(id);
-        return "redirect:/administradores/lista";
+        return "redirect:/administradores";
     }
 
     @PostMapping

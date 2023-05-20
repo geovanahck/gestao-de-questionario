@@ -3,7 +3,6 @@ package com.sqhg.services;
 import com.sqhg.entities.Administrador;
 import com.sqhg.entities.Role;
 import com.sqhg.forms.AdministradorForm;
-import com.sqhg.forms.AdministradorFormEdit;
 import com.sqhg.repositories.AdministradorRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -68,18 +67,18 @@ public class AdministradorServiceImpl implements AdministradorService {
     }
 
     @Override
-    public void editarAdministradorPorForm(AdministradorFormEdit administradorFormedit, Long id) {
+    public void editarAdministradorPorForm(AdministradorForm administradorForm, Long id) {
         Administrador administrador = administradorRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Administrador não encontrado"));
 
-        administrador.setCracha(administradorFormedit.getCracha());
-        administrador.setNome(administradorFormedit.getNome());
-        administrador.setNascimento(administradorFormedit.getNascimento());
-        administrador.setEmail(administradorFormedit.getEmail());
-        administrador.setTelefone(administradorFormedit.getTelefone());
+        administrador.setCracha(administradorForm.getCracha());
+        administrador.setNome(administradorForm.getNome());
+        administrador.setNascimento(administradorForm.getNascimento());
+        administrador.setEmail(administradorForm.getEmail());
+        administrador.setTelefone(administradorForm.getTelefone());
 
-        if (!administradorFormedit.getSenha().isEmpty()) {
-            administrador.setSenha(passwordEncoder.encode(administradorFormedit.getSenha()));
+        if (!administradorForm.getSenha().isEmpty()) {
+            administrador.setSenha(passwordEncoder.encode(administradorForm.getSenha()));
         }
         administrador.setRole(Role.ADMIN);
         administradorRepository.save(administrador);

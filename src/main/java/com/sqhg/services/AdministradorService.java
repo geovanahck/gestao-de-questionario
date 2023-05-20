@@ -2,7 +2,6 @@ package com.sqhg.services;
 
 import com.sqhg.entities.Administrador;
 import com.sqhg.forms.AdministradorForm;
-import com.sqhg.forms.AdministradorFormEdit;
 
 import org.springframework.data.domain.Page;
 
@@ -22,7 +21,7 @@ public interface AdministradorService {
 
     void salvarAdministradorPorForm(AdministradorForm administradorForm);
 
-    void editarAdministradorPorForm(AdministradorFormEdit administradorFormEdit, Long id);
+    void editarAdministradorPorForm(AdministradorForm administradorForm, Long id);
 
     Administrador acharAdministradorPorCracha(String cracha);
 

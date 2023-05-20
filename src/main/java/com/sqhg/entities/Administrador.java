@@ -8,7 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-import com.sqhg.forms.AdministradorFormEdit;
+import com.sqhg.forms.AdministradorForm;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -51,8 +51,8 @@ public class Administrador {
         return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
-    public AdministradorFormEdit getForm() {
-        AdministradorFormEdit administradorFormEdit = AdministradorFormEdit.builder()
+    public AdministradorForm getForm() {
+        AdministradorForm administradorForm = AdministradorForm.builder()
                 .id(this.id)
                 .cracha(this.cracha)
                 .nome(this.nome)
@@ -62,6 +62,6 @@ public class Administrador {
                 .senha(null)
                 .confirmacaoSenha(null)
                 .build();
-        return administradorFormEdit;
+        return administradorForm;
     }
 }
