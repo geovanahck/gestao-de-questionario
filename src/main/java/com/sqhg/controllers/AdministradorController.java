@@ -58,6 +58,7 @@ public class AdministradorController {
         model.addAttribute("administradores", administradorPage);
         model.addAttribute("page", currentPage);
         model.addAttribute("pageSize", pageSize);
+        model.addAttribute("search", keyword);
         return "listaAdm";
     }
 
