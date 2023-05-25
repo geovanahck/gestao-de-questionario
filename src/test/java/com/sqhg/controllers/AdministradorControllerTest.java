@@ -50,7 +50,7 @@ public class AdministradorControllerTest {
 
         String result = administradorController.deletarAdministrador(id);
 
-        assertEquals("redirect:/administradores,listaAdm", result);
+        assertEquals("redirect:/administradores", result);
 
         verify(administradorService).deletar(id);
     }
