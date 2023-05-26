@@ -7,82 +7,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Questao Alternativa</title>
     <link rel="stylesheet" type="text/css" th:href="@{/styles/responder.css}" />
+    <link rel="stylesheet" type="text/css" href="/src/main/resources/static/styles/responder.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
 </head>
 
 <body>
+    <nav class="menu-lateral">
+        <div class="flex justify-center pb-5">
+            <img th:src="@{/images/logoPrati.png}" class=" w-36 pr-3">
+        </div>
+    </nav>
+    <h1 class="flex justify-center items-center py-10 text-3xl bg-[#FFF]">
+        Avaliação de Superiores</h1>
+
     <section>
-        <nav class="menu-lateral">
-            <div class="flex justify-center pb-5">
-                <img src="../static/images/logoPrati.png" alt="" class="w-36 pr-3">
-            </div>
-        </nav> <!--  menu-lateral -->
-        <div class="teste">
-            <h1 class="flex justify-center items-center py-10 text-3xl">
-                Avaliação de Superiores</h1>
-            <div th:value="${#}"
-                class="grid grid-cols-10 justify-items items-center inline-block flex flex-row pr-0 gap-x-2">
-                <div class="col-start-4">
-                    <label for="">#Questão</label>
-                </div>
-                <div th:value="${#}" class="col-end-8">
-                    <label for="">#Nome do Avaliado</label>
+        <div class="items-center justify-between pt-6 flex flex-col">
+            <div class="sm:w-2/4 md:w-3/5 lg:w-3/5 2xl:w-2/5 pt-3 justify-center items-center">
+                <div class="flex items-center justify-between">
+                    <div>
+                        #Questão
+                    </div>
+                    <div>
+                        #Nome do Avaliado
+                    </div>
                 </div>
             </div>
-            <div class="justify-center items-center pt-12 flex flex-col">
-                <div th:value="${#}" id="questao" class="flex justify-center items-center">
-                    #Selecione as características que mais o agradam em
-                    relação ao seu superior.
-                </div>
-                <div id="resposta" type="" th:value="${#}" class="gap-1 columns-2">
-                    <div class="ml-1">
-                        <input type="checkbox">
-                        <label for=""></label>
+            <div class="sm:w-2/4 md:w-3/5 lg:w-3/5 2xl:w-2/5 pt-3 justify-center items-center">
+                <form th:action="@{/respostaAlternativas}" method="post">
+                    <div class="justify-center items-center pt-12 flex flex-col">
+                        <div id="questao" class="flex justify-center items-center">
+                            #Selecione as características que mais o agradam em
+                            relação ao seu superior.
+                        </div>
+                        <div id="resposta" class="columns-3 pt-1">
+                            <div class="ml-2" th:each="alternativa : ${alternativas}">
+                                <input type="checkbox" name="alternativasSelecionadas" th:value="${alternativa.id}">
+                                <label th:text="${alternativa.descricao}"></label>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="ml-1">
-                        <input type="checkbox">
-                        <label for=""></label>
+                    <div class="flex items-center justify-between pt-6">
+                        <button id="fundo1" class="w-fit h-fit py-1 px-6 bg-white rounded">Anterior</button>
+                        <button type="submit" id="fundo1"
+                            class="w-fit h-fit py-1 px-6 bg-white rounded">Próxima</button>
                     </div>
-                    <div class="ml-1">
-                        <input type="checkbox">
-                        <label for=""></label>
-                    </div>
-                    <div class="ml-1">
-                        <input type="checkbox">
-                        <label for=""></label>
-                    </div>
-                    <div class="ml-1">
-                        <input type="checkbox">
-                        <label for=""></label>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
-        <form action="#" method="post">
-            <div>
-                <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-                    <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20">
-                        <path
-                            d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
-                    </svg>
-                </span>
-            </div>
-            <form action="">
-                <div class="grid grid-cols-12 justify-items items-center inline-block flex flex-row pr-0 gap-4 gap-x-2">
-                    <div class="col-start-4 col-span-2 py-4">
-                        <form>
-                            <button id="fundo1" method="#"
-                                class="w-fit h-fit py-1 px-6 bg-white rounded">Anterior</button>
-                        </form>
-                    </div>
-                    <div class="col-start-9 col-span-2 w-fit">
-                        <button id="fundo1" class="w-fit h-fit py-1 px-6 bg-white rounded">Próximo</button>
-                    </div>
-                </div>
-            </form>
-        </form>
     </section>
 </body>
 

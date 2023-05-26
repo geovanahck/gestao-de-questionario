@@ -4,12 +4,16 @@
 
 #questao {
     background-color: #5c2472;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     border-color: #5c2472;
     width: 700px;
     height: 100px;
     color: #f0f0f0;
+}
+
+#botao:hover {
+    background-color:  rgb(51, 100, 250);
 }
 
 #resposta {
@@ -18,7 +22,7 @@
     border-bottom-right-radius: 10px;
     border-color: #5c2472;
     width: 700px;
-    height: 115px;
+    height: 125px;
 }
 
 * {
@@ -41,39 +45,9 @@ nav.menu-lateral {
     position: fixed;
     top: 0;
     left: 0;
-    overflow: hidden;
-    transition: .3s;
-}
+ }
 
-span {
-    display: none;
-}
-
-.btn-expandir {
-    width: 100%;
-    padding-left: 10px;
-    color: #fff;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-
-ul {
-    height: 100%;
-    list-style-type: none;
-}
-
-ul li.item-menu {
-    color: #fff;
-    text-decoration: none;
-    display: flex;
-}
-
-#sidebar-toggle-item {
-    display: none;
-}
-
-.popup {
+#popup {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -88,7 +62,6 @@ ul li.item-menu {
     display: none;
 }
 
-#botao-action,
 #fundo1 {
     background-color: #5c2472;
     text-align: center;

@@ -6,129 +6,129 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Questao Escala Likert</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/styles/responder.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/responder.css}" />
+    <link rel="stylesheet" type="text/css" href="/src/main/resources/static/styles/responder.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
 </head>
+<script>
+    function setNota(nota) {
+        console.log(nota);
+        document.getElementById('nota').value = nota;
+    }
+</script>
 
 <body>
+    <nav class="menu-lateral">
+        <div class="flex justify-center pb-5">
+            <img th:src="@{/images/logoPrati.png}" class=" w-36 pr-3">
+        </div>
+    </nav>
+
+    <h1 class="flex justify-center items-center py-10 text-3xl">
+        Avaliação de Superiores</h1>
     <section>
-        <nav class="menu-lateral">
-            <div class="flex justify-center pb-5">
-                <img src="../static/images/logoPrati.png" alt="" class="w-36 pr-3">
-            </div>
-        </nav> <!--  menu-lateral -->
-        <div class="teste">
-            <h1 class="flex justify-center items-center py-10 text-3xl">
-                Avaliação de Superiores</h1>
-            <div th:value="${#}"
-                class="grid grid-cols-10 justify-items items-center inline-block flex flex-row pr-0 gap-x-2">
-                <div class="col-start-4">
-                    #Questão
-                </div>
-                <div th:value="${#}" class="col-end-8">
-                    #Nome do Avaliado
+        <div class="items-center justify-between pt-6 flex flex-col">
+            <div class="sm:w-2/4 md:w-3/5 lg:w-3/5 2xl:w-2/5 pt-3 justify-center items-center">
+                <div class="flex items-center justify-between">
+                    <div class="col-start-4">
+                        #Questão
+                    </div>
+                    <div class="col-end-8">
+                        #Nome do Avaliado
+                    </div>
                 </div>
             </div>
-            <div class="justify-center items-center pt-12 flex flex-col">
-                <div th:value="${#}" id="questao" class="flex justify-center items-center">
-                    #Seu supervisor lhe passa feedback’s constantes?
-                </div>
-                <div id="resposta" type="" th:value="${#}" class="flex gap-2 columns-2 h-1/2">
-                    <div class="flex justify-between">
-                        <div>
-                            <div class="flex flex-row">
-                                <div>
-                                    <button id="botao" class="bg-[#FF0000] h-1/2 w-2/3">1</button>
-                                </div>
-                                <div>
-                                    <button id="botao" class="bg-[#F24D03] h-1/2 w-2/3">2</button>
-                                </div>
+        </div>
+        <div class="justify-center items-center pt-12 flex flex-col">
+            <div id="questao" class="flex justify-center items-center">
+                #Seu supervisor lhe passa feedback’s constantes?
+            </div>
+            <div id="resposta" type="" class="flex gap-2 columns-2 h-1/2 pt-2">
+                <div class="flex justify-between">
+                    <div>
+                        <div class="flex flex-row">
+                            <div>
+                                <button id="botao" class="bg-[#FF0000] h-1/2 w-2/3" onclick="setNota(1)">1</button>
                             </div>
-                            <div class="flex justify-center text-center">
-                                Discordo Totalmente
+                            <div>
+                                <button id="botao" class="bg-[#F24D03] h-1/2 w-2/3" onclick="setNota(2)">2</button>
                             </div>
                         </div>
-                        <div>
-                            <div class="flex flex-row">
-                                <div>
-                                    <button id="botao" class="bg-[#F06802] h-1/2 w-2/3">3</button>
-                                </div>
-                                <div>
-                                    <button id="botao" class="bg-[#FF7A00] h-1/2 w-2/3">4</button>
-                                </div>
+                        <div class="flex justify-center text-center">
+                            Discordo Totalmente
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex flex-row">
+                            <div>
+                                <button id="botao" class="bg-[#F06802] h-1/2 w-2/3" onclick="setNota(3)">3</button>
                             </div>
-                            <div class="flex justify-center text-center">
-                                Discordo
+                            <div>
+                                <button id="botao" class="bg-[#FF7A00] h-1/2 w-2/3" onclick="setNota(4)">4</button>
                             </div>
                         </div>
-                        <div>
-                            <div class="flex flex-row">
-                                <div>
-                                    <button id="botao" class="bg-[#F18F01] h-1/2 w-2/3">5</button>
-                                </div>
-                                <div>
-                                    <button id="botao" class="bg-[#F9D000] h-1/2 w-2/3">6</button>
-                                </div>
+                        <div class="flex justify-center text-center">
+                            Discordo
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex flex-row">
+                            <div>
+                                <button id="botao" class="bg-[#F18F01] h-1/2 w-2/3" onclick="setNota(5)">5</button>
                             </div>
-                            <div class="flex justify-center text-center">
-                                Não Sei
+                            <div>
+                                <button id="botao" class="bg-[#F9D000] h-1/2 w-2/3" onclick="setNota(6)">6</button>
                             </div>
                         </div>
-                        <div>
-                            <div class="flex flex-row">
-                                <div>
-                                    <button id="botao" class="bg-[#8FE76E] h-1/2 w-2/3">7</button>
-                                </div>
-                                <div>
-                                    <button id="botao" class="bg-[#77DC4E] h-1/2 w-2/3">8</button>
-                                </div>
+                        <div class="flex justify-center text-center">
+                            Não Sei
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex flex-row">
+                            <div>
+                                <button id="botao" class="bg-[#8FE76E] h-1/2 w-2/3" onclick="setNota(7)">7</button>
                             </div>
-                            <div class="flex justify-center text-center">
-                                Concordo
+                            <div>
+                                <button id="botao" class="bg-[#77DC4E] h-1/2 w-2/3" onclick="setNota(8)">8</button>
                             </div>
                         </div>
-                        <div>
-                            <div class="flex flex-row">
-                                <div>
-                                    <button id="botao" class="bg-[#53DC00] h-1/2 w-2/3">9</button>
-                                </div>
-                                <div>
-                                    <button id="botao" class="bg-[#46AD01] h-1/2 w-2/3">10</button>
-                                </div>
+                        <div class="flex justify-center text-center">
+                            Concordo
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex flex-row">
+                            <div>
+                                <button id="botao" class="bg-[#53DC00] h-1/2 w-2/3" onclick="setNota(9)">9</button>
                             </div>
-                            <div class="flex justify-center text-center">
-                                Concordo Totalmente
+                            <div>
+                                <button id="botao" class="bg-[#46AD01] h-1/2 w-2/3" onclick="setNota(10)">10</button>
                             </div>
+                        </div>
+                        <div class="flex justify-center text-center">
+                            Concordo Totalmente
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <form action="#" method="post">
-            <div>
-                <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-                    <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20">
-                        <path
-                            d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
-                    </svg>
-                </span>
-            </div>
-            <form action="">
-                <div class="grid grid-cols-12 justify-items items-center inline-block flex flex-row pr-0 gap-4 gap-x-2">
-                    <div class="col-start-4 col-span-2 py-4">
-                        <form>
-                            <button id="fundo1" method="#"
-                                class="w-fit h-fit py-1 px-6 bg-white rounded">Anterior</button>
-                        </form>
+        <div class="items-center justify-between pt-6 flex flex-col">
+            <div class="sm:w-2/4 md:w-3/5 lg:w-3/5 2xl:w-2/5 pt-3 justify-center items-center">
+                <div class="flex justify-between">
+                    <div>
+                        <button id="fundo1" class="w-fit h-fit py-1 px-6 bg-white rounded">Anterior</button>
                     </div>
-                    <div class="col-start-9 col-span-2 w-fit">
-                        <button id="fundo1" class="w-fit h-fit py-1 px-6 bg-white rounded">Próximo</button>
-                    </div>
+                    <form th:action="@{/respostaquestionario}" method="post">
+                        <input type="hidden" name="nota" id="nota" />
+                        <div class="col-start-9 col-span-2 w-fit">
+                            <button id="fundo1" class="w-fit h-fit py-1 px-6 bg-white rounded">Próxima</button>
+                        </div>
+                    </form>
                 </div>
-            </form>
-        </form>
+            </div>
+        </div>
     </section>
 </body>
 

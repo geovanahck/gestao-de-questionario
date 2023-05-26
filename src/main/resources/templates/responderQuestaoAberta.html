@@ -6,85 +6,87 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Questao Aberta</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/styles/responder.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/responder.css}" />
+    <link rel="stylesheet" type="text/css" href="/src/main/resources/static/styles/responder.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
 
 </head>
 
 <body>
-    <section>
-        <nav class="menu-lateral">
-            <div class="flex justify-center pb-5">
-                <img src="../static/images/logoPrati.png" alt="" class="w-36 pr-3">
-            </div>
-        </nav> <!--  menu-lateral -->
-        <div class="teste">
-            <h1 class="flex justify-center items-center py-10 text-3xl">
-                Avaliação de Superiores</h1>
-            <div th:value="${#}"
-                class="grid grid-cols-10 justify-items items-center inline-block flex flex-row pr-0 gap-x-2">
-                <div class="col-start-4">
-                    #Questão
-                </div>
-                <div th:value="${#}" class="col-end-8">
-                    #Nome do Avaliado
-                </div>
-            </div>
-            <div class="justify-center items-center pt-12 flex flex-col">
-                <div th:value="${#}" id="questao" class="flex justify-center items-center">
-                   #Estamos te ouvindo. Deixe um comentário sobre seu superior!
-                </div>
-                <input id="resposta" type="text" th:value="${#}" class="" placeholder="Digite sua opinião!">
-            </div>
+    <nav class="menu-lateral">
+        <div class="flex justify-center pb-5">
+            <img th:src="@{/images/logoPrati.png}" class=" w-36 pr-3">
         </div>
-        <form action="#" method="post">
-            <div>
-                <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
-                    <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20">
-                        <path
-                            d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
-                    </svg>
-                </span>
+    </nav>
+    <h1 class="flex justify-center items-center py-10 text-3xl bg-[#FFF]">
+        Avaliação de Superiores</h1>
+
+    <section>
+        <div class="items-center justify-between pt-6 flex flex-col">
+            <div class="sm:w-2/4 md:w-3/5 lg:w-3/5 2xl:w-2/5 pt-3 justify-center items-center">
+                <div class="flex items-center justify-between">
+                    <div>
+                        #Questão
+                    </div>
+                    <div>
+                        #Nome do Avaliado
+                    </div>
+                </div>
             </div>
-            <form action="">
-                <div class="grid grid-cols-12 justify-items items-center inline-block flex flex-row pr-0 gap-4 gap-x-2">
-                    <div class="col-start-4 col-span-2 py-4">
-                        <form>
-                            <button id="fundo1" method="#"
-                                class="w-fit h-fit py-1 px-6 bg-white rounded">Anterior</button>
-                        </form>
+            <form th:action="@{/testesalvarresposta}" method="post">
+                <div class="justify-center items-center pt-6 flex flex-col">
+                    <div id="questao" class="flex justify-center items-center">
+                        #Estamos te ouvindo. Deixe um comentário sobre seu superior!
+                    </div>
+                    <input id="resposta" name="opniao" type="text" placeholder="Digite sua opinião!">
+                </div>
+            </form>
+        </div>
+        <div class="items-center justify-between pt-6 flex flex-col">
+            <div class="sm:w-2/4 md:w-3/5 lg:w-3/5 2xl:w-2/5 pt-3 justify-center items-center">
+                <div class="flex justify-between">
+                    <div>
+                        <button id="fundo1" method="#" class="w-fit h-fit py-1 px-6 bg-white rounded">Anterior</button>
                     </div>
                     <div class="col-start-9 col-span-2 w-fit">
                         <button id="fundo1" onclick="openPopup()"
                             class="w-fit h-fit py-1 px-6 bg-white rounded">Finalizar</button>
                     </div>
                 </div>
-            </form>
-        </form>
-    </section>
-    <div id="popup" class="popup hidden flex-col justify-between">
-        <div class="h-[100px]">
-            <h1>Respostas enviadas com sucesso!</h1>
+            </div>
         </div>
-        <div class="justify-end items-center inline-block flex pr-0 gap-x-2">
-            <button onclick="closePopup();" id="fundo1" class="w-fit h-fit py-1 px-6 bg-white rounded">OK</button>
+    </section>
+    
+    <div id="popup" class="hidden flex-col">
+        <div>
+            <h1 class="text-md text-justify">Finalizar questionário e enviar questões?</h1>
+        </div>
+        <div class="flex justify-items items-center flex-row-reverse pt-20 gap-x-2">
+            <form th:action="@{/administradores/excluir/{id}(id=${adm.id})}"
+                method="post">
+                <div class="w-flex justify-between">
+                    <button type="submit" id="fundo1" onclick="closePopup()"
+                        class="w-fit h-fit py-1 text-white px-3 rounded">Sim</button>
+                </div>
+            </form>
+            <div class="w-flex">
+                <button onclick="closePopup()" id="fundo1"
+                    class="w-fit h-fit py-1 text-white px-3 rounded">Não</button>
+            </div>
         </div>
     </div>
+
 
     <script>
         function openPopup() {
             document.getElementById('popup').style.display = 'block';
-            popup.classList.add("");
-            popup.style.display = "block";
         }
         function closePopup() {
-            var popup = document.getElementById("myPopup");
+            var popup = document.getElementById("popup");
             popup.style.display = "none";
         }
     </script>
-    
 </body>
 
 </html>
