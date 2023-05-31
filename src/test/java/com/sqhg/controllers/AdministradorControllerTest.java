@@ -1,41 +1,58 @@
-/*package com.sqhg.controllers;
+package com.sqhg.controllers;
 
-import com.sqhg.entities.Administrador;
-import com.sqhg.repositories.AdministradorRepository;
-import org.junit.Before;
-import org.junit.Test;
-import org.springframework.web.servlet.ModelAndView;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.verify;
 
-import java.util.Optional;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.ui.Model;
+import org.springframework.validation.support.BindingAwareModelMap;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import com.sqhg.forms.AdministradorForm;
+import com.sqhg.services.AdministradorService;
 
 public class AdministradorControllerTest {
+    @Mock
+    private AdministradorService administradorService;
 
-    private AdministradorRepository administradorRepository;
+    @InjectMocks
     private AdministradorController administradorController;
 
-    @Before
-    public void setUp() {
-        administradorRepository = mock(AdministradorRepository.class);
-        
+    @BeforeEach
+    public void setup() {
+        MockitoAnnotations.openMocks(this);
     }
 
     @Test
-    public void testFuncaoEditarAdministrador() throws IllegalAccessException {
-        // given
-        Administrador administrador = new Administrador();
-        long id = 1;
-        when(administradorRepository.findById(id)).thenReturn(Optional.of(administrador));
+    public void testeCadastrarAdministrador() {
 
-        // when
-        ModelAndView modelAndView = administradorController.irParaTelaAdministrador(1, null, administrador);
+        Model model = new BindingAwareModelMap();
 
-        // assert
-        assertEquals("editarAdm", modelAndView.getViewName());
-        assertEquals(administrador, modelAndView.getModel().get("administrador"));
+        String result = administradorController.cadastrarAdministrador(model);
+
+        assertEquals("cadAdministrador", result);
+
+        // Verifique se o model contém o atributo "administrador" com uma instância de
+        // AdministradorForm
+        Object administrador = model.getAttribute("administrador");
+        assertNotNull(administrador);
+        assertTrue(administrador instanceof AdministradorForm);
     }
+
+    @Test
+    public void testeDeletarAdministrador() {
+        Long id = 1L;
+
+        String result = administradorController.deletarAdministrador(id);
+
+        assertEquals("redirect:/administradores", result);
+
+        verify(administradorService).deletar(id);
+    }
+
 }
-*/
