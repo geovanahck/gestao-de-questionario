@@ -23,16 +23,14 @@ public class SecurityConfig {
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/**").permitAll()
                         .requestMatchers("/login/**").permitAll()
-                        .anyRequest().authenticated()
-                )
+                        .anyRequest().authenticated())
                 .formLogin((form) -> form
                         .loginPage("/login")
                         .loginProcessingUrl("/login")
                         .defaultSuccessUrl("/users")
                         .usernameParameter("cracha")
                         .passwordParameter("senha")
-                        .permitAll()
-                )
+                        .permitAll())
                 .logout((logout) -> logout.permitAll());
         return http.build();
     }

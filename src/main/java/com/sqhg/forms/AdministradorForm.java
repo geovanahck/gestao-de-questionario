@@ -1,5 +1,6 @@
 package com.sqhg.forms;
 
+import java.sql.Date;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -11,24 +12,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.sql.Date;
-
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class AdministradorForm {
-
     private Long id;
-    
+
     @NotEmpty(message = "* Campo obrigatório")
     private String cracha;
 
     private String nome;
 
+    @Past(message = "* Data inválida. Deve ser uma data no passado")
     @NotNull(message = "* Campo obrigatório")
-    @Past(message = "* Data inválida")
     private Date nascimento;
 
     @Email(message = "Email inválido.")

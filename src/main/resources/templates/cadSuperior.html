@@ -5,14 +5,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Novo Administrador</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/styles/cadAdministrador.css}" />
+    <title>Novo Superior</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/cadSuperior.css}" />
+    <link rel="stylesheet" type="text/css" href="../static/styles/cadSuperior.css" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
     <script rel="javascript" type="text/javascript" th:src="@{/scripts/menu.js}"></script>
+    <script rel="javascript" type="text/javascript" src="../static/scripts/menu.js"></script>
 </head>
 
 <style>
@@ -23,24 +26,11 @@
     <div class="flex flex-row">
         <div class="content flex-grow">
             <div style="background-color: #fff" class="flex justify-center items-center md:py-10 sm:py-6">
-                <h1 class="dark:text-black text-center titulo">Cadastro de Administrador</h1>
+                <h1 class="dark:text-black text-center titulo">Cadastro de Superiores</h1>
             </div>
-            <form th:href="@{/administradores/novo}" th:object=" ${administrador}" method="post">
+            <form th:href="@{/superior/novo}" th:object=" ${superior}" method="post">
                 <div
                     class="background flex flex-col justify-center items-center pt-4 space-y-2 h-auto overflow-y-auto ">
-                    <div class="flex flex-row justify-center w-4/5 pt-2">
-                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <div class="fonte-poppins sm:text-sm">Crachá</div>
-                        </div>
-                        <div class="input-container rounded-lg w-3/6">
-                            <input
-                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins "
-                                type="number" th:field="*{cracha}">
-                            <div th:if="${#fields.hasErrors('cracha')}" th:errors="*{cracha}"
-                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
-                        </div>
-                    </div>
-
                     <div class="flex flex-row justify-center w-4/5 pt-4">
                         <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
                             <div class="fonte-poppins">Nome</div>
@@ -54,74 +44,50 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-row justify-center w-4/5 pt-4">
-                        <div
-                            class="flex items-center justify-center align-items-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <div class="fonte-poppins">Data de Nascimento</div>
+                    <div class="flex flex-row justify-center w-4/5 pt-2">
+                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                            <div class="fonte-poppins sm:text-sm">Codigo Área</div>
                         </div>
                         <div class="input-container rounded-lg w-3/6">
                             <input
-                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="date" fmt:formatDate="dd/MM/yyyy" th:field="*{nascimento}">
-                            <div th:if="${#fields.hasErrors('nascimento')}" th:errors="*{nascimento}"
-                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
+                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins "
+                                type="number" th:field="*{area.codigoarea}">
                         </div>
                     </div>
 
-                    <div class="flex flex-row justify-center w-4/5 pt-4">
+                    <div class="flex flex-row justify-center w-4/5 pt-2 relative">
                         <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <div class="fonte-poppins ">E-mail</div>
+                            <div class="fonte-poppins sm:text-sm">Area</div>
                         </div>
-                        <div class="input-container rounded-lg w-3/6">
-                            <input
-                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="email" th:field="*{email}">
-                            <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
-                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
+                        <div class="input-container rounded-lg w-3/6 flex">
+                            <select
+                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins">
+                                <option> </option>
+                                <option th:each="area : ${areas}" th:value="${area.nome}" th:text="${area.nome}">
+                                </option>
+                            </select>
+                        </div>
+                        <div class="absolute -right-1.5 flex items-center justify-center">
+                            <svg id="svg" width="24px" height="24px" fill="#fff" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <g id="Edit / Add_Plus_Circle">
+                                        <path id="Vector"
+                                            d="M8 12H12M12 12H16M12 12V16M12 12V8M12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21Z"
+                                            stroke="#5C2472" stroke-width="3" stroke-linecap="round"
+                                            stroke-linejoin="round"></path>
+                                    </g>
+                                </g>
+                            </svg>
                         </div>
                     </div>
 
-                    <div class="flex flex-row justify-center w-4/5 pt-4">
-                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <div class="fonte-poppins">Telefone</div>
-                        </div>
-                        <div class="input-container rounded-lg w-3/6">
-                            <input
-                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="tel" th:field="*{telefone}">
-                            <div th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"
-                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
-                        </div>
-                    </div>
 
-                    <div class="flex flex-row justify-center w-4/5 pt-4">
-                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <div class="fonte-poppins">Senha</div>
-                        </div>
-                        <div class="input-container rounded-lg w-3/6">
-                            <input
-                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="password" th:field="*{senha}">
-                            <div th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}"
-                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-row justify-center w-4/5 pt-4">
-                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <div class="fonte-poppins">Confirmação de Senha</div>
-                        </div>
-                        <div class="input-container rounded-lg w-3/6">
-                            <input
-                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="password" th:field="*{confirmacaoSenha}">
-                            <div th:if="${#fields.hasErrors('confirmacaoSenha')}" th:errors="*{confirmacaoSenha}"
-                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
-                        </div>
-                    </div>
                     <div class="flex flex-row items-center justify-end w-3/5 pb-5 px-8 pt-6">
                         <div style="display: flex; justify-content: center; align-items: center;">
-                            <a type="button" th:href="@{/administradores}" style="background-color: #5c2472"
+                            <a type="button" th:href="@{/superior}" style="background-color: #5c2472"
                                 class="flex h-12 w-32 items-center justify-center text-white rounded-lg ml-2 fonte-poppins">
                                 <div class="flex">
                                     Cancelar
@@ -163,7 +129,7 @@
                 </a>
                 <ul id="dropdown-example" class="sublista hidden py-2 space-y-2">
                     <li class="item-menu">
-                        <a th:href="@{/administradores/novo}" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg
+                        <a th:href="@{/superior/novo}" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg
                                     pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
                             <svg id="svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
@@ -197,10 +163,9 @@
                                         </path>
                                     </g>
                                 </g>
-                            </svg><span id="spans">Listar </span> </a>
+                            </svg><span id="spans">Listar</span> </a>
                         </a>
                     </li>
-
                 </ul>
             </li>
 
@@ -241,7 +206,7 @@
                                             stroke-linejoin="round"></path>
                                     </g>
                                 </g>
-                            </svg><span id="spans">Listar </span> </a>
+                            </svg><span id="spans">Listar</span></a>
                     </li>
                     <li class="item-menu">
                         <a href="#"
@@ -255,7 +220,9 @@
                                         d="M20.33 3.66996C20.1408 3.48213 19.9035 3.35008 19.6442 3.28833C19.3849 3.22659 19.1135 3.23753 18.86 3.31996L4.23 8.19996C3.95867 8.28593 3.71891 8.45039 3.54099 8.67255C3.36307 8.89471 3.25498 9.16462 3.23037 9.44818C3.20576 9.73174 3.26573 10.0162 3.40271 10.2657C3.5397 10.5152 3.74754 10.7185 4 10.85L10.07 13.85L13.07 19.94C13.1906 20.1783 13.3751 20.3785 13.6029 20.518C13.8307 20.6575 14.0929 20.7309 14.36 20.73H14.46C14.7461 20.7089 15.0192 20.6023 15.2439 20.4239C15.4686 20.2456 15.6345 20.0038 15.72 19.73L20.67 5.13996C20.7584 4.88789 20.7734 4.6159 20.7132 4.35565C20.653 4.09541 20.5201 3.85762 20.33 3.66996ZM4.85 9.57996L17.62 5.31996L10.53 12.41L4.85 9.57996ZM14.43 19.15L11.59 13.47L18.68 6.37996L14.43 19.15Z"
                                         fill="#fff"></path>
                                 </g>
-                            </svg><span id="spans">Enviados</span> </a>
+                            </svg>
+                            <span id="spans">Enviados</span>
+                        </a>
                     </li>
                 </ul>
             </li>
@@ -364,6 +331,64 @@
                     </svg>
                     <span id="spans" class="flex-1 ml-3 text-left whitespace-nowrap">Relatórios</span>
                 </a>
+            </li>
+
+            <li class="p-2 justify-center items-center">
+                <a class="flex justify-center items-center p-2 text-white transition duration-75 bg-[#853a9e] rounded-lg group hover:bg-gray-900 
+                            dark:text-white dark:hover:bg-[#1E1E1E]" aria-controls="dropdown-example2"
+                    data-collapse-toggle="dropdown-example2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" fill="currentColor">
+                        <path
+                            d="M144 0a80 80 0 1 1 0 160A80 80 0 1 1 144 0zM512 0a80 80 0 1 1 0 160A80 80 0 1 1 512 0zM0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96c-.2 0-.4 0-.7 0H21.3C9.6 320 0 310.4 0 298.7zM405.3 320c-.2 0-.4 0-.7 0c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7C592.2 192 640 239.8 640 298.7c0 11.8-9.6 21.3-21.3 21.3H405.3zM224 224a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zM128 485.3C128 411.7 187.7 352 261.3 352H378.7C452.3 352 512 411.7 512 485.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7z" />
+                    </svg>
+                    <span id="spans" class="flex-1 ml-3 text-left whitespace-nowrap">Superior</span>
+                    <svg id="sidebar-toggle-item" sidebar-toggle-item class="w-6 h-6" fill="currentColor"
+                        viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+                <ul id="dropdown-example2" class="sublista hidden py-2 space-y-2">
+                    <li class="item-menu">
+                        <a th:href="@{/superior/novo}" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg
+                                    pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
+                            <svg id="svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <g id="Edit / Add_Plus_Circle">
+                                        <path id="Vector"
+                                            d="M8 12H12M12 12H16M12 12V16M12 12V8M12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21Z"
+                                            stroke="#5C2472" stroke-width="3" stroke-linecap="round"
+                                            stroke-linejoin="round"></path>
+                                    </g>
+                                </g>
+                            </svg>
+                            <span id="spans">Criar</span>
+                        </a>
+                    </li>
+                    <li class="item-menu">
+                        <a th:href="@{/superiores}"
+                            class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
+                            <svg id="svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                <g id="SVGRepo_iconCarrier">
+                                    <g id="Edit / List_Unordered">
+                                        <path id="Vector"
+                                            d="M9 17H19M9 12H19M9 7H19M5.00195 17V17.002L5 17.002V17H5.00195ZM5.00195 12V12.002L5 12.002V12H5.00195ZM5.00195 7V7.002L5 7.00195V7H5.00195Z"
+                                            stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                        </path>
+                                    </g>
+                                </g>
+                            </svg><span id="spans">Listar</span> </a>
+                        </a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </nav> <!--  menu-lateral -->

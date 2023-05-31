@@ -52,7 +52,7 @@ public class Administrador {
     }
 
     public AdministradorForm getForm() {
-        AdministradorForm administradorForm = AdministradorForm.builder()
+        return AdministradorForm.builder()
                 .id(this.id)
                 .cracha(this.cracha)
                 .nome(this.nome)
@@ -62,6 +62,5 @@ public class Administrador {
                 .senha(null)
                 .confirmacaoSenha(null)
                 .build();
-        return administradorForm;
     }
 }
