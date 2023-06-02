@@ -8,8 +8,6 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-import com.sqhg.forms.SuperiorForm;
-
 @Entity
 @Data
 @Builder
@@ -25,11 +23,4 @@ public class Area {
     @OneToMany(mappedBy = "area")
     private List<SuperiorImediato> superiorImediato;
 
-    public SuperiorForm getForm() {
-        return SuperiorForm.builder()
-                .id(this.id)
-                .nome(this.nome)
-                .codigoarea(this.codigoarea)
-                .build();
-    }
 }
