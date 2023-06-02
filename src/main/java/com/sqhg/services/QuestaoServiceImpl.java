@@ -19,8 +19,9 @@ public class QuestaoServiceImpl implements QuestaoService {
 
     @Override
     public List<Questao> obterDescricoes() {
-        List<Questao> questoes = questaoRepository.findAll();
-        return questoes.stream().collect(Collectors.toList());
+        // List<Questao> questoes = questaoRepository.findAll();
+        // return questoes.stream().collect(Collectors.toList());
+        return null;
     }
 
 }
