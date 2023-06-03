@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sqhg.model.Questao;
+import com.sqhg.entities.Questao;
 
 @Controller
 public class QuestaoController {
@@ -32,7 +32,7 @@ public class QuestaoController {
       questoes.set(questoes.indexOf(questaoFind), questao);
     } else {
       Long id = questoes.size() + 1L;
-      questoes.add(new Questao(id, questao.getDescricao(), questao.getTipo()));
+      questoes.add(new Questao(id, questao.getDescricao(), questao.getTipo(), null, null));
     }
 
     return "redirect:/listarQuestao";

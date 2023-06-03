@@ -8,9 +8,86 @@
   <link rel="stylesheet" type="text/css" th:href="@{/styles/questao.css}" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" type="text/css" th:href="@{/styles/questao.css}" />
-  <title>Criar Nova Questão</title>
+  <title>Listar Questôes</title>
 </head>
+<style>
+  body {
+    background-color: #D9D9D9;
+}
 
+#container {
+    display: flex;
+    justify-content: center;
+    /* centraliza as divs horizontalmente */
+}
+
+#div.menu-bar ul ul {
+    display: none;
+}
+
+#div.menu-bar li:hover>ul {
+    display: block;
+}
+
+
+table {
+    border-collapse: separate;
+    width: 90%;
+    max-width: 90%;
+    margin: 0 auto;
+    border-radius: 8px;
+    border-style: hidden;
+    box-shadow: 0 0 0 2px #5c2472;
+    background-color: white;
+}
+
+th,
+td {
+    border-collapse: separate;
+    padding: 6px 4px;
+    text-align: center;
+    border: solid #5c2472 2px;
+    min-width: 20px;
+}
+
+th {
+    text-align: center;
+    background-color: #5c2472;
+    color: #fff;
+}
+
+/* #myPopup {
+  display: none;
+} */
+
+.popup {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 300px;
+    height: 180px;
+    padding: 15px;
+    border: solid 1px #5c2472;
+    background: white;
+    display: none;
+}
+
+#botao-action,
+#fundo1 {
+    background-color: #5c2472;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+}
+
+button {
+    background: #5c2472;
+    border: solid #5c2472 2px;
+}
+</style>
 <body>
   <section class="h-screen flex tela-inteira justify-center">
     <div class="flex flex-col items-center tela-inteira p-5 w-4/5 gh-full overflow-auto">

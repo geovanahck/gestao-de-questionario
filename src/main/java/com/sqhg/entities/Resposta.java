@@ -8,8 +8,6 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-import com.sqhg.model.Questao;
-
 @Entity
 @Data
 @Builder

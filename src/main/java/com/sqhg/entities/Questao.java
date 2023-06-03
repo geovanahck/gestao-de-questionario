@@ -1,4 +1,4 @@
-package com.sqhg.model;
+package com.sqhg.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,9 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
-
-import com.sqhg.entities.ModeloQuestionario;
-import com.sqhg.entities.Opcao;
 
 @Entity
 @Data

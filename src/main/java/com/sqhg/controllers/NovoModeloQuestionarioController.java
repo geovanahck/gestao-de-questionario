@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +33,12 @@ public class NovoModeloQuestionarioController {
         this.questionarioService = questionarioService;
     }
 
+    @GetMapping(value = "/teste")
+    public String Teste(Model model) {
+
+        return "novoModeloQuestionario";
+    }
+
     @Autowired
     @GetMapping(value = "/novoModeloQuestionario")
     public String novoModeloQuestionario() {
@@ -40,12 +47,12 @@ public class NovoModeloQuestionarioController {
 
     @PostMapping()
     public ResponseEntity<IncluirNovoModeloQuestionarioResponse> incluir(
-        @RequestParam String questionarioData, 
-        @RequestParam("file") final MultipartFile file) throws IOException {
+            @RequestParam String questionarioData,
+            @RequestParam("file") final MultipartFile file) throws IOException {
 
         final var incluirNovoModeloQuestionarioRequest = mapper.readValue(
-            questionarioData, IncluirNovoModeloQuestionarioRequest.class);
-        
+                questionarioData, IncluirNovoModeloQuestionarioRequest.class);
+
         var questionario = questionarioService.incluir(incluirNovoModeloQuestionarioRequest);
 
         var questionarioResponse = new IncluirNovoModeloQuestionarioResponse();
@@ -56,15 +63,16 @@ public class NovoModeloQuestionarioController {
     @PutMapping()
     public ResponseEntity<QuestionarioModel> atualizar(@RequestParam String questionarioData,
             @RequestParam(value = "file", required = false) final MultipartFile file) throws IOException {
-        final var atualizarQuestionarioRequest = mapper.readValue(questionarioData, AtualizarModeloQuestionarioRequest.class);
+        final var atualizarQuestionarioRequest = mapper.readValue(questionarioData,
+                AtualizarModeloQuestionarioRequest.class);
 
         if (file != null) {
-           atualizarQuestionarioRequest.setNomeQuestionario(questionarioData);
+            atualizarQuestionarioRequest.setNomeQuestionario(questionarioData);
         }
 
-       var questionario = questionarioService.atualizar(atualizarQuestionarioRequest);
-      // return new ResponseEntity<>(questionario, HttpStatus.OK);
-       return null;
+        var questionario = questionarioService.atualizar(atualizarQuestionarioRequest);
+        // return new ResponseEntity<>(questionario, HttpStatus.OK);
+        return null;
     }
 
     @DeleteMapping("{id}")

@@ -1,13 +1,17 @@
 
 
+function carregarQuestoes() {
+    console.log("bateu");
+    var lista = document.getElementById('lista');
+    lista.style.display = "block";
+}
+
 function openPopup() {
     document.getElementById('popup').style.display = 'block';
-    // popup.classList.add("");
-    // popup.style.display = "block";
 }
 
 function closePopup() {
-    var popup = document.getElementById("myPopup");
+    var popup = document.getElementById("popup");
     popup.style.display = "none";
 }
 
@@ -20,32 +24,35 @@ function closeAlternativas() {
     alternativas.style.display = "none";
 }
 
- // selecione o botão pelo ID
- var meuBotao = document.getElementById("fundo");
-    
- // inicialize o contador
- var contador = 0;
+// selecione o botão pelo ID
+var meuBotao = document.getElementById("fundo");
+
+// inicialize o contador
+var contador = 0;
 
 
 function addQuestion() {
-         // incrementa o contador em 1
-         contador++;
+    // incrementa o contador em 1
+    contador++;
 
-         let question = `
+    let question = `
      <div class="mb-5" id="question-${contador}">
         <table >
             <thead>
                 <tr>
-                    <th class="w-60 rounded-tl-md">Opção ${contador}<p id="questao"></p>
-                    </th>
+                    
                     <td class="px-1">
-                        <input class="w-full rounded-none px-2" type="text">
+                        <input class="w-full rounded-none px-2" type="text" placeholder="Digite a alternativa aqui">
                     </td>
+                    
                 </tr>
+                
             </thead>
+            <button onclick="openPopup();" id="fundo1"
+                            class="w-fit h-fit py-1 px-3 bg-white rounded">+</button>
           </table>
      </div>`;
-         document.getElementById('question').innerHTML += question;
+    document.getElementById('question').innerHTML += question;
 }
 
 function checkboxClicado(id) {
@@ -91,5 +98,13 @@ function checkboxClicado(id) {
         }
     }
     checkBox.innerHTML += meuElementoHTML;
+
+
+    function renderizarPagina() {
+        var conteudoDiv = document.getElementById("conteudo");
+        conteudoDiv.innerHTML = '<object type="text/html" data="listarQuestao.html" ></object>';
+        conteudoDiv.classList.remove("hidden");
+    }
+
 }
 
