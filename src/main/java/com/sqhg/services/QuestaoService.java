@@ -6,6 +6,6 @@ import com.sqhg.entities.Questao;
 
 public interface QuestaoService {
 
-    List<Questao> obterDescricoes();
+    List<Questao> encontrarQuestoesPorModeloQuestionario(Long idModeloQuestionario);
 
 }

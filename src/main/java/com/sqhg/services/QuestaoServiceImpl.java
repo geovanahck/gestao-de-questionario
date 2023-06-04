@@ -2,12 +2,9 @@ package com.sqhg.services;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.springframework.stereotype.Service;
-
 import com.sqhg.entities.Questao;
-
-import com.sqhg.repositories.QuestionarioRepository;
+import com.sqhg.repositories.QuestaoRepository;
 
 import lombok.AllArgsConstructor;
 
@@ -15,13 +12,11 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class QuestaoServiceImpl implements QuestaoService {
 
-    private QuestionarioRepository questaoRepository;
+    private QuestaoRepository questaoRepository;
 
     @Override
-    public List<Questao> obterDescricoes() {
-        // List<Questao> questoes = questaoRepository.findAll();
-        // return questoes.stream().collect(Collectors.toList());
-        return null;
+    public List<Questao> encontrarQuestoesPorModeloQuestionario(Long idModeloQuestionario) {
+        List<Questao> questoes = questaoRepository.findByModeloQuestionarioId(idModeloQuestionario);
+        return questoes.stream().collect(Collectors.toList());
     }
-
 }
