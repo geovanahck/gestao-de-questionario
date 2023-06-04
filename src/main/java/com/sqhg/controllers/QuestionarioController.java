@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @AllArgsConstructor
 public class QuestionarioController {
 
-    @GetMapping(value="/novo")
+    @GetMapping(value="/enviar")
     public String enviarQuestionario(Model model) {
         model.addAttribute("questionario", new AdministradorForm());
         return "envioQuestionario";
