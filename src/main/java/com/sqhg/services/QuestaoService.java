@@ -5,7 +5,5 @@ import java.util.List;
 import com.sqhg.entities.Questao;
 
 public interface QuestaoService {
-
-    List<Questao> encontrarQuestoesPorModeloQuestionario(Long idModeloQuestionario);
-
+    List<Questao> encontrarQuestoesPorModeloQuestionario(Long modeloquestionarioId);
 }

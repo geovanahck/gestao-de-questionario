@@ -11,7 +11,6 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class QuestaoServiceImpl implements QuestaoService {
-
     private QuestaoRepository questaoRepository;
 
     @Override
@@ -19,4 +18,5 @@ public class QuestaoServiceImpl implements QuestaoService {
         List<Questao> questoes = questaoRepository.findByModeloQuestionarioId(idModeloQuestionario);
         return questoes.stream().collect(Collectors.toList());
     }
+
 }

@@ -1,7 +1,9 @@
 package com.sqhg.services;
 
-import com.sqhg.entities.Administrador;
+import com.sqhg.entities.Questionario;
 
 public interface QuestionarioService {
-    Administrador obterAdministradorDoQuestionario(Long Id);
+
+    Questionario findById(Long modeloquestionarioId);
+
 }
