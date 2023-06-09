@@ -29,7 +29,7 @@
                         #Questão
                     </div>
                     <div>
-                        [[${administrador}]]
+                       <span>[[${administrador}]]</span> 
                     </div>
                 </div>
             </div>
@@ -37,8 +37,7 @@
                 <form th:action="@{/respostaAlternativas}" method="post">
                     <div class="justify-center items-center pt-12 flex flex-col">
                         <div id="questao" class="flex justify-center items-center">
-                            #Selecione as características que mais o agradam em
-                            relação ao seu superior.
+                            <span>[[${question.descricao}]]</span>
                         </div>
                         <div id="resposta" class="columns-3 pt-1">
                             <div class="ml-2" th:each="alternativa : ${alternativas}">

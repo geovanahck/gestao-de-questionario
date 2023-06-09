@@ -25,16 +25,16 @@
         </div>
     </nav>
 
-    <h1 class="flex justify-center items-center py-10 text-3xl">
+    <h1 class="flex justify-center items-center py-10 text-3xl bg-[#FFF]">
         Avaliação de Superiores</h1>
     <section>
         <div class="items-center justify-between pt-6 flex flex-col">
             <div class="sm:w-2/4 md:w-3/5 lg:w-3/5 2xl:w-2/5 pt-3 justify-center items-center">
                 <div class="flex items-center justify-between">
-                    <div class="col-start-4">
+                    <div>
                         #Questão
                     </div>
-                    <div class="col-end-8">
+                    <div>
                         [[${administrador}]]
                     </div>
                 </div>
@@ -42,7 +42,7 @@
         </div>
         <div class="justify-center items-center pt-12 flex flex-col">
             <div id="questao" class="flex justify-center items-center">
-                #Seu supervisor lhe passa feedback’s constantes?
+                [[${question.descricao}]]
             </div>
             <div id="resposta" type="" class="flex gap-2 columns-2 h-1/2 pt-2">
                 <div class="flex justify-between">

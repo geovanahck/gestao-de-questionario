@@ -1,9 +1,5 @@
 package com.sqhg.controllers;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,18 +23,27 @@ public class ResponderQuestionarioController {
     private QuestaoService questaoService;
 
     @GetMapping("/{modeloquestionarioId}")
-    public String encontrarQuestoesPorModeloQuestionario(Model model,
-            @PathVariable(name = "modeloquestionarioId") long modeloquestionarioId) {
-
-        Questionario questionario = questionarioService.findById(modeloquestionarioId);
+    public String findQuestionsByQuestionnaireModel(Model model,
+            @PathVariable(name = "modeloquestionarioId") long questionarioModelId) {
+        Questionario questionario = questionarioService.findById(questionarioModelId);
         Administrador administrador = questionario.getAdministrador();
+        model.addAttribute("administrator", administrador.getNome());
 
-        System.out.println(administrador.getNome());
+        Questao question = questaoService
+                .acharQuestoesPorModeloQuestionario(questionarioModelId);
 
-        model.addAttribute("administrador", administrador.getNome());
-        List<Questao> ListaQuestoesModeloQuestionarioQuestionario = questaoService
-                .encontrarQuestoesPorModeloQuestionario(modeloquestionarioId).stream()
-                .collect(Collectors.toList());
+        model.addAttribute("question", question);
+
+        if (question.getTipo() == 3) {
+            return "responderQuestaoAberta";
+        }
+
+        if (question.getTipo() == 2) {
+            question.getOpcao().forEach(opcao -> {
+                System.out.println("Opcao: " + opcao.getDescricao());
+            });
+            return "responderQuestaoAlternativa";
+        }
 
         return "responderQuestaoEl";
     }
