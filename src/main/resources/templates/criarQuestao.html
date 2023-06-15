@@ -8,88 +8,95 @@
     <link rel="stylesheet" type="text/css" th:href="@{/styles/questao.css}" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-    <script rel="javascript" type="text/javascript" th:src="@{/scripts/questao.js}"></script>
     <script rel="javascript" type="text/javascript" src="../static/scripts/questao.js"></script>
+    <script rel="javascript" type="text/javascript" th:src="@{/scripts/questao.js}"></script>
     <title>Criar Nova Questão</title>
 </head>
+
 <style>
     body {
-    background-color: #D9D9D9;
-}
+        background-color: #D9D9D9;
+    }
 
-#container {
-    display: flex;
-    justify-content: center;
-    /* centraliza as divs horizontalmente */
-}
+    #container {
+        display: flex;
+        justify-content: center;
+        /* centraliza as divs horizontalmente */
+    }
 
-#div.menu-bar ul ul {
-    display: none;
-}
+    #div.menu-bar ul ul {
+        display: none;
+    }
 
-#div.menu-bar li:hover>ul {
-    display: block;
-}
+    #div.menu-bar li:hover>ul {
+        display: block;
+    }
 
 
-table {
-    border-collapse: separate;
-    width: 90%;
-    max-width: 90%;
-    margin: 0 auto;
-    border-radius: 8px;
-    border-style: hidden;
-    box-shadow: 0 0 0 2px #5c2472;
-    background-color: white;
-}
+    table {
+        border-collapse: separate;
+        width: 90%;
+        max-width: 90%;
+        margin: 0 auto;
+        border-radius: 8px;
+        border-style: hidden;
+        box-shadow: 0 0 0 2px #5c2472;
+        background-color: white;
+    }
 
-th,
-td {
-    border-collapse: separate;
-    padding: 6px 4px;
-    text-align: center;
-    border: solid #5c2472 2px;
-    min-width: 20px;
-}
+    th,
+    td {
+        border-collapse: separate;
+        padding: 6px 4px;
+        text-align: center;
+        border: solid #5c2472 2px;
+        min-width: 20px;
+    }
 
-th {
-    text-align: center;
-    background-color: #5c2472;
-    color: #fff;
-}
+    th {
+        text-align: center;
+        background-color: #5c2472;
+        color: #fff;
+    }
 
-/* #myPopup {
+    /* #myPopup {
   display: none;
 } */
 
-.popup {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 300px;
-    height: 180px;
-    padding: 15px;
-    border: solid 1px #5c2472;
-    background: white;
-    display: none;
-}
+    .popup {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        width: 300px;
+        height: 180px;
+        padding: 15px;
+        border: solid 1px #5c2472;
+        background: white;
+        display: none;
+    }
 
-#botao-action,
-#fundo1 {
-    background-color: #5c2472;
-    text-align: center;
-    border-radius: 5px;
-    color: white;
-}
+    #botao-action,
+    #fundo1 {
+        background-color: #5c2472;
+        text-align: center;
+        border-radius: 5px;
+        color: white;
+    }
 
-button {
-    background: #5c2472;
-    border: solid #5c2472 2px;
-}
+    button {
+        background: #5c2472;
+        border: solid #5c2472 2px;
+    }
+
+    input.form-control {
+        display: none;
+    }
+
 </style>
+
 <body>
     <section class="h-screen flex tela-inteira justify-center">
         <div class="flex flex-col items-center tela-inteira p-5 w-4/5 gh-full overflow-auto">
@@ -100,10 +107,10 @@ button {
                 <div class="flex p-5">
                     <ul class="flex space-x-5">
                         <li>
-                            <a href="/criarQuestao">Cadastro de questao</a>
+                            <a href="/criarQuestao">Cadastro de questão</a>
                         </li>
                         <li>
-                            <a href="/listarQuestao">Listagem de questao</a>
+                            <a href="/listarQuestao">Listagem de questão</a>
                         </li>
                     </ul>
                 </div>
@@ -131,12 +138,37 @@ button {
                                         <div>
                                             <input type="radio" id="color" value="0a10"> 0 a 10</input>
                                         </div>
-                                        <div>
+                                        
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="custom_field[account][1]"
+                                                    id="id-custom_field-account-1-1" value="1"> Pessoa Física
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label>
+                                                <input type="radio" name="custom_field[account][1]"
+                                                    id="id-custom_field-account-1-2" value="2"> Pessoa Jurídica
+                                            </label>
+                                        </div>
+                                        <input type="text" name="custom_field[account][4]" value=""
+                                            placeholder="Razão Social" id="input-custom-field4" class="form-control"
+                                            vk_1bc56="subscribed">
+                                        <input type="text" name="custom_field[account][5]" value="" placeholder="CNPJ"
+                                            id="input-custom-field5" class="form-control" vk_1bc56="subscribed">
+                                        <input type="text" name="custom_field[account][6]" value="" placeholder="I.E"
+                                            id="input-custom-field6" class="form-control" vk_1bc56="subscribed">
+                                        <input type="text" name="custom_field[account][3]" value="" placeholder="RG"
+                                            id="input-custom-field3" class="form-control" vk_1bc56="subscribed">
+                                        <input type="text" name="custom_field[account][2]" value="" placeholder="CPF"
+                                            id="input-custom-field2" class="form-control" vk_1bc56="subscribed">
+
+                                        <!-- <div>
                                             <form action="">
                                                 <input id="fundo" type="radio" onclick="addQuestion()">
                                                 Alternativas</input>
                                             </form>
-                                        </div>
+                                        </div> -->
                                         <div>
                                             <form action="">
                                                 <input id="fundo" type="radio" onclick="addQuestion()"> Múltipla
