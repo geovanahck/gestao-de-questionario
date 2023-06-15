@@ -20,13 +20,13 @@
 </style>
 
 <body class="overflow-scroll">
+    <div style="background-color: #fff" class="flex justify-center items-center md:py-12 sm:py-6">
+        <h1 class="dark:text-black text-center titulo h-10">Editar Administrador</h1>
+    </div>
     <div class="flex flex-row">
         <div class="content flex-grow">
-            <div style="background-color: #fff" class="flex justify-center items-center md:py-10 sm:py-6">
-                <h1 class="dark:text-black text-center titulo">Editar Administrador</h1>
-            </div>
-            <form th:href="@{/administradores/editar/{id}(id=${administrador.id})}" th:object="${administrador}"
-                method="post">
+            <form class="pt-6" th:href="@{/administradores/editar/{id}(id=${administrador.id})}"
+                th:object="${administrador}" method="post">
                 <div class="flex flex-col justify-center items-center pt-4 space-y-2 h-auto overflow-y-auto">
                     <div class="flex flex-row justify-center w-4/5 pt-2">
                         <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
@@ -141,7 +141,7 @@
         <div class="flex justify-center pb-5">
             <img th:src="@{/images/logoPrati.png}" alt="" class="pt-8 w-36 pr-3">
         </div>
-        <ul class="pr-3 py-6">
+        <ul class="pr-3 pb-6">
             <li class="p-2 justify-center items-center">
                 <a class="flex justify-center items-center p-2 text-white transition duration-75 bg-[#853a9e] rounded-lg group hover:bg-gray-900 
                             dark:text-white dark:hover:bg-[#1E1E1E]" aria-controls="dropdown-example"

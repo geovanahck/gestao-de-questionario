@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
 
 #quantpag {
     width: 60px;
@@ -8,7 +6,7 @@
 }
 
 .titulo {
-
+    font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
     font-size: 36px;
@@ -51,13 +49,12 @@ input:focus {
 
 input {
     outline: none;
+    border-radius: 8px;
 }
-
 
 body {
     background-color: #D8D8D9;
 }
-
 
 table {
     border-collapse: separate;
@@ -70,10 +67,6 @@ table {
     background-color: white;
     padding: 5px;
     outline: none;
-}
-
-input {
-    border-radius: 8px;
 }
 
 #pesquisa {
@@ -121,16 +114,11 @@ td {
 }
 
 /* sidebar */
-
-* {
+nav * {
     margin: 0;
     padding: 0;
     box-sizing: 0;
     font-family: 'Outfit', sans-serif;
-}
-
-body {
-    height: 100vh;
 }
 
 nav.menu-lateral {
@@ -188,7 +176,7 @@ nav.menu-lateral {
     }
 }
 
-#spans {
+nav #spans {
     display: none;
 }
 
@@ -200,17 +188,17 @@ nav.menu-lateral {
     cursor: pointer;
 }
 
-ul {
+nav ul {
     height: 100%;
     list-style-type: none;
 }
 
-ul li.item-menu {
+nav ul li.item-menu {
     color: #fff;
     text-decoration: none;
     display: flex;
 }
 
-#sidebar-toggle-item {
+nav #sidebar-toggle-item {
     display: none;
 }
