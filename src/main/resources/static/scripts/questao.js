@@ -1,4 +1,3 @@
-src="https://code.jquery.com/jquery-3.1.0.min.js"
 
 function carregarQuestoes() {
     console.log("bateu");
@@ -105,6 +104,7 @@ function checkboxClicado(id) {
         conteudoDiv.innerHTML = '<object type="text/html" data="listarQuestao.html" ></object>';
         conteudoDiv.classList.remove("hidden");
     }
+}
 
     $(document).ready(function() {
         $('input:radio[name="custom_field[account][1]"]').on("change", function() {
@@ -118,5 +118,17 @@ function checkboxClicado(id) {
         });
     });
     
-}
+
+//    window.addEventListener("DOMContentLoaded", (event) => {
+//   console.log("DOM fully loaded and parsed");
+//   $('input:radio[name="custom_field[account][1]"]').on("change", function() {
+//             if (this.checked && this.value == '1') {
+//                 $("#input-custom-field2, #input-custom-field3").show();
+//                 $("#input-custom-field4, #input-custom-field5, #input-custom-field6").hide();
+//             } else {
+//                 $("#input-custom-field4, #input-custom-field5, #input-custom-field6").show();
+//                 $("#input-custom-field2, #input-custom-field3").hide();
+//             }
+//         });
+// });
 

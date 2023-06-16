@@ -142,18 +142,33 @@
                                         <div class="radio">
                                             <label>
                                                 <input type="radio" name="custom_field[account][1]"
-                                                    id="id-custom_field-account-1-1" value="1"> Pessoa Física
+                                                    id="id-custom_field-account-1-1" value="1"> Alternativas
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label>
                                                 <input type="radio" name="custom_field[account][1]"
-                                                    id="id-custom_field-account-1-2" value="2"> Pessoa Jurídica
+                                                    id="id-custom_field-account-1-2" value="2"> Múltipla escolha
                                             </label>
                                         </div>
-                                        <input type="text" name="custom_field[account][4]" value=""
-                                            placeholder="Razão Social" id="input-custom-field4" class="form-control"
-                                            vk_1bc56="subscribed">
+
+                                        <div>
+                                            <table>
+
+                                                <thead>
+                                                    
+                                                </thead>
+
+                                                    <tr>
+                                                        <td class="px-1">
+                                                            <input type="text" name="custom_field[account][4]" value=""
+                                                            placeholder="Digite a alternativa aqui" id="input-custom-field4" class="form-control w-full rounded-none px-2"
+                                                            vk_1bc56="subscribed">
+                                                        </td>
+                                                    </thead>
+                                                    </table>
+                                        </div>
+
                                         <input type="text" name="custom_field[account][5]" value="" placeholder="CNPJ"
                                             id="input-custom-field5" class="form-control" vk_1bc56="subscribed">
                                         <input type="text" name="custom_field[account][6]" value="" placeholder="I.E"
@@ -169,12 +184,13 @@
                                                 Alternativas</input>
                                             </form>
                                         </div> -->
-                                        <div>
+                                        
+                                        <!-- <div>
                                             <form action="">
                                                 <input id="fundo" type="radio" onclick="addQuestion()"> Múltipla
                                                 escolha</input>
                                             </form>
-                                        </div>
+                                        </div> -->
                                         <div>
                                             <input type="radio" id="color" value="Aberta"> Aberta</input>
                                         </div>
