@@ -9,7 +9,7 @@ services:
       MYSQL_PASSWORD: 1234
       MYSQL_DATABASE: sqhg
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - ./data:/var/lib/mysql
     networks:
