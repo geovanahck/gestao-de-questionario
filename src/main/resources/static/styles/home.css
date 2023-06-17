@@ -3,15 +3,11 @@
 @tailwind utilities;
 
 /* sidebar */
-* {
+nav * {
     margin: 0;
     padding: 0;
     box-sizing: 0;
     font-family: 'Outfit', sans-serif;
-}
-
-body {
-    height: 100vh;
 }
 
 nav.menu-lateral {
@@ -29,8 +25,11 @@ nav.menu-lateral {
 }
 
 @media (min-width: 1750px) {
-
     nav.menu-lateral {
+        width: 90px;
+    }
+
+    nav.menu-lateral:hover {
         width: 300px;
     }
 }
@@ -39,28 +38,57 @@ nav.menu-lateral {
     nav.menu-lateral {
         display: none;
     }
+
+    nav.menu-lateral:hover {
+        display: none;
+    }
 }
+
 
 @media (max-width: 1250px) {
     nav.menu-lateral {
+        width: 70px;
+    }
+
+    nav.menu-lateral:hover {
         width: 200px;
     }
 }
 
 @media (min-width: 1250px) and (max-width:1749px) {
     nav.menu-lateral {
+        width: 80px;
+    }
+
+    nav.menu-lateral:hover {
         width: 250px;
     }
 }
 
-ul {
+nav #spans {
+    display: none;
+}
+
+.btn-expandir {
+    width: 100%;
+    padding-left: 10px;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+
+nav ul {
     height: 100%;
     list-style-type: none;
 }
 
-ul li.item-menu {
-    align-items: justify-center;
+nav ul li.item-menu {
     color: #fff;
     text-decoration: none;
     display: flex;
+}
+
+nav #sidebar-toggle-item {
+    display: none;
 }
