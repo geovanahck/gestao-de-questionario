@@ -12,7 +12,7 @@ public interface AdministradorService {
     Optional<Administrador> acharAdministradorPorId(Long id);
 
     Administrador findbyId(Long id);
-
+    
     List<Administrador> acharTodosAdministradores();
 
     Page<Administrador> acharAdministradoresPorPagina(int pageNo, int pageSize, String keyword);
@@ -26,4 +26,5 @@ public interface AdministradorService {
     Administrador acharAdministradorPorCracha(String cracha);
 
     void deletar(Long id);
+
 }

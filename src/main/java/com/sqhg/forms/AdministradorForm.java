@@ -28,7 +28,7 @@ public class AdministradorForm {
     private String nome;
 
     @NotNull(message = "* Campo obrigatório")
-    @Past(message = "* Data inválida")
+    @Past(message = "* Data não pode ser futura")
     private Date nascimento;
 
     @Email(message = "Email inválido.")
