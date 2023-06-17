@@ -1,57 +1,53 @@
 package com.sqhg.controllers;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.sqhg.entities.TipoQuestao;
+import com.sqhg.services.QuestaoService;
+import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.*;
 
 import com.sqhg.entities.Questao;
 
 @Controller
+@RequestMapping("/questoes")
+@AllArgsConstructor
 public class QuestaoController {
-    
-    List<Questao> questoes = new ArrayList<>();
 
-    @GetMapping("/criarQuestao")
-    public ModelAndView questao() {
-        ModelAndView mav = new ModelAndView("criarQuestao");
-        mav.addObject("questao", new Questao());
-        return mav;
+    private final QuestaoService questaoService;
+
+    @GetMapping
+    public String telaListarQuestoes(Model model, int currentPage) {
+        Page<Questao> questoes = questaoService.listarQuestoesPorPagina(PageRequest.of(currentPage - 1, 10));
+        model.addAttribute("questoes", questoes.getContent());
+        model.addAttribute("currentPage", currentPage);
+        model.addAttribute("totalPages", questoes.getTotalPages());
+        model.addAttribute("totalQuestoes", questoes.getTotalElements());
+        model.addAttribute("hasNext", questoes.hasNext());
+        return "listarQuestao";
     }
 
-    @PostMapping("/criarQuestao")
-    public String criarQuestao(Questao questao) {
-        System.out.println(" Get ID" + questao.getId());
-
-    if (questao.getId() != null) {
-      Questao questaoFind = questoes.stream().filter(questaoItem -> questao.getId().equals(questaoItem.getId())).findFirst().get();
-      questoes.set(questoes.indexOf(questaoFind), questao);
-    } else {
-      Long id = questoes.size() + 1L;
-      questoes.add(new Questao(id, questao.getDescricao(), questao.getTipo(), null, null));
+    @GetMapping("/novo")
+    public String telaCadastrarQuestao(Model model) {
+        return "criarQuestao";
     }
 
-    return "redirect:/listarQuestao";
+    @PostMapping("/novo")
+    public String salvarQuestao(@ModelAttribute("questao") Questao questao, BindingResult result) {
+        if (result.hasErrors()) {
+            return "criarQuestao";
+        }
+        if (questao.getTipo().equals(TipoQuestao.MULTIPLA)) {
+            if (questao.getOpcoes().isEmpty()) {
+                result.addError(new FieldError("questao", "opcoes", "Questões de múltipla escolha devem ter alternativas associadas."));
+                return "criarQuestao";
+            }
+        }
+        questaoService.salvarQuestao(questao);
+        return "redirect:/questoes";
     }
-
-    @GetMapping("/listarQuestao")
-  public ModelAndView listarQuestao() {
-    ModelAndView mav = new ModelAndView("listarQuestao");
-    mav.addObject("questoes", questoes);
-    return mav;
-  }
-
-  @GetMapping("/edit/{id}")
-  public ModelAndView edit(@PathVariable("id") Long id) {
-    ModelAndView mav = new ModelAndView("criarQuestao");
-
-    Questao questaoFind = questoes.stream().filter(questao -> id.equals(questao.getId())).findFirst().get();
-    mav.addObject("questao", questaoFind);
-    return mav;
-  }
-
 }

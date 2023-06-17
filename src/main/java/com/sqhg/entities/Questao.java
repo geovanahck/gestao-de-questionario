@@ -20,12 +20,12 @@ public class Questao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String descricao;
-    private int tipo;
+    private TipoQuestao tipo;
 
     @ManyToOne
     @JoinColumn(name = "id_modeloQuestionario")
     private ModeloQuestionario modeloQuestionario;
 
     @OneToMany(mappedBy = "questao")
-    private List<Opcao> opcao;
+    private List<Opcao> opcoes;
 }
