@@ -31,9 +31,9 @@
     </div>
 
     <nav class="menu-lateral flex justify-center items-center" onmouseover="mostrarMenu()" onmouseout="esconderMenu()">
-        <div class="flex justify-center pb-5">
-            <img src="../static/images/logoPrati.png" alt="" class="pt-8 w-36 pr-3">
-        </div>
+        <a th:href="@{/home}" class="flex justify-center pb-5">
+            <img th:src="@{/images/logoPrati.png}" alt="" class="pt-8 w-36 pr-3">
+        </a>
         <ul class="pr-3 pt-2">
             <li class="p-2 justify-center items-center">
                 <a class="flex items-center justify-center p-2 text-white transition duration-75 bg-[#853a9e] rounded-lg group hover:bg-gray-900 
@@ -90,10 +90,9 @@
                                         </path>
                                     </g>
                                 </g>
-                            </svg><span id="spans">Listar</span> </a>
+                            </svg><span id="spans">Listar</span>
                         </a>
                     </li>
-
                 </ul>
             </li>
 
@@ -134,7 +133,8 @@
                                             stroke-linejoin="round"></path>
                                     </g>
                                 </g>
-                            </svg><span id="spans">Listar</span> </a>
+                            </svg><span id="spans">Listar</span>
+                        </a>
                     </li>
                     <li class="item-menu">
                         <a href="#"
@@ -261,7 +261,8 @@
             <li class="p-2 md:pt-4 justify-center items-center">
                 <a href="#"
                     class="flex items-center p-2 text-white bg-[#853a9e] rounded-lg dark:text-white hover:bg-gray-900 dark:hover:bg-[#1E1E1E]">
-                    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#ffffff"
+                        xmlns="http://www.w3.org/2000/svg">
                         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                         <g id="SVGRepo_iconCarrier">
@@ -273,7 +274,7 @@
                                 stroke-linecap="round" stroke-linejoin="round"></path>
                         </g>
                     </svg>
-                    <span id="spans" class="flex-1 ml-3 whitespace-nowrap">Sair</span>
+                    <span id="spans" class="flex-1 ml-3 text-left whitespace-nowrap">Sair</span>
                 </a>
             </li>
         </ul>
