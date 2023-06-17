@@ -86,6 +86,13 @@
         color: white;
     }
 
+    #input-custom-field2 {
+        /* background-color: #5c2472; */
+        text-align: start;
+        border-radius: 5px;
+        display: none;
+    }
+
     button {
         background: #5c2472;
         border: solid #5c2472 2px;
@@ -94,7 +101,6 @@
     input.form-control {
         display: none;
     }
-
 </style>
 
 <body>
@@ -138,7 +144,7 @@
                                         <div>
                                             <input type="radio" id="color" value="0a10"> 0 a 10</input>
                                         </div>
-                                        
+
                                         <div class="radio">
                                             <label>
                                                 <input type="radio" name="custom_field[account][1]"
@@ -152,39 +158,13 @@
                                             </label>
                                         </div>
 
-                                        <div>
-                                            <table>
-
-                                                <thead>
-                                                    
-                                                </thead>
-
-                                                    <tr>
-                                                        <td class="px-1">
-                                                            <input type="text" name="custom_field[account][4]" value=""
-                                                            placeholder="Digite a alternativa aqui" id="input-custom-field4" class="form-control w-full rounded-none px-2"
-                                                            vk_1bc56="subscribed">
-                                                        </td>
-                                                    </thead>
-                                                    </table>
-                                        </div>
-
-                                        <input type="text" name="custom_field[account][5]" value="" placeholder="CNPJ"
-                                            id="input-custom-field5" class="form-control" vk_1bc56="subscribed">
-                                        <input type="text" name="custom_field[account][6]" value="" placeholder="I.E"
-                                            id="input-custom-field6" class="form-control" vk_1bc56="subscribed">
-                                        <input type="text" name="custom_field[account][3]" value="" placeholder="RG"
-                                            id="input-custom-field3" class="form-control" vk_1bc56="subscribed">
-                                        <input type="text" name="custom_field[account][2]" value="" placeholder="CPF"
-                                            id="input-custom-field2" class="form-control" vk_1bc56="subscribed">
-
                                         <!-- <div>
                                             <form action="">
                                                 <input id="fundo" type="radio" onclick="addQuestion()">
                                                 Alternativas</input>
                                             </form>
                                         </div> -->
-                                        
+
                                         <!-- <div>
                                             <form action="">
                                                 <input id="fundo" type="radio" onclick="addQuestion()"> Múltipla
@@ -200,22 +180,96 @@
                         </div>
                     </div>
                 </form>
-                <div class="justify-items items-center inline-block flex flex-row-reverse pr-0 gap-x-2">
+
+
+                <input type="text" name="custom_field[account][5]" value="" placeholder="CNPJ" id="input-custom-field5"
+                    class="form-control" vk_1bc56="subscribed">
+                <input type="text" name="custom_field[account][6]" value="" placeholder="I.E" id="input-custom-field6"
+                    class="form-control" vk_1bc56="subscribed">
+
+                <!-- Alternativas -->
+                <!-- <div class="mb-5" id="question-${contador}">
+                        <table>
+                            <thead>
+                                <tr>
+
+                                    <td class="px-1">
+                                        <input class="w-full rounded-none px-2" type="text"
+                                            placeholder="Digite a alternativa aqui">
+                                    </td>
+
+                                </tr>
+
+                            </thead>
+                            <button onclick="openPopup();" id="fundo1"
+                                class="w-fit h-fit py-1 px-3 bg-white rounded">+</button>
+                        </table>
+                    </div>-->
+
+                <div name="custom_field[account][2]" value="" id="input-custom-field2"
+                    class="justify-items items-center inline-block flex flex-row-reverse pr-0 mb-5 bg-gray-500">
+
                     <div class="py-4">
-                        <form>
-                            <button id="fundo1" formaction="listarQuestao" method="post"
-                                class="w-fit h-fit py-1 px-6 bg-white rounded">Gravar</button>
-                        </form>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td class="px-1">
+                                        <input type="text" name="custom_field[account][3]" value=""
+                                            placeholder="Digite a alternativa aqui" id="input-custom-field3"
+                                            class="w-fit h-fit rounded-none px-2" />
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
                     </div>
-                    <div class=" w-fit">
-                        <button onclick="openPopup();" id="fundo1"
-                            class="w-fit h-fit py-1 px-6 bg-white rounded">Cancelar</button>
+                    
+                    <div class="w-fit">
+
+                        <button name="custom_field[account][2]" value="" id="input-custom-field3"
+                            class="w-fit h-fit py-1 px-3 bg-[#5c2472] rounded" vk_1bc56="subscribed">+</button>
                     </div>
+
+
+
+                </div>
+
+            </div>
+
+            <div class="justify-items items-center inline-block flex flex-row-reverse pr-0 gap-x-2">
+                <div class="py-4">
+                    <form>
+                        <button id="fundo1" formaction="listarQuestao" method="post"
+                            class="w-fit h-fit py-1 px-6 bg-white rounded">Gravar</button>
+                    </form>
+                </div>
+                <div class=" w-fit">
+                    <button onclick="openPopup();" id="fundo1"
+                        class="w-fit h-fit py-1 px-6 bg-white rounded">Cancelar</button>
                 </div>
             </div>
+
+
+        </div>
         </div>
         </form>
+
     </section>
+
+    <!-- <div class="mb-5" id="question">
+        <table>
+            <thead>
+                <tr>
+                    <td class="px-1">
+                        <input id="fundo2" class="w-full rounded-none px-2" type="text" name="custom_field[account][3]"
+                            placeholder="Digite a alternativa aqui">
+                    </td>
+                </tr>
+
+            </thead>
+            <button onclick="openPopup();" id="fundo2" class="w-fit h-fit py-1 px-3 bg-white rounded">+</button>
+        </table>
+    </div> -->
 
     <div id="popup" class="popup hidden flex-col justify-between">
         <div>

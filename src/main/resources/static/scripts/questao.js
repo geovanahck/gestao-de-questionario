@@ -49,7 +49,7 @@ function addQuestion() {
             </thead>
             <button onclick="openPopup();" id="fundo1"
                             class="w-fit h-fit py-1 px-3 bg-white rounded">+</button>
-          </table>
+        </table>
      </div>`;
     document.getElementById('question').innerHTML += question;
 }
@@ -106,18 +106,18 @@ function checkboxClicado(id) {
     }
 }
 
-    $(document).ready(function() {
-        $('input:radio[name="custom_field[account][1]"]').on("change", function() {
-            if (this.checked && this.value == '1') {
-                $("#input-custom-field2, #input-custom-field3").show();
-                $("#input-custom-field4, #input-custom-field5, #input-custom-field6").hide();
-            } else {
-                $("#input-custom-field4, #input-custom-field5, #input-custom-field6").show();
-                $("#input-custom-field2, #input-custom-field3").hide();
-            }
-        });
+$(document).ready(function () {
+    $('input:radio[name="custom_field[account][1]"]').on("change", function () {
+        if (this.checked && this.value == '1') {
+            $("#input-custom-field2, #input-custom-field3").show();
+            $("#input-custom-field4, #input-custom-field5, #input-custom-field6").hide();
+        } else {
+            $("#input-custom-field4, #input-custom-field5, #input-custom-field6").show();
+            $("#input-custom-field2, #input-custom-field3").hide();
+        }
     });
-    
+});
+
 
 //    window.addEventListener("DOMContentLoaded", (event) => {
 //   console.log("DOM fully loaded and parsed");
