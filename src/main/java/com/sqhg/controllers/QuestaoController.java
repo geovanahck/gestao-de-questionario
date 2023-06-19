@@ -3,6 +3,9 @@ package com.sqhg.controllers;
 import com.sqhg.entities.TipoQuestao;
 import com.sqhg.services.QuestaoService;
 import lombok.AllArgsConstructor;
+
+import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
@@ -11,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
+import com.sqhg.entities.Opcao;
 import com.sqhg.entities.Questao;
 
 @Controller
@@ -21,8 +25,9 @@ public class QuestaoController {
     private final QuestaoService questaoService;
 
     @GetMapping
-    public String telaListarQuestoes(Model model, int currentPage) {
-        Page<Questao> questoes = questaoService.listarQuestoesPorPagina(PageRequest.of(currentPage - 1, 10));
+    public String telaListarQuestoes(Model model, Optional<Integer> currentPage) {
+        int page = currentPage.orElse(1);
+        Page<Questao> questoes = questaoService.listarQuestoesPorPagina(PageRequest.of(page - 1, 10));
         model.addAttribute("questoes", questoes.getContent());
         model.addAttribute("currentPage", currentPage);
         model.addAttribute("totalPages", questoes.getTotalPages());
@@ -33,6 +38,7 @@ public class QuestaoController {
 
     @GetMapping("/novo")
     public String telaCadastrarQuestao(Model model) {
+        model.addAttribute("questao", new Questao());
         return "criarQuestao";
     }
 
@@ -40,12 +46,6 @@ public class QuestaoController {
     public String salvarQuestao(@ModelAttribute("questao") Questao questao, BindingResult result) {
         if (result.hasErrors()) {
             return "criarQuestao";
-        }
-        if (questao.getTipo().equals(TipoQuestao.MULTIPLA)) {
-            if (questao.getOpcoes().isEmpty()) {
-                result.addError(new FieldError("questao", "opcoes", "Questões de múltipla escolha devem ter alternativas associadas."));
-                return "criarQuestao";
-            }
         }
         questaoService.salvarQuestao(questao);
         return "redirect:/questoes";

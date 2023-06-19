@@ -1,289 +1,44 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" th:href="@{/styles/questao.css}" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-    <script rel="javascript" type="text/javascript" src="../static/scripts/questao.js"></script>
-    <script rel="javascript" type="text/javascript" th:src="@{/scripts/questao.js}"></script>
-    <title>Criar Nova Questão</title>
+    <title>Registrar Questão</title>
 </head>
-
-<style>
-    body {
-        background-color: #D9D9D9;
-    }
-
-    #container {
-        display: flex;
-        justify-content: center;
-        /* centraliza as divs horizontalmente */
-    }
-
-    #div.menu-bar ul ul {
-        display: none;
-    }
-
-    #div.menu-bar li:hover>ul {
-        display: block;
-    }
-
-
-    table {
-        border-collapse: separate;
-        width: 90%;
-        max-width: 90%;
-        margin: 0 auto;
-        border-radius: 8px;
-        border-style: hidden;
-        box-shadow: 0 0 0 2px #5c2472;
-        background-color: white;
-    }
-
-    th,
-    td {
-        border-collapse: separate;
-        padding: 6px 4px;
-        text-align: center;
-        border: solid #5c2472 2px;
-        min-width: 20px;
-    }
-
-    th {
-        text-align: center;
-        background-color: #5c2472;
-        color: #fff;
-    }
-
-    /* #myPopup {
-  display: none;
-} */
-
-    .popup {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
-        width: 300px;
-        height: 180px;
-        padding: 15px;
-        border: solid 1px #5c2472;
-        background: white;
-        display: none;
-    }
-
-    #botao-action,
-    #fundo1 {
-        background-color: #5c2472;
-        text-align: center;
-        border-radius: 5px;
-        color: white;
-    }
-
-    #input-custom-field2 {
-        /* background-color: #5c2472; */
-        text-align: start;
-        border-radius: 5px;
-        display: none;
-    }
-
-    button {
-        background: #5c2472;
-        border: solid #5c2472 2px;
-    }
-
-    input.form-control {
-        display: none;
-    }
-</style>
-
 <body>
-    <section class="h-screen flex tela-inteira justify-center">
-        <div class="flex flex-col items-center tela-inteira p-5 w-4/5 gh-full overflow-auto">
-            <header class="flex justify-center w-full">
-                <span class="text-2xl">Criar Nova Questão</span>
-            </header>
-            <div class="bg-[#F3F3F3] w-full p-5">
-                <div class="flex p-5">
-                    <ul class="flex space-x-5">
-                        <li>
-                            <a href="/criarQuestao">Cadastro de questão</a>
-                        </li>
-                        <li>
-                            <a href="/listarQuestao">Listagem de questão</a>
-                        </li>
-                    </ul>
-                </div>
-                <form method="POST" action="/criarQuestao" th:object="${questao}">
-                    <div id="question">
-                        <div class="mb-5">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th class="w-28 rounded-tl-md">Questão</th>
-                                        <td class="px-1">
-                                            <input class="w-full rounded-none px-2" type="text" th:value="${questao.id}"
-                                                name="id" />
-                                        </td>
-                                    </tr>
-                                </thead>
-                            </table>
-                            <div class="flex space-x-12 p-5">
-                                <tr>
-                                    <div>
-                                        <th>Tipo</th>
-                                    </div>
+    <h1>Registrar Questão</h1>
 
-                                    <td class="px-1">
-                                        <div>
-                                            <input type="radio" id="color" value="0a10"> 0 a 10</input>
-                                        </div>
-
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="custom_field[account][1]"
-                                                    id="id-custom_field-account-1-1" value="1"> Alternativas
-                                            </label>
-                                        </div>
-                                        <div class="radio">
-                                            <label>
-                                                <input type="radio" name="custom_field[account][1]"
-                                                    id="id-custom_field-account-1-2" value="2"> Múltipla escolha
-                                            </label>
-                                        </div>
-
-                                        <!-- <div>
-                                            <form action="">
-                                                <input id="fundo" type="radio" onclick="addQuestion()">
-                                                Alternativas</input>
-                                            </form>
-                                        </div> -->
-
-                                        <!-- <div>
-                                            <form action="">
-                                                <input id="fundo" type="radio" onclick="addQuestion()"> Múltipla
-                                                escolha</input>
-                                            </form>
-                                        </div> -->
-                                        <div>
-                                            <input type="radio" id="color" value="Aberta"> Aberta</input>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-
-
-                <input type="text" name="custom_field[account][5]" value="" placeholder="CNPJ" id="input-custom-field5"
-                    class="form-control" vk_1bc56="subscribed">
-                <input type="text" name="custom_field[account][6]" value="" placeholder="I.E" id="input-custom-field6"
-                    class="form-control" vk_1bc56="subscribed">
-
-                <!-- Alternativas -->
-                <!-- <div class="mb-5" id="question-${contador}">
-                        <table>
-                            <thead>
-                                <tr>
-
-                                    <td class="px-1">
-                                        <input class="w-full rounded-none px-2" type="text"
-                                            placeholder="Digite a alternativa aqui">
-                                    </td>
-
-                                </tr>
-
-                            </thead>
-                            <button onclick="openPopup();" id="fundo1"
-                                class="w-fit h-fit py-1 px-3 bg-white rounded">+</button>
-                        </table>
-                    </div>-->
-
-                <div name="custom_field[account][2]" value="" id="input-custom-field2"
-                    class="justify-items items-center inline-block flex flex-row-reverse pr-0 mb-5 bg-gray-500">
-
-                    <div class="py-4">
-
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td class="px-1">
-                                        <input type="text" name="custom_field[account][3]" value=""
-                                            placeholder="Digite a alternativa aqui" id="input-custom-field3"
-                                            class="w-fit h-fit rounded-none px-2" />
-                                    </td>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-                    
-                    <div class="w-fit">
-
-                        <button name="custom_field[account][2]" value="" id="input-custom-field3"
-                            class="w-fit h-fit py-1 px-3 bg-[#5c2472] rounded" vk_1bc56="subscribed">+</button>
-                    </div>
-
-
-
-                </div>
-
-            </div>
-
-            <div class="justify-items items-center inline-block flex flex-row-reverse pr-0 gap-x-2">
-                <div class="py-4">
-                    <form>
-                        <button id="fundo1" formaction="listarQuestao" method="post"
-                            class="w-fit h-fit py-1 px-6 bg-white rounded">Gravar</button>
-                    </form>
-                </div>
-                <div class=" w-fit">
-                    <button onclick="openPopup();" id="fundo1"
-                        class="w-fit h-fit py-1 px-6 bg-white rounded">Cancelar</button>
-                </div>
-            </div>
-
-
-        </div>
-        </div>
-        </form>
-
-    </section>
-
-    <!-- <div class="mb-5" id="question">
-        <table>
-            <thead>
-                <tr>
-                    <td class="px-1">
-                        <input id="fundo2" class="w-full rounded-none px-2" type="text" name="custom_field[account][3]"
-                            placeholder="Digite a alternativa aqui">
-                    </td>
-                </tr>
-
-            </thead>
-            <button onclick="openPopup();" id="fundo2" class="w-fit h-fit py-1 px-3 bg-white rounded">+</button>
-        </table>
-    </div> -->
-
-    <div id="popup" class="popup hidden flex-col justify-between">
+    <form th:object="${questao}" th:action="@{/questoes/novo}" method="post">
         <div>
-            <h1>Tem certeza que deseja cancelar?</h1>
-            <p>Seu progresso será perdido!</p>
+            <label>Descrição:</label>
+            <input type="text" th:field="*{descricao}" required/>
         </div>
-        <div class="justify-items items-center inline-block flex flex-row-reverse pr-0 gap-x-2">
-            <div class=" w-fit">
-                <button onclick="closePopup();" id="fundo1" class="w-fit h-fit py-1 px-6 bg-white rounded">Sim</button>
-            </div>
-            <div class=" w-fit">
-                <button onclick="closePopup();" id="fundo1" class="w-fit h-fit py-1 px-6 bg-white rounded">Não</button>
-            </div>
-        </div>
-    </div>
 
+        <div>
+            <label>Tipo:</label>
+            <label th:each="tipo : ${T(com.sqhg.entities.TipoQuestao).values()}">
+                <input th:id="${tipo}" type="radio" th:field="*{tipo}" th:value="${tipo}"/>
+                <label th:for="${tipo}"><th:block th:text="${tipo.display}"></label>
+            </label>
+        </div>
+
+        <div id="alternatives-input" style="display: none;">
+            <label>Alternatives:</label>
+            <div>
+              <input type="text" th:field="*{opcoes[0].descricao}" required>
+            </div>
+            <div>
+              <input type="text" th:field="*{opcoes[1].descricao}" required>
+            </div>
+            <div id="additional-alternatives"></div>
+            <button type="button" id="add-alternative">Add Alternative</button>
+        </div>
+
+        <div>
+            <button type="submit">Save</button>
+            <button type="button" id="cancel">Cancel</button>
+        </div>
+    </form>
+
+    <script rel="javascript" type="text/javascript" th:src="@{/scripts/questao.js}"></script>
 </body>
+</html>
