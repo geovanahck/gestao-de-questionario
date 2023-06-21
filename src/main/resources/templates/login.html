@@ -66,20 +66,19 @@
         <div class="error-message" id="errorDiv" th:if="${param.error}">
             <span class="block sm:inline">Usuário ou Senha incorretos</span>
         </div>
-        <div class="h-fit xl:h-1/4 tela-25 flex justify-center items-center ">
-            <div class="flex flex-col xl:flex-row xl:space-x-20 items-center text-center space-y-10 xl:space-y-0">
-
+        <div class="h-fit xl:h-1/4 flex justify-center items-center ">
+            <div
+                class="flex flex-row xl:flex-row sm:flex-col xl:space-x-20 md:flex-row items-center text-center space-y-10 xl:space-y-0">
                 <div class="flex flex-col w-5/6 xl:w-1/4 items-center justify-center">
                     <div class="w-24 md:w-20">
                         <img th:src="@{/images/atendimento-vendas.png}" alt="">
-
                     </div>
                     <span class="text-white ">Atendimento Vendas</span>
                     <span class="text-white rounded-md border border-white px-2">0800 072 1331</span>
                 </div>
-                <div class="bloco flex flex-col w-5/6 xl:w-2/4 items-center justify-center">
+                <div class="bloco flex flex-row xl:flex-row sm:flex-col w-5/6 xl:w-2/4 items-center justify-center">
                     <div
-                        class="contem_imagem_texto w-full flex flex-col xl:flex-row items-center justify-between space-y-3 xl:space-y-0 xl:space-x-5">
+                        class="w-full flex md:flex-row xl:flex-row items-center justify-between space-y-3 xl:space-y-0 xl:space-x-5">
                         <div class="imagem_texto_1 w-1/2 flex flex-col items-center justify-center">
                             <div class="w-24 md:w-20">
                                 <img th:src="@{/images/atendimento-cac.png}" alt="">
@@ -101,7 +100,7 @@
                 </div>
                 <div class="flex flex-col w-5/6 xl:w-1/4 items-center justify-center">
                     <div class="w-24 md:w-20">
-                        <img th:src="@{/images/atendimento-geral.png}" alt="">
+                        <img th:src="@{/images/atendimento-vendas.png}" alt="">
                     </div>
                     <span class="text-white">Atendimento Geral</span>
                     <span class="text-white rounded-md border border-white px-2">45 2103-1166</span>
