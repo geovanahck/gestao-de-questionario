@@ -5,14 +5,18 @@ import com.sqhg.forms.AdministradorForm;
 import com.sqhg.services.AdministradorService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.data.domain.Page;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import java.text.SimpleDateFormat;
 
+import java.util.Date;
+import java.util.Calendar;
 import java.util.Optional;
 
 @Controller
@@ -21,6 +25,12 @@ import java.util.Optional;
 public class AdministradorController {
 
     private AdministradorService administradorService;
+
+    @InitBinder
+    protected void initBinder(WebDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+    }
 
     @GetMapping(value = "/novo")
     public String cadastrarAdministrador(Model model) {
@@ -34,12 +44,27 @@ public class AdministradorController {
         if (result.hasErrors()) {
             return "cadAdministrador";
         }
+        Administrador administrador = administradorService.acharAdministradorPorCracha(administradorForm.getCracha());
+        Calendar minimumDate = Calendar.getInstance();
+        minimumDate.set(1900, Calendar.JANUARY, 1);
+
+        if (administradorForm.getNascimento() != null) {
+            if (administradorForm.getNascimento().before(minimumDate.getTime())) {
+                result.rejectValue("nascimento", "", "* Data não pode ser anterior a 1900");
+                return "cadAdministrador";
+            }
+        }
+        if (administrador != null && administradorForm.getCracha().equals(administrador.getCracha())) {
+            result.rejectValue("cracha", "", "Crachá já existente");
+            return "cadAdministrador";
+        }
         if (!administradorForm.getSenha().equals(administradorForm.getConfirmacaoSenha())) {
-            result.rejectValue("confirmacaoSenha", "", "Senhas não correspondem.");
+            result.rejectValue("confirmacaoSenha", "", "Senhas não correspondem");
             return "cadAdministrador";
         }
         administradorService.salvarAdministradorPorForm(administradorForm);
         return "redirect:/administradores";
+
     }
 
     @GetMapping
@@ -80,29 +105,36 @@ public class AdministradorController {
             @Valid @ModelAttribute("administrador") AdministradorForm administradorForm,
             BindingResult result,
             @PathVariable(name = "id") Long id) {
-
         if (result.hasErrors()) {
             return "editarAdm";
         }
-
+        Calendar minimumDate = Calendar.getInstance();
+        minimumDate.set(1900, Calendar.JANUARY, 1);
+        Administrador administrador = administradorService.acharAdministradorPorCracha(administradorForm.getCracha());
+        if (administradorForm.getNascimento() != null) {
+            if (administradorForm.getNascimento().before(minimumDate.getTime())) {
+                result.rejectValue("nascimento", "", "* Data inválida");
+                return "editarAdm";
+            }
+        }
+        if (!administradorForm.getId().equals(administrador.getId())) {
+            if (administradorForm.getCracha().equals(administrador.getCracha())) {
+                result.rejectValue("cracha", "", "Crachá já existente");
+                return "editarAdm";
+            }
+        }
         if (!administradorForm.getSenha().equals(administradorForm.getConfirmacaoSenha())) {
             result.rejectValue("confirmacaoSenha", "", "Senhas não correspondem.");
             return "editarAdm";
         }
-
         administradorService.editarAdministradorPorForm(administradorForm, id);
         return "redirect:/administradores";
+
     }
 
     @PostMapping(value = ("/excluir/{id}"))
     public String deletarAdministrador(@PathVariable("id") Long id) {
         administradorService.deletar(id);
         return "redirect:/administradores";
-    }
-
-    @PostMapping
-    public ResponseEntity<Administrador> create(@RequestBody Administrador administrador) {
-        administradorService.salvarAdministrador(administrador);
-        return new ResponseEntity<>(administrador, HttpStatus.CREATED);
     }
 }

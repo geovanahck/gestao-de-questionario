@@ -5,149 +5,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Administrador</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/styles/cadAdministrador.css}" />
+    <title>SQHG</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/home.css}" />
+    <link rel="stylesheet" type="text/css" href="../static/styles/home.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <script rel="javascript" type="text/javascript" th:src="@{/scripts/menu.js}"></script>
+    <script rel="javascript" type="text/javascript" src="../static/scripts/menu.js"></script>
+
 </head>
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 </style>
 
-<body class="overflow-scroll">
-    <div class="flex flex-row">
-        <div class="content flex-grow">
-            <div style="background-color: #fff" class="flex justify-center items-center md:py-10 sm:py-6">
-                <h1 class="dark:text-black text-center titulo">Editar Administrador</h1>
-            </div>
-            <form th:href="@{/administradores/editar/{id}(id=${administrador.id})}" th:object="${administrador}"
-                method="post">
-                <div class="flex flex-col justify-center items-center pt-4 space-y-2 h-auto overflow-y-auto">
-                    <div class="flex flex-row justify-center w-4/5 pt-2">
-                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <div class="fonte-poppins sm:text-sm">Crachá</div>
-                        </div>
-                        <div class="input-container rounded-lg w-3/6">
-                            <input
-                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins "
-                                type="number" placeholder="" th:field="*{cracha}">
-                            <div th:if="${#fields.hasErrors('cracha')}" th:errors="*{cracha}"
-                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-row justify-center w-4/5 pt-4">
-                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <div class="fonte-poppins">Nome</div>
-                        </div>
-                        <div class="input-container rounded-lg w-3/6">
-                            <input
-                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="text" placeholder="" th:field="*{nome}">
-                            <div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"
-                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-row justify-center w-4/5 pt-4">
-                        <div class="flex items-center justify-center align-items-center h-10 w-48 purple-color rounded-l-full text-white"
-                            type="date">
-                            <div class="fonte-poppins">Data de Nascimento</div>
-                        </div>
-                        <div class="input-container rounded-lg w-3/6">
-                            <input
-                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="date" placeholder="" th:field="*{nascimento}">
-                            <div th:if="${#fields.hasErrors('nascimento')}" th:errors="*{nascimento}"
-                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-row justify-center w-4/5 pt-4">
-                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <div class="fonte-poppins ">E-mail</div>
-                        </div>
-                        <div class="input-container rounded-lg w-3/6">
-                            <input
-                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="email" placeholder="" th:field="*{email}">
-                            <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
-                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-row justify-center w-4/5 pt-4">
-                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <div class="fonte-poppins">Telefone</div>
-                        </div>
-                        <div class="input-container rounded-lg w-3/6">
-                            <input
-                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="tel" placeholder="" th:field="*{telefone}">
-                            <div th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"
-                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-row justify-center w-4/5 pt-4">
-                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <div class="fonte-poppins">Senha</div>
-                        </div>
-                        <div class="input-container rounded-lg w-3/6">
-                            <input
-                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="password" placeholder="" th:field="*{senha}">
-                            <div th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}"
-                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-row justify-center w-4/5 pt-4">
-                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <div class="fonte-poppins">Confirmação de Senha</div>
-                        </div>
-                        <div class="input-container rounded-lg w-3/6">
-                            <input
-                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="password" placeholder="" th:field="*{confirmacaoSenha}">
-                            <div th:if="${#fields.hasErrors('confirmacaoSenha')}" th:errors="*{confirmacaoSenha}"
-                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
-                        </div>
-                    </div>
-                    <div class="flex flex-row items-center justify-end w-3/5 pb-5 px-8 pt-6">
-                        <div style="display: flex; justify-content: center; align-items: center;">
-                            <a type="button" th:href="@{/administradores}" style="background-color: #5c2472"
-                                class="flex h-12 w-32 items-center justify-center text-white rounded-lg ml-2 fonte-poppins">
-                                <div class="flex">
-                                    Cancelar
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <button type="submit" style="background-color: #5c2472"
-                                class="appearance-none h-12 w-32 text-center text-white rounded-lg ml-2 fonte-poppins">Gravar</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
+<body>
+    <div class="h-[100vh] w-[95%] ml-[4.5%]">
+        <iframe frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" class="w-full h-full"
+            src="https://www.pratidonaduzzi.com.br/">
+        </iframe>
     </div>
+
     <nav class="menu-lateral flex justify-center items-center" onmouseover="mostrarMenu()" onmouseout="esconderMenu()">
-        <a th:href="@{/home}" class="flex justify-center pb-5">
+        <!-- <a th:href="@{/home}" class="flex justify-center pb-5">
             <img th:src="@{/images/logoPrati.png}" alt="" class="pt-8 w-36 pr-3">
-        </a>
-        <ul class="pr-3 py-6">
+        </a> -->
+        <ul class="pr-3 pt-2">
             <li class="p-2 justify-center items-center">
-                <a class="flex justify-center items-center p-2 text-white transition duration-75 bg-[#853a9e] rounded-lg group hover:bg-gray-900 
-                            dark:text-white dark:hover:bg-[#1E1E1E]" aria-controls="dropdown-example"
+                <a class="flex items-center justify-center p-2 text-white transition duration-75 bg-[#853a9e] rounded-lg group hover:bg-gray-900 
+                        dark:text-white dark:hover:bg-[#1E1E1E]" aria-controls="dropdown-example"
                     data-collapse-toggle="dropdown-example">
                     <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-white transition duration-75 pr-1 dark:text-white 
-                                dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20"
+                            dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
                             d="M20 21C20 18.2386 16.4183 16 12 16C7.58172 16 4 18.2386 4 21M12 13C9.23858 13 7 10.7614 7 8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8C17 10.7614 14.7614 13 12 13Z"
@@ -164,7 +57,7 @@
                 <ul id="dropdown-example" class="sublista hidden py-2 space-y-2">
                     <li class="item-menu">
                         <a th:href="@{/administradores/novo}" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg
-                                    pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
+                        justify-center group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
                             <svg id="svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -183,7 +76,7 @@
                     </li>
                     <li class="item-menu">
                         <a th:href="@{/administradores}"
-                            class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
+                            class="flex items-center w-full justify-center p-2 text-white transition duration-75 rounded-lg group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
                             <svg id="svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -197,14 +90,13 @@
                                         </path>
                                     </g>
                                 </g>
-                            </svg><span id="spans">Listar </span> </a>
+                            </svg><span id="spans">Listar</span>
                         </a>
                     </li>
-
                 </ul>
             </li>
 
-            <li class="p-2 justify-center items-center">
+            <li class="p-2 md:pt-4  justify-center items-center">
                 <a class="flex justify-center items-center p-2 text-white rounded-lg bg-[#853a9e] group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]"
                     aria-controls="dropdown-example1" data-collapse-toggle="dropdown-example1">
                     <svg fill="#ffffff" width="24px" height="24px" viewBox="0 0 32 32" version="1.1"
@@ -228,7 +120,7 @@
                 <ul id="dropdown-example1" class="sublista hidden py-2 space-y-2">
                     <li class="item-menu">
                         <a href="#"
-                            class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
+                            class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg justify-center group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
                             <svg id="svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -241,11 +133,12 @@
                                             stroke-linejoin="round"></path>
                                     </g>
                                 </g>
-                            </svg><span id="spans">Listar </span> </a>
+                            </svg><span id="spans">Listar</span>
+                        </a>
                     </li>
                     <li class="item-menu">
                         <a href="#"
-                            class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
+                            class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg justify-center group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
                             <svg id="svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -259,7 +152,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="p-2 justify-center items-center">
+            <li class="p-2 md:pt-4 justify-center items-center">
                 <a href="#"
                     class="flex items-center p-2 text-white bg-[#853a9e] rounded-lg dark:text-white hover:bg-gray-900 dark:hover:bg-[#1E1E1E]">
                     <svg fill="#ffffff" width="24px" height="24px" viewBox="0 0 64 64" version="1.1"
@@ -386,11 +279,6 @@
             </li>
         </ul>
     </nav> <!--  menu-lateral -->
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
-    </div>
-
 
 </body>
 
