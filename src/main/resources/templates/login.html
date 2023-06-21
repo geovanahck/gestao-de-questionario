@@ -43,22 +43,21 @@
                 <div class="h-fit formulario-uteis space-y-5">
                     <form th:action="@{/login}" method="post" role="form">
                         <div class="formulario h-fit lg:h-5/6 flex items-center flex-col justify-center space-y-5">
-
                             <div class="w-full flex flex-col space-y-3 items-center h-1/3 ">
-                                <input name="cracha" class="w-3/4 sm:w-full lg:w-3/4 xl:w-1/2 rounded" type="text"
+                                <input name="cracha" id="color"  class="w-3/4 sm:w-full lg:w-3/4 xl:w-1/2 rounded focus:outline-none" type="text"
                                     placeholder=" Crachá">
-                                <input name="senha" type="password" class="w-3/4 sm:w-full lg:w-3/4 xl:w-1/2 rounded"
+                                <input name="senha" id="color" type="password" class="w-3/4 sm:w-full lg:w-3/4 xl:w-1/2 rounded focus:outline-none"
                                     placeholder=" Senha">
                             </div>
                             <div class="flex items-center justify-center w-full h-2/3">
-                                <button type="submit" class="w-fit h-fit py-1 px-11 bg-white rounded">Entrar
+                                <button type="submit" id="color" class="w-fit h-fit py-1 px-11 bg-white rounded">Entrar
                                 </button>
                             </div>
                         </div>
                     </form>
                     <div class="flex flex-col h-2/5 uteis text-center text-white space-y-2">
                         <a href="#">Esqueceu sua senha?</a>
-                        <a th:href="@{/loginUsuario}">Voltar</a>
+                        <a th:href="@{/login/reponderquestionario}">Voltar</a>
                     </div>
                 </div>
             </div>
