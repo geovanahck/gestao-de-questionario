@@ -32,33 +32,37 @@
                 <h2 class="w-72">Cargo</h2>
                 <h2 class="w-72">Vigência</h2>
             </div>
+
             <div class="flex flex-row space-x-20 pt-2 justify-center">
                 <div th:object="${area}" method="get" class="flex flex-col w-72 h-32 l-bege border-3 l-roxo rounded-lg px-2">
-                    <label>
-                        <input type="checkbox" class="accent-fuchsia-900"> Financeiro
+                    <form>
+                        <label>
+                            <input onchange="this.form.submit()" type="checkbox" class="accent-fuchsia-900"> Financeiro
+                        </label>
+                    </form>
 
+                    <label>
+                        <input onchange="this.form.submit()" type="checkbox" class="accent-fuchsia-900"> Administrativo
                     </label>
                     <label>
-                        <input type="checkbox" class="accent-fuchsia-900"> Administrativo
+                        <input onchange="this.form.submit()" type="checkbox" class="accent-fuchsia-900"> Recursos Humanos
                     </label>
                     <label>
-                        <input type="checkbox" class="accent-fuchsia-900"> Recursos Humanos
-                    </label>
-                    <label>
-                        <input type="checkbox" class="accent-fuchsia-900"> Produção
+                        <input onchange="this.form.submit()" type="checkbox" class="accent-fuchsia-900"> Produção
                     </label>
                 </div>
                 <div class="flex flex-col w-72 h-32 l-bege border-3 l-roxo rounded-lg px-2">
                     <label>
-                        <input type="checkbox" class="accent-fuchsia-900"> Diretor
+                        <input onchange="this.form.submit()" type="checkbox" class="accent-fuchsia-900"> Diretor
                     </label>
                     <label>
-                        <input type="checkbox" class="accent-fuchsia-900"> Gerente
+                        <input onchange="this.form.submit()" type="checkbox" class="accent-fuchsia-900"> Gerente
                     </label>
                     <label>
-                        <input type="checkbox" class="accent-fuchsia-900"> Supervisor
+                        <input onchange="this.form.submit()" type="checkbox" class="accent-fuchsia-900"> Supervisor
                     </label>
                 </div>
+
                 <div class="flex flex-col w-72 h-32">
                     <div class="flex flex-row w-72 h-12 border-3 rounded-lg l-bege fonte-poppins l-roxo">
                         <div class="flex items-center justify-center text-black pl-2">
