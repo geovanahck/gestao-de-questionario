@@ -110,7 +110,6 @@ button {
           <thead>
             <tr>
               <th class="w-8"></th>
-              <th class="w-16">Questão</th>
               <th>Descrição</th>
               <th class="w-16">Tipo</th>
               <th class="w-16">Editar</th>
@@ -119,7 +118,6 @@ button {
           <tbody>
             <tr data-th-each="questao : ${questoes}" class="items-center justify-items">
               <td><input type="checkbox"></td>
-              <td data-th-text="${questao.id}"></td>
               <td data-th-text="${questao.descricao}"></td>
               <td data-th-text="${questao.tipo}"></td>
               <td>

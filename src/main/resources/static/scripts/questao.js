@@ -1,6 +1,5 @@
 const addAlternativeButton = document.getElementById('add-alternative');
 const additionalAlternativesDiv = document.getElementById('additional-alternatives');
-const cancelButton = document.getElementById('cancel');
 
 let alternativeCount = 2;
 
@@ -22,17 +21,12 @@ addAlternativeButton.addEventListener('click', function() {
     });
 });
 
-cancelButton.addEventListener('click', function() {
-    // Implement cancel logic here
-    // For now, let's just redirect to a placeholder page
-    window.location.href = "/cancel-page";
-});
-
 const typeRadios = document.querySelectorAll('input[type="radio"]');
 const alternativesDiv = document.getElementById('alternatives-input');
 
 function handleTypeChange() {
-    if (this.value === 'MULTIPLA') {
+    console.log('bdfjhsafhasuhfkasufhja')
+    if (this.value === 'MULTIPLA' || this.value === 'ALTERNATIVAS') {
         alternativesDiv.style.display = 'block';
     } else {
         alternativesDiv.style.display = 'none';
