@@ -1,11 +1,3 @@
--- INSERT INTO tb_department(name) VALUES ('RH');
--- INSERT INTO tb_department(name) VALUES ('TI');
-
--- INSERT INTO tb_user(department_id, email, senha) VALUES (1, 'teste', '123');
--- INSERT INTO tb_user(department_id, name, email) VALUES (1, 'Maria', 'maria@gmail.com');
--- INSERT INTO tb_user(department_id, name, email) VALUES (2, 'Alex', 'alex@gmail.com');
--- INSERT INTO tb_user(department_id, name, email) VALUES (1, 'Bob', 'bob@gmail.com');
--- INSERT INTO tb_user(department_id, name, email) VALUES (2, 'Ana', 'ana@gmail.com');
 INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '1','ativo@gmail.com', 'mateus', '99999 9999');
 INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '2','inativo@gmail.com', 'teste2', '8888 9999');
 INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '3','ativo@gmail.com', 'teste3', '8888 9999');
@@ -49,3 +41,103 @@ INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '41','teste2@
 INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '42','teste1@gmail.com', 'teste10', '99999 9999');
 INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '43','teste2@gmail.com', 'teste11', '8888 9999');
 INSERT INTO administrador( cracha, email, nome, telefone) VALUES ( '44','teste1@gmail.com', 'teste12', '99999 9999');
+INSERT INTO area( id, nome) VALUES ( 1, 'Financeiro');
+INSERT INTO area( id, nome) VALUES ( 2, 'Administrativo');
+INSERT INTO area( id, nome) VALUES ( 3, 'Administrativo');
+INSERT INTO area( id, nome) VALUES ( 4, 'Producao');
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'FinanceiroSupervisor', 'Supervisor', '1', 1);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'SuperiorSupervisor', 'Supervisor', '2', 2);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'AdministrativoSupervisor', 'Supervisor', '3', 3);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'FinanceiroGerente', 'Gerente', '4', 1);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'ProducaoGerente', 'Gerente', '5', 4);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'ProducaoGerente', 'Diretor', '7', 4);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'AdministrativoDiretor', 'Diretor', '6', 3);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'SuperiorDiretor', 'Diretor', '8', 2);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'SuperiorDiretor', 'Diretor', '8', 2);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'FinanceiroSupervisor', 'Supervisor', '9', 1);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'SuperiorSupervisor', 'Supervisor', '10', 2);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'SuperiorSupervisor', 'Supervisor', '11', 2);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'AdministrativoSupervisor', 'Supervisor', '12', 3);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'ProducaoSupervisor', 'Supervisor', '13', 4);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'FinanceiroSupervisor', 'Supervisor', '14', 1);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'AdministrativoSupervisor', 'Supervisor', '15', 3);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'FinanceiroSupervisor', 'Supervisor', '1', 1);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'SuperiorSupervisor', 'Supervisor', '2', 2);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'AdministrativoSupervisor', 'Supervisor', '3', 3);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'FinanceiroGerente', 'Gerente', '4', 1);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'ProducaoGerente', 'Gerente', '5', 4);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'ProducaoGerente', 'Diretor', '7', 4);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'AdministrativoDiretor', 'Diretor', '6', 3);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'SuperiorDiretor', 'Diretor', '8', 2);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'SuperiorDiretor', 'Diretor', '8', 2);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'FinanceiroSupervisor', 'Supervisor', '9', 1);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'SuperiorSupervisor', 'Supervisor', '10', 2);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'SuperiorSupervisor', 'Supervisor', '11', 2);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'AdministrativoSupervisor', 'Supervisor', '12', 3);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'ProducaoSupervisor', 'Supervisor', '13', 4);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'FinanceiroSupervisor', 'Supervisor', '14', 1);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'AdministrativoSupervisor', 'Supervisor', '15', 3);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'FinanceiroSupervisor', 'Supervisor', '1', 1);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'SuperiorSupervisor', 'Supervisor', '2', 2);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'AdministrativoSupervisor', 'Supervisor', '3', 3);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'FinanceiroGerente', 'Gerente', '4', 1);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'ProducaoGerente', 'Gerente', '5', 4);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'ProducaoGerente', 'Diretor', '7', 4);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'AdministrativoDiretor', 'Diretor', '6', 3);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'SuperiorDiretor', 'Diretor', '8', 2);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'SuperiorDiretor', 'Diretor', '8', 2);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'FinanceiroSupervisor', 'Supervisor', '9', 1);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'SuperiorSupervisor', 'Supervisor', '10', 2);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'SuperiorSupervisor', 'Supervisor', '11', 2);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'AdministrativoSupervisor', 'Supervisor', '12', 3);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'ProducaoSupervisor', 'Supervisor', '13', 4);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'FinanceiroSupervisor', 'Supervisor', '14', 1);
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+VALUES ( 'AdministrativoSupervisor', 'Supervisor', '15', 3);

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" th:href="@{/images/logo_prati_icon.png}" type="image/x-icon">
     <title>Lista de Administradores</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -17,7 +18,7 @@
 </head>
 
 
-<body class="overflow-scroll">
+<body class="overflow-x-auto">
     <nav class="menu-lateral flex justify-center items-center" onmouseover="mostrarMenu()" onmouseout="esconderMenu()">
         <div class="flex justify-center pb-5">
             <img th:src="@{/images/logoPrati.png}" alt="" class="pt-8 w-36 pr-3">
@@ -249,10 +250,10 @@
         </ul>
     </nav> <!--  menu-lateral -->
 
-    <div style="background-color: #fff" class="flex justify-center items-center md:py-12 sm:py-6">
+    <div style="background-color: #fff" class="flex justify-center items-center h-24">
         <h1 class="dark:text-black text-center titulo">Lista de Administradores</h1>
     </div>
-    <div class="background items-center pt-6 flex flex-col">
+    <div class="items-center pt-6 flex flex-col">
         <div class="w-2/4 pt-3 justify-center items-center">
             <div class="w-full flex-row pb-11">
                 <div id="pesquisa" class="p-1 relative">

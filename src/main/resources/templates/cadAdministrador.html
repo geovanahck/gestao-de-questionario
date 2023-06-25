@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" th:href="@{/images/logo_prati_icon.png}" type="image/x-icon">
     <title>Novo Administrador</title>
     <link rel="stylesheet" type="text/css" th:href="@{/styles/cadAdministrador.css}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +23,7 @@
 <body class="overflow-scroll">
     <div class="flex flex-row">
         <div class="content flex-grow">
-            <div style="background-color: #fff" class="flex justify-center items-center md:py-10 sm:py-6">
+            <div style="background-color: #fff" class="flex justify-center items-center h-24">
                 <h1 class="dark:text-black text-center titulo">Cadastro de Administrador</h1>
             </div>
             <form th:href="@{/administradores/novo}" th:object=" ${administrador}" method="post">
@@ -41,13 +42,6 @@
                         </div>
                     </div>
 
-<<<<<<< HEAD
-<div class="flex flex-row">
-    <div class="flex-grow">
-        <div class="w-full h-24 l-bege flex items-center justify-center pl-64">
-            <h1 class=" dark:text-black text-center titulo font-medium">Cadastro de Administrador</h1>
-        </div>
-=======
                     <div class="flex flex-row justify-center w-4/5 pt-4">
                         <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
                             <div class="fonte-poppins">Nome</div>
@@ -60,7 +54,6 @@
                                 class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
                         </div>
                     </div>
->>>>>>> cd4c2ac106ae75627caec6c377b0044cfdf723a2
 
                     <div class="flex flex-row justify-center w-4/5 pt-4">
                         <div

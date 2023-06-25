@@ -1,14 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 #quantpag {
     width: 60px;
     border-radius: 8px;
 }
 
 .titulo {
-
     font-style: normal;
     font-weight: 400;
     font-size: 36px;
@@ -53,11 +48,9 @@ input {
     outline: none;
 }
 
-
 body {
     background-color: #D8D8D9;
 }
-
 
 table {
     border-collapse: separate;

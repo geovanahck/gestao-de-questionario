@@ -1,4 +1,4 @@
-function verificarCargoSelecionado() {
+window.onload = function () {
     var areas = document.getElementsByName("area");
     var cargos = document.getElementsByName("cargo");
     var areaSelecionada = false;
@@ -12,29 +12,15 @@ function verificarCargoSelecionado() {
 
     for (var i = 0; i < cargos.length; i++) {
         cargos[i].disabled = !areaSelecionada;
-    }
-}
 
-function verificarAreaSelecionada() {
-    var areas = document.getElementsByName("area");
-    var cargos = document.getElementsByName("cargo");
-    var areaSelecionada = false;
-
-    for (var i = 0; i < areas.length; i++) {
-        if (areas[i].checked) {
-            areaSelecionada = true;
-            break;
-        }
-    }
-
-    for (var i = 0; i < cargos.length; i++) {
-        if (!areaSelecionada) {
+        if (!areaSelecionada && cargos[i].checked) {
             cargos[i].checked = false;
         }
     }
-}
 
-function validateForm() {
+};
+
+function verificarCargoSelecionado() {
     var areas = document.getElementsByName("area");
     var cargos = document.getElementsByName("cargo");
     var areaSelecionada = false;
@@ -48,21 +34,59 @@ function validateForm() {
     }
 
     for (var i = 0; i < cargos.length; i++) {
+        cargos[i].disabled = !areaSelecionada;
+
+        if (!areaSelecionada) {
+            cargos[i].checked = false;
+        }
+
         if (cargos[i].checked) {
             cargoSelecionado = true;
+        }
+    }
+
+    if (areaSelecionada && cargoSelecionado) {
+        document.getElementById("questionarioForm").submit();
+    }
+}
+
+
+
+
+function validateForm() {
+    var areas = document.getElementsByName("area");
+    var cargos = document.getElementsByName("cargo");
+    var areaSelecionada = false;
+    var cargoSelecionado = false;
+
+    for (var i = 0; i < areas.length; i++) {
+        if (areas[i].checked) {
+            areaSelecionada = true;
+            console.log('bateu area1');
+            break;
+        }
+    }
+
+    for (var i = 0; i < cargos.length; i++) {
+        if (cargos[i].checked) {
+            cargoSelecionado = true;
+            console.log('bateu cargo1');
             break;
         }
     }
 
     if (!areaSelecionada) {
+        console.log('bateu area');
         return false;
     }
 
     if (!cargoSelecionado) {
+        console.log('bateu cargo');
         return false;
     }
 
     if (areaSelecionada && cargoSelecionado) {
+        console.log('bateu nos dois');
         return true;
     } else {
         return false;
