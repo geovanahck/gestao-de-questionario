@@ -25,10 +25,16 @@ const typeRadios = document.querySelectorAll('input[type="radio"]');
 const alternativesDiv = document.getElementById('alternatives-input');
 
 function handleTypeChange() {
-    console.log('bdfjhsafhasuhfkasufhja')
+    let inputElements = alternativesDiv.querySelectorAll('input[type="text"]');
     if (this.value === 'MULTIPLA' || this.value === 'ALTERNATIVAS') {
+        inputElements.forEach(function(inputElement) {
+            inputElement.required = true;
+        })
         alternativesDiv.style.display = 'block';
     } else {
+        inputElements.forEach(function(inputElement) {
+            inputElement.required = false;
+        })
         alternativesDiv.style.display = 'none';
     }
 }

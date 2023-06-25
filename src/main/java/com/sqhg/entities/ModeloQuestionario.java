@@ -25,6 +25,6 @@ public class ModeloQuestionario {
     @OneToMany(mappedBy = "modeloQuestionario")
     private List<Questionario> questionario;
 
-   // @OneToMany(mappedBy = "modeloQuestionario")
-    //private List<Questao> questao;
+   @OneToMany(mappedBy = "modeloQuestionario")
+    private List<Questao> questoes;
 }
