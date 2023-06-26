@@ -23,19 +23,6 @@ public class QuestaoController {
 
     private final QuestaoService questaoService;
 
-    @GetMapping
-    public String telaListarQuestoes(Model model, Optional<Integer> currentPage) {
-        int page = currentPage.orElse(1);
-        Page<Questao> questoes = questaoService.listarQuestoesPorPagina(PageRequest.of(page - 1, 10));
-        model.addAttribute("modeloQuestionario", new ModeloQuestionario());
-        model.addAttribute("questoes", questoes.getContent());
-        model.addAttribute("currentPage", currentPage);
-        model.addAttribute("totalPages", questoes.getTotalPages());
-        model.addAttribute("totalQuestoes", questoes.getTotalElements());
-        model.addAttribute("hasNext", questoes.hasNext());
-        return "listarQuestao";
-    }
-
     @GetMapping("/novo")
     public String telaCadastrarQuestao(Model model) {
         model.addAttribute("questao", new Questao());
@@ -48,14 +35,6 @@ public class QuestaoController {
             return "criarQuestao";
         }
         questaoService.salvarQuestao(questao);
-        return "redirect:/questoes";
-    }
-
-    @PostMapping("/modeloQuestionario/novo")
-    public String salvarModeloQuestionario(@ModelAttribute("modeloQuestionario") ModeloQuestionario modeloQuestionario, BindingResult result) {
-        if (result.hasErrors()) {
-            return "listarQuestao";
-        }
-        return "redirect:/questoes";
+        return "redirect:/modelo-questionario/novo";
     }
 }

@@ -97,7 +97,7 @@
       <div class="bg-[#F3F3F3] w-full rounded-xl p-5">
         <form
             th:object="${modeloQuestionario}"
-            th:action="@{questoes/modeloQuestionario/novo}"
+            th:action="@{/modelo-questionario/novo}"
             method="post"
           >
           <label for="nome">Nome</label>
@@ -108,9 +108,6 @@
             <ul class="flex space-x-5">
               <li>
                 <a href="/questoes/novo">Criar</a>
-              </li>
-              <li>
-                <a href="/questoes">Listar</a>
               </li>
             </ul>
           </div>
