@@ -1,142 +1,23 @@
 <!DOCTYPE html>
-<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Novo Administrador</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/styles/cadAdministrador.css}" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <title>Lista de Administradores</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-N/OZl1+hZG8f+RYXmO6nt/iTp+51GkNYjKwHcP/MJQYSI2AXZT0HICWjJ9++vq3r3t+3PLQ8WYtHnKxPYfZFZA=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/listaAdm.css}" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
     <script rel="javascript" type="text/javascript" th:src="@{/scripts/menu.js}"></script>
 </head>
 
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-</style>
 
 <body class="overflow-scroll">
-    <div class="flex flex-row">
-        <div class="content flex-grow">
-            <div style="background-color: #fff" class="flex justify-center items-center md:py-10 sm:py-6">
-                <h1 class="dark:text-black text-center titulo">Cadastro de Administrador</h1>
-            </div>
-            <form th:href="@{/administradores/novo}" th:object=" ${administrador}" method="post">
-                <div
-                    class="background flex flex-col justify-center items-center pt-4 space-y-2 h-auto overflow-y-auto ">
-                    <div class="flex flex-row justify-center w-4/5 pt-2">
-                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <div class="fonte-poppins sm:text-sm">Crachá</div>
-                        </div>
-                        <div class="input-container rounded-lg w-3/6">
-                            <input
-                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins "
-                                type="number" placeholder="" th:field="*{cracha}">
-                            <div th:if="${#fields.hasErrors('cracha')}" th:errors="*{cracha}"
-                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-row justify-center w-4/5 pt-4">
-                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <div class="fonte-poppins">Nome</div>
-                        </div>
-                        <div class="input-container rounded-lg w-3/6">
-                            <input
-                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="text" placeholder="" th:field="*{nome}">
-                            <div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"
-                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-row justify-center w-4/5 pt-4">
-                        <div
-                            class="flex items-center justify-center align-items-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <div class="fonte-poppins">Data de Nascimento</div>
-                        </div>
-                        <div class="input-container rounded-lg w-3/6">
-                            <input
-                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="date" placeholder="" th:field="*{nascimento}">
-                            <div th:if="${#fields.hasErrors('nascimento')}" th:errors="*{nascimento}"
-                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-row justify-center w-4/5 pt-4">
-                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <div class="fonte-poppins ">E-mail</div>
-                        </div>
-                        <div class="input-container rounded-lg w-3/6">
-                            <input
-                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="email" placeholder="" th:field="*{email}">
-                            <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
-                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-row justify-center w-4/5 pt-4">
-                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <div class="fonte-poppins">Telefone</div>
-                        </div>
-                        <div class="input-container rounded-lg w-3/6">
-                            <input
-                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="tel" placeholder="" th:field="*{telefone}">
-                            <div th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"
-                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-row justify-center w-4/5 pt-4">
-                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <div class="fonte-poppins">Senha</div>
-                        </div>
-                        <div class="input-container rounded-lg w-3/6">
-                            <input
-                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="password" placeholder="" th:field="*{senha}">
-                            <div th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}"
-                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-row justify-center w-4/5 pt-4">
-                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <div class="fonte-poppins">Confirmação de Senha</div>
-                        </div>
-                        <div class="input-container rounded-lg w-3/6">
-                            <input
-                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="password" placeholder="" th:field="*{confirmacaoSenha}">
-                            <div th:if="${#fields.hasErrors('confirmacaoSenha')}" th:errors="*{confirmacaoSenha}"
-                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
-                        </div>
-                    </div>
-                    <div class="flex flex-row items-center justify-end w-3/5 pb-5 px-8 pt-6">
-                        <div style="display: flex; justify-content: center; align-items: center;">
-                            <a type="button" th:href="@{/administradores}" style="background-color: #5c2472"
-                                class="flex h-12 w-32 items-center justify-center text-white rounded-lg ml-2 fonte-poppins">
-                                <div class="flex">
-                                    Cancelar
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <button type="submit" style="background-color: #5c2472"
-                                class="appearance-none h-12 w-32 text-center text-white rounded-lg ml-2 fonte-poppins">Gravar</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
     <nav class="menu-lateral flex justify-center items-center" onmouseover="mostrarMenu()" onmouseout="esconderMenu()">
         <div class="flex justify-center pb-5">
             <img th:src="@{/images/logoPrati.png}" alt="" class="pt-8 w-36 pr-3">
@@ -144,10 +25,10 @@
         <ul class="pr-3 py-6">
             <li class="p-2 justify-center items-center">
                 <a class="flex justify-center items-center p-2 text-white transition duration-75 bg-[#853a9e] rounded-lg group hover:bg-gray-900 
-                            dark:text-white dark:hover:bg-[#1E1E1E]" aria-controls="dropdown-example"
+                        dark:text-white dark:hover:bg-[#1E1E1E]" aria-controls="dropdown-example"
                     data-collapse-toggle="dropdown-example">
                     <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-white transition duration-75 pr-1 dark:text-white 
-                                dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20"
+                            dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
                             d="M20 21C20 18.2386 16.4183 16 12 16C7.58172 16 4 18.2386 4 21M12 13C9.23858 13 7 10.7614 7 8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8C17 10.7614 14.7614 13 12 13Z"
@@ -163,8 +44,8 @@
                 </a>
                 <ul id="dropdown-example" class="sublista hidden py-2 space-y-2">
                     <li class="item-menu">
-                        <a th:href="@{/administradores/novo}" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg
-                                    pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
+                        <a th:href="@{/administradores/novo}" class="flex items-center justify-center w-full p-2 text-white transition duration-75 rounded-lg
+                                pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
                             <svg id="svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -183,7 +64,7 @@
                     </li>
                     <li class="item-menu">
                         <a th:href="@{/administradores}"
-                            class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
+                            class="flex items-center justify-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
                             <svg id="svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -204,7 +85,7 @@
                 </ul>
             </li>
 
-            <li class="p-2 justify-center items-center">
+            <li class="p-2 md:pt-4 lg:pt-8 justify-center items-center">
                 <a class="flex justify-center items-center p-2 text-white rounded-lg bg-[#853a9e] group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]"
                     aria-controls="dropdown-example1" data-collapse-toggle="dropdown-example1">
                     <svg fill="#ffffff" width="24px" height="24px" viewBox="0 0 32 32" version="1.1"
@@ -228,7 +109,7 @@
                 <ul id="dropdown-example1" class="sublista hidden py-2 space-y-2">
                     <li class="item-menu">
                         <a href="#"
-                            class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
+                            class="flex items-center justify-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
                             <svg id="svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -245,7 +126,7 @@
                     </li>
                     <li class="item-menu">
                         <a href="#"
-                            class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
+                            class="flex items-center justify-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
                             <svg id="svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -259,7 +140,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="p-2 justify-center items-center">
+            <li class="p-2 md:pt-4 lg:pt-8 justify-center items-center">
                 <a href="#"
                     class="flex items-center p-2 text-white bg-[#853a9e] rounded-lg dark:text-white hover:bg-gray-900 dark:hover:bg-[#1E1E1E]">
                     <svg fill="#ffffff" width="24px" height="24px" viewBox="0 0 64 64" version="1.1"
@@ -368,8 +249,160 @@
         </ul>
     </nav> <!--  menu-lateral -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
+    <div style="background-color: #fff" class="flex justify-center items-center md:py-12 sm:py-6">
+        <h1 class="dark:text-black text-center titulo">Lista de Administradores</h1>
+    </div>
+    <div class="background items-center pt-6 flex flex-col">
+        <div class="w-2/4 pt-3 justify-center items-center">
+            <div class="w-full flex-row pb-11">
+                <div id="pesquisa" class="p-1 relative">
+                    <form th:href="@{/administradores}">
+                        <input type="hidden" th:name="pageSize" th:value="${pageSize}" />
+                        <input type="hidden" th:name="page" th:value="${page}" />
+                        <input name="search" type="text" class=" p-1 block w-full" placeholder="Encontrar">
+                        <button id="fundo" class="absolute inset-y-0 right-0 flex items-center focus:outline-none"
+                            type="submit">
+                            <svg class="h-3.5 w-10 text-white" xmlns="http://www.w3.org/2000/svg" width="5" height="5"
+                                fill="currentColor" viewBox="0 0 16 16">
+                                <path
+                                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 
+                                               1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                            </svg>
+                        </button>
+                    </form>
+                    <form th:href="@{/administradores}">
+                        <button type="submit" class="w-5 h-5 absolute inset-y-14 right-5 pb-1 focus:outline-none">
+                            <svg class="h-3.5 w-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <path
+                                    d="M370.72 133.28C339.458 104.008 298.888 87.962 255.848 88c-77.458.068-144.328 53.178-162.791 126.85-1.344 5.363-6.122 9.15-11.651 9.15H24.103c-7.498 0-13.194-6.807-11.807-14.176C33.933 94.924 134.813 8 256 8c66.448 0 126.791 26.136 171.315 68.685L463.03 40.97C478.149 25.851 504 36.559 504 57.941V192c0 13.255-10.745 24-24 24H345.941c-21.382 0-32.09-25.851-16.971-40.971l41.75-41.749zM32 296h134.059c21.382 0 32.09 25.851 16.971 40.971l-41.75 41.75c31.262 29.273 71.835 45.319 114.876 45.28 77.418-.07 144.315-53.144 162.787-126.849 1.344-5.363 6.122-9.15 11.651-9.15h57.304c7.498 0 13.194 6.807 11.807 14.176C478.067 417.076 377.187 504 256 504c-66.448 0-126.791-26.136-171.315-68.685L48.97 471.03C33.851 486.149 8 475.441 8 454.059V320c0-13.255 10.745-24 24-24z" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <table>
+                <thead>
+                    <tr class="h-12">
+                        <th>Crachá</th>
+                        <th>Nome</th>
+                        <th>Telefone</th>
+                        <th>Email</th>
+                        <th class="w-14">Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr name="admin" th:each="adm : ${administradores}" th:data-id="${adm.id}">
+                        <td th:object="${adm}" th:value="${adm.id}" th:text="${adm.cracha}"></td>
+                        <td th:text="${adm.nome}"></td>
+                        <td th:text="${adm.telefone}"></td>
+                        <td th:text="${adm.email}"></td>
+                        <td class="w-24">
+                            <div class="items-center justify-items">
+                                <div class="flex flex-row items-center justify-center ">
+                                    <div class="flex w-10 justify-center items-center">
+                                        <a title="Editar" type="button" id="botao-action"
+                                            class="w-flex p-2 focus:outline-none" th:object="${adm}"
+                                            th:href="@{/administradores/editar/{id}(id=${adm.id})}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                                                <path
+                                                    d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
+                                            </svg>
+                                        </a>
+                                    </div>
+                                    <div class="flex w-8 items-center">
+                                        <button type="button" onclick="openPopup()" id="botao-action"
+                                            class="p-2 focus:outline-none">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                viewBox="0 0 16 16">
+                                                <g fill="currentColor">
+                                                    <path
+                                                        d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                                                    <path
+                                                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                                                </g>
+                                            </svg>
+                                        </button>
+                                        <div id="popup" class="hidden flex-col">
+                                            <div>
+                                                <h1 class="text-md text-justify">Tem certeza que deseja excluir este
+                                                    administrador?</h1>
+                                            </div>
+                                            <div class="flex justify-items items-center flex-row-reverse pt-20 gap-x-2">
+                                                <form th:action="@{/administradores/excluir/{id}(id=${adm.id})}"
+                                                    method="post">
+                                                    <div class="w-flex justify-between">
+                                                        <button type="submit" id="fundo1" onclick="closePopup()"
+                                                            class="w-fit h-fit py-1 text-white px-3 rounded">Sim</button>
+                                                    </div>
+                                                </form>
+                                                <div class="w-flex">
+                                                    <button onclick="closePopup()" id="fundo1"
+                                                        class="w-fit h-fit py-1 text-white px-3 rounded">Não</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <form th:href="@{/administradores}">
+                <input type="hidden" th:name="search" th:value="${search}" />
+                <div class="flex justify-between px-3">
+                    <div class="flex">
+                        <div class="flex items-center pt-4 ">
+                            <select name="pageSize" class="pl-2 focus:outline-none" id="quantpag"
+                                onchange="this.form.submit()">
+                                <option name="size10" th:value="10" th:select="${pageSize}"
+                                    th:selected="${pageSize == 10}">
+                                    <label> 10 </label>
+                                </option>
+                                <option name="size20" th:value="20" th:select="${pageSize}"
+                                    th:selected="${pageSize == 20}">
+                                    <label> 20 </label>
+                                </option>
+                                <option name="size30" th:value="30" th:select="${pageSize}"
+                                    th:selected="${pageSize == 30}">
+                                    <label> 30 </label>
+                                </option>
+                                <option name="size40" th:value="40" th:select="${pageSize}"
+                                    th:selected="${pageSize == 40}">
+                                    <label> 40 </label>
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="pt-4 ">
+                        <div class="botao text-white flex align-items-center">
+                            <button name="page" class="focus:outline-none" th:value="${page}-1"
+                                th:classappend="${page == 0} ? 'disabled'">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-caret-left-fill w-5" viewBox="0 0 16 16">
+                                    <path
+                                        d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+                                </svg>
+                            </button>
+                            <div class="bg-white text-black-50 w-6">
+                                <span th:text="${page+1}"></span>
+                            </div>
+                            <button name="page" class="focus:outline-none" th:value="${page}+1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-caret-right-fill w-5" viewBox="0 0 16 16">
+                                    <path
+                                        d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
 </body>
 
 </html>
