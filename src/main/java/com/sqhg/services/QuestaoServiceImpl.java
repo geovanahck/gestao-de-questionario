@@ -12,10 +12,4 @@ import lombok.AllArgsConstructor;
 public class QuestaoServiceImpl implements QuestaoService {
     private QuestaoRepository questaoRepository;
 
-    @Override
-    public Questao acharQuestoesPorModeloQuestionario(Long idModeloQuestionario) {
-        Questao questao = questaoRepository.findByModeloQuestionarioId(idModeloQuestionario);
-        return questao;
-    }
-
 }

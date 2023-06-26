@@ -1,50 +1,42 @@
 package com.sqhg.controllers;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.sqhg.entities.Administrador;
 import com.sqhg.entities.Questao;
-import com.sqhg.entities.Questionario;
-import com.sqhg.services.QuestaoService;
 import com.sqhg.services.QuestionarioService;
+import com.sqhg.services.RespostaService;
 
 import lombok.AllArgsConstructor;
 
 @Controller
-@RequestMapping("/questionario")
+@RequestMapping("/{codigoQuestionario}")
 @AllArgsConstructor
 public class ResponderQuestionarioController {
 
-    private QuestionarioService questionarioService;
-    private QuestaoService questaoService;
+    private final QuestionarioService questionarioService;
+    private final RespostaService respostaService;
 
-    @GetMapping("/{modeloquestionarioId}")
-    public String findQuestionsByQuestionnaireModel(Model model,
-            @PathVariable(name = "modeloquestionarioId") long questionarioModelId) {
-        Questionario questionario = questionarioService.findById(questionarioModelId);
-        Administrador administrador = questionario.getAdministrador();
-        model.addAttribute("administrator", administrador.getNome());
+    @PostMapping("/{numeroQuestao}")
+    public String SalvarQuestaoeIrParaProximaQuestao(@PathVariable(name = "numeroQuestao") int numeroQuestao,
+            @PathVariable(name = "codigoQuestionario") int codigoQuestionario) {
 
-        Questao question = questaoService
-                .acharQuestoesPorModeloQuestionario(questionarioModelId);
+        List<Questao> questoes = questionarioService.findQuestionsByQuestionarioCodigo(codigoQuestionario);
+        // TO DO :
+        //adicionar os atributos na URL de todas as paginas
+        //Implementar: identificar qual numero da questao para retornar
+        //Implementar: Salvar a resposta e de qual questao é
+        //Remover botão de questao anterior do front
+        //respostaService.saveResposta(resposta);
 
-        model.addAttribute("question", question);
-
-        if (question.getTipo() == 3) {
-            return "responderQuestaoAberta";
-        }
-
-        if (question.getTipo() == 2) {
-            question.getOpcao().forEach(opcao -> {
-                System.out.println("Opcao: " + opcao.getDescricao());
-            });
-            return "responderQuestaoAlternativa";
-        }
-
-        return "responderQuestaoEl";
+        int proximaQuestao = numeroQuestao + 1;
+        return "redirect:/" + codigoQuestionario + proximaQuestao;
     }
 }

@@ -1,9 +1,10 @@
 package com.sqhg.services;
 
-import com.sqhg.entities.Questionario;
+import com.sqhg.entities.Questao;
+import java.util.List;
 
 public interface QuestionarioService {
 
-    Questionario findById(Long modeloquestionarioId);
+    List<Questao> findQuestionsByQuestionarioCodigo(int codigoQuestionario);
 
 }

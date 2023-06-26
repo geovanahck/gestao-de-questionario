@@ -1,7 +1,10 @@
 package com.sqhg.services;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
-import com.sqhg.entities.Questionario;
+
+import com.sqhg.entities.Questao;
 import com.sqhg.repositories.QuestionarioRepository;
 
 import lombok.AllArgsConstructor;
@@ -9,11 +12,10 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class QuestionarioServiceImpl implements QuestionarioService {
-    private QuestionarioRepository questionarioRepository;
-
+    private final QuestionarioRepository questionarioRepository;
 
     @Override
-    public Questionario findById(Long modeloquestionarioId) {
-        return questionarioRepository.findById(modeloquestionarioId).orElse(null);
+    public List<Questao> findQuestionsByQuestionarioCodigo(int codigoQuestionario) {
+        return questionarioRepository.findQuestoesByCodigo(codigoQuestionario);
     }
 }

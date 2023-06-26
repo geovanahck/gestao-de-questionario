@@ -29,6 +29,7 @@ public class Questionario {
     private Long id;
     private String nome;
     private String descricao;
+    private int codigo;
 
     @ManyToOne
     @JoinColumn(name = "id_administrador")
