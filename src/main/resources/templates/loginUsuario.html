@@ -5,34 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LoginUsuario</title>
+    <title>Login Usuario</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script rel="javascript" type="text/javascript" th:src="@{/scripts/login.js}"></script>
 </head>
-<style>
-    body {
-        background-color: #5c2472;
-    }
 
-    #color {
-        background-color: #853a9e;
-        color: white;
-    }
-
-    .error-message {
-        position: fixed;
-        top: 5%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: #ffffff;
-        border: 2px solid #ff0000;
-        color: #ba0000;
-        padding: 5px 10px;
-        border-radius: 5px;
-        z-index: 9999;
-    }
-</style>
-
-<body>
+<body class="bg-purple-900">
     <section class="h-screen flex flex-col tela-inteira ">
         <div class="h-fit xl:h-3/4 flex justify-center tela-75 pb-10">
             <div class="w-full sm:w-fit xl:w-1/3 h-full justify-center elemento-meio space-y-10 p-10">
@@ -43,11 +21,13 @@
                     <form th:action="@{/login/reponderquestionario}" method="post" role="form">
                         <div class="formulario h-fit lg:h-5/6 flex items-center flex-col justify-center space-y-5">
                             <div class="w-full flex flex-col space-y-3 items-center h-1/3 ">
-                                <input name="chave" id="color" type="text"
-                                    class="w-3/4 sm:w-full lg:w-3/4 xl:w-3/5 rounded focus:outline-none" placeholder=" Chave">
+                                <input name="chave" type="text"
+                                    class="w-3/4 sm:w-full lg:w-3/4 xl:w-3/5 rounded focus:outline-none bg-indigo-700 text-white"
+                                    placeholder=" Chave">
                             </div>
                             <div class="flex items-center justify-center w-full h-2/3">
-                                <button type="submit" id="color" class="w-fit h-fit py-1 px-11 bg-white rounded">Entrar
+                                <button type="submit"
+                                    class="w-fit h-fit py-1 px-11 bg-white rounded bg-indigo-700 text-white">Entrar
                                 </button>
                             </div>
                         </div>
@@ -58,7 +38,8 @@
                 </div>
             </div>
         </div>
-        <div class="error-message" id="errorDiv" th:if="${param.error}">
+        <div class="error-message fixed top-5 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-2 border-red-500 text-red-600 px-5 py-2 rounded z-50"
+            id="errorDiv" th:if="${param.error}">
             <span class="block sm:inline">Chave de acesso inválida</span>
         </div>
         <div class="h-fit xl:h-1/4 tela-25 flex justify-center items-center ">
@@ -100,11 +81,6 @@
             </div>
         </div>
     </section>
-    <script>
-        setTimeout(function () {
-            var errorDiv = document.getElementById('errorDiv');
-            errorDiv.style.display = 'none';
-        }, 5000);
-    </script>
 </body>
+
 </html>

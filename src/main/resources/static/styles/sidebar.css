@@ -39,7 +39,7 @@ nav.menu-lateral {
 
 @media (max-width: 450px) {
     nav.menu-lateral {
-       display: none;
+        display: none;
     }
 
     nav.menu-lateral:hover {
@@ -94,4 +94,3 @@ ul li.item-menu {
 #sidebar-toggle-item {
     display: none;
 }
-
