@@ -5,8 +5,6 @@ import com.sqhg.entities.Questao;
 import com.sqhg.services.ModeloQuestionarioService;
 import com.sqhg.services.QuestaoService;
 import lombok.AllArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,7 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.Optional;
+import java.util.List;
 
 @Controller
 @RequestMapping("/modelo-questionario")
@@ -26,22 +24,21 @@ public class ModeloQuestionarioController {
     private final QuestaoService questaoService;
 
     @GetMapping("/novo")
-    public String telaCriarModeloQuestionario(Model model, Optional<Integer> currentPage) {
-        int page = currentPage.orElse(1);
-        Page<Questao> questoes = questaoService.listarQuestoesPorPagina(PageRequest.of(page - 1, 10));
+    public String telaCriarModeloQuestionario(Model model) {
+        List<Questao> questoes = questaoService.listarTodasQuestoes();
         model.addAttribute("modeloQuestionario", new ModeloQuestionario());
-        model.addAttribute("questoes", questoes.getContent());
-        model.addAttribute("currentPage", currentPage);
-        model.addAttribute("totalPages", questoes.getTotalPages());
-        model.addAttribute("totalQuestoes", questoes.getTotalElements());
-        model.addAttribute("hasNext", questoes.hasNext());
+        model.addAttribute("questoes", questoes);
         return "criarModeloQuestionario";
     }
 
     @PostMapping("/novo")
     public String salvarModeloQuestionario(@ModelAttribute("modeloQuestionario") ModeloQuestionario modeloQuestionario, BindingResult result) {
         if (result.hasErrors()) {
-            return "listarQuestao";
+            return "criarModeloQuestionario";
+        }
+        if (modeloQuestionario.getQuestoes().isEmpty()) {
+            result.rejectValue("questoes", "", "Não pode ser vazio.");
+            return "criarModeloQuestionario";
         }
         modeloQuestionarioService.salvar(modeloQuestionario);
         return "redirect:/modelo-questionario/novo";

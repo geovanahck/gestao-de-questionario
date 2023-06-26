@@ -3,17 +3,11 @@ package com.sqhg.controllers;
 import com.sqhg.services.QuestaoService;
 import lombok.AllArgsConstructor;
 
-import java.util.Optional;
-
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 
-import com.sqhg.entities.ModeloQuestionario;
 import com.sqhg.entities.Questao;
 
 @Controller
