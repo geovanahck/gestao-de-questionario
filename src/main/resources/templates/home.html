@@ -12,6 +12,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <script rel="javascript" type="text/javascript" th:src="@{/scripts/menu.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/menu.css}" />
+
 </head>
 
 <style>
@@ -19,12 +22,14 @@
 </style>
 
 <body>
-    <div th:replace="fragments/nav :: menu"></div>
     <div class="h-[100vh] w-[95%] ml-[4.5%]">
         <iframe frameborder="0" scrolling="yes" marginheight="0" marginwidth="0" class="w-full h-full"
             src="https://www.pratidonaduzzi.com.br/">
         </iframe>
     </div>
+
+    <div th:insert="~{menu :: menu}"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
 </body>
 
 </html>

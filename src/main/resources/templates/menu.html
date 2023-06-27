@@ -5,10 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/styles/sidebar.css}" />
-    <link rel="stylesheet" href="../static/styles/sidebar.css" />
-    <script rel="javascript" type="text/javascript" th:src="@{/scripts/menu.js}"></script>
-    <script rel="javascript" type="text/javascript" src="../static/scripts/menu.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
@@ -17,8 +13,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-N/OZl1+hZG8f+RYXmO6nt/iTp+51GkNYjKwHcP/MJQYSI2AXZT0HICWjJ9++vq3r3t+3PLQ8WYtHnKxPYfZFZA=="
         crossorigin="anonymous" />
+    <link rel="stylesheet" th:href="@{/styles/menu.css}" />
+    <script rel="javascript" type="text/javascript" th:src="@{/scripts/menu.js}"></script>
+    <link rel="stylesheet" href="../static/styles/menu.css" />
+    <script rel="javascript" type="text/javascript" src="../static/scripts/menu.js"></script>
 </head>
-<!DOCTYPE html>
 
 <body>
     <nav th:fragment="menu" class="menu-lateral flex justify-center items-center" onmouseover="mostrarMenu()"
@@ -273,5 +272,5 @@
     </nav> <!--  menu-lateral -->
 </body>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
+
 </html>

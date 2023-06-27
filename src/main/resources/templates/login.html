@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script rel="javascript" type="text/javascript" th:src="@{/scripts/login.js}"></script>
 </head>
 
 <body class="bg-purple-900">
@@ -30,7 +29,7 @@
                             </div>
                             <div class="flex items-center justify-center w-full h-2/3">
                                 <button type="submit"
-                                    class="w-fit h-fit py-1 px-11 bg-white rounded bg-indigo-700 text-white">Entrar
+                                    class="w-fit h-fit py-1 px-11 bg-white roundedbg-indigo-700 text-white">Entrar
                                 </button>
                             </div>
                         </div>
@@ -42,7 +41,8 @@
                 </div>
             </div>
         </div>
-        <div class="error-message" id="errorDiv" th:if="${param.error}">
+        <div class="error-message fixed top-5 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border-2 border-red-500 text-red-600 px-5 py-2 rounded z-50"
+            id="errorDiv" th:if="${param.error}">
             <span class="block sm:inline">Usuário ou Senha incorretos</span>
         </div>
         <div class="h-fit xl:h-1/4 flex justify-center items-center ">
@@ -87,6 +87,12 @@
             </div>
         </div>
     </section>
+    <script>
+        setTimeout(function () {
+            var errorDiv = document.getElementById('errorDiv');
+            errorDiv.style.display = 'none';
+        }, 5000);
+    </script>
 </body>
 
 </html>

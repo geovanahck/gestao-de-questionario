@@ -12,13 +12,12 @@
         integrity="sha512-N/OZl1+hZG8f+RYXmO6nt/iTp+51GkNYjKwHcP/MJQYSI2AXZT0HICWjJ9++vq3r3t+3PLQ8WYtHnKxPYfZFZA=="
         crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" th:href="@{/styles/listaAdm.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/menu.css}" />
+    <script rel="javascript" type="text/javascript" th:src="@{/scripts/menu.js}"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-
-<body class="overflow-scroll">
-    <div th:replace="fragments/menu :: menu"></div>
-
+<body class="overflow-auto">
     <div style="background-color: #fff" class="flex justify-center items-center md:py-12 sm:py-6">
         <h1 class="dark:text-black text-center titulo">Lista de Administradores</h1>
     </div>
@@ -173,6 +172,7 @@
         </div>
     </div>
 
+    <div th:insert="~{menu :: menu}"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
 </body>
 

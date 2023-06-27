@@ -1,13 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: 0;
-    font-family: 'Outfit', sans-serif;
-}
+/* sidebar */
 
 body {
     height: 100vh;

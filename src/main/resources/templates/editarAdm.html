@@ -11,6 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script rel="javascript" type="text/javascript" th:src="@{/scripts/menu.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/menu.css}" />
 
 </head>
 
@@ -19,7 +21,6 @@
 </style>
 
 <body class="overflow-scroll">
-    <div th:replace="fragments/menu :: menu"></div>
     <div class="flex flex-row">
         <div class="content flex-grow">
             <div style="background-color: #fff" class="flex justify-center items-center md:py-10 sm:py-6">
@@ -137,6 +138,8 @@
             </form>
         </div>
     </div>
+    <div th:insert="~{menu :: menu}"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
 </body>
 
 </html>

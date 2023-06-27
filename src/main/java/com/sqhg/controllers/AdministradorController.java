@@ -137,4 +137,10 @@ public class AdministradorController {
         administradorService.deletar(id);
         return "redirect:/administradores";
     }
+
+    @GetMapping(value = "/menu")
+    public String menu(Model model) {
+        return "menu";
+    }
+
 }
