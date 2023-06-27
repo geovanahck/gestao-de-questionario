@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Questionarios</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-N/OZl1+hZG8f+RYXmO6nt/iTp+51GkNYjKwHcP/MJQYSI2AXZT0HICWjJ9++vq3r3t+3PLQ8WYtHnKxPYfZFZA=="
+        crossorigin="anonymous" />
+  <link rel="stylesheet" type="text/css" th:href="@{/styles/listaQuestionario.css}" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script rel="javascript" type="text/javascript" th:src="@{/scripts/menu.js}"></script>
+</head>
+
+
+<body class="overflow-scroll">
+<nav class="menu-lateral flex justify-center items-center" onmouseover="mostrarMenu()" onmouseout="esconderMenu()">
+  <div class="flex justify-center pb-5">
+    <img th:src="@{/images/logoPrati.png}" alt="" class="pt-8 w-36 pr-3">
+  </div>
+  <ul class="pr-3 py-6">
+    <li class="p-2 justify-center items-center">
+      <a class="flex justify-center items-center p-2 text-white transition duration-75 bg-[#853a9e] rounded-lg group hover:bg-gray-900
+                        dark:text-white dark:hover:bg-[#1E1E1E]" aria-controls="dropdown-example"
+         data-collapse-toggle="dropdown-example">
+        <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-white transition duration-75 pr-1 dark:text-white
+                            dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20"
+             xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+                d="M20 21C20 18.2386 16.4183 16 12 16C7.58172 16 4 18.2386 4 21M12 13C9.23858 13 7 10.7614 7 8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8C17 10.7614 14.7614 13 12 13Z"
+                clip-rule="evenodd"></path>
+        </svg>
+        <span id="spans" class="flex-1 ml-3 text-left whitespace-nowrap">Usuários</span>
+        <svg id="sidebar-toggle-item" sidebar-toggle-item class="w-6 h-6" fill="currentColor"
+             viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                clip-rule="evenodd"></path>
+        </svg>
+      </a>
+      <ul id="dropdown-example" class="sublista hidden py-2 space-y-2">
+        <li class="item-menu">
+          <a th:href="@{/administradores/novo}" class="flex items-center justify-center w-full p-2 text-white transition duration-75 rounded-lg
+                                pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
+            <svg id="svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 24 24"
+                 xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <g id="Edit / Add_Plus_Circle">
+                  <path id="Vector"
+                        d="M8 12H12M12 12H16M12 12V16M12 12V8M12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21Z"
+                        stroke="#5C2472" stroke-width="3" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </g>
+              </g>
+            </svg>
+            <span id="spans">Criar</span>
+          </a>
+        </li>
+        <li class="item-menu">
+          <a th:href="@{/administradores}"
+             class="flex items-center justify-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
+            <svg id="svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <g id="Edit / List_Unordered">
+                  <path id="Vector"
+                        d="M9 17H19M9 12H19M9 7H19M5.00195 17V17.002L5 17.002V17H5.00195ZM5.00195 12V12.002L5 12.002V12H5.00195ZM5.00195 7V7.002L5 7.00195V7H5.00195Z"
+                        stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                  </path>
+                </g>
+              </g>
+            </svg><span id="spans">Listar </span> </a>
+          </a>
+        </li>
+
+      </ul>
+    </li>
+
+    <li class="p-2 md:pt-4 lg:pt-8 justify-center items-center">
+      <a class="flex justify-center items-center p-2 text-white rounded-lg bg-[#853a9e] group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]"
+         aria-controls="dropdown-example1" data-collapse-toggle="dropdown-example1">
+        <svg fill="#ffffff" width="24px" height="24px" viewBox="0 0 32 32" version="1.1"
+             xmlns="http://www.w3.org/2000/svg">
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+            <path
+                    d="M16 0c-8.836 0-16 7.163-16 16s7.163 16 16 16c8.837 0 16.001-7.163 16.001-16s-7.163-16-16.001-16zM16 30.032c-7.72 0-14-6.312-14-14.032s6.28-14 14-14 14.001 6.28 14.001 14-6.281 14.032-14.001 14.032zM14.53 25.015h2.516v-2.539h-2.516zM15.97 6.985c-1.465 0-2.672 0.395-3.62 1.184s-1.409 2.37-1.386 3.68l0.037 0.073h2.295c0-0.781 0.261-1.904 0.781-2.308s1.152-0.604 1.893-0.604c0.854 0 1.511 0.232 1.971 0.696s0.689 1.127 0.689 1.989c0 0.725-0.17 1.343-0.512 1.855-0.343 0.512-0.916 1.245-1.721 2.198-0.831 0.749-1.344 1.351-1.538 1.806s-0.297 1.274-0.305 2.454h2.405c0-0.74 0.047-1.285 0.14-1.636s0.36-0.744 0.799-1.184c0.945-0.911 1.703-1.802 2.277-2.674 0.573-0.87 0.86-1.831 0.86-2.881 0-1.465-0.443-2.607-1.331-3.424s-2.134-1.226-3.736-1.226z">
+            </path>
+          </g>
+        </svg>
+        <span id="spans" class="flex-1 ml-3 text-left whitespace-nowrap">Questionários</span>
+        <svg id="sidebar-toggle-item" sidebar-toggle-item class="w-6 h-6" fill="currentColor"
+             viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                clip-rule="evenodd"></path>
+        </svg>
+      </a>
+      <ul id="dropdown-example1" class="sublista hidden py-2 space-y-2">
+        <li class="item-menu">
+          <a href="#"
+             class="flex items-center justify-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
+            <svg id="svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <g id="Edit / List_Unordered">
+                  <path id="Vector"
+                        d="M9 17H19M9 12H19M9 7H19M5.00195 17V17.002L5 17.002V17H5.00195ZM5.00195 12V12.002L5 12.002V12H5.00195ZM5.00195 7V7.002L5 7.00195V7H5.00195Z"
+                        stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </g>
+              </g>
+            </svg><span id="spans">Listar </span> </a>
+        </li>
+        <li class="item-menu">
+          <a href="#"
+             class="flex items-center justify-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
+            <svg id="svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                        d="M20.33 3.66996C20.1408 3.48213 19.9035 3.35008 19.6442 3.28833C19.3849 3.22659 19.1135 3.23753 18.86 3.31996L4.23 8.19996C3.95867 8.28593 3.71891 8.45039 3.54099 8.67255C3.36307 8.89471 3.25498 9.16462 3.23037 9.44818C3.20576 9.73174 3.26573 10.0162 3.40271 10.2657C3.5397 10.5152 3.74754 10.7185 4 10.85L10.07 13.85L13.07 19.94C13.1906 20.1783 13.3751 20.3785 13.6029 20.518C13.8307 20.6575 14.0929 20.7309 14.36 20.73H14.46C14.7461 20.7089 15.0192 20.6023 15.2439 20.4239C15.4686 20.2456 15.6345 20.0038 15.72 19.73L20.67 5.13996C20.7584 4.88789 20.7734 4.6159 20.7132 4.35565C20.653 4.09541 20.5201 3.85762 20.33 3.66996ZM4.85 9.57996L17.62 5.31996L10.53 12.41L4.85 9.57996ZM14.43 19.15L11.59 13.47L18.68 6.37996L14.43 19.15Z"
+                        fill="#fff"></path>
+              </g>
+            </svg><span id="spans">Enviados</span> </a>
+        </li>
+      </ul>
+    </li>
+    <li class="p-2 md:pt-4 lg:pt-8 justify-center items-center">
+      <a href="#"
+         class="flex items-center p-2 text-white bg-[#853a9e] rounded-lg dark:text-white hover:bg-gray-900 dark:hover:bg-[#1E1E1E]">
+        <svg fill="#ffffff" width="24px" height="24px" viewBox="0 0 64 64" version="1.1"
+             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             xml:space="preserve" xmlns:serif="http://www.serif.com/"
+             style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+          <g id="SVGRepo_iconCarrier">
+                            <g transform="matrix(1,0,0,1,-704,-320)">
+                                <rect id="Icons" x="0" y="0" width="1280" height="800" style="fill:none;"></rect>
+                              <g id="Icons1" serif:id="Icons">
+                                    <g id="Strike"> </g>
+                                <g id="H1"> </g>
+                                <g id="H2"> </g>
+                                <g id="H3"> </g>
+                                <g id="list-ul"> </g>
+                                <g id="hamburger-1"> </g>
+                                <g id="hamburger-2"> </g>
+                                <g id="list-ol"> </g>
+                                <g id="list-task"> </g>
+                                <g id="trash"> </g>
+                                <g id="vertical-menu"> </g>
+                                <g id="horizontal-menu"> </g>
+                                <g id="sidebar-2"> </g>
+                                <g id="Pen"> </g>
+                                <g id="Pen1" serif:id="Pen"> </g>
+                                <g id="clock"> </g>
+                                <g id="external-link"> </g>
+                                <g id="hr"> </g>
+                                <g id="info"> </g>
+                                <g id="warning"> </g>
+                                <g id="plus-circle"> </g>
+                                <g id="minus-circle"> </g>
+                                <g id="vue"> </g>
+                                <g id="cog"> </g>
+                                <g id="logo"> </g>
+                                <g id="radio-check"> </g>
+                                <g id="eye-slash"> </g>
+                                <g id="eye"> </g>
+                                <g id="toggle-off"> </g>
+                                <g id="shredder"> </g>
+                                <g id="spinner--loading--dots-" serif:id="spinner [loading, dots]"> </g>
+                                <g id="react"> </g>
+                                <g id="check-selected"> </g>
+                                <g id="turn-off"> </g>
+                                <g id="code-block"> </g>
+                                <g id="user"> </g>
+                                <g id="coffee-bean"> </g>
+                                <g transform="matrix(0.638317,0.368532,-0.368532,0.638317,785.021,-208.975)">
+                                        <g id="coffee-beans">
+                                            <g id="coffee-bean1" serif:id="coffee-bean"> </g>
+                                        </g>
+                                    </g>
+                                <g id="coffee-bean-filled"> </g>
+                                <g transform="matrix(0.638317,0.368532,-0.368532,0.638317,913.062,-208.975)">
+                                        <g id="coffee-beans-filled">
+                                            <g id="coffee-bean2" serif:id="coffee-bean"> </g>
+                                        </g>
+                                    </g>
+                                <g id="clipboard">
+                                        <g id="clipboard1" serif:id="clipboard"
+                                           transform="matrix(1,0,0,1,-0.0212163,0)">
+                                            <path
+                                                    d="M750.005,376L722.016,376C718.707,376 716.021,373.314 716.021,370.005L716.042,338.535C716.042,335.226 718.728,332.54 722.037,332.54L726.517,332.54C726.517,332.54 726.517,332.713 726.517,332C726.517,331.731 726.624,331.472 726.814,331.282C727.005,331.091 727.263,330.984 727.533,330.984C729.385,330.984 733.122,330.984 733.122,330.984C733.122,330.984 733.192,328.028 736.021,328.028C738.85,328.028 738.893,330.984 738.893,330.984L744.408,330.984C744.969,330.984 745.424,331.439 745.424,332C745.424,332.713 745.424,332.54 745.424,332.54L750.026,332.54C753.335,332.54 756.021,335.226 756.021,338.535L756,370.005C756,373.314 753.314,376 750.005,376ZM749.012,371.999C750.662,371.999 752.001,370.66 752.001,369.01L752.022,339.529C752.022,337.88 750.683,336.541 749.033,336.54L745.424,336.54L745.424,337.513C745.424,338.075 744.969,338.529 744.408,338.529C741.124,338.529 730.817,338.529 727.533,338.529C726.971,338.529 726.517,338.075 726.517,337.513C726.517,336.647 726.517,336.54 726.517,336.54L723.03,336.54C721.38,336.541 720.041,337.88 720.041,339.529L720.02,369.01C720.02,370.66 721.359,371.999 723.009,371.999L749.012,371.999ZM736.021,329.382C736.86,329.382 737.542,330.064 737.542,330.903C737.542,331.742 736.86,332.423 736.021,332.423C735.182,332.423 734.501,331.742 734.501,330.903C734.501,330.064 735.182,329.382 736.021,329.382Z">
+                                            </path>
+                                        </g>
+                                  <g transform="matrix(2.91775,0,0,1,170.164,76)">
+                                            <rect x="189.816" y="267" width="8.226" height="2"
+                                                  style="fill-rule:nonzero;">
+                                            </rect>
+                                        </g>
+                                  <g transform="matrix(2.91775,0,0,1,170.164,81.2438)">
+                                            <rect x="189.816" y="267" width="8.226" height="2"
+                                                  style="fill-rule:nonzero;">
+                                            </rect>
+                                        </g>
+                                  <g transform="matrix(2.91775,0,0,1,170.143,86.4877)">
+                                            <rect x="189.816" y="267" width="8.226" height="2"
+                                                  style="fill-rule:nonzero;">
+                                            </rect>
+                                        </g>
+                                  <g transform="matrix(2.91775,0,0,1,170.164,91.7315)">
+                                            <rect x="189.816" y="267" width="8.226" height="2"
+                                                  style="fill-rule:nonzero;">
+                                            </rect>
+                                        </g>
+                                  <g transform="matrix(2.91775,0,0,1,170.164,96.9753)">
+                                            <rect x="189.816" y="267" width="8.226" height="2"
+                                                  style="fill-rule:nonzero;">
+                                            </rect>
+                                        </g>
+                                    </g>
+                                <g transform="matrix(1,0,0,1,128.011,1.35415)">
+                                        <g id="clipboard-paste"> </g>
+                                    </g>
+                                <g id="clipboard-copy"> </g>
+                                <g id="Layer1"> </g>
+                                </g>
+                            </g>
+                        </g>
+                    </svg>
+        <span id="spans" class="flex-1 ml-3 text-left whitespace-nowrap">Relatórios</span>
+      </a>
+    </li>
+  </ul>
+</nav> <!--  menu-lateral -->
+
+<div style="background-color: #fff" class="flex justify-center items-center md:py-12 sm:py-6">
+  <h1 class="dark:text-black text-center titulo">Lista de Modelos de Questionário</h1>
+</div>
+<div class="background items-center pt-6 flex flex-col">
+  <div class="w-2/4 pt-3 justify-center items-center">
+    <div class="w-full flex-row pb-11">
+      <div id="pesquisa" class="p-1 relative">
+        <form th:href="@{/modelo-questionario}">
+          <input type="hidden" th:name="pageSize" th:value="${pageSize}" />
+          <input type="hidden" th:name="page" th:value="${page}" />
+          <input name="search" type="text" class=" p-1 block w-full" placeholder="Encontrar">
+          <button id="fundo" class="absolute inset-y-0 right-0 flex items-center focus:outline-none"
+                  type="submit">
+            <svg class="h-3.5 w-10 text-white" xmlns="http://www.w3.org/2000/svg" width="5" height="5"
+                 fill="currentColor" viewBox="0 0 16 16">
+              <path
+                      d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0
+                                               1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+            </svg>
+          </button>
+        </form>
+        <form th:href="@{/questionario}">
+          <button type="submit" class="w-5 h-5 absolute inset-y-14 right-5 pb-1 focus:outline-none">
+            <svg class="h-3.5 w-10" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path
+                      d="M370.72 133.28C339.458 104.008 298.888 87.962 255.848 88c-77.458.068-144.328 53.178-162.791 126.85-1.344 5.363-6.122 9.15-11.651 9.15H24.103c-7.498 0-13.194-6.807-11.807-14.176C33.933 94.924 134.813 8 256 8c66.448 0 126.791 26.136 171.315 68.685L463.03 40.97C478.149 25.851 504 36.559 504 57.941V192c0 13.255-10.745 24-24 24H345.941c-21.382 0-32.09-25.851-16.971-40.971l41.75-41.749zM32 296h134.059c21.382 0 32.09 25.851 16.971 40.971l-41.75 41.75c31.262 29.273 71.835 45.319 114.876 45.28 77.418-.07 144.315-53.144 162.787-126.849 1.344-5.363 6.122-9.15 11.651-9.15h57.304c7.498 0 13.194 6.807 11.807 14.176C478.067 417.076 377.187 504 256 504c-66.448 0-126.791-26.136-171.315-68.685L48.97 471.03C33.851 486.149 8 475.441 8 454.059V320c0-13.255 10.745-24 24-24z" />
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+    <table>
+      <thead>
+      <tr class="h-12">
+        <th>Código</th>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th class="w-14">Ação</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr name="modelo" th:each="modelo : ${modeloQuestionarios}" th:data-id="${modelo.id}">
+        <td th:object="${modelo}" th:value="${modelo.id}" th:text="${modelo.id}"></td>
+        <td th:text="${modelo.nome}"></td>
+        <td th:text="${modelo.descricao}"></td>
+        <td class="w-24">
+          <div class="items-center justify-items">
+            <div class="flex flex-row items-center justify-center ">
+              <div class="flex w-10 justify-center items-center">
+                <a title="Enviar" type="button"
+                   class="w-flex p-2 focus:outline-none" th:object="${modelo}"
+                   th:href="@{/modelo-questionario/enviar/{id}(id=${modelo.id})}">
+                  <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+                    <path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480V396.4c0-4 1.5-7.8 4.2-10.7L331.8 202.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8 17.7 316.6C7.1 311.3 .3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <form th:href="@{/modelo-questionario}">
+      <input type="hidden" th:name="search" th:value="${search}" />
+      <div class="flex justify-between px-3">
+        <div class="flex">
+          <div class="flex items-center pt-4 ">
+            <select name="pageSize" class="pl-2 focus:outline-none" id="quantpag"
+                    onchange="this.form.submit()">
+              <option name="size10" th:value="10" th:select="${pageSize}"
+                      th:selected="${pageSize == 10}">
+                <label> 10 </label>
+              </option>
+              <option name="size20" th:value="20" th:select="${pageSize}"
+                      th:selected="${pageSize == 20}">
+                <label> 20 </label>
+              </option>
+              <option name="size30" th:value="30" th:select="${pageSize}"
+                      th:selected="${pageSize == 30}">
+                <label> 30 </label>
+              </option>
+              <option name="size40" th:value="40" th:select="${pageSize}"
+                      th:selected="${pageSize == 40}">
+                <label> 40 </label>
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="pt-4 ">
+          <div class="botao text-white flex align-items-center">
+            <button name="page" class="focus:outline-none" th:value="${page}-1"
+                    th:disabled="${page == 0}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                   class="bi bi-caret-left-fill w-5" viewBox="0 0 16 16">
+                <path
+                        d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+              </svg>
+            </button>
+            <div class="bg-white text-black-50 w-6">
+              <span th:text="${page+1}"></span>
+            </div>
+            <button name="page" class="focus:outline-none" th:value="${page}+1" th:disabled="${!hasNext}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                   class="bi bi-caret-right-fill w-5" viewBox="0 0 16 16">
+                <path
+                        d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
+</body>
+
+</html>
