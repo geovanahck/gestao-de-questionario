@@ -19,4 +19,9 @@ public class QuestionarioServiceImpl implements QuestionarioService {
         return questionarioRepository.findByAreaNomeInAndCargoIn(areas, cargos);
     }
 
+    @Override
+    public void enviarQuestionario(List<SuperiorImediato> superiores) {
+        
+    }
+
 }

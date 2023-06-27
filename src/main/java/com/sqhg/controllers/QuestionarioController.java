@@ -9,9 +9,11 @@ import java.util.Optional;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.sqhg.entities.ModeloQuestionario;
 import com.sqhg.entities.SuperiorImediato;
 import com.sqhg.services.QuestionarioService;
 
@@ -29,11 +31,19 @@ public class QuestionarioController {
 
         List<SuperiorImediato> superiores = questionarioService.buscarSuperioresPorAreasECargos(
                 areas.orElse(Collections.emptyList()), cargos.orElse(Collections.emptyList()));
-                
-        model.addAttribute("superiores", superiores);
 
+        model.addAttribute("superiores", superiores);
         model.addAttribute("selectedAreas", areas.orElse(Collections.emptyList()));
         model.addAttribute("selectedCargos", cargos.orElse(Collections.emptyList()));
+        model.addAttribute("modeloQuestionario", new ModeloQuestionario());
+        return "envioQuestionario";
+    }
+
+    @PostMapping
+    public String enviarQuestionario(Model model,
+            @RequestParam(name = "superiores") List<SuperiorImediato> superiores) {
+
+        questionarioService.enviarQuestionario(superiores);
         return "envioQuestionario";
     }
 }
