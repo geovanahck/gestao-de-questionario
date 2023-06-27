@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" >
 
 <head>
     <meta charset="UTF-8">
@@ -7,11 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Novo Administrador</title>
     <link rel="stylesheet" type="text/css" th:href="@{/styles/cadAdministrador.css}" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
     <script rel="javascript" type="text/javascript" th:src="@{/scripts/menu.js}"></script>
 </head>
 
@@ -20,123 +15,6 @@
 </style>
 
 <body class="overflow-scroll">
-    <div class="flex flex-row">
-        <div class="content flex-grow">
-            <div style="background-color: #fff" class="flex justify-center items-center md:py-10 sm:py-6">
-                <h1 class="dark:text-black text-center titulo">Cadastro de Administrador</h1>
-            </div>
-            <form th:href="@{/administradores/novo}" th:object=" ${administrador}" method="post">
-                <div
-                    class="background flex flex-col justify-center items-center pt-4 space-y-2 h-auto overflow-y-auto ">
-                    <div class="flex flex-row justify-center w-4/5 pt-2">
-                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <div class="fonte-poppins sm:text-sm">Crachá</div>
-                        </div>
-                        <div class="input-container rounded-lg w-3/6">
-                            <input
-                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins "
-                                type="number" placeholder="" th:field="*{cracha}">
-                            <div th:if="${#fields.hasErrors('cracha')}" th:errors="*{cracha}"
-                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-row justify-center w-4/5 pt-4">
-                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <div class="fonte-poppins">Nome</div>
-                        </div>
-                        <div class="input-container rounded-lg w-3/6">
-                            <input
-                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="text" placeholder="" th:field="*{nome}">
-                            <div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"
-                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-row justify-center w-4/5 pt-4">
-                        <div
-                            class="flex items-center justify-center align-items-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <div class="fonte-poppins">Data de Nascimento</div>
-                        </div>
-                        <div class="input-container rounded-lg w-3/6">
-                            <input
-                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="date" placeholder="" th:field="*{nascimento}">
-                            <div th:if="${#fields.hasErrors('nascimento')}" th:errors="*{nascimento}"
-                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-row justify-center w-4/5 pt-4">
-                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <div class="fonte-poppins ">E-mail</div>
-                        </div>
-                        <div class="input-container rounded-lg w-3/6">
-                            <input
-                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="email" placeholder="" th:field="*{email}">
-                            <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
-                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-row justify-center w-4/5 pt-4">
-                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <div class="fonte-poppins">Telefone</div>
-                        </div>
-                        <div class="input-container rounded-lg w-3/6">
-                            <input
-                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="tel" placeholder="" th:field="*{telefone}">
-                            <div th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"
-                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-row justify-center w-4/5 pt-4">
-                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <div class="fonte-poppins">Senha</div>
-                        </div>
-                        <div class="input-container rounded-lg w-3/6">
-                            <input
-                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="password" placeholder="" th:field="*{senha}">
-                            <div th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}"
-                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-row justify-center w-4/5 pt-4">
-                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
-                            <div class="fonte-poppins">Confirmação de Senha</div>
-                        </div>
-                        <div class="input-container rounded-lg w-3/6">
-                            <input
-                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="password" placeholder="" th:field="*{confirmacaoSenha}">
-                            <div th:if="${#fields.hasErrors('confirmacaoSenha')}" th:errors="*{confirmacaoSenha}"
-                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
-                        </div>
-                    </div>
-                    <div class="flex flex-row items-center justify-end w-3/5 pb-5 px-8 pt-6">
-                        <div style="display: flex; justify-content: center; align-items: center;">
-                            <a type="button" th:href="@{/administradores}" style="background-color: #5c2472"
-                                class="flex h-12 w-32 items-center justify-center text-white rounded-lg ml-2 fonte-poppins">
-                                <div class="flex">
-                                    Cancelar
-                                </div>
-                            </a>
-                        </div>
-                        <div>
-                            <button type="submit" style="background-color: #5c2472"
-                                class="appearance-none h-12 w-32 text-center text-white rounded-lg ml-2 fonte-poppins">Gravar</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
     <nav class="menu-lateral flex justify-center items-center" onmouseover="mostrarMenu()" onmouseout="esconderMenu()">
         <a th:href="@{/home}" class="flex justify-center pb-5">
             <img th:src="@{/images/logoPrati.png}" alt="" class="pt-8 w-36 pr-3">
@@ -387,8 +265,123 @@
         </ul>
     </nav> <!--  menu-lateral -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
+    <div style="background-color: #fff" class="flex justify-center items-center md:py-12 sm:py-6">
+        <h1 class="dark:text-black text-center titulo h-10">Cadastro de Administrador</h1>
+    </div>
+    <div class="flex flex-row">
+        <div class=" flex-grow">
+            <form class="pt-6" th:href="@{/administradores/novo}" th:object=" ${administrador}" method="post">
+                <div
+                    class="background flex flex-col justify-center items-center pt-4 space-y-2 h-auto overflow-y-auto ">
+                    <div class="flex flex-row justify-center w-4/5 pt-2">
+                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                            <div class="fonte-poppins sm:text-sm">Crachá</div>
+                        </div>
+                        <div class="input-container rounded-lg w-3/6">
+                            <input
+                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins "
+                                type="number" th:field="*{cracha}">
+                            <div th:if="${#fields.hasErrors('cracha')}" th:errors="*{cracha}"
+                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
+                        </div>
+                    </div>
 
+                    <div class="flex flex-row justify-center w-4/5 pt-4">
+                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                            <div class="fonte-poppins">Nome</div>
+                        </div>
+                        <div class="input-container rounded-lg w-3/6">
+                            <input
+                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
+                                type="text" th:field="*{nome}">
+                            <div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"
+                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-row justify-center w-4/5 pt-4">
+                        <div
+                            class="flex items-center justify-center align-items-center h-10 w-48 purple-color rounded-l-full text-white">
+                            <div class="fonte-poppins">Data de Nascimento</div>
+                        </div>
+                        <div class="input-container rounded-lg w-3/6">
+                            <input
+                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
+                                type="date" fmt:formatDate="dd/MM/yyyy" th:field="*{nascimento}">
+                            <div th:if="${#fields.hasErrors('nascimento')}" th:errors="*{nascimento}"
+                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-row justify-center w-4/5 pt-4">
+                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                            <div class="fonte-poppins ">E-mail</div>
+                        </div>
+                        <div class="input-container rounded-lg w-3/6">
+                            <input
+                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
+                                type="email" th:field="*{email}">
+                            <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-row justify-center w-4/5 pt-4">
+                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                            <div class="fonte-poppins">Telefone</div>
+                        </div>
+                        <div class="input-container rounded-lg w-3/6">
+                            <input
+                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
+                                type="tel" th:field="*{telefone}">
+                            <div th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"
+                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-row justify-center w-4/5 pt-4">
+                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                            <div class="fonte-poppins">Senha</div>
+                        </div>
+                        <div class="input-container rounded-lg w-3/6">
+                            <input
+                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
+                                type="password" th:field="*{senha}">
+                            <div th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}"
+                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-row justify-center w-4/5 pt-4">
+                        <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                            <div class="fonte-poppins">Confirmação de Senha</div>
+                        </div>
+                        <div class="input-container rounded-lg w-3/6">
+                            <input
+                                class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
+                                type="password" th:field="*{confirmacaoSenha}">
+                            <div th:if="${#fields.hasErrors('confirmacaoSenha')}" th:errors="*{confirmacaoSenha}"
+                                class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
+                        </div>
+                    </div>
+                    <div class="flex flex-row items-center justify-end w-3/5 pb-5 px-8 pt-6">
+                        <div style="display: flex; justify-content: center; align-items: center;">
+                            <a type="button" th:href="@{/administradores}" style="background-color: #5c2472"
+                                class="flex h-12 w-32 items-center justify-center text-white rounded-lg ml-2 fonte-poppins">
+                                <div class="flex">
+                                    Cancelar
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <button type="submit" style="background-color: #5c2472"
+                                class="appearance-none h-12 w-32 text-center text-white rounded-lg ml-2 fonte-poppins">Gravar</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>

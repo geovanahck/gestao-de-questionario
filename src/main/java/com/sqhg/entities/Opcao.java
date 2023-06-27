@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "resposta")
+@Table(name = "opcao")
 public class Opcao {
 
     @Id

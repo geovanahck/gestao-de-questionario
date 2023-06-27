@@ -6,16 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Administradores</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        integrity="sha512-N/OZl1+hZG8f+RYXmO6nt/iTp+51GkNYjKwHcP/MJQYSI2AXZT0HICWjJ9++vq3r3t+3PLQ8WYtHnKxPYfZFZA=="
-        crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="../static/styles/listaAdm.css" />
     <link rel="stylesheet" type="text/css" th:href="@{/styles/listaAdm.css}" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script rel="javascript" type="text/javascript" th:src="@{/scripts/menu.js}"></script>
 </head>
-
 
 <body class="overflow-scroll">
     <nav class="menu-lateral flex justify-center items-center" onmouseover="mostrarMenu()" onmouseout="esconderMenu()">
@@ -25,10 +20,10 @@
         <ul class="pr-3 py-6">
             <li class="p-2 justify-center items-center">
                 <a class="flex justify-center items-center p-2 text-white transition duration-75 bg-[#853a9e] rounded-lg group hover:bg-gray-900 
-                        dark:text-white dark:hover:bg-[#1E1E1E]" aria-controls="dropdown-example"
+                            dark:text-white dark:hover:bg-[#1E1E1E]" aria-controls="dropdown-example"
                     data-collapse-toggle="dropdown-example">
                     <svg aria-hidden="true" class="flex-shrink-0 w-6 h-6 text-white transition duration-75 pr-1 dark:text-white 
-                            dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20"
+                                dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
                             d="M20 21C20 18.2386 16.4183 16 12 16C7.58172 16 4 18.2386 4 21M12 13C9.23858 13 7 10.7614 7 8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8C17 10.7614 14.7614 13 12 13Z"
@@ -44,8 +39,8 @@
                 </a>
                 <ul id="dropdown-example" class="sublista hidden py-2 space-y-2">
                     <li class="item-menu">
-                        <a th:href="@{/administradores/novo}" class="flex items-center justify-center w-full p-2 text-white transition duration-75 rounded-lg
-                                pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
+                        <a th:href="@{/administradores/novo}" class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg
+                                    pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
                             <svg id="svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg" stroke="#ffffff">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -64,7 +59,7 @@
                     </li>
                     <li class="item-menu">
                         <a th:href="@{/administradores}"
-                            class="flex items-center justify-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
+                            class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
                             <svg id="svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -85,7 +80,7 @@
                 </ul>
             </li>
 
-            <li class="p-2 md:pt-4 lg:pt-8 justify-center items-center">
+            <li class="p-2 justify-center items-center">
                 <a class="flex justify-center items-center p-2 text-white rounded-lg bg-[#853a9e] group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]"
                     aria-controls="dropdown-example1" data-collapse-toggle="dropdown-example1">
                     <svg fill="#ffffff" width="24px" height="24px" viewBox="0 0 32 32" version="1.1"
@@ -109,7 +104,7 @@
                 <ul id="dropdown-example1" class="sublista hidden py-2 space-y-2">
                     <li class="item-menu">
                         <a href="#"
-                            class="flex items-center justify-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
+                            class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
                             <svg id="svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -126,7 +121,7 @@
                     </li>
                     <li class="item-menu">
                         <a href="#"
-                            class="flex items-center justify-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
+                            class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
                             <svg id="svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -140,7 +135,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="p-2 md:pt-4 lg:pt-8 justify-center items-center">
+            <li class="p-2 justify-center items-center">
                 <a href="#"
                     class="flex items-center p-2 text-white bg-[#853a9e] rounded-lg dark:text-white hover:bg-gray-900 dark:hover:bg-[#1E1E1E]">
                     <svg fill="#ffffff" width="24px" height="24px" viewBox="0 0 64 64" version="1.1"
@@ -269,16 +264,16 @@
     </nav> <!--  menu-lateral -->
 
     <div style="background-color: #fff" class="flex justify-center items-center md:py-12 sm:py-6">
-        <h1 class="dark:text-black text-center titulo">Lista de Administradores</h1>
+        <h1 class="dark:text-black text-center titulo h-10">Lista de Administradores</h1>
     </div>
     <div class="background items-center pt-6 flex flex-col">
-        <div class="w-2/4 pt-3 justify-center items-center">
+        <div class="w-2/4 pt-8 justify-center items-center">
             <div class="w-full flex-row pb-11">
                 <div id="pesquisa" class="p-1 relative">
                     <form th:href="@{/administradores}">
                         <input type="hidden" th:name="pageSize" th:value="${pageSize}" />
                         <input type="hidden" th:name="page" th:value="${page}" />
-                        <input name="search" type="text" class=" p-1 block w-full" placeholder="Encontrar">
+                        <input th:field="*{search}" name="search" type="text" class="p-1 block w-full" placeholder="Encontrar">
                         <button id="fundo" class="absolute inset-y-0 right-0 flex items-center focus:outline-none"
                             type="submit">
                             <svg class="h-3.5 w-10 text-white" xmlns="http://www.w3.org/2000/svg" width="5" height="5"
@@ -420,8 +415,6 @@
             </form>
         </div>
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
 </body>
 
 </html>
