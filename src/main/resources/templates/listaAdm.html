@@ -378,7 +378,7 @@
                     <div class="pt-4 ">
                         <div class="botao text-white flex align-items-center">
                             <button name="page" class="focus:outline-none" th:value="${page}-1"
-                                th:classappend="${page == 0} ? 'disabled'">
+                                    th:disabled="${page == 0}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-caret-left-fill w-5" viewBox="0 0 16 16">
                                     <path
@@ -388,7 +388,7 @@
                             <div class="bg-white text-black-50 w-6">
                                 <span th:text="${page+1}"></span>
                             </div>
-                            <button name="page" class="focus:outline-none" th:value="${page}+1">
+                            <button name="page" class="focus:outline-none" th:value="${page}+1" th:disabled="${!hasNext}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-caret-right-fill w-5" viewBox="0 0 16 16">
                                     <path
