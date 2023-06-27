@@ -105,8 +105,11 @@
     <section class="h-screen flex tela-inteira justify-center">
         <div class="flex flex-col items-center tela-inteira p-5 w-4/5 gh-full overflow-auto">
             <header class="flex justify-center w-full">
-                <span class="text-2xl">Criar Nova Questão</span>
+                <span class="text-2xl pb-5">Criar Nova Questão</span>
             </header>
+            <div class="bg-[#F3F3F3] w-full rounded-xl p-5">
+
+            
             <form th:object="${questao}" th:action="@{/questoes/novo}" method="post">
                 <div class="mb-5">
                     <table>
@@ -130,7 +133,7 @@
                         </label>
                     </label>
                 </div>
-                <div class="space-y-1 p-5" id="alternatives-input" style="display: none;">
+                <div class="space-y-1 p-5" id="alternatives-input" style="display: block;"> <!--none-->
                     <label>Alternativas</label>
                     <div>
                         <input class="w-full rounded-none px-2" type="text" th:field="*{opcoes[0].descricao}">
@@ -138,18 +141,18 @@
                     <div>
                         <input class="w-full rounded-none px-2" type="text" th:field="*{opcoes[1].descricao}">
                     </div>
-                    <div id="additional-alternatives"></div>
-                    <button type="button" id="add-alternative">Add Alternative</button>
+                    <div id="additional-alternatives"
+                        class="justify-items items-center inline-block flex flex-row-reverse pr-0 gap-x-2"></div>
+                    <button type="button" id="add-alternative" class="w-fit h-fit py-1 px-6 bg-[#5c2472] rounded">Add
+                        Alternative</button>
                 </div>
                 <div class="justify-items items-center inline-block flex flex-row-reverse pr-0 gap-x-2">
-                    <button type="submit" id="save"
-                        class="w-fit h-fit py-1 px-6 bg-[#5c2472] rounded">Save</button>
-                    <button type="submit" id="cancel"
-                        class="w-fit h-fit py-1 px-6 bg-[#5c2472] rounded">Cancel</button>
+                    <button type="submit" id="save" class="w-fit h-fit py-1 px-6 bg-[#5c2472] rounded">Save</button>
+                    <button type="submit" id="cancel" class="w-fit h-fit py-1 px-6 bg-[#5c2472] rounded">Cancel</button>
                 </div>
             </form>
         </div>
-
+        </div>
     </section>
     <div id="popup" class="popup hidden flex-col justify-between">
         <div>
@@ -158,10 +161,10 @@
         </div>
         <div class="justify-items items-center inline-block flex flex-row-reverse pr-0 gap-x-2">
             <div class=" w-fit">
-                <button onclick="closePopup();" id="fundo1" class="w-fit h-fit py-1 px-6 bg-white rounded">Sim</button>
+                <button onclick="closePopup();" id="save" class="w-fit h-fit py-1 px-6 bg-white rounded">Sim</button>
             </div>
             <div class=" w-fit">
-                <button onclick="closePopup();" id="fundo1" class="w-fit h-fit py-1 px-6 bg-white rounded">Não</button>
+                <button onclick="closePopup();" id="cancel" class="w-fit h-fit py-1 px-6 bg-white rounded">Não</button>
             </div>
         </div>
     </div>

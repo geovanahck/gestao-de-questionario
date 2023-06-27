@@ -8,7 +8,7 @@
   <link rel="stylesheet" type="text/css" th:href="@{/styles/questao.css}" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" type="text/css" th:href="@{/styles/questao.css}" />
-  <title>Listar Questôes</title>
+  <title>Criar Questionário</title>
 </head>
 <style>
   body {
@@ -16,44 +16,44 @@
   }
 
   #container {
-      display: flex;
-      justify-content: center;
-      /* centraliza as divs horizontalmente */
+    display: flex;
+    justify-content: center;
+    /* centraliza as divs horizontalmente */
   }
 
   #div.menu-bar ul ul {
-      display: none;
+    display: none;
   }
 
   #div.menu-bar li:hover>ul {
-      display: block;
+    display: block;
   }
 
 
   table {
-      border-collapse: separate;
-      width: 90%;
-      max-width: 90%;
-      margin: 0 auto;
-      border-radius: 8px;
-      border-style: hidden;
-      box-shadow: 0 0 0 2px #5c2472;
-      background-color: white;
+    border-collapse: separate;
+    width: 90%;
+    max-width: 90%;
+    margin: 0 auto;
+    border-radius: 8px;
+    border-style: hidden;
+    box-shadow: 0 0 0 2px #5c2472;
+    background-color: white;
   }
 
   th,
   td {
-      border-collapse: separate;
-      padding: 6px 4px;
-      text-align: center;
-      border: solid #5c2472 2px;
-      min-width: 20px;
+    border-collapse: separate;
+    padding: 6px 4px;
+    text-align: center;
+    border: solid #5c2472 2px;
+    min-width: 20px;
   }
 
   th {
-      text-align: center;
-      background-color: #5c2472;
-      color: #fff;
+    text-align: center;
+    background-color: #5c2472;
+    color: #fff;
   }
 
   /* #myPopup {
@@ -61,33 +61,41 @@
   } */
 
   .popup {
-      position: fixed;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      margin: auto;
-      width: 300px;
-      height: 180px;
-      padding: 15px;
-      border: solid 1px #5c2472;
-      background: white;
-      display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 300px;
+    height: 180px;
+    padding: 15px;
+    border: solid 1px #5c2472;
+    background: white;
+    display: none;
   }
 
   #botao-action,
-  #fundo1 {
-      background-color: #5c2472;
-      text-align: center;
-      border-radius: 5px;
-      color: white;
+  #cancel,
+  #criar,
+  #save,
+  #add-alternative {
+    background-color: #5c2472;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
   }
 
   button {
-      background: #5c2472;
-      border: solid #5c2472 2px;
+    background: #5c2472;
+    border: solid #5c2472 2px;
+  }
+
+  input.form-control {
+    display: none;
   }
 </style>
+
 <body>
   <section class="h-screen flex tela-inteira justify-center">
     <div class="flex flex-col items-center tela-inteira p-5 w-4/5 gh-full overflow-auto">
@@ -95,54 +103,77 @@
         <span class="text-2xl pb-5">Modelo de Questionário</span>
       </header>
       <div class="bg-[#F3F3F3] w-full rounded-xl p-5">
-        <form
-            th:object="${modeloQuestionario}"
-            th:action="@{/modelo-questionario/novo}"
-            method="post"
-          >
-          <label for="nome">Nome</label>
-          <input type=text th:field="*{nome}" required>
-          <label for="descricao">Descrição</label>
-          <input type=text th:field="*{descricao}" required>
-          <div class="flex p-5">
+        <form th:object="${modeloQuestionario}" th:action="@{/modelo-questionario/novo}" method="post">
+          <div class="grid gap-y-3">
+            <div>
+              <table>
+                <thead>
+                  <tr>
+                    <th class="w-28 rounded-tl-md">Nome</th>
+                    <td>
+                      <input class="w-full rounded-none px-2" type=text th:field="*{nome}" required>
+                    </td>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <div>
+              <table>
+                <thead>
+                  <tr>
+                    <th class="w-28 rounded-tl-md">Descrição</th>
+                    <td>
+                      <input class="w-full rounded-none px-2" type=text th:field="*{descricao}" required>
+                    </td>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+          </div>
+          <div class="justify-items items-center flex flex-row-reverse flex-space pr-0 gap-x-2 flex p-5">
             <ul class="flex space-x-5">
               <li>
-                <a href="/questoes/novo">Criar</a>
+                <button id="criar" class="w-fit h-fit py-1 px-6 bg-[#5c2472] rounded" href="/questoes/novo">Criar
+                  Questão</button>
               </li>
             </ul>
           </div>
-          <table class=" items-center justify-items overflow-x-auto">
-            <thead>
-              <tr>
-                <th class="w-8"></th>
-                <th>Descrição</th>
-                <th class="w-16">Tipo</th>
-                <th class="w-16">Editar</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr th:each="questao : ${questoes}" class="items-center justify-items">
-                <td>
-                  <input type="checkbox" th:field="*{questoes}" th:value="${questao.id}">
-                </td>
-                <td th:text="${questao.descricao}"></td>
-                <td th:text="${questao.tipo.getDisplay()}"></td>
-                <td>
-                  <div class="items-center justify-items">
-                    <a href="#" title="Editar" id="botao-action" type="button"
-                      class="w-flex p-2 focus:outline-none" method="get">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen"
-                        viewBox="0 0 16 16">
-                        <path
-                          d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
-                      </svg>
-                    </a>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <button type="submit">Salvar</button>
+          <div class="space-y-1 p-5">
+            <table class=" items-center justify-items overflow-x-auto">
+              <thead>
+                <tr>
+                  <th class="w-8"></th>
+                  <th>Descrição</th>
+                  <th class="w-16">Tipo</th>
+                  <th class="w-16">Editar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr th:each="questao : ${questoes}" class="items-center justify-items">
+                  <td>
+                    <input type="checkbox" th:field="*{questoes}" th:value="${questao.id}">
+                  </td>
+                  <td th:text="${questao.descricao}"></td>
+                  <td th:text="${questao.tipo.getDisplay()}"></td>
+                  <td>
+                    <div class="items-center justify-items">
+                      <a href="#" title="Editar" id="botao-action" type="button" class="w-flex p-2 focus:outline-none"
+                        method="get">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                          class="bi bi-pen" viewBox="0 0 16 16">
+                          <path
+                            d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z" />
+                        </svg>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="justify-items items-center flex flex-row-reverse flex-space pr-0 gap-x-2">
+            <button id="save" class="w-fit h-fit py-1 px-6 bg-[#5c2472] rounded" type="submit">Salvar</button>
+          </div>
         </form>
       </div>
     </div>

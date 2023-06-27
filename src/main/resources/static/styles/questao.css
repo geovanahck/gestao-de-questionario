@@ -67,6 +67,10 @@ th {
 }
 
 #botao-action,
+#cancel,
+#criar,
+#save,
+#add-alternative,
 #fundo1 {
     background-color: #5c2472;
     text-align: center;
@@ -78,3 +82,7 @@ button {
     background: #5c2472;
     border: solid #5c2472 2px;
 }
+
+input.form-control {
+    display: none;
+  }
