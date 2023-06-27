@@ -28,3 +28,6 @@ target/
 *.json
 *.config.js
 node_modules/
+
+## VOLUMES
+/data/
