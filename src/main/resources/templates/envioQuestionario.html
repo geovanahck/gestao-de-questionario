@@ -353,21 +353,21 @@
                     <h2 class="dark:text-black text-center titulo font-normal text-2xl ">Lista de Avaliados</h2>
                 </div>
             </div>
-            <form method="post" th:href="@{/questionario}">
+            <form method="post" th:action="@{/questionario/{id}(id=${id})}" id="FormQuestionario">
                 <div class="flex w-full pt-2 max-h-60 overflow-y-auto p-3">
                     <table>
                         <thead>
                             <tr>
-                                <th></th>
-                                <th>Nome</th>
-                                <th>Subordinados</th>
+                                <th class="w-12"></th>
+                                <th class="w-flex">Nome</th>
+                                <th class="w-36">Subordinados</th>
                             </tr>
                         </thead>
-
                         <tbody>
-                            <tr name="superior" th:each="superior : ${superiores}" th:data-id="${superior.id}">
+                            <tr th:each="superior : ${superiores}" th:data-id="${superior.id}">
                                 <td>
-                                    <input name="superiores" type="checkbox" th:value="${superior.id}"
+                                    <input name="superiores" value="${superior.id}" type="checkbox"
+                                        th:object="${superior}" th:value="${superior.id}"
                                         class="w-4 h-4 text-blue-600 bg-white rounded focus:ring-blue-500">
                                 </td>
                                 <td th:text="${superior.nome}"></td>
@@ -375,22 +375,23 @@
                                 </td>
                             </tr>
                         </tbody>
-
                     </table>
                 </div>
-                <div class="flex flex-row justify-center w-full pt-6">
-                    <div>
-                        <button
-                            class="h-14 w-48 text-center text-white purple-color rounded-lg fonte-poppins">Cancelar</button>
-                    </div>
-                    <div>
-                        <button type="submit" style="background-color: #5c2472"
-                            class="appearance-none h-14 w-48 text-center text-white rounded-lg ml-2 fonte-poppins">Gerar
-                            Chaves</button>
-                    </div>
-                </div>
-
             </form>
+            <div class="flex flex-row justify-center w-full pt-6">
+                <div>
+                    <button
+                        class="h-14 w-48 text-center text-white purple-color rounded-lg fonte-poppins">Cancelar</button>
+                </div>
+                <div>
+                    <button style="background-color: #5c2472"
+                        onclick="document.getElementById('FormQuestionario').submit()"
+                        class="appearance-none h-14 w-48 text-center text-white rounded-lg ml-2 fonte-poppins">
+                        Gerar Chaves
+                    </button>
+                </div>
+            </div>
+
         </div>
     </div>
 

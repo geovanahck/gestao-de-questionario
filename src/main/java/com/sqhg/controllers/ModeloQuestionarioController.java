@@ -39,6 +39,7 @@ public class ModeloQuestionarioController {
 
     @GetMapping("/enviar/{id}")
     public String enviar(Model model, @PathVariable Long id) {
-        return "redirect:/modelo-questionario";
+        model.addAttribute("id", id);
+        return "redirect:/questionario/" + id;
     }
 }
