@@ -11,10 +11,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-N/OZl1+hZG8f+RYXmO6nt/iTp+51GkNYjKwHcP/MJQYSI2AXZT0HICWjJ9++vq3r3t+3PLQ8WYtHnKxPYfZFZA=="
         crossorigin="anonymous" />
-    <link rel="stylesheet" type="text/css" th:href="@{/styles/listaAdm.css}" />
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/styles/menu.css}" />
     <script rel="javascript" type="text/javascript" th:src="@{/scripts/menu.js}"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/listaAdm.css}" />
 </head>
 
 <body class="overflow-auto">
@@ -172,7 +172,7 @@
         </div>
     </div>
 
-    <div th:insert="~{menu :: menu}"></div>
+    <nav th:insert="~{menu :: menu}"></nav>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
 </body>
 
