@@ -2,26 +2,60 @@ package com.sqhg.services;
 
 import lombok.AllArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import com.sqhg.entities.Administrador;
+import com.sqhg.entities.ModeloQuestionario;
+import com.sqhg.entities.Questionario;
 import com.sqhg.entities.SuperiorImediato;
+import com.sqhg.repositories.AdministradorRepository;
 import com.sqhg.repositories.QuestionarioRepository;
+import com.sqhg.repositories.SuperiorImediatoRepository;
 
 @Service
 @AllArgsConstructor
 public class QuestionarioServiceImpl implements QuestionarioService {
-    private QuestionarioRepository questionarioRepository;
+    private final QuestionarioRepository questionarioRepository;
+    private final SuperiorImediatoRepository superiorImediatoRepository;
+    private final AdministradorRepository administradorRepository;
 
     @Override
     public List<SuperiorImediato> buscarSuperioresPorAreasECargos(List<String> areas, List<String> cargos) {
-        return questionarioRepository.findByAreaNomeInAndCargoIn(areas, cargos);
+        return superiorImediatoRepository.findByAreaNomeInAndCargoIn(areas, cargos);
     }
 
     @Override
-    public void enviarQuestionario(List<SuperiorImediato> superiores) {
-        
+    public String salvarQuestionario(List<SuperiorImediato> superiores, ModeloQuestionario modeloquestionario) {
+        Questionario questionario = new Questionario();
+        questionario.setDescricao(modeloquestionario.getDescricao());
+        questionario.setNome(modeloquestionario.getNome());
+        questionario.setModeloQuestionario(modeloquestionario);
+        questionario.setAdministrador(buscarAdministradorLogado());
+        questionario.setCodigo(gerarCodigoAleatorio());
+
+        Questionario questionarioSalvo = questionarioRepository.save(questionario);
+
+        for (SuperiorImediato superior : superiores) {
+            superior.getQuestionario().add(questionarioSalvo);
+        }
+        superiorImediatoRepository.saveAll(superiores);
+         return questionarioSalvo.getCodigo();
     }
 
+    public Administrador buscarAdministradorLogado() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String crachaAdministrador = authentication.getName();
+        return administradorRepository.findByCracha(crachaAdministrador);
+    }
+
+    public String gerarCodigoAleatorio() {
+        String codigo = UUID.randomUUID().toString().replaceAll("-", "").substring(0, 15);
+        return codigo;
+    }
 }

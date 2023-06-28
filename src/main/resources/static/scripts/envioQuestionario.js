@@ -50,9 +50,6 @@ function verificarCargoSelecionado() {
     }
 }
 
-
-
-
 function validateForm() {
     var areas = document.getElementsByName("area");
     var cargos = document.getElementsByName("cargo");
@@ -91,4 +88,19 @@ function validateForm() {
     } else {
         return false;
     }
+}
+
+function verificarSuperioresMarcados() {
+    var checkboxes = document.getElementsByName('superiores');
+    var marcado = false;
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+            marcado = true;
+            break;
+        }
+    }
+    if (!marcado) {
+        return false; // Impede o envio do formulário
+    }
+    document.getElementById('FormQuestionario').submit();
 }
