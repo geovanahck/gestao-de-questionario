@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -30,6 +33,15 @@ public class QuestionarioServiceImpl implements QuestionarioService {
         return superiorImediatoRepository.findByAreaNomeInAndCargoIn(areas, cargos);
     }
 
+    @Override
+    public Page<Questionario> acharQuestionariosPorPagina(int pageNo, int pageSize, String keyword) {
+        Pageable pageable = PageRequest.of(pageNo, pageSize);
+        if (keyword == null) {
+            return questionarioRepository.findAll(pageable);
+        } else {
+            return questionarioRepository.acharQuestionariosPorPagina(keyword, pageable);
+        }
+    }
     @Override
     public String salvarQuestionario(List<SuperiorImediato> superiores, ModeloQuestionario modeloquestionario) {
         Questionario questionario = new Questionario();

@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,17 +16,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sqhg.entities.ModeloQuestionario;
+import com.sqhg.entities.Questionario;
 import com.sqhg.entities.SuperiorImediato;
 import com.sqhg.repositories.ModeloQuestionarioRepository;
 import com.sqhg.services.QuestionarioService;
 
 @Controller
-@RequestMapping(path = "/questionario")
 @AllArgsConstructor
+@RequestMapping(path = "/questionario")
 public class QuestionarioController {
 
     private final QuestionarioService questionarioService;
     private final ModeloQuestionarioRepository modeloQuestionarioRepository;
+
+    @GetMapping
+    public String listaQuestionarios(Model model,
+            @RequestParam(name = "search") Optional<String> search,
+            @RequestParam(name = "pageSize") Optional<Integer> size,
+            @RequestParam(name = "page") Optional<Integer> page) {
+
+        int currentPage = page.orElse(0);
+        int pageSize = size.orElse(10);
+        String keyword = search.orElse(null);
+
+        Page<Questionario> questionarioPage = questionarioService
+                .acharQuestionariosPorPagina(currentPage, pageSize, keyword);
+
+        model.addAttribute("questionarios", questionarioPage);
+        model.addAttribute("page", currentPage);
+        model.addAttribute("pageSize", pageSize);
+        model.addAttribute("search", keyword);
+        model.addAttribute("hasNext", questionarioPage.hasNext());
+        return "listaQuestionario";
+    }
 
     @GetMapping(value = ("/{id}"))
     public String filtrarSuperiores(Model model,
@@ -59,7 +82,7 @@ public class QuestionarioController {
             ModeloQuestionario questionarioexistente = modeloquestionario.get();
             String codigoQuestionario = questionarioService.salvarQuestionario(superiores, questionarioexistente);
             model.addAttribute("codigoQuestionario", codigoQuestionario);
-            return null; //verificar para qual tela vai retornar
+            return "redirect:/questionario"; 
         }
     }
 }
