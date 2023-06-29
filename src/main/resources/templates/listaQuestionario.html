@@ -324,9 +324,9 @@
                     </tr>
                 </tbody>
             </table>
-            <form th:href="@{/questionario}">
+            <form class="flex justify-center" th:href="@{/questionario}">
                 <input type="hidden" th:name="search" th:value="${search}" />
-                <div class="flex justify-between px-3">
+                <div class="flex justify-between px-3 sm:w-2/3">
                     <div class="flex">
                         <div class="flex items-center pt-4 ">
                             <select name="pageSize" class="pl-2 focus:outline-none" id="quantpag"

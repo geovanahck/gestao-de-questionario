@@ -17,7 +17,7 @@
 </head>
 
 
-<body class="overflow-scroll">
+<body class="overflow-x-auto">
   <nav class="menu-lateral flex justify-center items-center" onmouseover="mostrarMenu()" onmouseout="esconderMenu()">
     <div class="flex justify-center pb-5">
       <img th:src="@{/images/logoPrati.png}" alt="" class="pt-8 w-36 pr-3">
@@ -320,7 +320,7 @@
           </tr>
         </tbody>
       </table>
-      <form th:href="@{/modelo-questionario}">
+      <form class="flex justify-center"  th:href="@{/modelo-questionario}">
         <input type="hidden" th:name="search" th:value="${search}" />
         <div class="flex justify-between px-3">
           <div class="flex">

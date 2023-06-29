@@ -6,8 +6,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class SqhgApplicationTests {
 
+
+
 	@Test
-	public void contextLoads() {
+	void contextLoads() throws Exception {
 
 	}
 
