@@ -2,6 +2,12 @@ package com.sqhg.controllers;
 
 import lombok.AllArgsConstructor;
 
+import java.sql.Date;
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -29,7 +35,7 @@ public class QuestionarioController {
     private final QuestionarioService questionarioService;
     private final ModeloQuestionarioRepository modeloQuestionarioRepository;
 
-    @GetMapping
+    @GetMapping(value = ("/lista"))
     public String listaQuestionarios(Model model,
             @RequestParam(name = "search") Optional<String> search,
             @RequestParam(name = "pageSize") Optional<Integer> size,
@@ -70,19 +76,29 @@ public class QuestionarioController {
     }
 
     @PostMapping(value = ("/{id}"))
-    public String salvarQuestionario(Model model,
+    public String salvarQuestionario(
+            Model model,
             @RequestParam(name = "superiores") List<SuperiorImediato> superiores,
-            @PathVariable(name = "id") Long questionarioid) {
+            @PathVariable(name = "id") Long questionarioid,
+            @RequestParam(name = "dataInicio") Date dataInicio,
+            @RequestParam(name = "dataFim") Date dataFim,
+            @RequestParam(name = "horaInicio") String horaInicioStr,
+            @RequestParam(name = "horaFim") String horaFimStr) {
 
         Optional<ModeloQuestionario> modeloquestionario = modeloQuestionarioRepository.findById(questionarioid);
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm");
+
+        LocalTime horaInicio = LocalTime.parse(horaInicioStr, timeFormatter);
+        LocalTime horaFim = LocalTime.parse(horaFimStr, timeFormatter);
 
         if (!modeloquestionario.isPresent()) {
             return "redirect:/modelo-questionario";
         } else {
             ModeloQuestionario questionarioexistente = modeloquestionario.get();
-            String codigoQuestionario = questionarioService.salvarQuestionario(superiores, questionarioexistente);
+            String codigoQuestionario = questionarioService.salvarQuestionario(superiores, questionarioexistente,
+                    dataInicio, dataFim, horaInicio, horaFim);
             model.addAttribute("codigoQuestionario", codigoQuestionario);
-            return "redirect:/questionario"; 
+            return "redirect:/questionario/lista";
         }
     }
 }

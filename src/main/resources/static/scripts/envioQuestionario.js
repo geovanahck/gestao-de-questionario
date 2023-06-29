@@ -89,7 +89,6 @@ function validateForm() {
         return false;
     }
 }
-
 function verificarSuperioresMarcados() {
     var checkboxes = document.getElementsByName('superiores');
     var marcado = false;
@@ -100,7 +99,28 @@ function verificarSuperioresMarcados() {
         }
     }
     if (!marcado) {
+        alert('Selecione pelo menos um superior');
         return false; // Impede o envio do formulário
     }
+    var dataInicio = document.getElementsByName("dataInicio")[0].value;
+    var horaInicio = document.getElementsByName("horaInicio")[0].value;
+    var dataFim = document.getElementsByName("dataFim")[0].value;
+    var horaFim = document.getElementsByName("horaFim")[0].value;
+
+    var inicio = new Date(dataInicio + ' ' + horaInicio);
+    var fim = new Date(dataFim + ' ' + horaFim);
+    var atual = new Date();
+
+    if (fim < atual || fim < inicio) {
+
+        alert('A data e hora final deve ser posterior à data e hora atual');
+        return false; 
+    }
+
+    // Define os valores nos campos ocultos dentro do formulário
+    document.getElementById("dataInicioInput").value = dataInicio;
+    document.getElementById("horaInicioInput").value = horaInicio;
+    document.getElementById("dataFimInput").value = dataFim;
+    document.getElementById("horaFimInput").value = horaFim;
     document.getElementById('FormQuestionario').submit();
 }

@@ -7,15 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SQHG</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" th:href="@{/images/logo_prati_icon.png}" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
     <link rel="stylesheet" type="text/css" th:href="@{/styles/home.css}" />
-    <link rel="stylesheet" type="text/css" href="../static/styles/home.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <script rel="javascript" type="text/javascript" th:src="@{/scripts/menu.js}"></script>
-    <script rel="javascript" type="text/javascript" src="../static/scripts/menu.js"></script>
 
 </head>
 
@@ -119,7 +118,7 @@
                 </a>
                 <ul id="dropdown-example1" class="sublista hidden py-2 space-y-2">
                     <li class="item-menu">
-                        <a href="#"
+                        <a th:href="@{/modelo-questionario}"
                             class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg justify-center group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
                             <svg id="svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -137,7 +136,7 @@
                         </a>
                     </li>
                     <li class="item-menu">
-                        <a href="#"
+                        <a th:href="@{/questionario/lista}"
                             class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg justify-center group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
                             <svg id="svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">

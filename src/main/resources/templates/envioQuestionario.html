@@ -116,7 +116,7 @@
                 </a>
                 <ul id="dropdown-example1" class="sublista hidden py-2 space-y-2">
                     <li class="item-menu">
-                        <a href="#"
+                        <a th:href="@{/modelo-questionario}"
                             class="flex items-center justify-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
                             <svg id="svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -133,7 +133,7 @@
                             </svg><span id="spans">Listar </span> </a>
                     </li>
                     <li class="item-menu">
-                        <a href="#"
+                        <a th:href="@{/questionario/lista}"
                             class="flex items-center justify-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
                             <svg id="svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -254,6 +254,25 @@
                     <span id="spans" class="flex-1 ml-3 text-left whitespace-nowrap">Relatórios</span>
                 </a>
             </li>
+            <li class="p-2 md:pt-4 justify-center items-center">
+                <a href="#"
+                    class="flex items-center p-2 text-white bg-[#853a9e] rounded-lg dark:text-white hover:bg-gray-900 dark:hover:bg-[#1E1E1E]">
+                    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#ffffff"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                d="M14 7.63636L14 4.5C14 4.22386 13.7761 4 13.5 4L4.5 4C4.22386 4 4 4.22386 4 4.5L4 19.5C4 19.7761 4.22386 20 4.5 20L13.5 20C13.7761 20 14 19.7761 14 19.5L14 16.3636"
+                                stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            </path>
+                            <path d="M10 12L21 12M21 12L18.0004 8.5M21 12L18 15.5" stroke="#FFFFFF" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                    <span id="spans" class="flex-1 ml-3 text-left whitespace-nowrap">Sair</span>
+                </a>
+            </li>
         </ul>
     </nav> <!--  menu-lateral -->
     <div style="background-color: #fff" class="flex justify-center items-center h-24">
@@ -261,99 +280,107 @@
     </div>
     <div class="flex w-full justify-center items-center">
         <div class="flex flex-col">
-            <div
-                class="flex  row space-x-20 pt-4 justify-center dark:text-black font-normal text-2xl cabecalho text-center">
-                <h2 class="w-72">Área</h2>
-                <h2 class="w-72">Cargo</h2>
-                <h2 class="w-72">Vigência</h2>
-            </div>
-            <form method="get" th:href="@{/questionario}" id="questionarioForm" onsubmit="return validateForm()">
-                <div class="flex flex-row space-x-20 pt-2 justify-center">
-                    <div th:object="${area}" method="get"
-                        class="flex flex-col w-72 h-32 l-bege border-3 l-roxo rounded-lg px-2">
-                        <label>
-                            <input name="area" value="Financeiro" type="checkbox"
-                                th:checked="${selectedAreas.contains('Financeiro')}"
-                                onchange="verificarCargoSelecionado()" class="accent-fuchsia-900">
-                            Financeiro
-                        </label>
-                        <label>
-                            <input name="area" value="Administrativo" type="checkbox"
-                                th:checked="${selectedAreas.contains('Administrativo')}"
-                                onchange="verificarCargoSelecionado()" class="accent-fuchsia-900">
-                            Administrativo
-                        </label>
-                        <label>
-                            <input name="area" value="Recursos Humanos" type="checkbox"
-                                th:checked="${selectedAreas.contains('Recursos Humanos')}"
-                                onchange="verificarCargoSelecionado()" class="accent-fuchsia-900">
-                            Recursos Humanos
-                        </label>
-                        <label>
-                            <input name="area" value="Producao" type="checkbox"
-                                th:checked="${selectedAreas.contains('Producao')}"
-                                onchange="verificarCargoSelecionado()" class="accent-fuchsia-900">
-                            Produção
-                        </label>
+            <div class="flex flex-row space-x-20 sm:space-x-10 pt-2 pb-5 justify-center">
+                <form class="flex flex-row space-x-20 sm:space-x-10 " method="get" th:href="@{/questionario}"
+                    id="questionarioForm" onsubmit="return validateForm()">
+                    <div class="flex flex-col w-72 h-32 space-y-1">
+                        <div class="flex justify-center text-lg">Área</div>
+                        <div th:object="${area}" method="get"
+                            class="flex flex-col w-72 h-32 l-bege border-3 l-roxo rounded-lg px-2">
+                            <label>
+                                <input name="area" value="Financeiro" type="checkbox"
+                                    th:checked="${selectedAreas.contains('Financeiro')}"
+                                    onchange="verificarCargoSelecionado()" class="accent-fuchsia-900">
+                                Financeiro
+                            </label>
+                            <label>
+                                <input name="area" value="Administrativo" type="checkbox"
+                                    th:checked="${selectedAreas.contains('Administrativo')}"
+                                    onchange="verificarCargoSelecionado()" class="accent-fuchsia-900">
+                                Administrativo
+                            </label>
+                            <label>
+                                <input name="area" value="Recursos Humanos" type="checkbox"
+                                    th:checked="${selectedAreas.contains('Recursos Humanos')}"
+                                    onchange="verificarCargoSelecionado()" class="accent-fuchsia-900">
+                                Recursos Humanos
+                            </label>
+                            <label>
+                                <input name="area" value="Producao" type="checkbox"
+                                    th:checked="${selectedAreas.contains('Producao')}"
+                                    onchange="verificarCargoSelecionado()" class="accent-fuchsia-900">
+                                Produção
+                            </label>
+                        </div>
+                    </div>
+                    <div class="flex flex-col w-72 h-32 space-y-1">
+                        <div class="flex justify-center text-lg">Cargo</div>
+                        <div class="flex flex-col w-72  l-bege border-3 l-roxo rounded-lg px-2">
+                            <label>
+                                <input type="checkbox" name="cargo" value="Diretor"
+                                    onchange="verificarCargoSelecionado()"
+                                    th:checked="${selectedCargos.contains('Diretor')}" class="accent-fuchsia-900">
+                                Diretor
+                            </label>
+                            <label>
+                                <input type="checkbox" name="cargo" value="Gerente"
+                                    th:checked="${selectedCargos.contains('Gerente')}"
+                                    onchange="verificarCargoSelecionado()" class="accent-fuchsia-900">
+                                Gerente
+                            </label>
+                            <label>
+                                <input type="checkbox" name="cargo" value="Supervisor"
+                                    onchange="verificarCargoSelecionado()"
+                                    th:checked="${selectedCargos.contains('Supervisor')}" class="accent-fuchsia-900">
+                                Supervisor
+                            </label>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="flex flex-col space-y-1 w-72 h-32">
+                    <div class="flex justify-center text-lg">Vigência</div>
+                    <div class="flex flex-row w-72 h-12 border-3 rounded-lg l-bege fonte-poppins l-roxo">
+                        <div class="flex items-center justify-center text-black pl-2">
+                            <h2 class="w-28">Data Início:</h2>
+                        </div>
+                        <input name="dataInicio" th:value="${dataInicio}" class="l-bege focus:outline-none" type="date">
                     </div>
 
-                    <div class="flex flex-col w-72 h-32 l-bege border-3 l-roxo rounded-lg px-2">
-                        <label>
-                            <input type="checkbox" name="cargo" value="Diretor" onchange="verificarCargoSelecionado()"
-                                th:checked="${selectedCargos.contains('Diretor')}" class="accent-fuchsia-900">
-                            Diretor
-                        </label>
-                        <label>
-                            <input type="checkbox" name="cargo" value="Gerente"
-                                th:checked="${selectedCargos.contains('Gerente')}"
-                                onchange="verificarCargoSelecionado()" class="accent-fuchsia-900">
-                            Gerente
-                        </label>
-                        <label>
-                            <input type="checkbox" name="cargo" value="Supervisor"
-                                onchange="verificarCargoSelecionado()"
-                                th:checked="${selectedCargos.contains('Supervisor')}" class="accent-fuchsia-900">
-                            Supervisor
-                        </label>
+                    <div class="flex flex-row w-72 h-12 border-3 rounded-lg l-bege fonte-poppins l-roxo">
+                        <div class="flex items-center justify-center text-black pl-2">
+                            <h2 class="w-28">Hora Início:</h2>
+                        </div>
+                        <input name="horaInicio" th:value="${horaInicio}" class="l-bege pl-20 focus:outline-none"
+                            type="time">
                     </div>
 
-                    <div class="flex flex-col w-72 h-32">
-                        <div class="flex flex-row w-72 h-12 border-3 rounded-lg l-bege fonte-poppins l-roxo">
-                            <div class="flex items-center justify-center text-black pl-2">
-                                <h2 class="w-28">Data Início:</h2>
-                            </div>
-                            <input class="l-bege focus:outline-none" type="date">
+                    <div class="flex flex-row w-72 h-12 border-3 rounded-lg l-bege fonte-poppins l-roxo">
+                        <div class="flex items-center justify-center text-black pl-2">
+                            <h2 class="w-28">Data Fim:</h2>
                         </div>
+                        <input name="dataFim" th:value="${dataFim}" class="l-bege focus:outline-none" type="date">
+                    </div>
 
-                        <div class="flex flex-row w-72 h-12 border-3 rounded-lg l-bege fonte-poppins l-roxo">
-                            <div class="flex items-center justify-center text-black pl-2">
-                                <h2 class="w-28">Hora Início:</h2>
-                            </div>
-                            <input class="l-bege pl-20 focus:outline-none" type="time">
+                    <div class="flex flex-row w-72 h-12 border-3 rounded-lg l-bege fonte-poppins l-roxo">
+                        <div class="flex items-center justify-center text-black pl-2">
+                            <h2 class="w-28">Hora Fim:</h2>
                         </div>
-
-                        <div class="flex flex-row w-72 h-12 border-3 rounded-lg l-bege fonte-poppins l-roxo">
-                            <div class="flex items-center justify-center text-black pl-2">
-                                <h2 class="w-28">Data Fim:</h2>
-                            </div>
-                            <input class="l-bege focus:outline-none" type="date">
-                        </div>
-
-                        <div class="flex flex-row w-72 h-12 border-3 rounded-lg l-bege fonte-poppins l-roxo">
-                            <div class="flex items-center justify-center text-black pl-2">
-                                <h2 class="w-28">Hora Fim:</h2>
-                            </div>
-                            <input class="l-bege pl-20 focus:outline-none" type="time">
-                        </div>
+                        <input name="horaFim" th:value="${horaFim}" class="l-bege pl-20 focus:outline-none" type="time">
                     </div>
                 </div>
-            </form>
+            </div>
+
             <div class="flex flex-col justify-center items-center">
-                <div class="flex w-full items-center justify-center pt-5">
+                <div class="flex w-full items-center justify-center">
                     <h2 class="dark:text-black text-center titulo font-normal text-2xl ">Lista de Avaliados</h2>
                 </div>
             </div>
             <form method="post" th:action="@{/questionario/{id}(id=${id})}" id="FormQuestionario">
+                <input type="hidden" name="dataInicio" id="dataInicioInput" />
+                <input type="hidden" name="horaInicio" id="horaInicioInput" />
+                <input type="hidden" name="dataFim" id="dataFimInput" />
+                <input type="hidden" name="horaFim" id="horaFimInput" />
                 <div class="flex w-full pt-2 max-h-60 overflow-y-auto p-3">
                     <table>
                         <thead>
@@ -378,14 +405,18 @@
                     </table>
                 </div>
             </form>
-            <div class="flex flex-row justify-center w-full pt-6">
+            <div class="flex flex-row justify-between w-full pt-6">
                 <div>
-                    <button
-                        class="h-14 w-48 text-center text-white purple-color rounded-lg fonte-poppins">Cancelar</button>
+                    <a type="button" th:href="@{/modelo-questionario}" style="background-color: #5c2472"
+                        class="flex h-14 sm:h-12 w-48 sm:w-32 items-center justify-center text-white rounded-lg ml-2 fonte-poppins">
+                        <div class="flex">
+                            Cancelar
+                        </div>
+                    </a>
                 </div>
                 <div>
                     <button style="background-color: #5c2472" onclick="verificarSuperioresMarcados()"
-                        class="appearance-none h-14 w-48 text-center text-white rounded-lg ml-2 fonte-poppins">
+                        class="appearance-noneh-14 sm:h-12 w-48 sm:w-32 text-center text-white rounded-lg ml-2 fonte-poppins">
                         Gerar Chaves
                     </button>
                 </div>

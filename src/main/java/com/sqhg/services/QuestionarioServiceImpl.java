@@ -2,6 +2,10 @@ package com.sqhg.services;
 
 import lombok.AllArgsConstructor;
 
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -41,22 +45,27 @@ public class QuestionarioServiceImpl implements QuestionarioService {
             return questionarioRepository.acharQuestionariosPorPagina(keyword, pageable);
         }
     }
+
     @Override
-    public String salvarQuestionario(List<SuperiorImediato> superiores, ModeloQuestionario modeloquestionario) {
+    public String salvarQuestionario(List<SuperiorImediato> superiores, ModeloQuestionario modeloquestionario,
+            Date dataInicio, Date dataFim, LocalTime horaInicio, LocalTime horaFim) {
         Questionario questionario = new Questionario();
         questionario.setDescricao(modeloquestionario.getDescricao());
         questionario.setNome(modeloquestionario.getNome());
         questionario.setModeloQuestionario(modeloquestionario);
         questionario.setAdministrador(buscarAdministradorLogado());
         questionario.setCodigo(gerarCodigoAleatorio());
-
+        questionario.setDataInicio(dataInicio);
+        questionario.setDataFim(dataFim);
+        questionario.setHoraInicio(horaInicio);
+        questionario.setHoraFim(horaFim);
         Questionario questionarioSalvo = questionarioRepository.save(questionario);
 
         for (SuperiorImediato superior : superiores) {
             superior.getQuestionario().add(questionarioSalvo);
         }
         superiorImediatoRepository.saveAll(superiores);
-         return questionarioSalvo.getCodigo();
+        return questionarioSalvo.getCodigo();
     }
 
     public Administrador buscarAdministradorLogado() {
