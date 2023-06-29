@@ -59,7 +59,6 @@ function validateForm() {
     for (var i = 0; i < areas.length; i++) {
         if (areas[i].checked) {
             areaSelecionada = true;
-            console.log('bateu area1');
             break;
         }
     }
@@ -67,23 +66,19 @@ function validateForm() {
     for (var i = 0; i < cargos.length; i++) {
         if (cargos[i].checked) {
             cargoSelecionado = true;
-            console.log('bateu cargo1');
             break;
         }
     }
 
     if (!areaSelecionada) {
-        console.log('bateu area');
         return false;
     }
 
     if (!cargoSelecionado) {
-        console.log('bateu cargo');
         return false;
     }
 
     if (areaSelecionada && cargoSelecionado) {
-        console.log('bateu nos dois');
         return true;
     } else {
         return false;
@@ -100,12 +95,17 @@ function verificarSuperioresMarcados() {
     }
     if (!marcado) {
         alert('Selecione pelo menos um superior');
-        return false; // Impede o envio do formulário
+        return false; 
     }
     var dataInicio = document.getElementsByName("dataInicio")[0].value;
     var horaInicio = document.getElementsByName("horaInicio")[0].value;
     var dataFim = document.getElementsByName("dataFim")[0].value;
     var horaFim = document.getElementsByName("horaFim")[0].value;
+
+    if (dataInicio === "" || horaInicio === "" || dataFim === "" || horaFim === "") {
+        alert('Preencha os campos de data e hora');
+        return false; 
+    }
 
     var inicio = new Date(dataInicio + ' ' + horaInicio);
     var fim = new Date(dataFim + ' ' + horaFim);
@@ -114,7 +114,7 @@ function verificarSuperioresMarcados() {
     if (fim < atual || fim < inicio) {
 
         alert('A data e hora final deve ser posterior à data e hora atual');
-        return false; 
+        return false;
     }
 
     // Define os valores nos campos ocultos dentro do formulário
