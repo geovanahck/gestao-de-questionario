@@ -19,9 +19,9 @@
 
 <body class="overflow-scroll">
     <nav class="menu-lateral flex justify-center items-center" onmouseover="mostrarMenu()" onmouseout="esconderMenu()">
-        <div class="flex justify-center pb-5">
+        <a th:href="@{/home}" class="flex justify-center pb-5">
             <img th:src="@{/images/logoPrati.png}" alt="" class="pt-8 w-36 pr-3">
-        </div>
+        </a>
         <ul class="pr-3 py-6">
             <li class="p-2 justify-center items-center">
                 <a class="flex justify-center items-center p-2 text-white transition duration-75 bg-[#853a9e] rounded-lg group hover:bg-gray-900
@@ -246,6 +246,25 @@
                     <span id="spans" class="flex-1 ml-3 text-left whitespace-nowrap">Relatórios</span>
                 </a>
             </li>
+            <li class="p-2 md:pt-4 justify-center items-center">
+                <a href="#"
+                    class="flex items-center p-2 text-white bg-[#853a9e] rounded-lg dark:text-white hover:bg-gray-900 dark:hover:bg-[#1E1E1E]">
+                    <svg width="24px" height="24px" viewBox="0 0 24 24" fill="#ffffff"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                d="M14 7.63636L14 4.5C14 4.22386 13.7761 4 13.5 4L4.5 4C4.22386 4 4 4.22386 4 4.5L4 19.5C4 19.7761 4.22386 20 4.5 20L13.5 20C13.7761 20 14 19.7761 14 19.5L14 16.3636"
+                                stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            </path>
+                            <path d="M10 12L21 12M21 12L18.0004 8.5M21 12L18 15.5" stroke="#FFFFFF" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                    <span id="spans" class="flex-1 ml-3 text-left whitespace-nowrap">Sair</span>
+                </a>
+            </li>
         </ul>
     </nav> <!--  menu-lateral -->
 
@@ -378,7 +397,7 @@
                     <div class="pt-4 ">
                         <div class="botao text-white flex align-items-center">
                             <button name="page" class="focus:outline-none" th:value="${page}-1"
-                                th:classappend="${page == 0} ? 'disabled'">
+                                    th:disabled="${page == 0}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-caret-left-fill w-5" viewBox="0 0 16 16">
                                     <path
@@ -388,7 +407,7 @@
                             <div class="bg-white text-black-50 w-6">
                                 <span th:text="${page+1}"></span>
                             </div>
-                            <button name="page" class="focus:outline-none" th:value="${page}+1">
+                            <button name="page" class="focus:outline-none" th:value="${page}+1" th:disabled="${!hasNext}">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-caret-right-fill w-5" viewBox="0 0 16 16">
                                     <path

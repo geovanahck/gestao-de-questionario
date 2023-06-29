@@ -2,38 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.fonte-poppins {
-    font-family: 'Poppins', sans-serif;
-}
-
-body {
-    background-color: #D8D8D9;
-}
-
-.titulo {
-    font-family: 'Poppins';
-    font-weight: 400;
-    font-size: 36px;
-}
-
-.invalid-feedback {
-    font-size: 10px;
-}
-
-
-.div-form {
-    background-color: #D9D9D9;
-    position: absolute;
-}
-
-.purple-color {
-    background-color: #5C2472;
-}
-
-.l-roxo {
-    border: solid #5C2472;
-}
-
 /* sidebar */
 nav * {
     margin: 0;
