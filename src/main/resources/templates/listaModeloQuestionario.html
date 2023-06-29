@@ -13,6 +13,7 @@
     integrity="sha512-N/OZl1+hZG8f+RYXmO6nt/iTp+51GkNYjKwHcP/MJQYSI2AXZT0HICWjJ9++vq3r3t+3PLQ8WYtHnKxPYfZFZA=="
     crossorigin="anonymous" />
   <link rel="stylesheet" type="text/css" th:href="@{/styles/listaQuestionario.css}" />
+  <link rel="stylesheet" type="text/css" href="../static/styles/listaQuestionario.css" />
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -258,8 +259,8 @@
     </ul>
   </nav> <!--  menu-lateral -->
 
-  <div style="background-color: #fff" class="flex justify-center items-center md:py-12 sm:py-6">
-    <h1 class="dark:text-black text-center titulo">Lista de Modelos de Questionário</h1>
+  <div style="background-color: #fff" class="flex justify-center items-center h-24">
+    <h1 class="dark:text-black text-center titulo">Lista de Modelos de Questionários</h1>
   </div>
   <div class="background items-center pt-6 flex flex-col">
     <div class="w-2/4 pt-3 justify-center items-center">
@@ -307,7 +308,7 @@
                 <div class="flex flex-row items-center justify-center ">
                   <div class="flex w-10 justify-center items-center">
                     <a title="Enviar" type="button" class="w-flex w-3/4 p-2 focus:outline-none" th:object="${modelo}"
-                      th:href="@{/modelo-questionario/enviar/{id}(id=${modelo.id})}">
+                      fill="currentColor" th:href="@{/modelo-questionario/enviar/{id}(id=${modelo.id})}">
                       <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
                         <path
                           d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480V396.4c0-4 1.5-7.8 4.2-10.7L331.8 202.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8 17.7 316.6C7.1 311.3 .3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z" />
@@ -320,7 +321,7 @@
           </tr>
         </tbody>
       </table>
-      <form class="flex justify-center"  th:href="@{/modelo-questionario}">
+      <form th:href="@{/modelo-questionario}">
         <input type="hidden" th:name="search" th:value="${search}" />
         <div class="flex justify-between px-3">
           <div class="flex">
@@ -365,8 +366,17 @@
         </div>
       </form>
     </div>
+    <div class="flex flex-row items-center justify-end w-2/4  pt-6">
+      <div style="display: flex; justify-content: center; align-items: center;">
+        <a type="button" th:href="@{/modelo-questionario/novo}" style="background-color: #5c2472"
+          class="flex h-12 w-32 items-center justify-center text-white rounded-lg ml-2 fonte-poppins focus:outline-none">
+          <div class="flex">
+            Novo Modelo
+          </div>
+        </a>
+      </div>
+    </div>
   </div>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
   <script rel="javascript" type="text/javascript" th:src="@{/scripts/menu.js}"></script>
 </body>
