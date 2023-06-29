@@ -15,6 +15,10 @@ public class ModeloQuestionarioServiceImpl implements ModeloQuestionarioService 
     private final ModeloQuestionarioRepository modeloQuestionarioRepository;
 
     @Override
+    public void salvar(ModeloQuestionario modeloQuestionario) {
+        modeloQuestionarioRepository.save(modeloQuestionario);
+    }
+
     public Page<ModeloQuestionario> buscarModeloQuestionarioPorPagina(int pageNo, int pageSize, String keyword) {
         Pageable pageable = PageRequest.of(pageNo, pageSize);
         if (keyword == null) {
