@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo Envio de Questionario</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/envioQuestionario.css}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+</style>
+
+<body>
+    <div class="flex flex-grow h-full w-full">
+
+        <div action="#" th:action="@{/questionario/enviar}" th:object="${questionario}" method="get"
+             class="flex flex-col h-full w-full">
+
+            <div class="w-full h-24 l-bege flex items-center justify-center">
+                <h1 class="dark:text-black text-center titulo font-medium">Envio de Questionário</h1>
+            </div>
+
+            <div class="flex flex row space-x-20 pt-6 justify-center dark:text-black font-normal text-2xl cabecalho text-center">
+                <h2 class="w-72">Área</h2>
+                <h2 class="w-72">Cargo</h2>
+                <h2 class="w-72">Vigência</h2>
+            </div>
+
+            <div class="flex flex-row space-x-20 pt-2 justify-center">
+                <div th:object="${area}" method="get" class="flex flex-col w-72 h-32 l-bege border-3 l-roxo rounded-lg px-2">
+                    <form>
+                        <label>
+                            <input onchange="this.form.submit()" type="checkbox" class="accent-fuchsia-900"> Financeiro
+                        </label>
+                    </form>
+
+                    <label>
+                        <input onchange="this.form.submit()" type="checkbox" class="accent-fuchsia-900"> Administrativo
+                    </label>
+                    <label>
+                        <input onchange="this.form.submit()" type="checkbox" class="accent-fuchsia-900"> Recursos Humanos
+                    </label>
+                    <label>
+                        <input onchange="this.form.submit()" type="checkbox" class="accent-fuchsia-900"> Produção
+                    </label>
+                </div>
+                <div class="flex flex-col w-72 h-32 l-bege border-3 l-roxo rounded-lg px-2">
+                    <label>
+                        <input onchange="this.form.submit()" type="checkbox" class="accent-fuchsia-900"> Diretor
+                    </label>
+                    <label>
+                        <input onchange="this.form.submit()" type="checkbox" class="accent-fuchsia-900"> Gerente
+                    </label>
+                    <label>
+                        <input onchange="this.form.submit()" type="checkbox" class="accent-fuchsia-900"> Supervisor
+                    </label>
+                </div>
+
+                <div class="flex flex-col w-72 h-32">
+                    <div class="flex flex-row w-72 h-12 border-3 rounded-lg l-bege fonte-poppins l-roxo">
+                        <div class="flex items-center justify-center text-black pl-2">
+                            <h2 class="w-28" >Data Início:</h2>
+                        </div>
+                        <input class="l-bege" type="date">
+                    </div>
+
+                    <div class="flex flex-row w-72 h-12 border-3 rounded-lg l-bege fonte-poppins l-roxo">
+                        <div class="flex items-center justify-center text-black pl-2">
+                            <h2 class="w-28" >Hora Início:</h2>
+                        </div>
+                        <input class="l-bege pl-20" type="time">
+                    </div>
+
+                    <div class="flex flex-row w-72 h-12 border-3 rounded-lg l-bege fonte-poppins l-roxo">
+                        <div class="flex items-center justify-center text-black pl-2">
+                            <h2 class="w-28" >Data Fim:</h2>
+                        </div>
+                        <input class="l-bege" type="date">
+                    </div>
+
+                    <div class="flex flex-row w-72 h-12 border-3 rounded-lg l-bege fonte-poppins l-roxo">
+                        <div class="flex items-center justify-center text-black pl-2">
+                            <h2 class="w-28" >Hora Fim:</h2>
+                        </div>
+                        <input class="l-bege pl-20" type="time">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col justify-center items-center">
+                <div class="flex w-full items-center justify-center justify-center pt-5">
+                    <h2 class="dark:text-black text-center titulo font-normal text-2xl ">Lista de Avaliados</h2>
+                </div>
+
+                <div class="flex w-full items-center justify-center">
+
+                    <div class="relative overflow-x-auto shadow-md">
+                        <table class="w-full text-sm text-center text-black dark:text-black">
+                            <thead class="text-xs text-black uppercase bg-white dark:bg-white dark:text-black">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    Selecionar
+                                </th>
+                                <th scope="col" class="px-60 py-3">
+                                    Nome do Avaliado
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Quantidade de Subordinados
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="">
+                                <td class="w-4 p-4 border l-roxo border-2 bg-white">
+                                    <div class="flex items-center">
+                                        <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-white rounded focus:ring-blue-500">
+                                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                                    </div>
+                                </td>
+                                <th scope="row" class="px-6 py-4 fonte-poppins whitespace-nowrap text-black border l-roxo border-2 bg-white">
+                                    Daenerys Taergeryan
+                                </th>
+                                <td class="px-6 py-4 border l-roxo border-2 rounded-r-lg bg-white">
+                                    Silver
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!--<table class="border-collapse border border-slate-500 h-72 w-8/12 l-bege border-3 l-roxo rounded-lg px-2" >
+                        <thead>
+                        <tr class="h-8" >
+                            <th class="w-32 border border-slate-600">SELECIONAR</th>
+                            <th class="w-1/2 border border-slate-600">NOME</th>
+                            <th class="w-80 border border-slate-600">QUANTIDADE DE SUBORDINADOS</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr name="superior" th:each="sup : ${superiorImediato}">
+                            <td class="border border-slate-700" th:object="${sup}" th:value="${sup.id}" th:text="${sup.cracha}"></td>
+                            <td class="border border-slate-700" th:text="${sup.selecionar}"></td>
+                            <td class="border border-slate-700" th:text="${sup.nome}"></td>
+                            <td class="border border-slate-700" th:text="${adm.qtdsubordinado}"></td>
+                        </tr>
+                        </tbody>
+                    </table>-->
+                </div>
+
+                <div class="flex flex-row justify-end w-full pb-5 pt-6 pr-64">
+                    <div>
+                        <button class="h-14 w-48 text-center text-white purple-color rounded-lg fonte-poppins">Cancelar</button>
+                    </div>
+                    <div>
+                        <button type="submit" style="background-color: #5c2472" class="appearance-none h-14 w-48 text-center text-white rounded-lg ml-2 fonte-poppins">Gerar Chaves</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
