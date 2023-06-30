@@ -45,15 +45,18 @@
               </table>
             </div>
           </div>
-          <div class="justify-items items-center flex flex-row-reverse flex-space pr-0 gap-x-2 flex p-5">
+          <div class="justify-items items-center flex-row-reverse flex-space pr-0 gap-x-2 flex p-5">
             <ul class="flex space-x-5">
               <li>
-                <button id="criar" class="w-fit h-fit py-1 px-6 bg-[#5c2472] rounded" th:href="@{/questoes/novo}">Criar
-                  Questão</button>
+                <a href="/questoes/novo">
+                  <button type="button" id="criar" class="w-fit h-fit py-1 px-6 bg-[#5c2472] rounded">
+                    Criar Questão
+                  </button>
+                </a>
               </li>
             </ul>
           </div>
-          <div class="space-y-1 p-5">
+          <div class="space-y-1 p-5" th:class="${questoes.size == 0} ? 'hidden' : ''">
             <table class=" items-center justify-items overflow-x-auto">
               <thead>
                 <tr>
