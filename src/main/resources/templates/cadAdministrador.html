@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" th:href="@{/images/logo_prati_icon.png}" type="image/x-icon">
     <title>Novo Administrador</title>
     <link rel="stylesheet" type="text/css" th:href="@{/styles/cadAdministrador.css}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,22 +13,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
-    <script rel="javascript" type="text/javascript" th:src="@{/scripts/menu.js}"></script>
 </head>
 
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 </style>
 
-<body class="overflow-scroll">
+<body class="overflow-x-auto">
     <div class="flex flex-row">
         <div class="content flex-grow">
-            <div style="background-color: #fff" class="flex justify-center items-center md:py-10 sm:py-6">
+            <div style="background-color: #fff" class="flex justify-center items-center h-24">
                 <h1 class="dark:text-black text-center titulo">Cadastro de Administrador</h1>
             </div>
             <form th:href="@{/administradores/novo}" th:object=" ${administrador}" method="post">
-                <div
-                    class="background flex flex-col justify-center items-center pt-4 space-y-2 h-auto overflow-y-auto ">
+                <div class="background flex flex-col justify-center 
+                    items-center pt-4 space-y-2 h-auto overflow-y-auto ">
                     <div class="flex flex-row justify-center w-4/5 pt-2">
                         <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
                             <div class="fonte-poppins sm:text-sm">Crachá</div>
@@ -35,17 +35,11 @@
                         <div class="input-container rounded-lg w-3/6">
                             <input
                                 class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins "
-                                type="number" placeholder="" th:field="*{cracha}">
+                                type="number" th:field="*{cracha}">
                             <div th:if="${#fields.hasErrors('cracha')}" th:errors="*{cracha}"
                                 class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
                         </div>
                     </div>
-
-<div class="flex flex-row">
-    <div class="flex-grow">
-        <div class="w-full h-24 l-bege flex items-center justify-center pl-64">
-            <h1 class=" dark:text-black text-center titulo font-medium">Cadastro de Administrador</h1>
-        </div>
                     <div class="flex flex-row justify-center w-4/5 pt-4">
                         <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
                             <div class="fonte-poppins">Nome</div>
@@ -53,7 +47,7 @@
                         <div class="input-container rounded-lg w-3/6">
                             <input
                                 class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="text" placeholder="" th:field="*{nome}">
+                                type="text" th:field="*{nome}">
                             <div th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"
                                 class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
                         </div>
@@ -66,12 +60,11 @@
                         <div class="input-container rounded-lg w-3/6">
                             <input
                                 class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="date" placeholder="" th:field="*{nascimento}">
+                                type="date" th:field="*{nascimento}">
                             <div th:if="${#fields.hasErrors('nascimento')}" th:errors="*{nascimento}"
                                 class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
                         </div>
                     </div>
-
                     <div class="flex flex-row justify-center w-4/5 pt-4">
                         <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
                             <div class="fonte-poppins ">E-mail</div>
@@ -79,12 +72,11 @@
                         <div class="input-container rounded-lg w-3/6">
                             <input
                                 class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="email" placeholder="" th:field="*{email}">
+                                type="email" th:field="*{email}">
                             <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
                                 class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
                         </div>
                     </div>
-
                     <div class="flex flex-row justify-center w-4/5 pt-4">
                         <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
                             <div class="fonte-poppins">Telefone</div>
@@ -92,7 +84,7 @@
                         <div class="input-container rounded-lg w-3/6">
                             <input
                                 class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="tel" placeholder="" th:field="*{telefone}">
+                                type="tel" th:field="*{telefone}">
                             <div th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"
                                 class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
                         </div>
@@ -105,7 +97,7 @@
                         <div class="input-container rounded-lg w-3/6">
                             <input
                                 class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="password" placeholder="" th:field="*{senha}">
+                                type="password" th:field="*{senha}">
                             <div th:if="${#fields.hasErrors('senha')}" th:errors="*{senha}"
                                 class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
                         </div>
@@ -118,7 +110,7 @@
                         <div class="input-container rounded-lg w-3/6">
                             <input
                                 class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full focus:outline-none px-3 l-bege fonte-poppins"
-                                type="password" placeholder="" th:field="*{confirmacaoSenha}">
+                                type="password" th:field="*{confirmacaoSenha}">
                             <div th:if="${#fields.hasErrors('confirmacaoSenha')}" th:errors="*{confirmacaoSenha}"
                                 class="invalid-feedback text-red-600 fonte-poppins h-0"></div>
                         </div>
@@ -231,7 +223,7 @@
                 </a>
                 <ul id="dropdown-example1" class="sublista hidden py-2 space-y-2">
                     <li class="item-menu">
-                        <a href="#"
+                        <a th:href="@{/modelo-questionario}"
                             class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
                             <svg id="svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -248,7 +240,7 @@
                             </svg><span id="spans">Listar </span> </a>
                     </li>
                     <li class="item-menu">
-                        <a href="#"
+                        <a th:href="@{/questionario/lista}"
                             class="flex items-center w-full p-2 text-white transition duration-75 rounded-lg pl-11 group hover:bg-gray-900 dark:text-white dark:hover:bg-[#1E1E1E]">
                             <svg id="svg" width="24px" height="24px" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -392,7 +384,7 @@
     </nav> <!--  menu-lateral -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
-
+    <script rel="javascript" type="text/javascript" th:src="@{/scripts/menu.js}"></script>
 </body>
 
 </html>

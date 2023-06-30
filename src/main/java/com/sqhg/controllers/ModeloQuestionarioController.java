@@ -38,7 +38,8 @@ public class ModeloQuestionarioController {
     }
 
     @PostMapping("/novo")
-    public String salvarModeloQuestionario(@ModelAttribute("modeloQuestionario") ModeloQuestionario modeloQuestionario, BindingResult result) {
+    public String salvarModeloQuestionario(@ModelAttribute("modeloQuestionario") ModeloQuestionario modeloQuestionario,
+            BindingResult result) {
         if (result.hasErrors()) {
             return "criarModeloQuestionario";
         }
@@ -52,9 +53,9 @@ public class ModeloQuestionarioController {
 
     @GetMapping
     public String telaListarModeloQuestionario(Model model,
-                                               @RequestParam(name = "search") Optional<String> search,
-                                               @RequestParam(name = "pageSize") Optional<Integer> size,
-                                               @RequestParam(name = "page") Optional<Integer> page) {
+            @RequestParam(name = "search") Optional<String> search,
+            @RequestParam(name = "pageSize") Optional<Integer> size,
+            @RequestParam(name = "page") Optional<Integer> page) {
         int currentPage = page.orElse(0);
         int pageSize = size.orElse(10);
         String keyword = search.orElse(null);
@@ -72,6 +73,7 @@ public class ModeloQuestionarioController {
 
     @GetMapping("/enviar/{id}")
     public String enviar(Model model, @PathVariable Long id) {
-        return "redirect:/modelo-questionario";
+        model.addAttribute("id", id);
+        return "redirect:/questionario/" + id;
     }
 }

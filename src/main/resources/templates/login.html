@@ -5,33 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" th:href="@{/images/logo_prati_icon.png}" type="image/x-icon">
     <title>Login</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/Login.css}" />
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
-<style>
-    body {
-        background-color: #5c2472;
-    }
-
-    #color {
-        background-color: #853a9e;
-        color: white;
-    }
-
-    .error-message {
-        position: fixed;
-        top: 5%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: #ffffff;
-        border: 2px solid #ff0000;
-        color: #ba0000;
-        padding: 5px 10px;
-        border-radius: 5px;
-        z-index: 9999;
-    }
-</style>
 
 <body>
     <section class="h-screen flex flex-col tela-inteira ">
@@ -71,7 +49,7 @@
                     </form>
                     <div class="flex flex-col h-2/5 uteis text-center text-white space-y-2">
                         <a href="#">Esqueceu sua senha?</a>
-                        <a th:href="@{/loginUsuario}">Voltar</a>
+                        <a th:href="@{/#}">Responder questionario</a>
                     </div>
                 </div>
             </div>

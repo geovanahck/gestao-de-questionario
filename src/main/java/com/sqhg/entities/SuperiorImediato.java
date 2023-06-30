@@ -21,6 +21,7 @@ public class SuperiorImediato {
     private Long id;
     private String nome;
     private String cargo;
+    private int quantSubordinados;
 
     @ManyToOne
     @JoinColumn(name = "id_area")
