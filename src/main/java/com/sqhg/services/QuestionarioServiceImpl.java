@@ -25,9 +25,14 @@ import com.sqhg.repositories.SuperiorImediatoRepository;
 @Service
 @AllArgsConstructor
 public class QuestionarioServiceImpl implements QuestionarioService {
+
     private final QuestionarioRepository questionarioRepository;
     private final SuperiorImediatoRepository superiorImediatoRepository;
     private final AdministradorRepository administradorRepository;
+
+    public Questionario acharQuestionarioPorCodigo(String codigoQuestionario) {
+        return questionarioRepository.findByCodigo(codigoQuestionario).orElse(null);
+    }
 
     @Override
     public List<SuperiorImediato> buscarSuperioresPorAreasECargos(List<String> areas, List<String> cargos) {

@@ -24,33 +24,33 @@
     <section>
         <div class="items-center justify-between pt-6 flex flex-col">
             <div class="sm:w-2/4 md:w-3/5 lg:w-3/5 2xl:w-2/5 pt-3 justify-center items-center">
-                <div class="flex items-center justify-between">
-                    <div>
-                        #Questão
-                    </div>
-                    <div>
-                       <span>[[${administrador}]]</span> 
-                    </div>
+                <div class="flex items-end">
+                    <div th:text="'Questão ' + ${numeroQuestao}"></div>
                 </div>
             </div>
             <div class="sm:w-2/4 md:w-3/5 lg:w-3/5 2xl:w-2/5 pt-3 justify-center items-center">
-                <form th:action="@{/respostaAlternativas}" method="post">
+                <form th:action="@{'/questionarios/responder/' + ${codigoQuestionario} + '/' + ${numeroQuestao}}" th:object="${resposta}" method="post">
                     <div class="justify-center items-center pt-12 flex flex-col">
                         <div id="questao" class="flex justify-center items-center">
-                            <span>[[${question.descricao}]]</span>
+                            <span th:text="${questao.descricao}"></span>
                         </div>
                         <div id="resposta" class="columns-3 pt-1">
                             <div class="ml-2" th:each="alternativa : ${alternativas}">
-                                <input type="checkbox" name="alternativasSelecionadas" th:value="${alternativa.id}">
+                                <input type="checkbox" th:field="*{alternativas}" th:value="${alternativa.descricao}">
                                 <label th:text="${alternativa.descricao}"></label>
                             </div>
                         </div>
-
                     </div>
-                    <div class="flex items-center justify-between pt-6">
-                        <button id="fundo1" class="w-fit h-fit py-1 px-6 bg-white rounded">Anterior</button>
-                        <button type="submit" id="fundo1"
-                            class="w-fit h-fit py-1 px-6 bg-white rounded">Próxima</button>
+                    <div class="items-center justify-between pt-6 flex flex-col">
+                        <div class="sm:w-2/4 md:w-3/5 lg:w-3/5 2xl:w-2/5 pt-3 justify-center items-center">
+                            <div class="flex items-center justify-end">
+                                <div class="col-start-9 col-span-2 w-fit">
+                                    <button id="fundo1" type="submit"
+                                            class="w-fit h-fit py-1 px-6 bg-white rounded" th:text="${ultimaQuestao ? 'Finalizar' : 'Próxima'}">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>

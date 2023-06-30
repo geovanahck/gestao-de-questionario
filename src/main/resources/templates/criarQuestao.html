@@ -32,8 +32,6 @@
                         class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full  px-3 l-bege focus:outline-none"
                         type="text" th:field="*{descricao}" required />
                 </div>
-
-
                 <div class="flex justify-center space-x-12 p-5">
                     <label>Tipo</label>
                     <label th:each="tipo : ${T(com.sqhg.entities.TipoQuestao).values()}">
@@ -49,21 +47,15 @@
                         <input class="w-full rounded-none px-2 focus:outline-none" type="text"
                             th:field="*{opcoes[0].descricao}">
                     </div>
-                    <div class="space-y-1 p-5" id="alternatives-input" style="display: none;"> <!--none-->
-                        <label>Alternativas</label>
-                        <div>
-                            <input class="w-full rounded-none px-2 focus:outline-none" type="text"
-                                th:field="*{opcoes[0].descricao}">
-                        </div>
-                        <div>
-                            <input class="w-full rounded-none px-2 focus:outline-none" type="text"
-                                th:field="*{opcoes[1].descricao}">
-                        </div>
-                        <div id="additional-alternatives"
-                            class="justify-items items-center inline-block  flex-row-reverse pr-0 gap-x-2"></div>
-                        <button type="button" id="add-alternative"
-                            class="w-fit h-fit py-1 px-6 bg-[#5c2472] rounded">Add
-                            Alternative</button>
+                    <div>
+                        <input class="w-full rounded-none px-2 focus:outline-none" type="text"
+                            th:field="*{opcoes[1].descricao}">
+                    </div>
+                    <div id="additional-alternatives"
+                        class="justify-items items-center inline-block  flex-row-reverse pr-0 gap-x-2"></div>
+                    <button type="button" id="add-alternative"
+                        class="w-fit h-fit py-1 px-6 bg-[#5c2472] rounded">Add
+                        Alternative</button>
                     </div>
                     <div class="justify-end items-center inline-block  flex-row-reverse pr-0 pt-2 gap-x-2">
                         <button type="submit" id="save"

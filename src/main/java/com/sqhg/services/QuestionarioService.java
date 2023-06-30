@@ -17,5 +17,7 @@ public interface QuestionarioService {
     String salvarQuestionario(List<SuperiorImediato> superiores, ModeloQuestionario questionario, Date dataInicio,
             Date dataFim, LocalTime horaInicio, LocalTime horaFim);
 
+    Questionario acharQuestionarioPorCodigo(String codigoQuestionario);
+
     Page<Questionario> acharQuestionariosPorPagina(int pageNo, int pageSize, String keyword);
 }

@@ -19,10 +19,12 @@ public class Resposta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String resposta;
+    private String valor;
+    private List<String> alternativas;
+    private Integer likert;
 
     @ManyToOne
-    @JoinColumn(name = "id_questao")
+    @JoinColumn(name = "id_questionario")
     private Questionario questionario;
 
     @ManyToOne
