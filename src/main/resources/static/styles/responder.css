@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#questao {
+    background-color: #5c2472;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-color: #5c2472;
+    width: 700px;
+    height: 100px;
+    color: #f0f0f0;
+}
+
+#botao:hover {
+    background-color:  rgb(51, 100, 250);
+}
+
+#resposta {
+    background-color: #f0f0f0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-color: #5c2472;
+    width: 700px;
+    height: 125px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: 0;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background-color: #D9D9D9;
+}
+
+nav.menu-lateral {
+    width: 90px;
+    height: 100%;
+    background-color: #5c2472;
+    padding: 40px 0 40px 1%;
+    position: fixed;
+    top: 0;
+    left: 0;
+ }
+
+#popup {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 300px;
+    height: 180px;
+    padding: 15px;
+    border: solid 1px #5c2472;
+    background: white;
+    display: none;
+}
+
+#fundo1 {
+    background-color: #5c2472;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+}
+
+#botao {
+    border-radius: 10px;
+    margin: 11px;
+    margin-top: 5px;
+    height: 48px;
+    width: 48px;
+}

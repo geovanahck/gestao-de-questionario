@@ -91,7 +91,7 @@ public class QuestionarioController {
         LocalTime horaInicio = LocalTime.parse(horaInicioStr, timeFormatter);
         LocalTime horaFim = LocalTime.parse(horaFimStr, timeFormatter);
 
-        if (!modeloquestionario.isPresent()) {
+        if (modeloquestionario.isEmpty()) {
             return "redirect:/modelo-questionario";
         } else {
             ModeloQuestionario questionarioexistente = modeloquestionario.get();

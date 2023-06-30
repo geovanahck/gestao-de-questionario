@@ -7,9 +7,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" th:href="@{/images/logo_prati_icon.png}" type="image/x-icon">
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/styles/Login.css}" />
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
+<style>
+    body {
+        background-color: #5c2472;
+    }
+
+    #color {
+        background-color: #853a9e;
+        color: white;
+    }
+
+    .error-message {
+        position: fixed;
+        top: 5%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #ffffff;
+        border: 2px solid #ff0000;
+        color: #ba0000;
+        padding: 5px 10px;
+        border-radius: 5px;
+        z-index: 9999;
+    }
+</style>
 
 <body>
     <section class="h-screen flex flex-col tela-inteira ">
@@ -20,7 +43,21 @@
                 </div>
                 <div class="h-fit formulario-uteis space-y-5">
                     <form th:action="@{/login}" method="post" role="form">
-                        <div class="formulario h-fit lg:h-5/6 flex items-center flex-col justify-center space-y-5">
+                        <div class="formulario h-fit lg:h-5/6 flex items-center flex-col justify-between space-y-5">
+                            <div id="mensage" th:if="${param.error}"
+                                class="flex flex-col items-center justify-center bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+                                role="alert">
+                                <strong class=" font-bold">Falha de login</strong>
+                                <span class=" block sm:inline"> Usuário ou Senha incorretos</span>
+                                <span id="close-button" class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                                    <svg class="fill-current h-6 w-6 text-red-500" role="button"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                        <title>Close</title>
+                                        <path
+                                            d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
+                                    </svg>
+                                </span>
+                            </div>
                             <div class="w-full flex flex-col space-y-3 items-center h-1/3 ">
                                 <input id="color" name="cracha" class="w-3/4 sm:w-full lg:w-3/4 xl:w-1/2 rounded"
                                     type="text" placeholder=" Crachá">
@@ -44,7 +81,7 @@
             <span class="block sm:inline">Usuário ou Senha incorretos</span>
         </div>
         <div class="h-fit xl:h-1/4 tela-25 flex justify-center items-center ">
-            <div class="flex flex-col xl:flex-row xl:space-x-20 items-center text-center space-y-10 xl:space-y-0">
+            <div class="flex flex-col sm:flex-row sm:space-x-20 items-center text-center space-y-10 sm:space-y-0">
 
                 <div class="flex flex-col w-5/6 xl:w-1/4 items-center justify-center">
                     <div class="w-24 md:w-20">
@@ -56,7 +93,7 @@
                 </div>
                 <div class="bloco flex flex-col w-5/6 xl:w-2/4 items-center justify-center">
                     <div
-                        class="contem_imagem_texto w-full flex flex-col xl:flex-row items-center justify-between space-y-3 xl:space-y-0 xl:space-x-5">
+                        class="contem_imagem_texto w-full flex flex-col md:flex-row items-center justify-between space-y-3 xl:space-y-0 xl:space-x-5">
                         <div class="imagem_texto_1 w-1/2 flex flex-col items-center justify-center">
                             <div class="w-24 md:w-20">
                                 <img th:src="@{/images/atendimento-cac.png}" alt="">
@@ -93,5 +130,13 @@
         }, 5000);
     </script>
 </body>
+<script>
+    const closeButton = document.querySelector('#close-button');
+    const mensage = document.querySelector('#mensage');
+
+    closeButton.addEventListener('click', function () {
+        mensage.style.display = 'none';
+    });
+</script>
 
 </html>

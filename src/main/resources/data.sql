@@ -45,101 +45,101 @@ INSERT INTO area( id, nome) VALUES ( 1, 'Financeiro');
 INSERT INTO area( id, nome) VALUES ( 2, 'Administrativo');
 INSERT INTO area( id, nome) VALUES ( 3, 'Administrativo');
 INSERT INTO area( id, nome) VALUES ( 4, 'Producao');
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'FinanceiroSupervisor', 'Supervisor', '1', 1);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'SuperiorSupervisor', 'Supervisor', '2', 2);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'AdministrativoSupervisor', 'Supervisor', '3', 3);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'FinanceiroGerente', 'Gerente', '4', 1);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'ProducaoGerente', 'Gerente', '5', 4);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'ProducaoGerente', 'Diretor', '7', 4);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'AdministrativoDiretor', 'Diretor', '6', 3);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'SuperiorDiretor', 'Diretor', '8', 2);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'SuperiorDiretor', 'Diretor', '8', 2);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'FinanceiroSupervisor', 'Supervisor', '9', 1);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'SuperiorSupervisor', 'Supervisor', '10', 2);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'SuperiorSupervisor', 'Supervisor', '11', 2);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'AdministrativoSupervisor', 'Supervisor', '12', 3);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'ProducaoSupervisor', 'Supervisor', '13', 4);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'FinanceiroSupervisor', 'Supervisor', '14', 1);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'AdministrativoSupervisor', 'Supervisor', '15', 3);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'FinanceiroSupervisor', 'Supervisor', '1', 1);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'SuperiorSupervisor', 'Supervisor', '2', 2);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'AdministrativoSupervisor', 'Supervisor', '3', 3);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'FinanceiroGerente', 'Gerente', '4', 1);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'ProducaoGerente', 'Gerente', '5', 4);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'ProducaoGerente', 'Diretor', '7', 4);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'AdministrativoDiretor', 'Diretor', '6', 3);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'SuperiorDiretor', 'Diretor', '8', 2);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'SuperiorDiretor', 'Diretor', '8', 2);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'FinanceiroSupervisor', 'Supervisor', '9', 1);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'SuperiorSupervisor', 'Supervisor', '10', 2);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'SuperiorSupervisor', 'Supervisor', '11', 2);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'AdministrativoSupervisor', 'Supervisor', '12', 3);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'ProducaoSupervisor', 'Supervisor', '13', 4);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'FinanceiroSupervisor', 'Supervisor', '14', 1);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'AdministrativoSupervisor', 'Supervisor', '15', 3);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'FinanceiroSupervisor', 'Supervisor', '1', 1);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'SuperiorSupervisor', 'Supervisor', '2', 2);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'AdministrativoSupervisor', 'Supervisor', '3', 3);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'FinanceiroGerente', 'Gerente', '4', 1);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'ProducaoGerente', 'Gerente', '5', 4);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'ProducaoGerente', 'Diretor', '7', 4);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'AdministrativoDiretor', 'Diretor', '6', 3);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'SuperiorDiretor', 'Diretor', '8', 2);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'SuperiorDiretor', 'Diretor', '8', 2);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'FinanceiroSupervisor', 'Supervisor', '9', 1);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'SuperiorSupervisor', 'Supervisor', '10', 2);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'SuperiorSupervisor', 'Supervisor', '11', 2);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'AdministrativoSupervisor', 'Supervisor', '12', 3);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'ProducaoSupervisor', 'Supervisor', '13', 4);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'FinanceiroSupervisor', 'Supervisor', '14', 1);
-INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area) 
+INSERT INTO superior_imediato(nome, cargo, quant_subordinados, id_area)
 VALUES ( 'AdministrativoSupervisor', 'Supervisor', '15', 3);
 INSERT INTO modelo_questionario(nome, descricao) VALUES ('questionario2', 'questionario2');
 INSERT INTO modelo_questionario(nome, descricao) VALUES ('questionario3', 'questionario3');
@@ -170,3 +170,10 @@ INSERT INTO modelo_questionario(nome, descricao) VALUES ('questionario27', 'ques
 INSERT INTO modelo_questionario(nome, descricao) VALUES ('questionario28', 'questionario28');
 INSERT INTO modelo_questionario(nome, descricao) VALUES ('questionario29', 'questionario29');
 INSERT INTO modelo_questionario(nome, descricao) VALUES ('questionario30', 'questionario30');
+INSERT INTO modelo_questionario(nome, descricao) VALUES ('questionario30', 'questionario30');
+INSERT INTO questao (descricao, tipo, id_modelo_questionario) VALUES ('questao1', 'ABERTA', 1);
+INSERT INTO questao (descricao, tipo, id_modelo_questionario) VALUES ('questao2', 'ALTERNATIVAS', 1);
+INSERT INTO opcao (descricao, id_questao) VALUES ('alternativa1', 2);
+INSERT INTO opcao (descricao, id_questao) VALUES ('alternativa2', 2);
+INSERT INTO opcao (descricao, id_questao) VALUES ('alternativa3', 2);
+INSERT INTO opcao (descricao, id_questao) VALUES ('alternativa4', 2);

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questao Aberta</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles/responder.css}" />
+    <link rel="stylesheet" type="text/css" href="/src/main/resources/static/styles/responder.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <nav class="menu-lateral">
+        <div class="flex justify-center pb-5">
+            <img th:src="@{/images/logoPrati.png}" class=" w-36 pr-3">
+        </div>
+    </nav>
+    <h1 class="flex justify-center items-center py-10 text-3xl bg-[#FFF]">
+        Avaliação de Superiores</h1>
+
+    <section>
+        <div class="items-center justify-between pt-6 flex flex-col">
+            <div class="sm:w-2/4 md:w-3/5 lg:w-3/5 2xl:w-2/5 pt-3 justify-center items-center">
+                <div class="flex items-end">
+                    <div th:text="'Questão ' + ${numeroQuestao}"></div>
+                </div>
+            </div>
+            <form id="respForm" th:action="@{'/questionarios/responder/' + ${codigoQuestionario} + '/' + ${numeroQuestao}}" th:object="${resposta}" method="post">
+                <div class="justify-center items-center pt-6 flex flex-col">
+                    <div id="questao" class="flex justify-center items-center">
+                        Estamos te ouvindo. Deixe um comentário sobre seu superior!
+                    </div>
+                    <input id="resposta" th:field="*{valor}" type="text" placeholder="Digite sua opinião!">
+                </div>
+                <div class="items-center justify-between pt-6 flex flex-col">
+                    <div class="sm:w-2/4 md:w-3/5 lg:w-3/5 2xl:w-2/5 pt-3 justify-center items-center">
+                        <div class="flex items-center justify-end">
+                            <div class="col-start-9 col-span-2 w-fit">
+                                <button id="fundo1" type="button" onclick="document.getElementById('respForm').submit()"
+                                    class="w-fit h-fit py-1 px-6 bg-white rounded" th:text="${ultimaQuestao ? 'Finalizar' : 'Próxima'}">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+
+</html>

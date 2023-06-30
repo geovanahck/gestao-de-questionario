@@ -20,6 +20,7 @@ public class Questao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String descricao;
+    @Enumerated(EnumType.STRING)
     private TipoQuestao tipo;
 
     @ManyToOne

@@ -19,7 +19,6 @@ public class Area {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-
     @OneToMany(mappedBy = "area")
     private List<SuperiorImediato> superiorImediato;
 }

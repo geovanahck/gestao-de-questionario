@@ -1,10 +1,12 @@
 package com.sqhg.repositories;
 
-import com.sqhg.entities.Questao;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
-@Repository
+import com.sqhg.entities.Questao;
+
 public interface QuestaoRepository extends JpaRepository<Questao, Long> {
-
+    @Query("SELECT q FROM Questao q WHERE q.modeloQuestionario.id = :modeloQuestionarioId")
+    Questao findByModeloQuestionarioId(@Param("modeloQuestionarioId") Long modeloQuestionarioId);
 }
