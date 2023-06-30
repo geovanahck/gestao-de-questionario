@@ -1,10 +1,9 @@
 package com.sqhg.services;
 
-import com.sqhg.entities.Questao;
-import java.util.List;
+import com.sqhg.entities.Questionario;
 
 public interface QuestionarioService {
 
-    List<Questao> findQuestionsByQuestionarioCodigo(int codigoQuestionario);
+    Questionario acharQuestionarioPorCodigo(Integer codigoQuestionario);
 
 }

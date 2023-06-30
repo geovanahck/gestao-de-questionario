@@ -21,8 +21,9 @@ public class Resposta {
     private Long id;
     private String resposta;
 
-    @OneToMany(mappedBy = "resposta")
-    private List<Questionario> questionario;
+    @ManyToOne
+    @JoinColumn(name = "id_questao")
+    private Questionario questionario;
 
     @ManyToOne
     @JoinColumn(name = "id_questao")

@@ -1,5 +1,7 @@
 package com.sqhg.services;
 
-public interface RespostaService {
+import com.sqhg.entities.Resposta;
 
+public interface RespostaService {
+    public void salvarResposta(Resposta resposta);
 }
