@@ -8,7 +8,7 @@ addAlternativeButton.addEventListener('click', function() {
     const alternativeIndex = alternativeCount++;
 
     newAlternativeDiv.innerHTML = `
-        <input type="text" name="opcoes[${alternativeIndex}].descricao" required>
+        <input type="text" class="focus-outline-none" name="opcoes[${alternativeIndex}].descricao" required>
         <button type="button" class="remove-alternative">Remove</button>
     `;
 

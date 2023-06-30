@@ -24,53 +24,57 @@
             <div class="bg-[#F3F3F3] w-full rounded-xl p-5">
 
 
-            <form th:object="${questao}" th:action="@{/questoes/novo}" method="post">
-                <div class="mb-5">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th class="w-28 rounded-tl-md">Questão</th>
-                                <td class="px-1">
-                                    <input class="w-full rounded-none px-2" type="text" th:field="*{descricao}"
-                                        required />
-                                </td>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-                <div class="flex space-x-12 p-5">
-                    <label>Tipo</label>
-                    <label th:each="tipo : ${T(com.sqhg.entities.TipoQuestao).values()}">
-                        <input th:id="${tipo}" type="radio" th:field="*{tipo}" th:value="${tipo}" />
-                        <label th:for="${tipo}">
-                            <th:block th:text="${tipo.display}">
-                        </label>
-                    </label>
-                </div>
-                <div class="space-y-1 p-5" id="alternatives-input" style="display: none;">
-                    <label>Alternativas</label>
-                    <div>
-                        <input class="w-full rounded-none px-2" type="text" th:field="*{opcoes[0].descricao}">
+                <form th:object="${questao}" th:action="@{/questoes/novo}" method="post">
+                    <div class="mb-5">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="w-28 rounded-tl-md">Questão</th>
+                                    <td class="px-1">
+                                        <input class="w-full rounded-none px-2 focus:outline-none" type="text"
+                                            th:field="*{descricao}" required />
+                                    </td>
+                                </tr>
+                            </thead>
+                        </table>
                     </div>
-                    <div class="space-y-1 p-5" id="alternatives-input" style="display: none;"> <!--none-->
+                    <div class="flex space-x-12 p-5">
+                        <label>Tipo</label>
+                        <label th:each="tipo : ${T(com.sqhg.entities.TipoQuestao).values()}">
+                            <input th:id="${tipo}" type="radio" th:field="*{tipo}" th:value="${tipo}" />
+                            <label th:for="${tipo}">
+                                <th:block th:text="${tipo.display}">
+                            </label>
+                        </label>
+                    </div>
+                    <div class="space-y-1 p-5" id="alternatives-input" style="display: none;">
                         <label>Alternativas</label>
                         <div>
-                            <input class="w-full rounded-none px-2" type="text" th:field="*{opcoes[0].descricao}">
+                            <input class="w-full rounded-none px-2 focus:outline-none" type="text"
+                                th:field="*{opcoes[0].descricao}">
                         </div>
-                        <div>
-                            <input class="w-full rounded-none px-2" type="text" th:field="*{opcoes[1].descricao}">
+                        <div class="space-y-1 p-5" id="alternatives-input" style="display: none;"> <!--none-->
+                            <label>Alternativas</label>
+                            <div>
+                                <input class="w-full rounded-none px-2 focus:outline-none" type="text"
+                                    th:field="*{opcoes[0].descricao}">
+                            </div>
+                            <div>
+                                <input class="w-full rounded-none px-2 focus:outline-none" type="text"
+                                    th:field="*{opcoes[1].descricao}">
+                            </div>
+                            <div id="additional-alternatives"
+                                class="justify-items items-center inline-block  flex-row-reverse pr-0 gap-x-2"></div>
+                            <button type="button" id="add-alternative"
+                                class="w-fit h-fit py-1 px-6 bg-[#5c2472] rounded">Add
+                                Alternative</button>
                         </div>
-                        <div id="additional-alternatives"
-                            class="justify-items items-center inline-block  flex-row-reverse pr-0 gap-x-2"></div>
-                        <button type="button" id="add-alternative"
-                            class="w-fit h-fit py-1 px-6 bg-[#5c2472] rounded">Add
-                            Alternative</button>
-                    </div>
-                    <div class="justify-items items-center inline-block  flex-row-reverse pr-0 gap-x-2">
-                        <button type="submit" id="save" class="w-fit h-fit py-1 px-6 bg-[#5c2472] rounded">Save</button>
-                        <button type="submit" id="cancel"
-                            class="w-fit h-fit py-1 px-6 bg-[#5c2472] rounded">Cancel</button>
-                    </div>
+                        <div class="justify-items items-center inline-block  flex-row-reverse pr-0 gap-x-2">
+                            <button type="submit" id="save"
+                                class="w-fit h-fit py-1 px-6 bg-[#5c2472] rounded">Save</button>
+                            <button type="submit" id="cancel"
+                                class="w-fit h-fit py-1 px-6 bg-[#5c2472] rounded">Cancel</button>
+                        </div>
                 </form>
             </div>
         </div>
@@ -341,7 +345,7 @@
     </nav> <!--  menu-lateral -->
     <script rel="javascript" type="text/javascript" th:src="@{/scripts/questao.js}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
-    <script rel="javascript" type="text/javascript" th:src="@{/scripts/menu.js}"></script>
+
 </body>
 
 </html>
