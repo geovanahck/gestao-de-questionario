@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <link rel="icon" th:href="@{/images/logo_prati_icon.png}" type="image/x-icon">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>Registrar Questão</title>
+    <title>Criar Questões</title>
     <link rel="stylesheet" type="text/css" th:href="@{/styles/questao.css}" />
+    <link rel="stylesheet" type="text/css" href="../static/styles/questao.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -15,68 +16,63 @@
 </head>
 
 
-<body class="overflow-x-auto">
-    <div class="h-screen flex tela-inteira justify-center">
-        <div class="flex flex-col items-center tela-inteira p-5 w-4/5 gh-full overflow-x-auto">
-            <header class="flex justify-center w-full">
-                <span class="text-2xl pb-5">Criar Nova Questão</span>
-            </header>
-            <div class="bg-[#F3F3F3] w-full rounded-xl p-5">
-
-
-                <form th:object="${questao}" th:action="@{/questoes/novo}" method="post">
-                    <div class="mb-5">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th class="w-28 rounded-tl-md">Questão</th>
-                                    <td class="px-1">
-                                        <input class="w-full rounded-none px-2 focus:outline-none" type="text"
-                                            th:field="*{descricao}" required />
-                                    </td>
-                                </tr>
-                            </thead>
-                        </table>
+<body class="overflow-x-auto bg-[#D8D8D9]">
+    <div style="background-color: #fff" class="flex justify-center items-center h-24">
+        <h1 class="dark:text-black text-center titulo">Criar Nova Questão</h1>
+    </div>
+    <div class="flex justify-center items-center ">
+        <div class="flex flex-col items-center p-5 w-full gh-full">
+            <form class="flex flex-col items-center w-4/5" th:object="${questao}" th:action="@{/questoes/novo}"
+                method="post">
+                <div class="flex w-4/5 flex-row justify-center py-2">
+                    <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+                        <div class="text-lg">Questão</div>
                     </div>
-                    <div class="flex space-x-12 p-5">
-                        <label>Tipo</label>
-                        <label th:each="tipo : ${T(com.sqhg.entities.TipoQuestao).values()}">
-                            <input th:id="${tipo}" type="radio" th:field="*{tipo}" th:value="${tipo}" />
-                            <label th:for="${tipo}">
-                                <th:block th:text="${tipo.display}">
-                            </label>
+                    <input
+                        class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full  px-3 l-bege focus:outline-none"
+                        type="text" th:field="*{descricao}" required />
+                </div>
+
+
+                <div class="flex justify-center space-x-12 p-5">
+                    <label>Tipo</label>
+                    <label th:each="tipo : ${T(com.sqhg.entities.TipoQuestao).values()}">
+                        <input th:id="${tipo}" type="radio" th:field="*{tipo}" th:value="${tipo}" />
+                        <label th:for="${tipo}">
+                            <th:block th:text="${tipo.display}">
                         </label>
+                    </label>
+                </div>
+                <div class="w-full space-y-1 p-5" id="alternatives-input" style="display: none;">
+                    <label>Alternativas</label>
+                    <div>
+                        <input class="w-full rounded-none px-2 focus:outline-none" type="text"
+                            th:field="*{opcoes[0].descricao}">
                     </div>
-                    <div class="space-y-1 p-5" id="alternatives-input" style="display: none;">
+                    <div class="space-y-1 p-5" id="alternatives-input" style="display: none;"> <!--none-->
                         <label>Alternativas</label>
                         <div>
                             <input class="w-full rounded-none px-2 focus:outline-none" type="text"
                                 th:field="*{opcoes[0].descricao}">
                         </div>
-                        <div class="space-y-1 p-5" id="alternatives-input" style="display: none;"> <!--none-->
-                            <label>Alternativas</label>
-                            <div>
-                                <input class="w-full rounded-none px-2 focus:outline-none" type="text"
-                                    th:field="*{opcoes[0].descricao}">
-                            </div>
-                            <div>
-                                <input class="w-full rounded-none px-2 focus:outline-none" type="text"
-                                    th:field="*{opcoes[1].descricao}">
-                            </div>
-                            <div id="additional-alternatives"
-                                class="justify-items items-center inline-block  flex-row-reverse pr-0 gap-x-2"></div>
-                            <button type="button" id="add-alternative"
-                                class="w-fit h-fit py-1 px-6 bg-[#5c2472] rounded">Add
-                                Alternative</button>
+                        <div>
+                            <input class="w-full rounded-none px-2 focus:outline-none" type="text"
+                                th:field="*{opcoes[1].descricao}">
                         </div>
-                        <div class="justify-items items-center inline-block  flex-row-reverse pr-0 gap-x-2">
-                            <button type="submit" id="save"
-                                class="w-fit h-fit py-1 px-6 bg-[#5c2472] rounded">Save</button>
-                            <button type="submit" id="cancel"
-                                class="w-fit h-fit py-1 px-6 bg-[#5c2472] rounded">Cancel</button>
-                        </div>
-                </form>
-            </div>
+                        <div id="additional-alternatives"
+                            class="justify-items items-center inline-block  flex-row-reverse pr-0 gap-x-2"></div>
+                        <button type="button" id="add-alternative"
+                            class="w-fit h-fit py-1 px-6 bg-[#5c2472] rounded">Add
+                            Alternative</button>
+                    </div>
+                    <div class="justify-end items-center inline-block  flex-row-reverse pr-0 pt-2 gap-x-2">
+                        <button type="submit" id="save"
+                            class="w-fit h-fit py-1 px-6 bg-[#5c2472] rounded">Salvar</button>
+                        <button type="submit" id="cancel"
+                            class="w-fit h-fit py-1 px-6 bg-[#5c2472] rounded">Cancelar</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
     <div id="popup" class="popup hidden flex-col justify-between">
@@ -344,6 +340,7 @@
         </ul>
     </nav> <!--  menu-lateral -->
     <script rel="javascript" type="text/javascript" th:src="@{/scripts/questao.js}"></script>
+    <script rel="javascript" type="text/javascript" th:src="@{/scripts/menu.js}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
 
 </body>

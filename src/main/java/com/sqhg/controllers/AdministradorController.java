@@ -5,14 +5,18 @@ import com.sqhg.forms.AdministradorForm;
 import com.sqhg.services.AdministradorService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import java.sql.Date;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
 import java.util.Optional;
 
 @Controller
@@ -21,6 +25,12 @@ import java.util.Optional;
 public class AdministradorController {
 
     private AdministradorService administradorService;
+
+    @InitBinder
+    protected void initBinder(WebDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+    }
 
     @GetMapping(value = "/novo")
     public String cadastrarAdministrador(Model model) {

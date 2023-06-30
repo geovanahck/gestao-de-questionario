@@ -8,62 +8,46 @@
   <link rel="icon" th:href="@{/images/logo_prati_icon.png}" type="image/x-icon">
   <title>Criar Questionário</title>
   <link rel="stylesheet" type="text/css" th:href="@{/styles/questao.css}" />
+  <link rel="stylesheet" type="text/css" href="../static/styles/questao.css" />
 </head>
 <script src="https://cdn.tailwindcss.com"></script>
 
 <body class="overflow-x-auto">
-  <div class="h-screen flex tela-inteira justify-center">
-    <div class="flex flex-col items-center tela-inteira p-5 w-4/5 gh-full overflow-auto">
-      <header class="flex justify-center w-full">
-        <span class="text-2xl pb-5">Modelo de Questionário</span>
-      </header>
-      <div class="bg-[#F3F3F3] w-full rounded-xl p-5">
-        <form th:object="${modeloQuestionario}" th:action="@{/modelo-questionario/novo}" method="post">
-          <div class="grid gap-y-3">
-            <div>
-              <table>
-                <thead>
-                  <tr>
-                    <th class="w-28 rounded-tl-md">Nome</th>
-                    <td>
-                      <input class="w-full rounded-none px-2 focus:outline-none" type=text th:field="*{nome}" required>
-                    </td>
-                  </tr>
-                </thead>
-              </table>
+
+  <div style="background-color: #ffffff" class="flex justify-center items-center h-24">
+    <h1 class="dark:text-black text-center titulo">Modelo de Questionário</h1>
+  </div>
+
+  <div class="flex justify-center items-center">
+    <form class="flex flex-col items-center w-4/5" th:object="${modeloQuestionario}"
+      th:action="@{/modelo-questionario/novo}" method="post">
+      <div class="flex flex-col items-center w-full">
+        <div class="flex w-4/5 flex-col  items-center pt-4 space-y-2 h-auto overflow-y-auto rounded-xl ">
+          <div class="flex w-4/5 flex-row justify-center py-2">
+            <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+              <div class="text-lg">Nome</div>
             </div>
-            <div>
-              <table>
-                <thead>
-                  <tr>
-                    <th class="w-28 rounded-tl-md">Descrição</th>
-                    <td>
-                      <input class="w-full rounded-none px-2 focus:outline-none" type=text th:field="*{descricao}" required>
-                    </td>
-                  </tr>
-                </thead>
-              </table>
+            <input class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full  px-3 l-bege focus:outline-none" type="text"
+              th:field="*{nome}" required>
+          </div>
+          <div class="flex w-4/5 flex-row justify-center py-2">
+            <div class="flex items-center justify-center h-10 w-48 purple-color rounded-l-full text-white">
+              <div class="text-lg">Descrição</div>
             </div>
+            <input class="w-full h-10 border-2 l-roxo rounded-l-none rounded-r-full  px-3 l-bege focus:outline-none" type="text"
+              th:field="*{descricao}" required>
           </div>
-          <div class="justify-items items-center flex-row-reverse flex-space pr-0 gap-x-2 flex p-5">
-            <ul class="flex space-x-5">
-              <li>
-                <a href="/questoes/novo">
-                  <button type="button" id="criar" class="w-fit h-fit py-1 px-6 bg-[#5c2472] rounded">
-                    Criar Questão
-                  </button>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div class="space-y-1 p-5" th:class="${questoes.size == 0} ? 'hidden' : ''">
-            <table class=" items-center justify-items overflow-x-auto">
+
+
+          <div class="flex justify-center pt-5 w-full ">
+
+            <table>
               <thead>
                 <tr>
-                  <th class="w-8"></th>
-                  <th>Descrição</th>
-                  <th class="w-16">Tipo</th>
-                  <th class="w-16">Editar</th>
+                  <th class="w-16"></th>
+                  <th class="w-96">Descrição</th>
+                  <th class="w-32">Tipo</th>
+                  <th class="w-32">Editar</th>
                 </tr>
               </thead>
               <tbody>
@@ -89,13 +73,25 @@
               </tbody>
             </table>
           </div>
-          <div class="justify-items items-center flex flex-row-reverse flex-space pr-0 gap-x-2">
-            <button id="save" class="w-fit h-fit py-1 px-6 bg-[#5c2472] rounded" type="submit">Salvar</button>
+          <div class="flex w-5/6 justify-end items-center space-x-5 py-5 pr-3">
+            <div class="flex w-4/6 justify-end py-5">
+              <a href="/questoes/novo">
+                <button type="button" id="criar" style="background-color: #5c2472"
+                  class="h-12 w-36 text-center text-white rounded-lg ml-2 text-lg">
+                  Criar Questão
+                </button>
+              </a>
+            </div>
+            <button type="button" style="background-color: #5c2472"
+              class="appearance-none h-12 w-32 text-center text-white rounded-lg ml-2 text-lg">
+              Salvar
+            </button>
           </div>
-        </form>
-      </div>
-    </div>
+        </div>
+    </form>
   </div>
+
+
   <nav class="menu-lateral flex justify-center items-center" onmouseover="mostrarMenu()" onmouseout="esconderMenu()">
     <a th:href="@{/home}" class="flex justify-center pb-5">
       <img th:src="@{/images/logoPrati.png}" alt="" class="pt-8 w-36 pr-3">
@@ -335,6 +331,7 @@
       </li>
     </ul>
   </nav> <!--  menu-lateral -->
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
   <script rel="javascript" type="text/javascript" th:src="@{/scripts/menu.js}"></script>
 </body>
